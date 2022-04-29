@@ -455,7 +455,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             SwingUtilities.invokeLater(() -> {
-                Obtener_Preguntas();
+                Obtener_Preguntas(true);
             });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -485,7 +485,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         });
     }
     
-    private void Obtener_Preguntas(){
+    private void Obtener_Preguntas(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
         modelo.setRowCount(0);
@@ -499,8 +499,14 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         SwingUtilities.invokeLater(() -> {
             Lista<PreguntasModel> lista
                     = CourseRoom.Solicitudes().Obtener_Preguntas(Tablero_Estudiante_Panel.Id_Usuario());
-            while (!lista.is_empty()) {
-                Agregar_Pregunta(lista.delist());
+            if(!lista.is_empty()){    
+                while (!lista.is_empty()) {
+                    Agregar_Pregunta(lista.delist());
+                }
+            }else{
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Obtener Preguntas", "No Se Encontraron Preguntas");
+                }
             }
         });
     }
@@ -717,7 +723,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         buscar_Preguntas_JTable.getTableHeader().setFont(gadugi);
         buscar_Preguntas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        Obtener_Preguntas();
+        Obtener_Preguntas(false);
         
     }
 

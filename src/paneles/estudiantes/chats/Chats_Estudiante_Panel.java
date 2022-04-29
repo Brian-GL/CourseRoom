@@ -446,7 +446,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             SwingUtilities.invokeLater(() -> {
-                Obtener_Chats_Personales();
+                Obtener_Chats_Personales(true);
             });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -480,7 +480,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         chatear_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_chatear_JButtonMouseExited
 
-    private void Obtener_Chats_Personales(){
+    private void Obtener_Chats_Personales(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
         modelo.setRowCount(0);
@@ -500,7 +500,9 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                     Agregar_Chat(lista.delist());
                 }
             } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Chats Personales");
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Chats Personales");
+                }
             }
         });
     }
@@ -702,7 +704,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
         buscar_Chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        Obtener_Chats_Personales();
+        Obtener_Chats_Personales(false);
         
     }
 

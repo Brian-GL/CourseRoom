@@ -811,16 +811,15 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
             SwingUtilities.invokeLater(() -> {
-                Obtener_Mensajes_Tarea();
                 switch (carta_Visible) {
                     case 0: case 3:
-                        Obtener_Datos_Generales_Tarea();
+                        Obtener_Datos_Generales_Tarea(true);
                         break;
                     case 1:
-                        Obtener_Archivos_Adjuntos_Tarea();
+                        Obtener_Archivos_Adjuntos_Tarea(true);
                         break;
                     case 2:
-                        Obtener_Mensajes_Tarea();
+                        Obtener_Mensajes_Tarea(true);
                         break;
                 }
             });
@@ -1018,25 +1017,34 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         guardar_Cambios_Datos_Generales_Tarea_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseExited
     
-    public int Id_Tarea() {
-        return Id_Tarea;
-    }
-    
-     private void Obtener_Mensajes_Tarea(){
+    private void Agregar_Archivo_Adjunto(ArchivosTareaModel archivosTareaModel){
+        Celda_Renderer[] celdas = new Celda_Renderer[2];
+        Celda_Renderer celda;
         
-        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-        modelo.setRowCount(0);
-         SwingUtilities.invokeLater(() -> {
-             Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Tarea);
+        String id = String.valueOf(archivosTareaModel.Id_Archivo_Tarea());
+        String archivo_Adjunto = CourseRoom.Utilerias().Concatenar(archivosTareaModel.Nombre_Archivo(),".",archivosTareaModel.Extension());
+        String fecha_Adjunto = archivosTareaModel.Fecha_Enviado();
+        DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
+        
+        try {
+            
+            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+            ImageIcon icono = new ImageIcon(imagen);
+            
+            celda = new Celda_Renderer(icono,archivo_Adjunto, id);
+            celdas[0] = celda;
+            
+            imagen.flush();
+        } catch (IOException ex) {
+            celda = new Celda_Renderer(archivo_Adjunto, id);
+            celdas[0] = celda;
+        }
+        celda = new Celda_Renderer(fecha_Adjunto,id);
+        celdas[1] = celda;
 
-             if (!response.is_empty()) {
-                 while (!response.is_empty()) {
-                     Agregar_Mensaje_Tarea(response.delist());
-                 }
-             } else {
-                 CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Tarea", "No Se Encontraron Mensajes En Las Tareas");
-             }
-         });
+        modelo.addRow(celdas);
+        archivos_Adjuntos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(archivo_Adjunto.length()));
+
     }
     
     private void Agregar_Mensaje_Tarea(MensajesModel mensajesModel){
@@ -1062,24 +1070,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                 CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
     }
     
-    private void Obtener_Datos_Generales_Tarea(){
-        
-        DatosGeneralesTareaProfesorModel datosGeneralesTareaProfesor = 
-                CourseRoom.Solicitudes().Obtener_Datos_Generales_Tarea_Profesor(Id_Tarea, Tablero_Profesor_Panel.Id_Usuario());
-        
-        if(!datosGeneralesTareaProfesor.Nombre().isBlank()){
-            
-            titulo_JLabel.setText(datosGeneralesTareaProfesor.Nombre());
-            curso_JLabel.setText(datosGeneralesTareaProfesor.Nombre_Curso());
-            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTareaProfesor.Fecha_Creacion()));
-            fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Se entrega el ", datosGeneralesTareaProfesor.Fecha_Entrega()));
-            estatus_Tarea_JLabel.setText(datosGeneralesTareaProfesor.Estatus());
-            descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTareaProfesor.Descripcion()));
-            
-        }
-        
-    }
-
     private void Descargar_Archivo(int id_Mensaje, String nombre_Archivo){
         
         File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
@@ -1112,55 +1102,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
-    }
-    
-    private void Obtener_Archivos_Adjuntos_Tarea(){
-        
-        DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
-        modelo.setRowCount(0);
-        
-        SwingUtilities.invokeLater(() ->{
-            Lista<ArchivosTareaModel> response = CourseRoom.Solicitudes().Obtener_Archivos_Adjuntos_Tarea(Id_Tarea);
-
-            if(response.is_empty()){
-                CourseRoom.Utilerias().Mensaje_Alerta("Archivos Adjuntos", "No Se Encontraron Archivos Adjuntos");
-            }else{
-                while(!response.is_empty()){
-                    Agregar_Archivo_Adjunto(response.delist());
-                }
-            }
-        });
-        
-    }
-    
-    private void Agregar_Archivo_Adjunto(ArchivosTareaModel archivosTareaModel){
-        Celda_Renderer[] celdas = new Celda_Renderer[2];
-        Celda_Renderer celda;
-        
-        String id = String.valueOf(archivosTareaModel.Id_Archivo_Tarea());
-        String archivo_Adjunto = CourseRoom.Utilerias().Concatenar(archivosTareaModel.Nombre_Archivo(),".",archivosTareaModel.Extension());
-        String fecha_Adjunto = archivosTareaModel.Fecha_Enviado();
-        DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
-        
-        try {
-            
-            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-            ImageIcon icono = new ImageIcon(imagen);
-            
-            celda = new Celda_Renderer(icono,archivo_Adjunto, id);
-            celdas[0] = celda;
-            
-            imagen.flush();
-        } catch (IOException ex) {
-            celda = new Celda_Renderer(archivo_Adjunto, id);
-            celdas[0] = celda;
-        }
-        celda = new Celda_Renderer(fecha_Adjunto,id);
-        celdas[1] = celda;
-
-        modelo.addRow(celdas);
-        archivos_Adjuntos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(archivo_Adjunto.length()));
-
     }
     
     private void Descargar_Archivo_Adjunto(int id_Archivo, String nombre_Archivo){
@@ -1196,6 +1137,71 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         }
         
     }
+    
+    public int Id_Tarea() {
+        return Id_Tarea;
+    }
+    
+    private void Obtener_Archivos_Adjuntos_Tarea(boolean bandera){
+        
+        DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        SwingUtilities.invokeLater(() ->{
+            Lista<ArchivosTareaModel> response = CourseRoom.Solicitudes().Obtener_Archivos_Adjuntos_Tarea(Id_Tarea);
+
+            if (response.is_empty()) {
+                if (bandera) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Archivos Adjuntos", "No Se Encontraron Archivos Adjuntos");
+                }
+            } else {
+                while (!response.is_empty()) {
+                    Agregar_Archivo_Adjunto(response.delist());
+                }
+            }
+        });
+        
+    }
+    
+     private void Obtener_Datos_Generales_Tarea(boolean bandera){
+        
+        DatosGeneralesTareaProfesorModel datosGeneralesTareaProfesor = 
+                CourseRoom.Solicitudes().Obtener_Datos_Generales_Tarea_Profesor(Id_Tarea, Tablero_Profesor_Panel.Id_Usuario());
+        
+        if(!datosGeneralesTareaProfesor.Nombre().isBlank()){
+            
+            titulo_JLabel.setText(datosGeneralesTareaProfesor.Nombre());
+            curso_JLabel.setText(datosGeneralesTareaProfesor.Nombre_Curso());
+            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTareaProfesor.Fecha_Creacion()));
+            fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Se entrega el ", datosGeneralesTareaProfesor.Fecha_Entrega()));
+            estatus_Tarea_JLabel.setText(datosGeneralesTareaProfesor.Estatus());
+            descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTareaProfesor.Descripcion()));
+        }else {
+                if (bandera) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Datos Generales Tarea", "No Se Encontraron Los Datos Generales De La Tarea");
+                }
+            }
+    }
+    
+    private void Obtener_Mensajes_Tarea(boolean bandera){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.setRowCount(0);
+         SwingUtilities.invokeLater(() -> {
+             Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Tarea);
+
+             if (!response.is_empty()) {
+                 while (!response.is_empty()) {
+                     Agregar_Mensaje_Tarea(response.delist());
+                 }
+             } else {
+                 if (bandera) {
+                     CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Tarea", "No Se Encontraron Mensajes En Las Tareas");
+                 }
+             }
+         });
+    }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton archivos_Adjuntos_JButton;
@@ -1266,9 +1272,9 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());  
        
         Colorear_Componentes();
-        Obtener_Mensajes_Tarea();
-        Obtener_Datos_Generales_Tarea();
-        Obtener_Archivos_Adjuntos_Tarea();
+        Obtener_Mensajes_Tarea(false);
+        Obtener_Datos_Generales_Tarea(false);
+        Obtener_Archivos_Adjuntos_Tarea(false);
         
     }
 

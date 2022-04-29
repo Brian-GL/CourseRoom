@@ -322,11 +322,11 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             switch (carta_Visible) {
                 case 0 -> {
                     titulo_JLabel.setText("Tareas Por Calificar");
-                    Obtener_Tareas_Creadas();
+                    Obtener_Tareas_Creadas(true);
                 }
                 case 1 -> {
                     titulo_JLabel.setText("Tareas Creadas");
-                    Obtener_Tareas_Creadas();
+                    Obtener_Tareas_Creadas(true);
                 }
             }
         }
@@ -351,6 +351,65 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         }
     }//GEN-LAST:event_tareas_Creadas_JButtonMouseClicked
 
+    private void Agregar_Tarea_Creada(TareasEstudianteModel tareasEstudianteModel){
+        
+        DefaultTableModel modelo = (DefaultTableModel) tareas_Creadas_JTable.getModel();
+        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        Celda_Renderer celda;
+        
+        Image imagen;
+        ImageIcon icono;
+        
+        String id = CourseRoom.Utilerias().Concatenar("Tarea_Creada_", tareasEstudianteModel.Id_Tarea());
+        
+        celda = new Celda_Renderer(tareasEstudianteModel.Nombre(),id);
+        celdas[0] = celda;
+        
+        byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(tareasEstudianteModel.Id_Curso());
+        
+        if (bytes_Imagen != null){
+            
+            if(bytes_Imagen.length > 0){
+            
+                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
+
+                if(imagen != null){
+
+                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+                    icono = new ImageIcon(imagen);
+                    celda = new Celda_Renderer(icono,tareasEstudianteModel.Nombre_Curso(), id);
+                    celdas[1] = celda;
+                    
+                    imagen.flush();
+                }
+            }
+            else{
+                celda = new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(), id);
+                celdas[1] = celda;
+            }
+            
+        }else{
+            celda = new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(), id);
+            celdas[1] = celda;
+        }
+       
+        celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Creacion(),id);
+        celdas[2] = celda;
+        celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Entrega(), id);
+        celdas[3] = celda;
+        celda = new Celda_Renderer(tareasEstudianteModel.Estatus(), id);
+        celdas[4] = celda;
+        
+        modelo.addRow(celdas);
+        
+        Tarea_Profesor_Panel tarea_Creada_Profesor_Panel =
+                new Tarea_Profesor_Panel(tareasEstudianteModel.Id_Tarea());
+
+        tareas_Creadas_Lista.push_back(tarea_Creada_Profesor_Panel);
+
+        Tablero_Profesor_Panel.Agregar_Vista(tarea_Creada_Profesor_Panel, id);
+
+    }
     
     private void Agregar_Tarea_Por_Calificar(TareasPorCalificarModel tareasPorCalificarModel){
         
@@ -437,8 +496,37 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         Tablero_Profesor_Panel.Agregar_Vista(tarea_Entregada_Profesor_Panel, id);
 
     }
+       
+    private void Obtener_Tareas_Creadas(boolean bandera){
+        
+        // Limpieza:
+        DefaultTableModel modelo = (DefaultTableModel) tareas_Creadas_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Tarea_Profesor_Panel tarea_Profesor_Panel;
+        while(!tareas_Creadas_Lista.is_empty()){
+            tarea_Profesor_Panel = tareas_Creadas_Lista.delist();
+            tarea_Profesor_Panel.Limpiar();
+            Tablero_Profesor_Panel.Retirar_Vista(tarea_Profesor_Panel);
+        }
+        
+        // Obtención:
+        Lista<TareasEstudianteModel> response 
+                = CourseRoom.Solicitudes().Obtener_Tareas_Creadas(Tablero_Profesor_Panel.Id_Usuario());
+        
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Tarea_Creada(response.delist());
+            }
+        }else {
+            if (bandera) {
+                CourseRoom.Utilerias().Mensaje_Alerta("Tareas Creadas", "No Se Encontraron Tareas Creadas");
+            }
+        }
+        
+    }
     
-    private void Obtener_Tareas_Por_Calificar(){
+    private void Obtener_Tareas_Por_Calificar(boolean bandera){
         
         // Limpieza:
         DefaultTableModel modelo = (DefaultTableModel) tareas_Por_Calificar_JTable.getModel();
@@ -460,97 +548,11 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
             while(!response.is_empty()){
                 Agregar_Tarea_Por_Calificar(response.delist());
             }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Tareas Por Calificar", "No Se Encontraron Tareas Por Calificar");
-        }
-        
-    }
-
-    private void Agregar_Tarea_Creada(TareasEstudianteModel tareasEstudianteModel){
-        
-        DefaultTableModel modelo = (DefaultTableModel) tareas_Creadas_JTable.getModel();
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
-        Celda_Renderer celda;
-        
-        Image imagen;
-        ImageIcon icono;
-        
-        String id = CourseRoom.Utilerias().Concatenar("Tarea_Creada_", tareasEstudianteModel.Id_Tarea());
-        
-        celda = new Celda_Renderer(tareasEstudianteModel.Nombre(),id);
-        celdas[0] = celda;
-        
-        byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(tareasEstudianteModel.Id_Curso());
-        
-        if (bytes_Imagen != null){
-            
-            if(bytes_Imagen.length > 0){
-            
-                imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
-
-                if(imagen != null){
-
-                    imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-                    icono = new ImageIcon(imagen);
-                    celda = new Celda_Renderer(icono,tareasEstudianteModel.Nombre_Curso(), id);
-                    celdas[1] = celda;
-                    
-                    imagen.flush();
-                }
+        } else {
+            if (bandera) {
+                CourseRoom.Utilerias().Mensaje_Alerta("Tareas Por Calificar", "No Se Encontraron Tareas Por Calificar");
             }
-            else{
-                celda = new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(), id);
-                celdas[1] = celda;
-            }
-            
-        }else{
-            celda = new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(), id);
-            celdas[1] = celda;
         }
-       
-        celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Creacion(),id);
-        celdas[2] = celda;
-        celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Entrega(), id);
-        celdas[3] = celda;
-        celda = new Celda_Renderer(tareasEstudianteModel.Estatus(), id);
-        celdas[4] = celda;
-        
-        modelo.addRow(celdas);
-        
-        Tarea_Profesor_Panel tarea_Creada_Profesor_Panel =
-                new Tarea_Profesor_Panel(tareasEstudianteModel.Id_Tarea());
-
-        tareas_Creadas_Lista.push_back(tarea_Creada_Profesor_Panel);
-
-        Tablero_Profesor_Panel.Agregar_Vista(tarea_Creada_Profesor_Panel, id);
-
-    }
-    
-    private void Obtener_Tareas_Creadas(){
-        
-        // Limpieza:
-        DefaultTableModel modelo = (DefaultTableModel) tareas_Creadas_JTable.getModel();
-        modelo.setRowCount(0);
-        
-        Tarea_Profesor_Panel tarea_Profesor_Panel;
-        while(!tareas_Creadas_Lista.is_empty()){
-            tarea_Profesor_Panel = tareas_Creadas_Lista.delist();
-            tarea_Profesor_Panel.Limpiar();
-            Tablero_Profesor_Panel.Retirar_Vista(tarea_Profesor_Panel);
-        }
-        
-        // Obtención:
-        Lista<TareasEstudianteModel> response 
-                = CourseRoom.Solicitudes().Obtener_Tareas_Creadas(Tablero_Profesor_Panel.Id_Usuario());
-        
-        if(!response.is_empty()){
-            while(!response.is_empty()){
-                Agregar_Tarea_Creada(response.delist());
-            }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Tareas Creadas", "No Se Encontraron Tareas Creadas");
-        }
-        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -588,8 +590,8 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         
         tareas_Creadas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         tareas_Por_Calificar_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        Obtener_Tareas_Por_Calificar();
-        Obtener_Tareas_Creadas();
+        Obtener_Tareas_Por_Calificar(false);
+        Obtener_Tareas_Creadas(false);
         
     }
 

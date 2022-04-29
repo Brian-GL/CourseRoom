@@ -947,14 +947,14 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             switch (carta_Visible) {
-                case 0 -> Obtener_Datos_Generales_Tarea();
-                case 1 -> Obtener_Archivos_Adjuntos_Tarea();
-                case 2 -> Obtener_Mensajes_Tarea();
+                case 0 -> Obtener_Datos_Generales_Tarea(true);
+                case 1 -> Obtener_Archivos_Adjuntos_Tarea(true);
+                case 2 -> Obtener_Mensajes_Tarea(true);
                 case 3 -> {
-                    Obtener_Datos_Entrega_Tarea();
+                    Obtener_Datos_Entrega_Tarea(true);
                     Obtener_Archivos_Entregados_Tarea();
                 }
-                case 4 -> Obtener_Retroalimentaciones();
+                case 4 -> Obtener_Retroalimentaciones(true);
             }
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -1073,7 +1073,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
     }
     
-    private void Obtener_Mensajes_Tarea(){
+    private void Obtener_Mensajes_Tarea(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
@@ -1085,7 +1085,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     Agregar_Mensaje_Tarea(response.delist());
                 }
             } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Tarea", "No Se Encontraron Mensajes En Las Tareas");
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Tarea", "No Se Encontraron Mensajes En Las Tareas");
+                }
             }
         });
     }
@@ -1113,7 +1115,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
     }
     
-    private void Obtener_Datos_Generales_Tarea(){
+    private void Obtener_Datos_Generales_Tarea(boolean bandera){
         
         DatosGeneralesTareaModel datosGeneralesTarea = 
                 CourseRoom.Solicitudes().Obtener_Datos_Generales_Tarea(Id_Tarea, Tablero_Estudiante_Panel.Id_Usuario());
@@ -1125,10 +1127,14 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Entrega el ", datosGeneralesTarea.Fecha_Entrega()));
             estatus_Tarea_JLabel.setText(datosGeneralesTarea.Estatus());
             descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTarea.Descripcion()));
+        }else{
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Datos Generales Tarea", "No Se Encontraron Datos Generales De Las Tareas");
+            }
         }
     }
     
-    private void Obtener_Archivos_Adjuntos_Tarea(){
+    private void Obtener_Archivos_Adjuntos_Tarea(boolean bandera){
         
         
         DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
@@ -1137,7 +1143,9 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             Lista<ArchivosTareaModel> response = CourseRoom.Solicitudes().Obtener_Archivos_Adjuntos_Tarea(Id_Tarea);
 
             if(response.is_empty()){
-                CourseRoom.Utilerias().Mensaje_Alerta("Archivos Adjuntos", "No Se Encontraron Archivos Adjuntos");
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Archivos Adjuntos", "No Se Encontraron Archivos Adjuntos");
+                }
             }else{
                 while(!response.is_empty()){
                     Agregar_Archivo_Adjunto(response.delist());
@@ -1286,7 +1294,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
     }
     
-    private void Obtener_Retroalimentaciones(){
+    private void Obtener_Retroalimentaciones(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
         modelo.setRowCount(0);
@@ -1301,12 +1309,14 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     Agregar_Retroalimentacion(response.delist());
                 }
             } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Retroalimentaciones Tarea", "No Se Encontraron Retroalimentaciones");
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Retroalimentaciones Tarea", "No Se Encontraron Retroalimentaciones");
+                }
             }
         });
     }
     
-    private void Obtener_Datos_Entrega_Tarea(){
+    private void Obtener_Datos_Entrega_Tarea(boolean bandera){
         
         DatosEntregaTareaModel datosEntrega = CourseRoom.Solicitudes().Obtener_Datos_Entrega_Tarea(Id_Tarea, 
                 Tablero_Estudiante_Panel.Id_Usuario());
@@ -1322,6 +1332,10 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             fecha_Actualizacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Actualizada El: ", 
                     datosEntrega.Fecha_Subida()));
        
+        }else{
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Desempeño Usuario", "No Se Encontraron Registros");
+            }
         }
         
     }
@@ -1462,11 +1476,11 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         Colorear_Componentes();
         
         Obtener_Archivos_Entregados_Tarea();
-        Obtener_Datos_Entrega_Tarea();
-        Obtener_Retroalimentaciones();
-        Obtener_Archivos_Adjuntos_Tarea();
-        Obtener_Datos_Generales_Tarea();
-        Obtener_Mensajes_Tarea();
+        Obtener_Datos_Entrega_Tarea(false);
+        Obtener_Retroalimentaciones(false);
+        Obtener_Archivos_Adjuntos_Tarea(false);
+        Obtener_Datos_Generales_Tarea(false);
+        Obtener_Mensajes_Tarea(false);
 
     }
 
