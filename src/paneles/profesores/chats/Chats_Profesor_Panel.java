@@ -579,7 +579,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         
         Chat_Profesor_Panel chat_Estudiante_Panel;
         while(!buscar_Chats_Lista.is_empty()){
-            chat_Estudiante_Panel= buscar_Chats_Lista.delist();
+            chat_Estudiante_Panel= buscar_Chats_Lista.unlist();
             Tablero_Profesor_Panel.Retirar_Vista(chat_Estudiante_Panel);
             chat_Estudiante_Panel.Limpiar();
         }
@@ -588,7 +588,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
                     = CourseRoom.Solicitudes().Buscar_Chats_Personales(busqueda, Tablero_Profesor_Panel.Id_Usuario());
             if (!lista.is_empty()) {
                 while (!lista.is_empty()) {
-                    Agregar_Chat_Busqueda(lista.delist());
+                    Agregar_Chat_Busqueda(lista.unlist());
                 }
             } else {
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Chats");
@@ -644,7 +644,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         
         Chat_Profesor_Panel chat_Estudiante_Panel;
         while(!mostrar_Chats_Lista.is_empty()){
-            chat_Estudiante_Panel= mostrar_Chats_Lista.delist();
+            chat_Estudiante_Panel= mostrar_Chats_Lista.unlist();
             Tablero_Profesor_Panel.Retirar_Vista(chat_Estudiante_Panel);
             chat_Estudiante_Panel.Limpiar();
         }
@@ -653,7 +653,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
                     = CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Profesor_Panel.Id_Usuario());
             if (!lista.is_empty()) {
                 while (!lista.is_empty()) {
-                    Agregar_Chat(lista.delist());
+                    Agregar_Chat(lista.unlist());
                 }
             } else {
                 if (bandera) {

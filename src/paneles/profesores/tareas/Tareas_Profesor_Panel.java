@@ -505,7 +505,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         
         Tarea_Profesor_Panel tarea_Profesor_Panel;
         while(!tareas_Creadas_Lista.is_empty()){
-            tarea_Profesor_Panel = tareas_Creadas_Lista.delist();
+            tarea_Profesor_Panel = tareas_Creadas_Lista.unlist();
             tarea_Profesor_Panel.Limpiar();
             Tablero_Profesor_Panel.Retirar_Vista(tarea_Profesor_Panel);
         }
@@ -534,7 +534,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         
         Tarea_Por_Calificar_Profesor_Panel tarea_Por_Calificar_Profesor_Panel;
         while(!tareas_Por_Calificar_Lista.is_empty()){
-            tarea_Por_Calificar_Profesor_Panel = tareas_Por_Calificar_Lista.delist();
+            tarea_Por_Calificar_Profesor_Panel = tareas_Por_Calificar_Lista.unlist();
             tarea_Por_Calificar_Profesor_Panel.Limpiar();
             Tablero_Profesor_Panel.Retirar_Vista(tarea_Por_Calificar_Profesor_Panel);
         }

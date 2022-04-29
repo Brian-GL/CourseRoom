@@ -491,7 +491,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         Tarea_Estudiante_Panel tarea_Estudiante_Panel;
         while(!mostrar_Tareas_Lista.is_empty()){
-            tarea_Estudiante_Panel  = mostrar_Tareas_Lista.delist();
+            tarea_Estudiante_Panel  = mostrar_Tareas_Lista.unlist();
             Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
         }
         
@@ -517,7 +517,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         Tarea_Estudiante_Panel tarea_Estudiante_Panel;
         while(!buscar_Tareas_Lista.is_empty()){
-            tarea_Estudiante_Panel = buscar_Tareas_Lista.delist();
+            tarea_Estudiante_Panel = buscar_Tareas_Lista.unlist();
             if(!Existe_Tarea(tarea_Estudiante_Panel.Id_Tarea())){
                 Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
                 tarea_Estudiante_Panel.Limpiar();
@@ -529,7 +529,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     = CourseRoom.Solicitudes().Buscar_Tareas(busqueda, Tablero_Estudiante_Panel.Id_Usuario());
             if (!lista.is_empty()) {
                 while (!lista.is_empty()) {
-                    Agregar_Tarea_Busqueda(lista.delist());
+                    Agregar_Tarea_Busqueda(lista.unlist());
                 }
             } else {
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Registros");

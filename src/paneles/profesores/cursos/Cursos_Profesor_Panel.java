@@ -323,7 +323,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         
         Curso_Profesor_Panel curso_Profesor_Panel;
         while(!cursos_Creados_Lista.is_empty()){
-            curso_Profesor_Panel = cursos_Creados_Lista.delist();
+            curso_Profesor_Panel = cursos_Creados_Lista.unlist();
             curso_Profesor_Panel.Limpiar();
             Tablero_Profesor_Panel.Retirar_Vista(curso_Profesor_Panel);
         }

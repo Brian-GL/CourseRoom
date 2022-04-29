@@ -516,9 +516,12 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         
         Pregunta_Profesor_Panel pregunta_Estudiante_Panel;
         while(!buscar_Preguntas_Lista.is_empty()){
-            pregunta_Estudiante_Panel = buscar_Preguntas_Lista.delist();
-            Tablero_Profesor_Panel.Retirar_Vista(pregunta_Estudiante_Panel);
-            pregunta_Estudiante_Panel.Limpiar();
+            pregunta_Estudiante_Panel = buscar_Preguntas_Lista.unlist();
+            if(!Existe_Pregunta(pregunta_Estudiante_Panel.Id_Pregunta())){
+                Tablero_Profesor_Panel.Retirar_Vista(pregunta_Estudiante_Panel);
+                pregunta_Estudiante_Panel.Limpiar();
+            }
+            
         }
         SwingUtilities.invokeLater(() -> {
             Lista<PreguntasModel> lista
@@ -526,7 +529,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
 
             if (!lista.is_empty()) {
                 while (!lista.is_empty()) {
-                    Agregar_Pregunta_Busqueda(lista.delist());
+                    Agregar_Pregunta_Busqueda(lista.unlist());
                 }
             } else {
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Registros");
@@ -541,7 +544,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         
         Pregunta_Profesor_Panel pregunta_Estudiante_Panel;
         while(!mostrar_Preguntas_Lista.is_empty()){
-            pregunta_Estudiante_Panel = mostrar_Preguntas_Lista.delist();
+            pregunta_Estudiante_Panel = mostrar_Preguntas_Lista.unlist();
             Tablero_Profesor_Panel.Retirar_Vista(pregunta_Estudiante_Panel);
             pregunta_Estudiante_Panel.Limpiar();
         }
@@ -550,7 +553,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
                     = CourseRoom.Solicitudes().Obtener_Preguntas(Tablero_Profesor_Panel.Id_Usuario());
 
             while (!lista.is_empty()) {
-                Agregar_Pregunta(lista.delist());
+                Agregar_Pregunta(lista.unlist());
             }
         });
     }
