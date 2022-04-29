@@ -1340,14 +1340,60 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
     }
     
-    
     private void Obtener_Archivos_Entregados_Tarea(){
-        
         DefaultTableModel modelo = (DefaultTableModel) archivos_Subidos_JTable.getModel();
         modelo.setRowCount(0);
         
+        SwingUtilities.invokeLater(() -> {
         
+            Lista<ArchivosTareaModel> response = 
+                    CourseRoom.Solicitudes().Obtener_Archivos_Subidos_Tarea(Id_Tarea, Tablero_Estudiante_Panel.Id_Usuario());
+            
+            if(!response.is_empty()){
+                while(!response.is_empty()){
+                    Agregar_Archivo_Entrega(response.delist());
+                }
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Archivos Entregados", "No Se Encontraron Archivos Entregados");
+            }
         
+        });
+        
+    }
+    
+    private void Agregar_Archivo_Entrega(ArchivosTareaModel archivosTareaModel){
+        
+        // "Archivo", "Subido"
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
+        Celda_Renderer celda;
+        String id = String.valueOf(archivosTareaModel.Id_Archivo_Tarea());
+        DefaultTableModel modelo = (DefaultTableModel) retroalimentacion_JTable.getModel();
+        
+        try {
+            
+            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+            ImageIcon icono = new ImageIcon(imagen);
+            
+            celda = new Celda_Renderer(icono,archivosTareaModel.Nombre_Archivo(),id);
+            celdas[0] = celda;
+            celda = new Celda_Renderer(archivosTareaModel.Fecha_Enviado(),id);
+            celdas[1] = celda;
+            
+            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+            icono = new ImageIcon(imagen);
+            
+            celda = new Celda_Renderer(icono, "Remover?", id);
+            celdas[2] = celda;
+            
+            modelo.addRow(celdas);
+            retroalimentacion_JTable.setRowHeight(modelo.getRowCount()-1, 
+                    CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
+            
+            imagen.flush();
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1109,7 +1109,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
             });
         } else{
-            String extension = FilenameUtils.getExtension(nombre_Archivo);
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
@@ -1193,7 +1192,6 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
             });
         } else{
-            String extension = FilenameUtils.getExtension(nombre_Archivo);
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         

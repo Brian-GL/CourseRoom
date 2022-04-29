@@ -74,7 +74,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
     private byte carta_Visible;
     private String ID_Cuestionario;
-    private Lista<Tarea_Estudiante_Panel> tareas_Estudiante_Panel_Lista;
     private Cuestionario_Curso_Estudiante_Panel cuestionario_Curso_Estudiante_Panel;
     private int Id_Curso;
     
@@ -1208,18 +1207,18 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     
     private void Agregar_Mensaje_Curso(MensajesModel mensajesModel){
         Celda_Renderer[] celdas = new Celda_Renderer[3];
-  
+        String id = String.valueOf(mensajesModel.Id_Mensaje());
         Celda_Renderer celda;
         celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
         celdas[0] = celda;
         if(mensajesModel.Extension().isBlank()){
-            celda = new Celda_Renderer(mensajesModel.Mensaje());
+            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }else{
-            celda = new Celda_Renderer(mensajesModel.Mensaje());
+            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }
-        celda = new Celda_Renderer(mensajesModel.Fecha_Envio());
+        celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
         celdas[2] = celda;
 
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
@@ -1273,6 +1272,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     }  
     
     private void Agregar_Tarea(TareasCursoModel tareasCursoModel){
+        
         String nombre_Tarea = tareasCursoModel.Nombre();
         String fecha_Creacion = tareasCursoModel.Fecha_Creacion();
         String fecha_Entrega = tareasCursoModel.Fecha_Entrega();
@@ -1549,8 +1549,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     @Override
     public void Iniciar_Componentes() {
         carta_Visible = 0;
-        
-        tareas_Estudiante_Panel_Lista = new Lista<>();
         
         //Informacion curso:
        
