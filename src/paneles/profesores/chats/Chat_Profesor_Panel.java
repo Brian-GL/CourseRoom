@@ -644,7 +644,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         String id = String.valueOf(mensajesModel.Id_Mensaje());
         Celda_Renderer celda;
-        celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo(),id);
         celdas[0] = celda;
         if(mensajesModel.Extension().isBlank()){
             celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
@@ -659,6 +659,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                 celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
                 celdas[1] = celda;
             }
+            
         }
         celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
         celdas[2] = celda;
@@ -672,7 +673,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
     
     private void Descargar_Archivo(int id_Mensaje, String nombre_Archivo){
         
-        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/chats/", nombre_Archivo));
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/chats/", nombre_Archivo));
         
         if(!archivo.exists()){
 
@@ -680,12 +681,11 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
                 ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Chat(id_Mensaje);
 
-                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
-                    File directorio = new File("/descargas/chats/");
-                    File crear_Archivo;
+                if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
+                    
                     try {
-                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
-                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                       FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
                         
                         CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
@@ -699,10 +699,8 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
             });
         } else{
-            String extension = FilenameUtils.getExtension(nombre_Archivo);
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
-        
     }
     
     @Override

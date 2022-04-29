@@ -1858,17 +1858,24 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     
     private void Agregar_Mensaje_Curso(MensajesModel mensajesModel){
         Celda_Renderer[] celdas = new Celda_Renderer[3];
-  
-        Celda_Renderer celda;
         String id = String.valueOf(mensajesModel.Id_Mensaje());
-        celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
+        Celda_Renderer celda;
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo(),id);
         celdas[0] = celda;
         if(mensajesModel.Extension().isBlank()){
             celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }else{
-            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
-            celdas[1] = celda;
+            try {
+                Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                ImageIcon icono = new ImageIcon(imagen);
+                celda = new Celda_Renderer(icono,mensajesModel.Mensaje(),id);
+                celdas[1] = celda;
+            } catch (IOException ex) {
+                celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
+                celdas[1] = celda;
+            }
+            
         }
         celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
         celdas[2] = celda;
