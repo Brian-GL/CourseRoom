@@ -1229,7 +1229,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Obtener_Datos_Perfil();
+            Obtener_Datos_Perfil(true);
             Obtener_Localidades_Estado();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -1304,7 +1304,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         
     }
     
-    private void Obtener_Datos_Perfil(){
+    private void Obtener_Datos_Perfil(boolean bandera){
         SwingUtilities.invokeLater(() -> {
             DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Tablero_Profesor_Panel.Id_Usuario());
             if (datosPerfilModel != null) {
@@ -1346,6 +1346,10 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                     editar_Estado_AutoCompletionComboBox.setEnabled(false);
                     editar_Localidad_AutoCompletionComboBox.setEnabled(false);
                     editar_Estado_JButton.setVisible(false);
+                }
+            } else {
+                if (bandera) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Datos Perfil", "No Se Encontraron Datos Del Perfil");
                 }
             }
         });
@@ -1423,7 +1427,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        Obtener_Datos_Perfil();
+        Obtener_Datos_Perfil(false);
         Obtener_Localidades_Estado();
     }
 

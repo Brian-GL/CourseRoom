@@ -446,7 +446,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             SwingUtilities.invokeLater(() -> {
-                Obtener_Chats_Personales();
+                Obtener_Chats_Personales(true);
             });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -482,54 +482,6 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         chatear_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_chatear_JButtonMouseExited
 
-    private void Obtener_Chats_Personales(){
-        
-        DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
-        modelo.setRowCount(0);
-        
-        Chat_Profesor_Panel chat_Estudiante_Panel;
-        while(!mostrar_Chats_Lista.is_empty()){
-            chat_Estudiante_Panel= mostrar_Chats_Lista.delist();
-            Tablero_Profesor_Panel.Retirar_Vista(chat_Estudiante_Panel);
-            chat_Estudiante_Panel.Limpiar();
-        }
-        SwingUtilities.invokeLater(() -> {
-            Lista<ChatsPersonalesModel> lista
-                    = CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Profesor_Panel.Id_Usuario());
-            if (!lista.is_empty()) {
-                while (!lista.is_empty()) {
-                    Agregar_Chat(lista.delist());
-                }
-            } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Chats Personales");
-            }
-        });
-    }
-    
-    private void Buscar_Chats_Personales(String busqueda){
-        
-        DefaultTableModel modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
-        modelo.setRowCount(0);
-        
-        Chat_Profesor_Panel chat_Estudiante_Panel;
-        while(!buscar_Chats_Lista.is_empty()){
-            chat_Estudiante_Panel= buscar_Chats_Lista.delist();
-            Tablero_Profesor_Panel.Retirar_Vista(chat_Estudiante_Panel);
-            chat_Estudiante_Panel.Limpiar();
-        }
-        SwingUtilities.invokeLater(() -> {
-            Lista<ChatsPersonalesModel> lista
-                    = CourseRoom.Solicitudes().Buscar_Chats_Personales(busqueda, Tablero_Profesor_Panel.Id_Usuario());
-            if (!lista.is_empty()) {
-                while (!lista.is_empty()) {
-                    Agregar_Chat_Busqueda(lista.delist());
-                }
-            } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Chats");
-            }
-        });
-    }
-    
     private void Agregar_Chat(ChatsPersonalesModel chatsPersonalesModel) {
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
@@ -620,6 +572,30 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
 
     }
     
+    private void Buscar_Chats_Personales(String busqueda){
+        
+        DefaultTableModel modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Chat_Profesor_Panel chat_Estudiante_Panel;
+        while(!buscar_Chats_Lista.is_empty()){
+            chat_Estudiante_Panel= buscar_Chats_Lista.delist();
+            Tablero_Profesor_Panel.Retirar_Vista(chat_Estudiante_Panel);
+            chat_Estudiante_Panel.Limpiar();
+        }
+        SwingUtilities.invokeLater(() -> {
+            Lista<ChatsPersonalesModel> lista
+                    = CourseRoom.Solicitudes().Buscar_Chats_Personales(busqueda, Tablero_Profesor_Panel.Id_Usuario());
+            if (!lista.is_empty()) {
+                while (!lista.is_empty()) {
+                    Agregar_Chat_Busqueda(lista.delist());
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Chats");
+            }
+        });
+    }
+    
     private boolean Existe_Chat(int id_Chat){
         Nodo<Chat_Profesor_Panel> first = mostrar_Chats_Lista.front();
         Nodo<Chat_Profesor_Panel> last = mostrar_Chats_Lista.back();
@@ -659,6 +635,32 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
             return mostrar_Chats_Lista.medium().Id_Chat() == id_Chat;
         }
       
+    }
+    
+    private void Obtener_Chats_Personales(boolean bandera){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Chat_Profesor_Panel chat_Estudiante_Panel;
+        while(!mostrar_Chats_Lista.is_empty()){
+            chat_Estudiante_Panel= mostrar_Chats_Lista.delist();
+            Tablero_Profesor_Panel.Retirar_Vista(chat_Estudiante_Panel);
+            chat_Estudiante_Panel.Limpiar();
+        }
+        SwingUtilities.invokeLater(() -> {
+            Lista<ChatsPersonalesModel> lista
+                    = CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Profesor_Panel.Id_Usuario());
+            if (!lista.is_empty()) {
+                while (!lista.is_empty()) {
+                    Agregar_Chat(lista.delist());
+                }
+            } else {
+                if (bandera) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Chats Personales");
+                }
+            }
+        });
     }
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -702,7 +704,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
 
         buscar_Chats_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        Obtener_Chats_Personales();        
+        Obtener_Chats_Personales(false);        
     }
 
     @Override

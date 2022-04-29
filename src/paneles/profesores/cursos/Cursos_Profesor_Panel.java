@@ -234,7 +234,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             SwingUtilities.invokeLater(() -> {
-                Obtener_Cursos_Creados_Profesor();
+                Obtener_Cursos_Creados_Profesor(true);
             });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -368,7 +368,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
 
     }
     
-    private void Obtener_Cursos_Creados_Profesor(){
+    private void Obtener_Cursos_Creados_Profesor(boolean bandera){
         
         // Limpieza:
         DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
@@ -390,8 +390,10 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
             while(!response.is_empty()){
                 Agregar_Curso_Creado(response.delist());
             }
-        }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Cursos Creados", "No Se Encontraron Cursos Nuevos");
+        } else {
+            if (bandera) {
+                CourseRoom.Utilerias().Mensaje_Alerta("Cursos Creados", "No Se Encontraron Cursos Nuevos");
+            }
         }
     }
 
@@ -417,6 +419,8 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         cursos_Creados_Lista = new Lista<>();
         cursos_Creados_JTable.getTableHeader().setFont(gadugi);
         cursos_Creados_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
+        
+        Obtener_Cursos_Creados_Profesor(false);
     }
 
     @Override

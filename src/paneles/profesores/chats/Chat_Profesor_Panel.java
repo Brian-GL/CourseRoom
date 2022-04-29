@@ -624,53 +624,6 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         eliminar_Chat_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_eliminar_Chat_JButtonMouseExited
 
-    private void Obtener_Datos_Generales_Chat(boolean bandera){
-        SwingUtilities.invokeLater(() -> {
-            
-            ComboOptionModel response
-                    = CourseRoom.Solicitudes().Obtener_Datos_Generales_Chat_Personal(Id_Chat,
-                            Tablero_Profesor_Panel.Id_Usuario());
-            
-            if (response.Id() > 0) {
-                titulo_JLabel.setText(response.Valor());
-                DatosPerfilChatPersonalModel datosPerfilChatPersonalModel
-                        = CourseRoom.Solicitudes().Obtener_Datos_Perfil_Chat_Personal(response.Id());
-                if (!datosPerfilChatPersonalModel.Nombre().isBlank()) {
-                    genero_JLabel.setText(datosPerfilChatPersonalModel.Genero());
-                    tipo_Perfil_JLabel.setText(datosPerfilChatPersonalModel.Tipo_Usuario());
-                    apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilChatPersonalModel.Paterno(), " ", datosPerfilChatPersonalModel.Materno()));
-                    nombres_JLabel.setText(datosPerfilChatPersonalModel.Nombre());
-                    correo_JLabel.setText(datosPerfilChatPersonalModel.Correo_Electronico());
-                }
-                Lista<ComboOptionModel> intereses = CourseRoom.Solicitudes().Obtener_Intereses_Usuario(response.Id());
-                DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
-                modelo.setRowCount(0);
-                while (!intereses.is_empty()) {
-                    Agregar_Interes_Tematica(intereses.delist());
-                }
-
-                Image imagen_Usuario;
-                byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(response.Id());
-
-                if (bytes_Imagen_Perfil.length > 0) {
-                    imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
-
-                    if (imagen_Usuario != null) {
-
-                        ImageIcon icono_Imagen = new ImageIcon(imagen_Usuario);
-                        imagen_Perfil_JLabel.setIcon(icono_Imagen);
-                        icono_Imagen.getImage().flush();
-                        imagen_Usuario.flush();
-                    }
-                }
-            }else{
-                if(bandera){
-                    CourseRoom.Utilerias().Mensaje_Alerta("Datos Generales Chat", "No Se Encontraron Datos Generales Del Chat");
-                }
-            }
-        });
-    }
-    
     private void Agregar_Interes_Tematica(ComboOptionModel comboOptionModel){
         String id = comboOptionModel.Id().toString();
         String interes_Tematica = comboOptionModel.Valor();
@@ -685,52 +638,6 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         
         intereses_Tematicas_JTable.setRowHeight(modelo.getRowCount()-1,
                 CourseRoom.Utilerias().Altura_Fila_Tabla(interes_Tematica.length()));
-    }
-    
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 41 * hash + this.Id_Chat;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Chat_Profesor_Panel other = (Chat_Profesor_Panel) obj;
-        return this.Id_Chat == other.Id_Chat;
-    }
-    
-    public int Id_Chat() {
-        return Id_Chat;
-    }
-    
-    private void Obtener_Mensajes_Chat(boolean bandera){
-        
-        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
-        modelo.setRowCount(0);
-        
-        SwingUtilities.invokeLater(() -> {
-            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Chat);
-
-            if (!response.is_empty()) {
-                while (!response.is_empty()) {
-                    Agregar_Mensaje_Chat(response.delist());
-                }
-            } else {
-                if(bandera){
-                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Chat", "No Se Encontraron Mensajes En El Chat");
-                }
-            }
-        });
     }
     
     private void Agregar_Mensaje_Chat(MensajesModel mensajesModel){
@@ -796,6 +703,99 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
         
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 41 * hash + this.Id_Chat;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Chat_Profesor_Panel other = (Chat_Profesor_Panel) obj;
+        return this.Id_Chat == other.Id_Chat;
+    }
+    
+    public int Id_Chat() {
+        return Id_Chat;
+    }
+    
+    private void Obtener_Datos_Generales_Chat(boolean bandera){
+        SwingUtilities.invokeLater(() -> {
+            
+            ComboOptionModel response
+                    = CourseRoom.Solicitudes().Obtener_Datos_Generales_Chat_Personal(Id_Chat,
+                            Tablero_Profesor_Panel.Id_Usuario());
+            
+            if (response.Id() > 0) {
+                titulo_JLabel.setText(response.Valor());
+                DatosPerfilChatPersonalModel datosPerfilChatPersonalModel
+                        = CourseRoom.Solicitudes().Obtener_Datos_Perfil_Chat_Personal(response.Id());
+                if (!datosPerfilChatPersonalModel.Nombre().isBlank()) {
+                    genero_JLabel.setText(datosPerfilChatPersonalModel.Genero());
+                    tipo_Perfil_JLabel.setText(datosPerfilChatPersonalModel.Tipo_Usuario());
+                    apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilChatPersonalModel.Paterno(), " ", datosPerfilChatPersonalModel.Materno()));
+                    nombres_JLabel.setText(datosPerfilChatPersonalModel.Nombre());
+                    correo_JLabel.setText(datosPerfilChatPersonalModel.Correo_Electronico());
+                }
+                Lista<ComboOptionModel> intereses = CourseRoom.Solicitudes().Obtener_Intereses_Usuario(response.Id());
+                DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
+                modelo.setRowCount(0);
+                while (!intereses.is_empty()) {
+                    Agregar_Interes_Tematica(intereses.delist());
+                }
+
+                Image imagen_Usuario;
+                byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(response.Id());
+
+                if (bytes_Imagen_Perfil.length > 0) {
+                    imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
+
+                    if (imagen_Usuario != null) {
+
+                        ImageIcon icono_Imagen = new ImageIcon(imagen_Usuario);
+                        imagen_Perfil_JLabel.setIcon(icono_Imagen);
+                        icono_Imagen.getImage().flush();
+                        imagen_Usuario.flush();
+                    }
+                }
+            }else{
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Datos Generales Chat", "No Se Encontraron Datos Generales Del Chat");
+                }
+            }
+        });
+    }
+    
+    private void Obtener_Mensajes_Chat(boolean bandera){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        SwingUtilities.invokeLater(() -> {
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Chat);
+
+            if (!response.is_empty()) {
+                while (!response.is_empty()) {
+                    Agregar_Mensaje_Chat(response.delist());
+                }
+            } else {
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Chat", "No Se Encontraron Mensajes En El Chat");
+                }
+            }
+        });
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
