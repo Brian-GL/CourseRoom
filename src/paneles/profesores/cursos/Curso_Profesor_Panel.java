@@ -49,6 +49,7 @@ import modelos.ArchivoModel;
 import modelos.ComboOptionModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.MensajesModel;
+import modelos.MiembrosGrupoModel;
 import modelos.ResponseModel;
 import modelos.TareasCursoModel;
 import org.apache.commons.io.FileUtils;
@@ -579,6 +580,47 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                     miembros_JTable.setShowGrid(true);
                     miembros_JTable.setSurrendersFocusOnKeystroke(true);
                     miembros_JTable.setRowSorter(new TableRowSorter(miembros_JTable.getModel()));
+                    miembros_JTable.addMouseListener(new MouseAdapter() {
+
+                        @Override
+                        public void mousePressed(MouseEvent e) {
+                            if (e.getClickCount() == 2) {
+
+                                JTable tabla = (JTable) e.getComponent();
+
+                                int columna = tabla.getSelectedColumn();
+
+                                if (columna == 2) {
+
+                                    int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                                        "¿Estás Segur@ De Eliminar Al Usuario?", "Remover Usuario", 
+                                        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                                    if(resultado == JOptionPane.YES_OPTION){
+                                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+
+                                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                        Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
+
+                                        int id_Grupo = Integer.parseInt(celda.ID());
+
+                                        SwingUtilities.invokeLater(() -> {
+                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Miembro_Curso(id_Grupo, Tablero_Estudiante_Panel.Id_Usuario());
+
+                                            if(response.Is_Success()){
+                                                CourseRoom.Utilerias().Mensaje_Informativo("Remover Usuario", response.Mensaje());
+                                                modelo.removeRow(fila);
+                                            }else{
+                                                CourseRoom.Utilerias().Mensaje_Alerta("Remover Usuario", response.Mensaje());
+                                            }
+                                        });
+
+                                    }
+                                }
+
+                            }
+                        }
+                    });
                     miembros_JScrollPane.setViewportView(miembros_JTable);
 
                     curso_JLayeredPane.add(miembros_JScrollPane, "Miembros");
@@ -1941,7 +1983,57 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         dataset.addSeries(series3);
 
         return dataset;  
-    }  
+    }
+    
+    public int Id_Curso() {
+        return Id_Curso;
+    }
+    
+    private void Agregar_Estadistica(String tarea_Calificada, String calificacion, String promedio_Curso,
+            String prediccion, boolean rumbo, String fecha_Calificacion){
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[6];
+        Celda_Renderer celda;
+        DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
+        Image imagen;
+        ImageIcon icono;
+        String vacio = new String();
+        
+        try{
+            celda = new Celda_Renderer(tarea_Calificada);
+            celdas[0] = celda;
+            celda = new Celda_Renderer(calificacion);
+            celdas[1] = celda;
+            celda = new Celda_Renderer(promedio_Curso);
+            celdas[2] = celda;
+            celda = new Celda_Renderer(prediccion);
+            celdas[3] = celda;
+
+            if(rumbo){
+                imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
+                icono = new ImageIcon(imagen);
+                celda =  new Celda_Renderer(icono, "A Aprobar",vacio);
+            }else{
+                imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+                icono = new ImageIcon(imagen);
+                celda =  new Celda_Renderer(icono, "A Reprobar",vacio);
+            }
+
+            celdas[4] = celda;
+
+            celda = new Celda_Renderer(fecha_Calificacion);
+            celdas[5] = celda;
+
+            modelo.addRow(celdas);
+
+            estadisticas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(tarea_Calificada.length()));
+
+            imagen.flush();
+        
+        } catch(IOException ex){
+            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar La Estadística",ex.getMessage());
+        }
+    }
     
     private void Agregar_Interes_Tematica(String id, String interes_Tematica){
         
@@ -2055,45 +2147,78 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         Celda_Renderer[] celdas = new Celda_Renderer[6];
         Celda_Renderer celda;
-        DefaultTableModel modelo = (DefaultTableModel) estadisticas_JTable.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
+        String vacio = new String();
         Image imagen;
         ImageIcon icono;
-        String vacio = new String();
         
-        try{
-            celda = new Celda_Renderer(tarea_Calificada);
+        try {
+           
+            celda = new Celda_Renderer(nombre_Tarea, _id);
             celdas[0] = celda;
-            celda = new Celda_Renderer(calificacion);
+            celda = new Celda_Renderer(fecha_Creacion, _id);
             celdas[1] = celda;
-            celda = new Celda_Renderer(promedio_Curso);
+            celda = new Celda_Renderer(fecha_Entrega, _id);
             celdas[2] = celda;
-            celda = new Celda_Renderer(prediccion);
+            celda = new Celda_Renderer(estatus, _id);
             celdas[3] = celda;
-
-            if(rumbo){
-                imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
-                icono = new ImageIcon(imagen);
-                celda =  new Celda_Renderer(icono, "A Aprobar",vacio);
-            }else{
-                imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-                icono = new ImageIcon(imagen);
-                celda =  new Celda_Renderer(icono, "A Reprobar",vacio);
-            }
-
+            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+            icono  = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono,vacio);
             celdas[4] = celda;
-
-            celda = new Celda_Renderer(fecha_Calificacion);
-            celdas[5] = celda;
-
+            
+            //Tareas_Profesor_Panel.Agregar_Tarea_Desde_Curso(_id,nombre_Tarea, this.titulo_JLabel.getText() ,icono_Curso, fecha_Creacion, fecha_Entrega, estatus);
+            
             modelo.addRow(celdas);
-
-            estadisticas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(tarea_Calificada.length()));
-
+            
+            tareas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Tarea.length()));
+            
             imagen.flush();
-        
-        } catch(IOException ex){
-            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar La Estadística",ex.getMessage());
+            imagen.getGraphics().dispose();
+        } catch (IOException ex) {
+            
         }
+        
+    }
+    
+    private void Obtener_Mensajes_Curso(boolean bandera){
+        
+        DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+        modelo.setRowCount(0);
+        SwingUtilities.invokeLater(() -> {
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Curso(Id_Curso);
+
+            if (!response.is_empty()) {
+                while (!response.is_empty()) {
+                    Agregar_Mensaje_Curso(response.delist());
+                }
+            } else {
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Curso", "No Se Encontraron Mensajes En El Curso");
+                }
+            }
+        });
+    }
+    
+    private void Obtener_Miembros_Curso(boolean bandera){
+        
+        DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        SwingUtilities.invokeLater(() -> {
+            Lista<MiembrosGrupoModel> lista
+                    = CourseRoom.Solicitudes().Obtener_Miembros_Curso(Id_Curso);
+
+            if (!lista.is_empty()) {
+                while (!lista.is_empty()) {
+                    Agregar_Miembro(lista.delist());
+                }
+            } else {
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Curso Profesor", "No Se Encontraron Miembros");
+                }
+            }
+        });
     }
     
     private void Obtener_Datos_Generales_Curso(boolean bandera){
