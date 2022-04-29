@@ -758,6 +758,71 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                             materiales_JTable.setShowGrid(true);
                             materiales_JTable.setSurrendersFocusOnKeystroke(true);
                             materiales_JTable.setRowSorter(new TableRowSorter(materiales_JTable.getModel()));
+                            materiales_JTable.addMouseListener(new MouseAdapter() {
+
+                                @Override
+                                public void mousePressed(MouseEvent e) {
+                                    if (e.getClickCount() == 2) {
+
+                                        JTable tabla = (JTable) e.getComponent();
+                                        int columna = tabla.getSelectedColumn();
+
+                                        switch (columna) {
+                                            // Abrir
+                                            case 0:
+                                            {
+                                                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+                                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                                Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
+
+                                                if(celda.Tiene_Icono()){
+                                                    int id_Archivo = Integer.parseInt(celda.ID());
+
+                                                    if (id_Archivo > 0){
+                                                        Descargar_Material(id_Archivo,celda.Texto());
+                                                    }else{
+                                                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                                                    }
+                                                }
+                                            }
+                                            break;
+                                            // Remover
+                                            case 3:
+                                            {
+
+                                                int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
+                                                    "¿Estás Segur@ De Remover Este Material?", "Material", 
+                                                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                                                if(resultado == JOptionPane.YES_OPTION){
+                                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+
+                                                    DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+                                                    Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
+
+                                                    int id_Archivo = Integer.parseInt(celda.ID());
+
+                                                    SwingUtilities.invokeLater(() -> {
+                                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Material_Curso(
+                                                            id_Archivo,Tablero_Estudiante_Panel.Id_Usuario());
+
+                                                        if(response.Is_Success()){
+                                                            CourseRoom.Utilerias().Mensaje_Informativo("Material", response.Mensaje());
+                                                            modelo.removeRow(fila);
+                                                        }else{
+                                                            CourseRoom.Utilerias().Mensaje_Alerta("Material", response.Mensaje());
+                                                        }
+                                                    });
+                                                }
+
+                                                break;
+                                            }
+                                            default:
+                                            break;
+                                        }
+                                    }
+                                }
+                            });
                             materiales_JScrollPane.setViewportView(materiales_JTable);
 
                             javax.swing.GroupLayout materiales_Curso_JPanelLayout = new javax.swing.GroupLayout(materiales_Curso_JPanel);
@@ -1707,6 +1772,38 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
             });
         } else{
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
+        }
+    }
+    
+    private void Descargar_Material(int id_Material, String nombre_Archivo) {
+
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"), "/descargas/cursos/", nombre_Archivo));
+
+        if (!archivo.exists()) {
+
+            SwingUtilities.invokeLater(() -> {
+
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Material_Subido_Curso(id_Material);
+
+                if (archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()) {
+
+                    try {
+
+                        FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
+
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
+
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                    }
+
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                }
+
+            });
+        } else {
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
     }
