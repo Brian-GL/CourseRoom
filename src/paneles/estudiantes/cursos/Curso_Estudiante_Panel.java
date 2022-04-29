@@ -35,8 +35,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -61,13 +59,12 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import modelos.ComboOptionModel;
 import modelos.DatosGeneralesCursoModel;
-import modelos.DatosGeneralesTareaProfesorModel;
 import modelos.MensajesModel;
 import modelos.MiembrosGrupoModel;
 import modelos.ResponseModel;
 import modelos.TareasCursoModel;
 import org.apache.commons.io.FileUtils;
-import paneles.profesores.Tablero_Profesor_Panel;
+import paneles.estudiantes.tareas.Tarea_Estudiante_Panel;
 
 /**
  *
@@ -76,8 +73,8 @@ import paneles.profesores.Tablero_Profesor_Panel;
 public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface, Envio_Interface{
 
     private byte carta_Visible;
-    private String ID;
     private String ID_Cuestionario;
+    private Lista<Tarea_Estudiante_Panel> tareas_Estudiante_Panel_Lista;
     private Cuestionario_Curso_Estudiante_Panel cuestionario_Curso_Estudiante_Panel;
     private int Id_Curso;
     
@@ -1018,9 +1015,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            SwingUtilities.invokeLater(() -> {
-                Obtener_Mensajes_Curso();
-            });
+            Obtener_Tareas_Curso(true);
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -1288,7 +1283,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
 
-        
         celda = new Celda_Renderer(nombre_Tarea, _id);
         celdas[0] = celda;
         celda = new Celda_Renderer(fecha_Creacion, _id);
@@ -1485,7 +1479,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
     }
    
-    private void Obtener_Tareas_Curso(){
+    private void Obtener_Tareas_Curso(boolean bandera){
         
         Lista<TareasCursoModel> tareas = 
                 CourseRoom.Solicitudes().Obtener_Tareas_Curso(Id_Curso, Tablero_Estudiante_Panel.Id_Usuario());
@@ -1495,10 +1489,10 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 Agregar_Tarea(tareas.delist());
             }
         }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Tareas Curso", "No Se Encontraron Tareas Del Curso");
-        }
-        
-        
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Tareas Curso", "No Se Encontraron Tareas Del Curso");
+            }
+        } 
         
     }
     
@@ -1555,6 +1549,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     @Override
     public void Iniciar_Componentes() {
         carta_Visible = 0;
+        
+        tareas_Estudiante_Panel_Lista = new Lista<>();
         
         //Informacion curso:
        
@@ -1687,6 +1683,8 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         estadisticas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
         Colorear_Componentes();
+        
+        Obtener_Tareas_Curso(false);
     }
 
     @Override
