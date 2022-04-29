@@ -724,7 +724,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Chat(response.delist());
+                    Agregar_Mensaje_Chat(response.unlist());
                 }
             } else {
                 if(bandera){

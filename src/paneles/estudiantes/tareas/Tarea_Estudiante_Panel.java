@@ -1082,7 +1082,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Tarea(response.delist());
+                    Agregar_Mensaje_Tarea(response.unlist());
                 }
             } else {
                 if(bandera){
@@ -1156,7 +1156,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 }
             }else{
                 while(!response.is_empty()){
-                    Agregar_Archivo_Adjunto(response.delist());
+                    Agregar_Archivo_Adjunto(response.unlist());
                 }
             }
         });
@@ -1306,7 +1306,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Retroalimentacion(response.delist());
+                    Agregar_Retroalimentacion(response.unlist());
                 }
             } else {
                 if(bandera){
@@ -1351,7 +1351,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             
             if(!response.is_empty()){
                 while(!response.is_empty()){
-                    Agregar_Archivo_Entrega(response.delist());
+                    Agregar_Archivo_Entrega(response.unlist());
                 }
             }else{
                 CourseRoom.Utilerias().Mensaje_Alerta("Archivos Entregados", "No Se Encontraron Archivos Entregados");

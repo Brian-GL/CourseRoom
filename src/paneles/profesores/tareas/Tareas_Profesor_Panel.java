@@ -45,7 +45,7 @@ import paneles.profesores.Tablero_Profesor_Panel;
 public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface{
 
     private Lista<Tarea_Por_Calificar_Profesor_Panel> tareas_Por_Calificar_Lista;
-    private Lista<Tarea_Profesor_Panel> tareas_Creadas_Lista; 
+    private static Lista<Tarea_Profesor_Panel> tareas_Creadas_Lista; 
     private byte carta_Visible;
     
     /**
@@ -516,7 +516,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Tarea_Creada(response.delist());
+                Agregar_Tarea_Creada(response.unlist());
             }
         }else {
             if (bandera) {
@@ -546,13 +546,47 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Tarea_Por_Calificar(response.delist());
+                Agregar_Tarea_Por_Calificar(response.unlist());
             }
         } else {
             if (bandera) {
                 CourseRoom.Utilerias().Mensaje_Alerta("Tareas Por Calificar", "No Se Encontraron Tareas Por Calificar");
             }
         }
+    }
+    
+    public static boolean Existe_Tarea(int id_Tarea){
+        Nodo<Tarea_Profesor_Panel> first = tareas_Creadas_Lista.front();
+        Nodo<Tarea_Profesor_Panel> last = tareas_Creadas_Lista.back();
+
+        int middle_index = (tareas_Creadas_Lista.size())/2;
+
+        if(middle_index % 2 == 0){
+            for (int i = 0; i < middle_index; i++) {
+
+                if (first.element().Id_Tarea() == id_Tarea){
+                    return true;
+                }
+                if (last.element().Id_Tarea() == id_Tarea){
+                    return true;
+                }
+                first = first.next();
+                last = last.previous();
+            }
+            return false;
+        }else{
+            for(int i = 0; i < middle_index;i++) {
+                if(first.element().Id_Tarea() == id_Tarea){
+                    return true;
+                }
+                if(last.element().Id_Tarea() == id_Tarea){
+                    return true;
+                }
+                first = first.next();
+                last = last.previous();
+            }
+            return tareas_Creadas_Lista.medium().Id_Tarea() == id_Tarea;
+        }      
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

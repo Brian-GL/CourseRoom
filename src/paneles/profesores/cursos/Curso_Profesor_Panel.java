@@ -50,7 +50,10 @@ import modelos.ComboOptionModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.MensajesModel;
 import modelos.ResponseModel;
+import modelos.TareasCursoModel;
 import org.apache.commons.io.FileUtils;
+import paneles.profesores.tareas.Tarea_Profesor_Panel;
+import paneles.profesores.tareas.Tareas_Profesor_Panel;
 
 /**
  *
@@ -59,13 +62,15 @@ import org.apache.commons.io.FileUtils;
 public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface, Envio_Interface{
 
     private byte carta_Visible;
-    private String ID;
+    private String Id_Vista;
+    private Lista<Tarea_Profesor_Panel> tareas_Profesor_Lista;
     private int Id_Curso;
     
     public Curso_Profesor_Panel(
-        int id_Curso) {
+        int id_Curso, String id_Vista) {
         
         initComponents();
+        Id_Vista = id_Vista;
         Id_Curso = id_Curso;
         
         Iniciar_Componentes();
@@ -1550,7 +1555,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private void crear_Tarea_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Tarea_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            String id = CourseRoom.Utilerias().Concatenar("Tarea_Temporal_", this.ID);
+            String id = CourseRoom.Utilerias().Concatenar("Tarea_Temporal_", this.Id_Vista);
             Crear_Tarea_Profesor_Panel crear_Tarea_Profesor_Panel = new Crear_Tarea_Profesor_Panel(Id_Curso, id);
             Tablero_Profesor_Panel.Agregar_Vista(crear_Tarea_Profesor_Panel,id);
             Tablero_Profesor_Panel.Mostrar_Vista(id);
@@ -1855,7 +1860,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Curso(response.delist());
+                    Agregar_Mensaje_Curso(response.unlist());
                 }
             } else {
                 CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Curso", "No Se Encontraron Mensajes En El Curso");
@@ -1977,42 +1982,33 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         }
     }
     
-    private void Agregar_Tarea(String nombre_Tarea, String fecha_Creacion, String fecha_Entrega, String estatus, String _id){
+    private void Agregar_Tarea(TareasCursoModel tareasCursoModel){
         
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
+        String nombre_Tarea = tareasCursoModel.Nombre();
+        String fecha_Creacion = tareasCursoModel.Fecha_Creacion();
+        String fecha_Entrega = tareasCursoModel.Fecha_Entrega();
+        String estatus = tareasCursoModel.Estatus();
+        String _id = String.valueOf(tareasCursoModel.Id_Tarea());
+        
+        Celda_Renderer[] celdas = new Celda_Renderer[4];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
-        String vacio = new String();
-        Image imagen;
-        ImageIcon icono;
+
+        celda = new Celda_Renderer(nombre_Tarea, _id);
+        celdas[0] = celda;
+        celda = new Celda_Renderer(fecha_Creacion, _id);
+        celdas[1] = celda;
+        celda = new Celda_Renderer(fecha_Entrega, _id);
+        celdas[2] = celda;
+        celda = new Celda_Renderer(estatus, _id);
+        celdas[3] = celda;
         
-        try {
-           
-            celda = new Celda_Renderer(nombre_Tarea, _id);
-            celdas[0] = celda;
-            celda = new Celda_Renderer(fecha_Creacion, _id);
-            celdas[1] = celda;
-            celda = new Celda_Renderer(fecha_Entrega, _id);
-            celdas[2] = celda;
-            celda = new Celda_Renderer(estatus, _id);
-            celdas[3] = celda;
-            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-            icono  = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono,vacio);
-            celdas[4] = celda;
-            
-            //Tareas_Profesor_Panel.Agregar_Tarea_Desde_Curso(_id,nombre_Tarea, this.titulo_JLabel.getText() ,icono_Curso, fecha_Creacion, fecha_Entrega, estatus);
-            
-            modelo.addRow(celdas);
-            
-            tareas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Tarea.length()));
-            
-            imagen.flush();
-            imagen.getGraphics().dispose();
-        } catch (IOException ex) {
-            
-        }
+        modelo.addRow(celdas);
         
+        Tarea_Profesor_Panel tarea_Estudiante_Panel = new Tarea_Profesor_Panel(tareasCursoModel.Id_Tarea());
+        tareas_Profesor_Lista.push_back(tarea_Estudiante_Panel);
+        
+        tareas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Tarea.length()));
     }
     
     private void Agregar_Miembro(String ruta_Imagen_Miembro, String nombre_Miembro, String fecha_Ingreso){
@@ -2100,7 +2096,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         }
     }
     
-    private void Obtener_Datos_Generales_Curso(){
+    private void Obtener_Datos_Generales_Curso(boolean bandera){
         
         DatosGeneralesCursoModel datosGeneralesCursoProfesor = 
                 CourseRoom.Solicitudes().Obtener_Datos_Generales_Curso(Id_Curso);
@@ -2132,21 +2128,19 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                 }
             }
             
-            Obtener_Tematicas_Curso();
+            DefaultTableModel modelo = (DefaultTableModel) tematicas_JTable.getModel();
+            modelo.setRowCount(0);
+
+            Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas_Curso(Id_Curso);
+
+            while (!tematicas.is_empty()) {
+                Agregar_Tematica(tematicas.delist());
+            }
             
-        }
-        
-    }
-    
-    private void Obtener_Tematicas_Curso(){
-        
-        DefaultTableModel modelo = (DefaultTableModel) tematicas_JTable.getModel();
-        modelo.setRowCount(0);
-        
-        Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas_Curso(Id_Curso);
-        
-        while(!tematicas.is_empty()){
-            Agregar_Tematica(tematicas.delist());
+        } else{
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Datos Generales Curso", "No Se Encontraron Datos Generales Del Curso");
+            }
         }
         
     }
@@ -2194,6 +2188,34 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         } else{
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
+    }
+    
+    private void Obtener_Tareas_Curso(boolean bandera){
+        
+        DefaultTableModel modelo = (DefaultTableModel) tareas_JTable.getModel();
+        modelo.setRowCount(0);
+        
+        Tarea_Profesor_Panel tarea_Profesor_Panel;
+        while(!tareas_Profesor_Lista.is_empty()){
+            tarea_Profesor_Panel = tareas_Profesor_Lista.unlist();
+            if(!Tareas_Profesor_Panel.Existe_Tarea(tarea_Profesor_Panel.Id_Tarea())){
+                Tablero_Profesor_Panel.Retirar_Vista(tarea_Profesor_Panel);
+                tarea_Profesor_Panel.Limpiar();
+            }
+        }
+        
+        Lista<TareasCursoModel> response = CourseRoom.Solicitudes().Obtener_Tareas_Curso_Profesor(Id_Curso, Tablero_Profesor_Panel.Id_Usuario());
+        
+        if(!response.is_empty()){
+            while(!response.is_empty()){
+                Agregar_Tarea(response.unlist());
+            }
+        } else{
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Tareas Curso", "No Se Encontraron Tareas Del Curso");
+            }
+        }
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2267,13 +2289,14 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     public void Iniciar_Componentes() {
         carta_Visible = 0;
         
+        tareas_Profesor_Lista = new Lista<>();
+        
         //Informacion curso:
        
         informacion_Curso_JScrollPane.getViewport().setOpaque(false);
         informacion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         informacion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         
-        //descripcion_Curso_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().lorem().paragraph(10)));
         descripcion_Curso_JScrollPane.getViewport().setOpaque(false);
         descripcion_Curso_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_Curso_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -2286,9 +2309,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         tematicas_JTable.getTableHeader().setFont(gadugi);
         tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-        
-        //Agregar_Interes_Tematica(id,tematica);
-            
         //Tareas:
         
         tareas_JScrollPane.getViewport().setOpaque(false);
@@ -2298,32 +2318,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         tareas_JTable.getTableHeader().setFont(gadugi);
         tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-       
-        //Agregar_Tarea(nombre, fecha_Creacion, fecha_Entrega, estatus, _id);
-        
-        
-        tareas_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-                    
-                    if(columna < 4){
-                        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                        Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, columna);
-                        Tablero_Profesor_Panel.Mostrar_Vista(celda.ID());
-                    }
-                    else{
-                        //Remover
-                    }
-                }
-            }
-        });
-        
         //Miembros:
         miembros_JScrollPane.getViewport().setOpaque(false);
         miembros_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -2332,23 +2326,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         miembros_JTable.getTableHeader().setFont(gadugi);
 
         miembros_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        
-        miembros_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    //int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-                    if(columna == 2){
-                        //Remover
-                    }
-                }
-            }
-        });
         
         // Chat 
         
@@ -2368,38 +2345,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
       
         materiales_JTable.getTableHeader().setFont(gadugi);
         materiales_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        materiales_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int columna = tabla.getSelectedColumn();
-
-                    // Abrir
-                    switch (columna) {
-                        case 0:
-                            {
-                                int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                                DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
-                                Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
-                                String extension = FilenameUtils.getExtension(celda.Texto());
-                                String ruta = celda.ID();
-                                //CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
-                            }
-                            break;
-                        //Remover
-                        case 3:
-                            break;
-                       
-                        default:
-                            break;
-                    }
-
-                }
-            }
-        });
         
         
         // Grupos:
@@ -2410,22 +2355,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         grupos_JTable.getTableHeader().setFont(gadugi);
         grupos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        grupos_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    //int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
-                    int columna = tabla.getSelectedColumn();
-                    if(columna == 3){
-                        //Remover
-                    }
-                }
-            }
-        });
-      
+        
         // Regresion lineal:
         //Regresion Lineal:
         // Create dataset  
@@ -2471,9 +2401,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         estadisticas_JTable.getTableHeader().setFont(gadugi);
         estadisticas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-       
-        //Agregar_Estadistica(tarea_Calificada, calificacion, promedio_Curso, prediccion, rumbo, fecha_Calificacion);
-        
         // Editar curso:
         editar_Descripcion_JTextPane.setText(descripcion_Curso_JTextPane.getText());
         editar_Descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -2486,9 +2413,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         editar_Tematicas_JTable.getTableHeader().setFont(gadugi);
         editar_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        //Agregar_Interes_Tematica_Edicion(id, tematica);
-        
-       
+        Obtener_Datos_Generales_Curso(false);
+        Obtener_Tareas_Curso(false);
         Colorear_Componentes();
     }
 

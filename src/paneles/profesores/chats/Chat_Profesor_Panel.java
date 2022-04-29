@@ -786,7 +786,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Chat(response.delist());
+                    Agregar_Mensaje_Chat(response.unlist());
                 }
             } else {
                 if(bandera){

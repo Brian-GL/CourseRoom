@@ -1698,7 +1698,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Grupo(response.delist());
+                    Agregar_Mensaje_Grupo(response.unlist());
                 }
             } else {
                 if(bandera){

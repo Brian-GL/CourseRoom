@@ -524,7 +524,6 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             }
         }
         
-        
         SwingUtilities.invokeLater(() -> {
             Lista<TareasEstudianteModel> lista
                     = CourseRoom.Solicitudes().Buscar_Tareas(busqueda, Tablero_Estudiante_Panel.Id_Usuario());

@@ -1151,7 +1151,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
                 }
             } else {
                 while (!response.is_empty()) {
-                    Agregar_Archivo_Adjunto(response.delist());
+                    Agregar_Archivo_Adjunto(response.unlist());
                 }
             }
         });
@@ -1187,7 +1187,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements  Compone
 
              if (!response.is_empty()) {
                  while (!response.is_empty()) {
-                     Agregar_Mensaje_Tarea(response.delist());
+                     Agregar_Mensaje_Tarea(response.unlist());
                  }
              } else {
                  if (bandera) {

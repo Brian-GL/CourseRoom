@@ -414,7 +414,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Estadistica(response.delist());
+                Agregar_Estadistica(response.unlist());
             }
         }else{
             if(bandera){

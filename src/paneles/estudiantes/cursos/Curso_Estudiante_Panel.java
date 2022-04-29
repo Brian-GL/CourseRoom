@@ -1273,7 +1273,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Curso(response.delist());
+                    Agregar_Mensaje_Curso(response.unlist());
                 }
             } else {
                 if(bandera){
@@ -1513,7 +1513,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Miembro(response.delist());
+                Agregar_Miembro(response.unlist());
             }
         }else{
             CourseRoom.Utilerias().Mensaje_Alerta("Miembros Curso", "No Se Encontraron Miembros Del Curso");
@@ -1560,7 +1560,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Material(response.delist());
+                Agregar_Material(response.unlist());
             }
         }else{
             CourseRoom.Utilerias().Mensaje_Alerta("Materiales Curso", "No Se Encontraron Materiales Del Curso");
@@ -1613,7 +1613,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Grupo(response.delist());
+                Agregar_Grupo(response.unlist());
             }
         }else{
             CourseRoom.Utilerias().Mensaje_Alerta("Materiales Curso", "No Se Encontraron Materiales Del Curso");
@@ -1673,7 +1673,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Estadistica(response.delist());
+                Agregar_Estadistica(response.unlist());
             }
         }else{
             CourseRoom.Utilerias().Mensaje_Alerta("Materiales Curso", "No Se Encontraron Materiales Del Curso");
@@ -1860,7 +1860,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private javax.swing.JPanel titulo_JPanel;
     // End of variables declaration//GEN-END:variables
 
-    
     @Override
     public void Iniciar_Componentes() {
         carta_Visible = 0;

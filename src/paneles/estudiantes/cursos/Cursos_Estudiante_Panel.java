@@ -1012,7 +1012,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Curso_Actual(response.delist());
+                Agregar_Curso_Actual(response.unlist());
             }
         }else{
             if(bandera){
@@ -1200,7 +1200,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Curso_Nuevo(response.delist());
+                Agregar_Curso_Nuevo(response.unlist());
             }
         }else{
             if(bandera){
@@ -1352,7 +1352,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Curso_Finalizado(response.delist());
+                Agregar_Curso_Finalizado(response.unlist());
             }
         }else{
             if(bandera){

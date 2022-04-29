@@ -541,7 +541,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
             Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Pregunta(Id_Pregunta);
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Pregunta(response.delist());
+                    Agregar_Mensaje_Pregunta(response.unlist());
                 }
             } else {
                 CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Pregunta", "No Se Encontraron Mensajes En Las Preguntas");

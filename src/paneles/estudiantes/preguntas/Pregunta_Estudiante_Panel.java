@@ -537,7 +537,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Pregunta(response.delist());
+                    Agregar_Mensaje_Pregunta(response.unlist());
                 }
             } else {
                 if(bandera){

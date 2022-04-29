@@ -352,7 +352,7 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
         Lista<AvisosModel> response = CourseRoom.Solicitudes().Obtener_Avisos(Tablero_Estudiante_Panel.Id_Usuario());
         
         while(!response.is_empty()){
-            Agregar_Aviso(response.delist());
+            Agregar_Aviso(response.unlist());
         }
         
     }

@@ -17,11 +17,8 @@ import courseroom.CourseRoom;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
-import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import modelos.CursosCreadosProfesorModel;
@@ -259,56 +256,6 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         crear_Curso_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_crear_Curso_JButtonMouseExited
 
-    private void Agregar_Curso_Actual(String id, byte[] imagen_Curso, String nombre_Curso,
-            String intereses_Tematicas, String fecha_Creacion, String numero_Inscripciones){
-        
-        Image imagen;
-        BufferedImage obtener_Imagen_Curso;
-        Celda_Renderer[] celdas = new Celda_Renderer[5];
-        Celda_Renderer celda;
-        ImageIcon icono;
-        String vacio = new String();
-        
-        try {
-            
-            try(ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imagen_Curso)){
-                obtener_Imagen_Curso = ImageIO.read(byteArrayInputStream);
-                imagen = obtener_Imagen_Curso.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-                icono = new ImageIcon(imagen);
-                celda = new Celda_Renderer(icono, nombre_Curso, id);
-                celdas[0] = celda;
-                //icono.getImage().flush();
-            } 
-            
-            celda = new Celda_Renderer(intereses_Tematicas, id);
-            celdas[1] = celda;
-            celda = new Celda_Renderer(fecha_Creacion, id);
-            celdas[2] = celda;
-            celda = new Celda_Renderer(numero_Inscripciones, id);
-            celdas[3] = celda;
-            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-            icono  = new ImageIcon(imagen);
-            celda = new Celda_Renderer(icono,vacio);
-            celdas[4] = celda;
-            
-            DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
-            
-            Curso_Profesor_Panel curso_Profesor_Panel
-                    = new Curso_Profesor_Panel(/*nombre_Curso, obtener_Imagen_Curso,fecha_Creacion,  id,*/-1);
-            
-            cursos_Creados_Lista.push_back(curso_Profesor_Panel);
-            Tablero_Profesor_Panel.Agregar_Vista(curso_Profesor_Panel, id);
-            modelo.addRow(celdas);
-            imagen.flush();
-            obtener_Imagen_Curso.flush();
-            obtener_Imagen_Curso.getGraphics().dispose();
-        } catch (MalformedURLException ex) {
-            
-        } catch (IOException ex) {
-            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar El Curso",ex.getMessage());
-        }
-    }
-    
     private void Agregar_Curso_Creado(CursosCreadosProfesorModel cursosCreadosProfesorModel){
         
         DefaultTableModel modelo = (DefaultTableModel) cursos_Creados_JTable.getModel();
@@ -318,7 +265,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         Image imagen;
         ImageIcon icono;
         
-        String id = CourseRoom.Utilerias().Concatenar("Agregar_Curso_Creado_", cursosCreadosProfesorModel.Id_Curso());
+        String id = CourseRoom.Utilerias().Concatenar("Curso_", cursosCreadosProfesorModel.Id_Curso());
         
         celda = new Celda_Renderer(cursosCreadosProfesorModel.Nombre(),id);
         celdas[0] = celda;
@@ -359,7 +306,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         celdas[3] = celda;
         modelo.addRow(celdas);
         Curso_Profesor_Panel curso_Profesor_Panel =
-                new Curso_Profesor_Panel(cursosCreadosProfesorModel.Id_Curso());
+                new Curso_Profesor_Panel(cursosCreadosProfesorModel.Id_Curso(),id);
 
         cursos_Creados_Lista.push_back(curso_Profesor_Panel);
 
@@ -388,7 +335,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Curso_Creado(response.delist());
+                Agregar_Curso_Creado(response.unlist());
             }
         } else {
             if (bandera) {
