@@ -541,7 +541,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                 }
             } else {
                 if(bandera){
-                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Pregunta", "No Se Encontraron Mensajes En Las Preguntas");
+                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Pregunta", "No Se Encontraron Mensajes En La Pregunta");
                 }
             }
         });
@@ -549,9 +549,9 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
     
     private void Agregar_Mensaje_Pregunta(MensajesModel mensajesModel){
         Celda_Renderer[] celdas = new Celda_Renderer[3];
-        Celda_Renderer celda;
         String id = String.valueOf(mensajesModel.Id_Mensaje());
-        celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
+        Celda_Renderer celda;
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo(),id);
         celdas[0] = celda;
         if(mensajesModel.Extension().isBlank()){
             celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
@@ -566,6 +566,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                 celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
                 celdas[1] = celda;
             }
+            
         }
         celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
         celdas[2] = celda;
@@ -585,7 +586,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
 
             SwingUtilities.invokeLater(() -> {
 
-                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Chat(id_Mensaje);
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Pregunta(id_Mensaje);
 
                 if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
                     File directorio = new File("/descargas/preguntas/");

@@ -1192,19 +1192,21 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         return Id_Curso;
     }
     
-    private void Obtener_Mensajes_Curso(){
+    private void Obtener_Mensajes_Curso(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
         SwingUtilities.invokeLater(() -> {
-            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Curso);
+            Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Curso(Id_Curso);
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
                     Agregar_Mensaje_Curso(response.delist());
                 }
             } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Curso", "No Se Encontraron Mensajes En El Curso");
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Curso", "No Se Encontraron Mensajes En El Curso");
+                }
             }
         });
     }
@@ -1213,13 +1215,13 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         String id = String.valueOf(mensajesModel.Id_Mensaje());
         Celda_Renderer celda;
-        celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo(),id);
         celdas[0] = celda;
         if(mensajesModel.Extension().isBlank()){
             celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }else{
-           try {
+            try {
                 Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
                 ImageIcon icono = new ImageIcon(imagen);
                 celda = new Celda_Renderer(icono,mensajesModel.Mensaje(),id);
@@ -1228,6 +1230,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
                 celdas[1] = celda;
             }
+            
         }
         celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
         celdas[2] = celda;
