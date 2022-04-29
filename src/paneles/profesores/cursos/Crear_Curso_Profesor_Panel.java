@@ -733,11 +733,13 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
     private void agregar_Tematica_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Tematica_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            SwingUtilities.invokeLater(() -> {
+            if(id_Curso > 0){
                 ComboOptionModel interes = ((ComboOptionModel) tematicas_AutoCompletionComboBox.getSelectedItem()) != null
                         ? ((ComboOptionModel) tematicas_AutoCompletionComboBox.getSelectedItem()) : new ComboOptionModel();
                 Agregar_Nuevo_Interes_Tematica(interes);
-            });
+            } else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Agregar Temática", "Primero Registre Los Datos Generales Del Curso");
+            }
         }
     }//GEN-LAST:event_agregar_Tematica_JButtonMouseClicked
 
@@ -824,31 +826,6 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         guardar_Datos_Generales_Curso_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_guardar_Datos_Generales_Curso_JButtonMouseExited
 
-    private void Agregar_Tematica(String id, String interes_Tematica){
-        try {
-            DefaultTableModel modelo = (DefaultTableModel) tematicas_JTable.getModel();
-            
-            Celda_Renderer[] celdas = new Celda_Renderer[2];
-            Celda_Renderer celda;
-            
-            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-            ImageIcon remover = new ImageIcon(icono);
-            
-            celda = new Celda_Renderer(interes_Tematica,id);
-            celdas[0] = celda;
-            
-            celda = new Celda_Renderer(remover);
-            celdas[1] = celda;
-            modelo.addRow(celdas);
-            
-            tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes_Tematica.length()));
-            
-            icono.flush();
-        } catch (IOException ex) {
-            
-        }
-    }
-    
     private void Agregar_Nuevo_Interes_Tematica(ComboOptionModel interes){
         try {
             DefaultTableModel modelo = (DefaultTableModel) tematicas_JTable.getModel();

@@ -2001,7 +2001,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
     }
     
-    
     private void Agregar_Miembro(String ruta_Imagen_Miembro, String nombre_Miembro, String fecha_Ingreso){
         
         Celda_Renderer[] celdas = new Celda_Renderer[3];

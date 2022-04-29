@@ -1872,10 +1872,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             celda = new Celda_Renderer(icono,id);
             celdas[3] = celda;
             
-            DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
+            DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
             modelo.addRow(celdas);
             
-            mensajes_Chat_JTable.setRowHeight(mensajes_Chat_JTable.getRowCount() - 1,
+            mensajes_Chat_JTable.setRowHeight(archivos_Compartidos_JTable.getRowCount() - 1,
                     CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
         } catch (IOException ex) {
             

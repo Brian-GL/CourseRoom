@@ -46,7 +46,7 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  */
 public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface{
 
-    private Lista<Tarea_Estudiante_Panel> mostrar_Tareas_Lista;
+    private static Lista<Tarea_Estudiante_Panel> mostrar_Tareas_Lista;
     private Lista<Tarea_Estudiante_Panel> buscar_Tareas_Lista;
     
     /**
@@ -519,6 +519,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
             tarea_Estudiante_Panel.Limpiar();
         }
+        
+        
         SwingUtilities.invokeLater(() -> {
             Lista<TareasEstudianteModel> lista
                     = CourseRoom.Solicitudes().Buscar_Tareas(busqueda, Tablero_Estudiante_Panel.Id_Usuario());
@@ -581,7 +583,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         }
     }
     
-    private boolean Existe_Tarea(int id_Tarea){
+    public static boolean Existe_Tarea(int id_Tarea){
         Nodo<Tarea_Estudiante_Panel> first = mostrar_Tareas_Lista.front();
         Nodo<Tarea_Estudiante_Panel> last = mostrar_Tareas_Lista.back();
 
