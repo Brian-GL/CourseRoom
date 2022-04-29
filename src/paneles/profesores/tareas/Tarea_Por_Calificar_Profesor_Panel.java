@@ -1108,7 +1108,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
        
     private void Descargar_Archivo(int id_Mensaje, String nombre_Archivo){
         
-        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/Tareas/", nombre_Archivo));
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/tareas/", nombre_Archivo));
         
         if(!archivo.exists()){
 
@@ -1116,12 +1116,11 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
 
                 ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Chat(id_Mensaje);
 
-                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
-                    File directorio = new File("/descargas/Tareas/");
-                    File crear_Archivo;
+                if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
+                    
                     try {
-                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
-                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());
+                        
+                       FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
                         
                         CourseRoom.Utilerias().Abrir_Archivo(archivo);
                         
@@ -1137,30 +1136,34 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
         } else{
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
-        
     }
     
     private void Descargar_Archivo_Entrega(int id_Archivo_Subido, String nombre_Archivo){
         
-        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/tareas/", nombre_Archivo));
         
         if(!archivo.exists()){
 
             SwingUtilities.invokeLater(() -> {
+
                 ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Subido_Tarea(id_Archivo_Subido, Id_Usuario);
-                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
-                    File directorio = new File("/descargas/tareas/");
-                    File crear_Archivo;
+
+                if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
+                    
                     try {
-                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
-                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());                        
+                        
+                       FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
+                        
                         CourseRoom.Utilerias().Abrir_Archivo(archivo);
+                        
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
                     }
+
                 }else{
                     CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
                 }
+
             });
         } else{
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
@@ -1168,26 +1171,30 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
     }
     
     private void Descargar_Archivo_Retroalimentacion(int id_Retroalimentacion, String nombre_Archivo){
-        
-        File archivo = new File(CourseRoom.Utilerias().Concatenar("/descargas/tareas/", nombre_Archivo));
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/tareas/", nombre_Archivo));
         
         if(!archivo.exists()){
 
             SwingUtilities.invokeLater(() -> {
+
                 ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Retroalimentacion_Tarea(id_Retroalimentacion);
-                if(archivoModel.Archivo().length > 0 && archivoModel.Extension().isBlank()){
-                    File directorio = new File("/descargas/tareas/");
-                    File crear_Archivo;
+
+                if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
+                    
                     try {
-                        crear_Archivo = File.createTempFile(archivoModel.Nombre_Archivo(),  archivoModel.Extension(),directorio);
-                        FileUtils.writeByteArrayToFile(crear_Archivo, archivoModel.Archivo());                        
+                        
+                       FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
+                        
                         CourseRoom.Utilerias().Abrir_Archivo(archivo);
+                        
                     } catch (IOException ex) {
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
                     }
+
                 }else{
                     CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
                 }
+
             });
         } else{
             CourseRoom.Utilerias().Abrir_Archivo(archivo);

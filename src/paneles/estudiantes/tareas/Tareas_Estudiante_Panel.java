@@ -392,9 +392,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Tareas<br>Rebasa Los 100 Caracteres");
           }else{
-                SwingUtilities.invokeLater(() -> {
-                    Buscar_Tareas(buscar_JTextField.getText());
-                });
+                Buscar_Tareas(buscar_JTextField.getText());
             }
         }
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
@@ -496,6 +494,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             tarea_Estudiante_Panel  = mostrar_Tareas_Lista.delist();
             Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
         }
+        
         SwingUtilities.invokeLater(() -> {
             Lista<TareasEstudianteModel> tareas_Estudiante
                     = CourseRoom.Solicitudes().Obtener_Tareas_Estudiante(Tablero_Estudiante_Panel.Id_Usuario());
@@ -519,8 +518,10 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         Tarea_Estudiante_Panel tarea_Estudiante_Panel;
         while(!buscar_Tareas_Lista.is_empty()){
             tarea_Estudiante_Panel = buscar_Tareas_Lista.delist();
-            Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
-            tarea_Estudiante_Panel.Limpiar();
+            if(!Existe_Tarea(tarea_Estudiante_Panel.Id_Tarea())){
+                Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
+                tarea_Estudiante_Panel.Limpiar();
+            }
         }
         
         

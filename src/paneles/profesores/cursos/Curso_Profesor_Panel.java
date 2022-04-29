@@ -45,6 +45,7 @@ import paneles.profesores.perfil.Perfil_Profesor_Panel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import modelos.ArchivoModel;
 import modelos.ComboOptionModel;
 import modelos.DatosGeneralesCursoModel;
 import modelos.MensajesModel;
@@ -632,18 +633,24 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                 if (e.getClickCount() == 2) {
 
                                     JTable tabla = (JTable) e.getComponent();
-                                    int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
+
                                     int columna = tabla.getSelectedColumn();
 
                                     // Abrir
                                     if (columna == 1) {
+                                        int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                                         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                                         Celda_Renderer celda = (Celda_Renderer)modelo.getValueAt(fila, columna);
 
                                         if(celda.Tiene_Icono()){
-                                            String extension = FilenameUtils.getExtension(celda.Texto());
-                                            String ruta = celda.ID();
-                                            CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+
+                                            int id_Mensaje = Integer.parseInt(celda.ID());
+
+                                            if (id_Mensaje > 0){
+                                                Descargar_Archivo_Chat(id_Mensaje,celda.Texto());
+                                            }else{
+                                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                                            }
                                         }
                                     }
 
@@ -1858,17 +1865,24 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     
     private void Agregar_Mensaje_Curso(MensajesModel mensajesModel){
         Celda_Renderer[] celdas = new Celda_Renderer[3];
-  
-        Celda_Renderer celda;
         String id = String.valueOf(mensajesModel.Id_Mensaje());
-        celda = new Celda_Renderer(mensajesModel.Nombre_Completo());
+        Celda_Renderer celda;
+        celda = new Celda_Renderer(mensajesModel.Nombre_Completo(),id);
         celdas[0] = celda;
         if(mensajesModel.Extension().isBlank()){
             celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
             celdas[1] = celda;
         }else{
-            celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
-            celdas[1] = celda;
+            try {
+                Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                ImageIcon icono = new ImageIcon(imagen);
+                celda = new Celda_Renderer(icono,mensajesModel.Mensaje(),id);
+                celdas[1] = celda;
+            } catch (IOException ex) {
+                celda = new Celda_Renderer(mensajesModel.Mensaje(),id);
+                celdas[1] = celda;
+            }
+            
         }
         celda = new Celda_Renderer(mensajesModel.Fecha_Envio(),id);
         celdas[2] = celda;
@@ -2148,6 +2162,38 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         modelo.addRow(celdas);
         
+    }
+    
+    private void Descargar_Archivo_Chat(int id_Mensaje, String nombre_Archivo){
+        
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/cursos/", nombre_Archivo));
+        
+        if(!archivo.exists()){
+
+            SwingUtilities.invokeLater(() -> {
+
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Curso(id_Mensaje);
+
+                if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
+                    
+                    try {
+                        
+                       FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
+                        
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
+                        
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                    }
+
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                }
+
+            });
+        } else{
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
