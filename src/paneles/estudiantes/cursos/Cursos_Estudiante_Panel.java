@@ -729,7 +729,19 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-
+            switch (carta_Visible) {
+                case 0:
+                    Obtener_Cursos_Actuales(true);
+                    break;
+                case 1:
+                    Obtener_Cursos_Finalizados(true);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    Obtener_Cursos_Nuevos(true);
+                    break;
+            }
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -981,7 +993,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
     }
     
-    private void Obtener_Cursos_Actuales(){
+    private void Obtener_Cursos_Actuales(boolean bandera){
         
         // Limpieza:
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Actuales_JTable.getModel();
@@ -1003,7 +1015,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 Agregar_Curso_Actual(response.delist());
             }
         }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Cursos Actuales", "No Se Encontraron Cursos Actuales");
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Cursos Actuales", "No Se Encontraron Cursos Actuales");
+            }
         }
         
     }
@@ -1167,7 +1181,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         Tablero_Estudiante_Panel.Agregar_Vista(vista_Previa_Curso_Estudiante_Panel, id);
     }
     
-    private void Obtener_Cursos_Nuevos(){
+    private void Obtener_Cursos_Nuevos(boolean bandera){
         
         // Limpieza:
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Nuevos_JTable.getModel();
@@ -1189,7 +1203,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 Agregar_Curso_Nuevo(response.delist());
             }
         }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Cursos Nuevos", "No Se Encontraron Cursos Nuevos");
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Cursos Nuevos", "No Se Encontraron Cursos Nuevos");
+            }
         }
     }
     
@@ -1316,7 +1332,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         Tablero_Estudiante_Panel.Agregar_Vista(curso_Estudiante_Panel, id);
     }
     
-    private void Obtener_Cursos_Finalizados(){
+    private void Obtener_Cursos_Finalizados(boolean bandera){
         
         // Limpieza:
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Cursos_Finalizados_JTable.getModel();
@@ -1339,7 +1355,9 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 Agregar_Curso_Finalizado(response.delist());
             }
         }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Cursos Creados", "No Se Encontraron Cursos Nuevos");
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Cursos Creados", "No Se Encontraron Cursos Nuevos");
+            }
         }
     }
     
@@ -1475,6 +1493,10 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
 
         titulo_JLabel.setText("Cursos Actuales");
+        
+        Obtener_Cursos_Finalizados(false);
+        Obtener_Cursos_Nuevos(false);
+        Obtener_Cursos_Actuales(false);
         
     }
 

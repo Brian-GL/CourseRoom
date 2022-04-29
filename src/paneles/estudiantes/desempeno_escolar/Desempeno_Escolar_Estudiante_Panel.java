@@ -263,7 +263,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
             case 0:
                 break;
             case 1:
-                Obtener_Desempeno_Usuario();
+                Obtener_Desempeno_Usuario(true);
                 break;
             }
         }
@@ -405,7 +405,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         
     }
     
-    private void Obtener_Desempeno_Usuario() {
+    private void Obtener_Desempeno_Usuario(boolean bandera) {
         
         this.Limpiar();
         
@@ -417,7 +417,9 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
                 Agregar_Estadistica(response.delist());
             }
         }else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Desempeño Usuario", "No Se Encontraron Registros");
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Desempeño Usuario", "No Se Encontraron Registros");
+            }
         }
         
     }
@@ -484,7 +486,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
         chartPanel.setMaximumSize(regresion_Lineal_JPanel.getMaximumSize());
         regresion_Lineal_JPanel.add(chartPanel);
         
-        Obtener_Desempeno_Usuario();
+        Obtener_Desempeno_Usuario(false);
     }
 
     @Override

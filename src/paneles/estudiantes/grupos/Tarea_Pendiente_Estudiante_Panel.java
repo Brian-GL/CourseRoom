@@ -256,7 +256,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Obtener_Datos_Generales();
+            Obtener_Datos_Generales(true);
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -281,7 +281,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         });
     }//GEN-LAST:event_estatus_Tarea_JComboBoxItemStateChanged
 
-    private void Obtener_Datos_Generales(){
+    private void Obtener_Datos_Generales(boolean bandera){
         
         DatosGeneralesTareaPendienteModel datosGeneralesTareaPendienteModel
                 = CourseRoom.Solicitudes().Obtener_Datos_Generales_Tarea_Pendiente(Id_Tarea_Pendiente);
@@ -319,6 +319,10 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
             if(datosGeneralesTareaPendienteModel.Estatus().equals("Finalizado")){
                 estatus_Tarea_JComboBox.removeItemAt(0);
             }
+        }else{
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Datos Generales", "No Se Encontraron Los Datos Generales De La Tarea Pendiente");
+            }
         }
     }
 
@@ -345,7 +349,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
         
         Colorear_Componentes();
         
-        Obtener_Datos_Generales();
+        Obtener_Datos_Generales(false);
     }
 
     @Override

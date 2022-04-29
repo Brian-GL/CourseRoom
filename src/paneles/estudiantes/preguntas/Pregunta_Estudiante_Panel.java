@@ -378,7 +378,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             Obtener_Datos_Generales_Pregunta(true);
-            Obtener_Mensajes_Pregunta();
+            Obtener_Mensajes_Pregunta(true);
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -528,7 +528,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         return Id_Pregunta;
     }
     
-    private void Obtener_Mensajes_Pregunta(){
+    private void Obtener_Mensajes_Pregunta(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
@@ -540,7 +540,9 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
                     Agregar_Mensaje_Pregunta(response.delist());
                 }
             } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Pregunta", "No Se Encontraron Mensajes En Las Preguntas");
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Pregunta", "No Se Encontraron Mensajes En Las Preguntas");
+                }
             }
         });
     }
@@ -648,7 +650,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements  Co
         
        
         Obtener_Datos_Generales_Pregunta(true);
-        Obtener_Mensajes_Pregunta();
+        Obtener_Mensajes_Pregunta(false);
    
         Colorear_Componentes();
         

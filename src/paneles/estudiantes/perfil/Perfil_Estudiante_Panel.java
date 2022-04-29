@@ -1454,7 +1454,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             SwingUtilities.invokeLater(() -> {
-                Obtener_Datos_Perfil();
+                Obtener_Datos_Perfil(true);
                 Obtener_Localidades_Estado();
             });
         }
@@ -1658,7 +1658,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         }
     }
     
-    private void Obtener_Datos_Perfil(){
+    private void Obtener_Datos_Perfil(boolean bandera){
         
         DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Tablero_Estudiante_Panel.Id_Usuario());
         if(datosPerfilModel != null){
@@ -1720,6 +1720,10 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Intereses_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
             while(!tematicas.is_empty()){
                 Agregar_Interes_Tematica(tematicas.delist());
+            }
+        }else{
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Datos Perfil", "No Se Encontraron Datos Del Perfil");
             }
         }
     }
@@ -1835,7 +1839,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             }
         });
         Colorear_Componentes();
-        Obtener_Datos_Perfil();
+        Obtener_Datos_Perfil(false);
         Obtener_Localidades_Estado();
                 
     }

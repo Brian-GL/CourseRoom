@@ -557,9 +557,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             if(!carta_Visible){
-                Obtener_Mensajes_Chat();
+                Obtener_Mensajes_Chat(true);
             }else{
-                Obtener_Datos_Generales_Chat();
+                Obtener_Datos_Generales_Chat(true);
             }
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -624,7 +624,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         eliminar_Chat_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_eliminar_Chat_JButtonMouseExited
 
-    private void Obtener_Datos_Generales_Chat(){
+    private void Obtener_Datos_Generales_Chat(boolean bandera){
         SwingUtilities.invokeLater(() -> {
             ComboOptionModel response
                     = CourseRoom.Solicitudes().Obtener_Datos_Generales_Chat_Personal(Id_Chat,
@@ -663,6 +663,10 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                         icono_Imagen.getImage().flush();
                         imagen_Usuario.flush();
                     }
+                }
+            }else {
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Chat", "No Se Encontraron Datos Generales En El Chat");
                 }
             }
         });
@@ -711,7 +715,7 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         return Id_Chat;
     }
      
-    private void Obtener_Mensajes_Chat(){
+    private void Obtener_Mensajes_Chat(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
@@ -723,7 +727,9 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     Agregar_Mensaje_Chat(response.delist());
                 }
             } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Chat", "No Se Encontraron Mensajes En El Chat");
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Chat", "No Se Encontraron Mensajes En El Chat");
+                }
             }
         });
     }
@@ -840,8 +846,8 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
         Colorear_Componentes();
         
-        Obtener_Datos_Generales_Chat();
-        Obtener_Mensajes_Chat();
+        Obtener_Datos_Generales_Chat(false);
+        Obtener_Mensajes_Chat(false);
     }
 
     @Override

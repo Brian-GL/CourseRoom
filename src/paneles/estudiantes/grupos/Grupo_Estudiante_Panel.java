@@ -1379,19 +1379,19 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             SwingUtilities.invokeLater(() -> {
                 switch (carta_Visible) {
                     case 0: case 5:
-                        Obtener_Datos_Generales_Grupo();
+                        Obtener_Datos_Generales_Grupo(true);
                         break;
                     case 1:
-                        Obtener_Miembros_Grupo();
+                        Obtener_Miembros_Grupo(true);
                         break;
                     case 2:
-                        Obtener_Mensajes_Grupo();
+                        Obtener_Mensajes_Grupo(true);
                         break;
                     case 3:
-                        Obtener_Archivos_Compartidos();
+                        Obtener_Archivos_Compartidos(true);
                         break;
                     case 4:
-                        Obtener_Tareas_Pendientes_Grupo();
+                        Obtener_Tareas_Pendientes_Grupo(true);
                         break;
                 }
             });
@@ -1465,7 +1465,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         guardar_Cambios_Datos_Generales_Grupo_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Grupo_JButtonMouseExited
 
-    private void Obtener_Tareas_Pendientes_Grupo(){
+    private void Obtener_Tareas_Pendientes_Grupo(boolean bandera){
         DefaultTableModel modelo = (DefaultTableModel) tareas_Pendientes_JTable.getModel();
         modelo.setRowCount(0);
         
@@ -1483,7 +1483,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     Agregar_Tarea_Pendiente(lista.delist());
                 }
             } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Tareas Pendientes", "No Se Encontraron Tareas Pendientes");
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Tareas Pendientes", "No Se Encontraron Tareas Pendientes");
+                }
             }
         });
     }
@@ -1661,7 +1663,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
     }
     
-    private void Obtener_Miembros_Grupo(){
+    private void Obtener_Miembros_Grupo(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) miembros_JTable.getModel();
         modelo.setRowCount(0);
@@ -1676,7 +1678,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     Agregar_Miembro(lista.delist());
                 }
             } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Miembros");
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Miembros");
+                }
             }
         });
     }
@@ -1685,7 +1689,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         return Id_Grupo;
     }
     
-    private void Obtener_Mensajes_Grupo(){
+    private void Obtener_Mensajes_Grupo(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
@@ -1697,7 +1701,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     Agregar_Mensaje_Grupo(response.delist());
                 }
             } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Grupo", "No Se Encontraron Mensajes En El Grupo");
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Grupo", "No Se Encontraron Mensajes En El Grupo");
+                }
             }
         });
     }
@@ -1726,7 +1732,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 CourseRoom.Utilerias().Altura_Fila_Tabla(mensajesModel.Mensaje().length()));
     }
     
-    private void Obtener_Datos_Generales_Grupo(){
+    private void Obtener_Datos_Generales_Grupo(boolean bandera){
         
         DatosGeneralesGrupoModel datosGeneralesGrupoModel = 
                 CourseRoom.Solicitudes().Obtener_Datos_Generales_Grupo(Id_Grupo);
@@ -1755,6 +1761,10 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 }
             } 
 
+        }else{
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Datos Generales Grupo", "No Se Encontraron Datos Generales Del Grupo");
+            }
         }
     
     }
@@ -1829,7 +1839,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
     }
     
-    private void Obtener_Archivos_Compartidos(){
+    private void Obtener_Archivos_Compartidos(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) archivos_Compartidos_JTable.getModel();
         modelo.setRowCount(0);
@@ -1838,7 +1848,9 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                 CourseRoom.Solicitudes().Obtener_Archivos_Compartidos_Grupo(Id_Grupo);
         
         if(lista.is_empty()){
-            CourseRoom.Utilerias().Mensaje_Alerta("Archivos Compartidos", "No Se Encontraron Archivos Compartidos");
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Archivos Compartidos", "No Se Encontraron Archivos Compartidos");
+            }
         }else{
             while(!lista.is_empty()){
                 Agregar_Archivo_Compartido(lista.delist());
@@ -2020,11 +2032,11 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         Colorear_Componentes();
         
-        Obtener_Datos_Generales_Grupo();
-        Obtener_Mensajes_Grupo();
-        Obtener_Tareas_Pendientes_Grupo();
-        Obtener_Miembros_Grupo();
-        Obtener_Archivos_Compartidos();
+        Obtener_Datos_Generales_Grupo(false);
+        Obtener_Mensajes_Grupo(false);
+        Obtener_Tareas_Pendientes_Grupo(false);
+        Obtener_Miembros_Grupo(false);
+        Obtener_Archivos_Compartidos(false);
         
     }
 

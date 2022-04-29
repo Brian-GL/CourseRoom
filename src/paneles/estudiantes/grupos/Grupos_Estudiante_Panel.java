@@ -419,7 +419,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         if(SwingUtilities.isLeftMouseButton(evt)){
             SwingUtilities.invokeLater(() -> {
-                Obtener_Grupos();
+                Obtener_Grupos(true);
             });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -478,7 +478,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
     }
     
-    private void Obtener_Grupos(){
+    private void Obtener_Grupos(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Grupos_JTable.getModel();
         modelo.setRowCount(0);
@@ -492,9 +492,14 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         SwingUtilities.invokeLater(() -> {
             Lista<GruposModel> lista
                     = CourseRoom.Solicitudes().Obtener_Grupos(Tablero_Estudiante_Panel.Id_Usuario());
-
-            while (!lista.is_empty()) {
-                Agregar_Grupo(lista.delist());
+            if(!lista.is_empty()){
+                while (!lista.is_empty()) {
+                    Agregar_Grupo(lista.delist());
+                }
+            }else{
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Obtener Grupos", "No Se Encontraron Los Grupos");
+                }
             }
         });
     }
@@ -650,7 +655,7 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Grupos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        Obtener_Grupos();
+        Obtener_Grupos(false);
     }
 
     @Override

@@ -57,8 +57,6 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         Iniciar_Componentes();
         
-        Obtener_Tareas();
-        
     }
 
     /**
@@ -421,7 +419,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            Obtener_Tareas();
+            Obtener_Tareas(true);
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -488,7 +486,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, id_Tarea);
     }
     
-    private void Obtener_Tareas(){
+    private void Obtener_Tareas(boolean bandera){
         
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
         modelo.setRowCount(0);
@@ -501,9 +499,14 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         SwingUtilities.invokeLater(() -> {
             Lista<TareasEstudianteModel> tareas_Estudiante
                     = CourseRoom.Solicitudes().Obtener_Tareas_Estudiante(Tablero_Estudiante_Panel.Id_Usuario());
-
-            while (!tareas_Estudiante.is_empty()) {
-                Agregar_Tarea(tareas_Estudiante.delist());
+            if(!tareas_Estudiante.is_empty()){
+                while (!tareas_Estudiante.is_empty()) {
+                    Agregar_Tarea(tareas_Estudiante.delist());
+                }
+            }else{
+                if(bandera){
+                    CourseRoom.Utilerias().Mensaje_Alerta("Obtener Tareas", "No Se Obtuvieron Las Tareas");
+                }
             }
         });
     }
@@ -655,7 +658,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         buscar_Tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-        Obtener_Tareas();
+        Obtener_Tareas(false);
     }
 
     @Override
