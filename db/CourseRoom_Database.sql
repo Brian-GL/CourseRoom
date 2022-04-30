@@ -3057,7 +3057,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_BuscarChatsPersonal
 BEGIN
 
 	SELECT Chats.IdChat, courseroom.fn_IDUsuarioDiferenteChat(Chats.IdChat,_IdUsuario) AS IdUsuario,
-    courseroom.fn_UsuarioDiferenteChat(Chats.IdChat,_IdUsuario) AS NombreCompleto,
+    courseroom.fn_NombreUsuarioDiferenteChat(Chats.IdChat,_IdUsuario) AS NombreCompleto,
 	Chats.FechaCreacion, IF(courseroom.fn_UltimoMensajeChat(Chats.IdChat) IS NULL, ' ',courseroom.fn_UltimoMensajeChat(Chats.IdChat)) AS UltimoMensaje
 	FROM tb_chatspersonales Chats
 	WHERE (Chats.IdUsuarioEmisor = _IdUsuario OR Chats.IdUsuarioReceptor = _IdUsuario) AND Chats.Activo = 1
@@ -4403,7 +4403,7 @@ CREATE DEFINER=`courseroom_server`@`localhost` PROCEDURE `sp_ObtenerChatsPersona
 BEGIN
 	
 	SELECT Chats.IdChat, courseroom.fn_IDUsuarioDiferenteChat(Chats.IdChat,_IdUsuario) AS IdUsuario,
-    courseroom.fn_UsuarioDiferenteChat(Chats.IdChat,_IdUsuario) AS NombreCompleto,
+    courseroom.fn_NombreUsuarioDiferenteChat(Chats.IdChat,_IdUsuario) AS NombreCompleto,
 	Chats.FechaCreacion, IF(courseroom.fn_UltimoMensajeChat(Chats.IdChat) IS NULL, ' ',
     courseroom.fn_UltimoMensajeChat(Chats.IdChat)) AS UltimoMensaje
 	FROM tb_chatspersonales Chats
@@ -6647,4 +6647,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-29 22:21:13
+-- Dump completed on 2022-04-29 23:21:17
