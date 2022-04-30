@@ -490,7 +490,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
         Image imagen;
-        byte[] bytes_Imagen_Chat = CourseRoom.Solicitudes().Obtener_Imagen_Chat_Personal(chatsPersonalesModel.Id_Chat(), Tablero_Profesor_Panel.Id_Usuario());
+        byte[] bytes_Imagen_Chat = CourseRoom.Solicitudes().Obtener_Imagen_Chat_Personal(chatsPersonalesModel.Id_Chat(), chatsPersonalesModel.Id_Usuario());
         
         if(bytes_Imagen_Chat.length > 0){
             imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Chat);
@@ -535,7 +535,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
         Image imagen;
-        byte[] bytes_Imagen_Chat = CourseRoom.Solicitudes().Obtener_Imagen_Chat_Personal(chatsPersonalesModel.Id_Chat(), Tablero_Profesor_Panel.Id_Usuario());
+        byte[] bytes_Imagen_Chat = CourseRoom.Solicitudes().Obtener_Imagen_Chat_Personal(chatsPersonalesModel.Id_Chat(), chatsPersonalesModel.Id_Usuario());
         
         if(bytes_Imagen_Chat.length > 0){
             imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Chat);
