@@ -988,7 +988,7 @@ public class Solicitudes {
                 Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
                 
                 ChatsPersonalesModel chatsPersonalesModel;
-                int id;
+                int id, Id_Usuario;
                 String valor,valor1,valor2;
                 Vector<Object> fila;
                 while(!resultado.isEmpty()){
@@ -996,11 +996,12 @@ public class Solicitudes {
                     fila = resultado.remove(0);
                     
                     id = (int) fila.remove(0);
+                    Id_Usuario = (int) fila.remove(0);
                     valor = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     valor1 = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     valor2 = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
-                    chatsPersonalesModel = new ChatsPersonalesModel(id, valor2, valor, valor1);
+                    chatsPersonalesModel = new ChatsPersonalesModel(id,Id_Usuario, valor2, valor, valor1);
                     
                     response.push_back(chatsPersonalesModel);
                 }
@@ -2366,7 +2367,7 @@ public class Solicitudes {
                 Vector<Vector<Object>> resultado = (Vector<Vector<Object>>) respuesta;
                 
                 ChatsPersonalesModel chatsPersonalesModel;
-                int id;
+                int id, Id_Usuario;
                 String valor,valor1,valor2;
                 Vector<Object> fila;
                 while(!resultado.isEmpty()){
@@ -2374,11 +2375,12 @@ public class Solicitudes {
                     fila = resultado.remove(0);
                     
                     id = (int) fila.remove(0);
+                    Id_Usuario = (int) fila.remove(0);
                     valor = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     valor1 = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     valor2 = CourseRoom.Utilerias().Decodificacion((String)fila.remove(0));
                     
-                    chatsPersonalesModel = new ChatsPersonalesModel(id, valor2, valor, valor1);
+                    chatsPersonalesModel = new ChatsPersonalesModel(id, Id_Usuario, valor2, valor, valor1);
                     
                     response.push_back(chatsPersonalesModel);
                 }
@@ -2675,39 +2677,6 @@ public class Solicitudes {
         }
         
         return datosEntregaTareaModel;
-    }
-    
-    public ComboOptionModel Obtener_Datos_Generales_Chat_Personal(int id_Chat, int id_Usuario){
-        ComboOptionModel comboOption = new ComboOptionModel();
-        
-        try {
-
-            Vector parametros = new Vector();
-
-            parametros.add(id_Chat);
-            parametros.add(id_Usuario);
-            parametros.add(CourseRoom.Utilerias().MiUidd());
-            parametros.add(CourseRoom.Utilerias().MiIP());
-
-            Object respuesta = xmlRpcClient.execute("CourseRoom_Server.Obtener_Datos_Generales_Chat_Personal", parametros);
-
-            if(respuesta != null){
-
-               Vector<Object> resultado  = (Vector<Object>)respuesta;
-
-               if(resultado.size()== 2){
-                   
-                    comboOption.Id((int)resultado.remove(0));
-                    comboOption.Valor(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
-                }
-               
-           }
-
-        } catch (XmlRpcException | IOException ex) {
-            System.err.println(ex.getMessage());
-        }
-        
-        return comboOption;
     }
     
     public DatosGeneralesCursoModel Obtener_Datos_Generales_Curso(int id_Curso){

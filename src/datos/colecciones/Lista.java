@@ -562,7 +562,6 @@ public class Lista<T>{
             if(this._front != null){
                 
                 this._front.previous(null);
-                erased_node.dispose();
             }
 
             --this._size;
@@ -585,7 +584,6 @@ public class Lista<T>{
             if(this._back != null){
                 
                 this._back.next(null);
-                erased_node.dispose();
             }
             
             --this._size;

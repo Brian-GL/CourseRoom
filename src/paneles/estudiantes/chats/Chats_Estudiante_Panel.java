@@ -571,7 +571,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             mostrar_Chats_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
 
             Chat_Estudiante_Panel chat_Estudiante_Panel
-                    = new Chat_Estudiante_Panel(chatsPersonalesModel.Id_Chat());
+                    = new Chat_Estudiante_Panel(chatsPersonalesModel.Id_Chat(), chatsPersonalesModel.Id_Usuario());
 
             mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
 
@@ -619,7 +619,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
 
             if (!Existe_Chat(chatsPersonalesModel.Id_Chat())) {
                 Chat_Estudiante_Panel chat_Estudiante_Panel
-                        = new Chat_Estudiante_Panel(chatsPersonalesModel.Id_Chat());
+                        = new Chat_Estudiante_Panel(chatsPersonalesModel.Id_Chat(), chatsPersonalesModel.Id_Usuario());
                 buscar_Chats_Lista.push_back(chat_Estudiante_Panel);
 
                 Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, 

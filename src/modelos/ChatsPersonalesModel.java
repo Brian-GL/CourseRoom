@@ -22,18 +22,19 @@ package modelos;
  * @author JOEL BR
  */
 public class ChatsPersonalesModel {
-    private Integer id_Chat;
+    private Integer id_Chat, id_Usuario;
     private String nombre_Completo, fecha_Creacion, ultimo_Mensaje;
 
-    public ChatsPersonalesModel(int id_Chat, String ultimo_Mensaje, String nombre_Completo, String fecha_Creacion) {
+    public ChatsPersonalesModel(int id_Chat, int id_Usuario, String ultimo_Mensaje, String nombre_Completo, String fecha_Creacion) {
         this.id_Chat = id_Chat;
+        this.id_Usuario = id_Usuario;
         this.ultimo_Mensaje = ultimo_Mensaje;
         this.nombre_Completo = nombre_Completo;
         this.fecha_Creacion = fecha_Creacion;
     }
 
     public ChatsPersonalesModel() {
-        this.id_Chat = 0;
+        this.id_Chat = this.id_Usuario = 0;
         this.nombre_Completo = ultimo_Mensaje = fecha_Creacion = new String();
     }
 
@@ -67,5 +68,13 @@ public class ChatsPersonalesModel {
 
     public void Fecha_Creacion(String fecha_Creacion) {
         this.fecha_Creacion = fecha_Creacion;
+    }
+    
+    public Integer Id_Usuario() {
+        return id_Usuario;
+    }
+
+    public void Id_Usuario(Integer id_Usuario) {
+        this.id_Usuario = id_Usuario;
     }
 }

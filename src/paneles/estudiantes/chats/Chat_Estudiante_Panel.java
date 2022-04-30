@@ -59,12 +59,13 @@ import paneles.estudiantes.perfil.Perfil_Estudiante_Panel;
 public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Componentes_Interface,  Envio_Interface,Limpieza_Interface, Carta_Visibilidad_Interface{
 
     private boolean carta_Visible;
-    private int Id_Chat;
+    private int Id_Chat, Id_Usuario;
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Chat_Estudiante_Panel(int id_Chat) {
+    public Chat_Estudiante_Panel(int id_Chat, int id_Usuario) {
         initComponents();
         Id_Chat = id_Chat;
+        Id_Usuario = id_Usuario;
         Iniciar_Componentes();
     }
 
@@ -626,32 +627,28 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
     private void Obtener_Datos_Generales_Chat(boolean bandera){
         SwingUtilities.invokeLater(() -> {
-            ComboOptionModel response
-                    = CourseRoom.Solicitudes().Obtener_Datos_Generales_Chat_Personal(Id_Chat,
-                            Tablero_Estudiante_Panel.Id_Usuario());
+           
+            DatosPerfilChatPersonalModel datosPerfilChatPersonalModel
+                    = CourseRoom.Solicitudes().Obtener_Datos_Perfil_Chat_Personal(Id_Usuario);
 
-            if (response.Id() > 0) {
-                titulo_JLabel.setText(response.Valor());
-                DatosPerfilChatPersonalModel datosPerfilChatPersonalModel
-                        = CourseRoom.Solicitudes().Obtener_Datos_Perfil_Chat_Personal(response.Id());
-
-                if (!datosPerfilChatPersonalModel.Nombre().isBlank()) {
-                    genero_JLabel.setText(datosPerfilChatPersonalModel.Genero());
-                    tipo_Perfil_JLabel.setText(datosPerfilChatPersonalModel.Tipo_Usuario());
-                    apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilChatPersonalModel.Paterno(), " ", datosPerfilChatPersonalModel.Materno()));
-                    nombres_JLabel.setText(datosPerfilChatPersonalModel.Nombre());
-                    correo_JLabel.setText(datosPerfilChatPersonalModel.Correo_Electronico());
-                }
-
-                Lista<ComboOptionModel> intereses = CourseRoom.Solicitudes().Obtener_Intereses_Usuario(response.Id());
+            if (!datosPerfilChatPersonalModel.Nombre().isBlank()) {
+                titulo_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilChatPersonalModel.Nombre()," ",
+                        datosPerfilChatPersonalModel.Paterno(), " ", datosPerfilChatPersonalModel.Materno()));
+                genero_JLabel.setText(datosPerfilChatPersonalModel.Genero());
+                tipo_Perfil_JLabel.setText(datosPerfilChatPersonalModel.Tipo_Usuario());
+                apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilChatPersonalModel.Paterno(), " ", datosPerfilChatPersonalModel.Materno()));
+                nombres_JLabel.setText(datosPerfilChatPersonalModel.Nombre());
+                correo_JLabel.setText(datosPerfilChatPersonalModel.Correo_Electronico());
+                
+                Lista<ComboOptionModel> intereses = CourseRoom.Solicitudes().Obtener_Intereses_Usuario(Id_Usuario);
                 DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
                 modelo.setRowCount(0);
                 while (!intereses.is_empty()) {
-                    Agregar_Interes_Tematica(intereses.delist());
+                    Agregar_Interes_Tematica(intereses.unlist());
                 }
 
                 Image imagen_Usuario;
-                byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(response.Id());
+                byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(Id_Usuario);
 
                 if (bytes_Imagen_Perfil.length > 0) {
                     imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
@@ -664,11 +661,14 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                         imagen_Usuario.flush();
                     }
                 }
-            }else {
+                
+            }else{
                 if(bandera){
                     CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Chat", "No Se Encontraron Datos Generales En El Chat");
                 }
             }
+
+            
         });
     }
     
@@ -854,7 +854,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         
         titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
        
-        
         Carta_Visible();
         
         titulo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
