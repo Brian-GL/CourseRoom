@@ -1657,7 +1657,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
             }
         }else{
             if(bandera){
-                CourseRoom.Utilerias().Mensaje_Alerta("Materiales Curso", "No Se Encontraron Materiales Del Curso");
+                CourseRoom.Utilerias().Mensaje_Alerta("Grupos", "No Se Encontraron Grupos");
             }
         }
     }
