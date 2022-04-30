@@ -1549,37 +1549,36 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         }
     }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
-    private void Agregar_Nuevo_Interes_Tematica(ComboOptionModel interes){
-        try {
-            DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
-            
-            Celda_Renderer[] celdas = new Celda_Renderer[2];
-            Celda_Renderer celda;
-            
-            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-            ImageIcon remover = new ImageIcon(icono);
-            
-            celda = new Celda_Renderer(interes.Valor(),interes.Id().toString());
-            celdas[0] = celda;
-            
-            celda = new Celda_Renderer(remover);
-            celdas[1] = celda;
-            SwingUtilities.invokeLater(() -> {
-                ResponseModel responseModel = CourseRoom.Solicitudes().Agregar_Interes(Tablero_Estudiante_Panel.Id_Usuario(), interes.Id());
-                if (responseModel.Is_Success()) {
+    private void Agregar_Nuevo_Interes_Tematica(ComboOptionModel interes) {
+
+        SwingUtilities.invokeLater(() -> {
+            ResponseModel responseModel = CourseRoom.Solicitudes().Agregar_Interes(Tablero_Estudiante_Panel.Id_Usuario(), interes.Id());
+            if (responseModel.Is_Success()) {
+                try {
+                    DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
+
+                    Celda_Renderer[] celdas = new Celda_Renderer[2];
+                    Celda_Renderer celda;
+
+                    Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+                    ImageIcon remover = new ImageIcon(icono);
+
+                    celda = new Celda_Renderer(interes.Valor(), interes.Id().toString());
+                    celdas[0] = celda;
+
+                    celda = new Celda_Renderer(remover);
+                    celdas[1] = celda;
                     CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
-                } else {
-                    CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
+                    modelo.addRow(celdas);
+                    intereses_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
+                    icono.flush();
+                } catch (IOException ex) {
+
                 }
-            });
-            modelo.addRow(celdas);
-            
-            intereses_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
-            
-            icono.flush();
-        } catch (IOException ex) {
-            
-        }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
+            }
+        });
     }
     
     private void Agregar_Interes_Tematica(ComboOptionModel interes){

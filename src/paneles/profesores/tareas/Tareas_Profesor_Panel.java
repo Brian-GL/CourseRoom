@@ -112,7 +112,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         });
 
         tareas_Creadas_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_6.png"))); // NOI18N
-        tareas_Creadas_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
+        tareas_Creadas_JButton.setToolTipText("<html> <h3>Tarea(s)<br>Creadas</h3> </html>");
         tareas_Creadas_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)tareas_Creadas_JButton.getIcon()).getImage().flush();
         tareas_Creadas_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -122,7 +122,7 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
         });
 
         tareas_Por_Calificar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/homework_4.png"))); // NOI18N
-        tareas_Por_Calificar_JButton.setToolTipText("<html> <h3>Buscar tarea(s)</h3> </html>");
+        tareas_Por_Calificar_JButton.setToolTipText("<html> <h3>Tarea(s)<br>Por Calificar</h3> </html>");
         tareas_Por_Calificar_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)tareas_Por_Calificar_JButton.getIcon()).getImage().flush();
         tareas_Por_Calificar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
