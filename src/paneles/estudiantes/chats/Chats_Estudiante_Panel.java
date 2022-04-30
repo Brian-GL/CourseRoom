@@ -544,7 +544,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             Image imagen;
 
             byte[] bytes_Imagen_Chat = CourseRoom.Solicitudes().Obtener_Imagen_Chat_Personal
-            (chatsPersonalesModel.Id_Chat(), Tablero_Estudiante_Panel.Id_Usuario());
+            (chatsPersonalesModel.Id_Chat(), chatsPersonalesModel.Id_Usuario());
 
             if (bytes_Imagen_Chat.length > 0) {
                 imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Chat);
@@ -588,7 +588,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             Celda_Renderer celda;
             Image imagen;
             byte[] bytes_Imagen_Chat = CourseRoom.Solicitudes().Obtener_Imagen_Chat_Personal
-            (chatsPersonalesModel.Id_Chat(), Tablero_Estudiante_Panel.Id_Usuario());
+            (chatsPersonalesModel.Id_Chat(), chatsPersonalesModel.Id_Usuario());
 
             if (bytes_Imagen_Chat.length > 0) {
                 imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Chat);
