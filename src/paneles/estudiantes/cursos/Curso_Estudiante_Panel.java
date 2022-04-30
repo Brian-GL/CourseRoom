@@ -1299,7 +1299,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Curso(response.unlist());
+                    Agregar_Mensaje_Curso(response.delist());
                 }
             } else {
                 if(bandera){
@@ -1549,7 +1549,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Miembro(response.unlist());
+                Agregar_Miembro(response.delist());
             }
         }else{
             if(bandera){
@@ -1566,7 +1566,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         Tarea_Estudiante_Panel tarea_Estudiante_Panel;
         while(!tareas_Estudiante_Lista.is_empty()){
-            tarea_Estudiante_Panel  = tareas_Estudiante_Lista.unlist();
+            tarea_Estudiante_Panel  = tareas_Estudiante_Lista.delist();
             if(!Tareas_Estudiante_Panel.Existe_Tarea(tarea_Estudiante_Panel.Id_Tarea())){
                 Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
                 tarea_Estudiante_Panel.Limpiar();
@@ -1598,7 +1598,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Material(response.unlist());
+                Agregar_Material(response.delist());
             }
         }else{
             if(bandera){
@@ -1653,7 +1653,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Grupo(response.unlist());
+                Agregar_Grupo(response.delist());
             }
         }else{
             if(bandera){
@@ -1715,7 +1715,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Estadistica(response.unlist());
+                Agregar_Estadistica(response.delist());
             }
         }else{
             if(bandera){

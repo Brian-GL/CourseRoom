@@ -894,7 +894,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         Curso_Estudiante_Panel curso_Estudiante_Panel;
         while(!buscar_Cursos_Lista.is_empty()){
-            curso_Estudiante_Panel = buscar_Cursos_Lista.unlist();
+            curso_Estudiante_Panel = buscar_Cursos_Lista.delist();
             if(!Existe_Curso_Actual(curso_Estudiante_Panel.Id_Curso())
                     && !Existe_Curso_Finalizado(curso_Estudiante_Panel.Id_Curso())
                     && !Existe_Curso_Nuevo(curso_Estudiante_Panel.Id_Curso())){
@@ -908,7 +908,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
             if (!lista.is_empty()) {
                 while (!lista.is_empty()) {
-                    Agregar_Curso_Busqueda(lista.unlist());
+                    Agregar_Curso_Busqueda(lista.delist());
                 }
             } else {
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Registros");
@@ -1005,7 +1005,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         Curso_Estudiante_Panel curso_Estudiante_Panel;
         while(!mostrar_Cursos_Actuales_Lista.is_empty()){
-            curso_Estudiante_Panel = mostrar_Cursos_Actuales_Lista.unlist();
+            curso_Estudiante_Panel = mostrar_Cursos_Actuales_Lista.delist();
             curso_Estudiante_Panel.Limpiar();
             Tablero_Estudiante_Panel.Retirar_Vista(curso_Estudiante_Panel);
         }
@@ -1016,7 +1016,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Curso_Actual(response.unlist());
+                Agregar_Curso_Actual(response.delist());
             }
         }else{
             if(bandera){
@@ -1193,7 +1193,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         Vista_Previa_Curso_Estudiante_Panel vista_Previa_Curso_Estudiante_Panel;
         while(!mostrar_Cursos_Nuevos_Lista.is_empty()){
-            vista_Previa_Curso_Estudiante_Panel = mostrar_Cursos_Nuevos_Lista.unlist();
+            vista_Previa_Curso_Estudiante_Panel = mostrar_Cursos_Nuevos_Lista.delist();
             vista_Previa_Curso_Estudiante_Panel.Limpiar();
             Tablero_Estudiante_Panel.Retirar_Vista(vista_Previa_Curso_Estudiante_Panel);
         }
@@ -1204,7 +1204,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Curso_Nuevo(response.unlist());
+                Agregar_Curso_Nuevo(response.delist());
             }
         }else{
             if(bandera){
@@ -1344,7 +1344,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         Curso_Estudiante_Panel curso_Estudiante_Panel;
         while(!mostrar_Cursos_Finalizados_Lista.is_empty()){
-            curso_Estudiante_Panel = mostrar_Cursos_Finalizados_Lista.unlist();
+            curso_Estudiante_Panel = mostrar_Cursos_Finalizados_Lista.delist();
             curso_Estudiante_Panel.Limpiar();
             Tablero_Estudiante_Panel.Retirar_Vista(curso_Estudiante_Panel);
         }
@@ -1356,7 +1356,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Curso_Finalizado(response.unlist());
+                Agregar_Curso_Finalizado(response.delist());
             }
         }else{
             if(bandera){

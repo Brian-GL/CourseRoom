@@ -1212,7 +1212,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
             
             if(!response.is_empty()){
                 while(!response.is_empty()){
-                    Agregar_Archivo_Entrega(response.unlist());
+                    Agregar_Archivo_Entrega(response.delist());
                 }
             } else {
                 if (bandera) {
@@ -1303,7 +1303,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Tarea(response.unlist());
+                    Agregar_Mensaje_Tarea(response.delist());
                 }
             } else {
                 if (bandera) {
@@ -1321,7 +1321,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Retroalimentacion(response.unlist());
+                    Agregar_Retroalimentacion(response.delist());
                 }
             } else {
                 if (bandera) {

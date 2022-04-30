@@ -467,7 +467,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         
         Pregunta_Estudiante_Panel pregunta_Estudiante_Panel;
         while(!buscar_Preguntas_Lista.is_empty()){
-            pregunta_Estudiante_Panel = buscar_Preguntas_Lista.unlist();
+            pregunta_Estudiante_Panel = buscar_Preguntas_Lista.delist();
             if(!Existe_Pregunta(pregunta_Estudiante_Panel.Id_Pregunta())){
                 Tablero_Estudiante_Panel.Retirar_Vista(pregunta_Estudiante_Panel);
                 pregunta_Estudiante_Panel.Limpiar();
@@ -479,7 +479,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
 
             if (!lista.is_empty()) {
                 while (!lista.is_empty()) {
-                    Agregar_Pregunta_Busqueda(lista.unlist());
+                    Agregar_Pregunta_Busqueda(lista.delist());
                 }
             } else {
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Registros");
@@ -494,7 +494,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         
         Pregunta_Estudiante_Panel pregunta_Estudiante_Panel;
         while(!mostrar_Preguntas_Lista.is_empty()){
-            pregunta_Estudiante_Panel = mostrar_Preguntas_Lista.unlist();
+            pregunta_Estudiante_Panel = mostrar_Preguntas_Lista.delist();
             Tablero_Estudiante_Panel.Retirar_Vista(pregunta_Estudiante_Panel);
             pregunta_Estudiante_Panel.Limpiar();
         }
@@ -503,7 +503,7 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                     = CourseRoom.Solicitudes().Obtener_Preguntas(Tablero_Estudiante_Panel.Id_Usuario());
             if(!lista.is_empty()){    
                 while (!lista.is_empty()) {
-                    Agregar_Pregunta(lista.unlist());
+                    Agregar_Pregunta(lista.delist());
                 }
             }else{
                 if(bandera){

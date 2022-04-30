@@ -749,7 +749,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                 DefaultTableModel modelo = (DefaultTableModel) intereses_Tematicas_JTable.getModel();
                 modelo.setRowCount(0);
                 while (!intereses.is_empty()) {
-                    Agregar_Interes_Tematica(intereses.unlist());
+                    Agregar_Interes_Tematica(intereses.delist());
                 }
 
                 Image imagen_Usuario;
@@ -785,7 +785,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Chat(response.unlist());
+                    Agregar_Mensaje_Chat(response.delist());
                 }
             } else {
                 if(bandera){

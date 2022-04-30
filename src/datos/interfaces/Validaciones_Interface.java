@@ -25,6 +25,4 @@ public interface Validaciones_Interface {
     
     public void Validar_Campos();
     
-    
-    
 }

@@ -1471,7 +1471,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
         
         Tarea_Pendiente_Estudiante_Panel tarea_Pendiente_Estudiante_Panel;
         while(!tareas_Pendientes_Estudiante_Lista.is_empty()){
-            tarea_Pendiente_Estudiante_Panel= tareas_Pendientes_Estudiante_Lista.unlist();
+            tarea_Pendiente_Estudiante_Panel= tareas_Pendientes_Estudiante_Lista.delist();
             Tablero_Estudiante_Panel.Retirar_Vista(tarea_Pendiente_Estudiante_Panel);
         }
         
@@ -1480,7 +1480,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                     = CourseRoom.Solicitudes().Obtener_Tareas_Pendientes_Grupo(Id_Grupo);
             if (!lista.is_empty()) {
                 while (!lista.is_empty()) {
-                    Agregar_Tarea_Pendiente(lista.unlist());
+                    Agregar_Tarea_Pendiente(lista.delist());
                 }
             } else {
                 if(bandera){
@@ -1675,7 +1675,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
             if (!lista.is_empty()) {
                 while (!lista.is_empty()) {
-                    Agregar_Miembro(lista.unlist());
+                    Agregar_Miembro(lista.delist());
                 }
             } else {
                 if(bandera){
@@ -1698,7 +1698,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Grupo(response.unlist());
+                    Agregar_Mensaje_Grupo(response.delist());
                 }
             } else {
                 if(bandera){
@@ -1856,7 +1856,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             }
         }else{
             while(!lista.is_empty()){
-                Agregar_Archivo_Compartido(lista.unlist());
+                Agregar_Archivo_Compartido(lista.delist());
             }
         }
         

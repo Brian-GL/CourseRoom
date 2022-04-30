@@ -2286,7 +2286,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
             Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas_Curso(Id_Curso);
 
             while (!tematicas.is_empty()) {
-                Agregar_Tematica(tematicas.unlist());
+                Agregar_Tematica(tematicas.delist());
             }
             
         } else{
@@ -2307,7 +2307,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Estadistica(response.unlist());
+                Agregar_Estadistica(response.delist());
             }
         }else{
             if(bandera){
@@ -2326,7 +2326,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Grupo(response.unlist());
+                Agregar_Grupo(response.delist());
             }
         }else{
             if(bandera){
@@ -2345,7 +2345,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Material(response.unlist());
+                Agregar_Material(response.delist());
             }
         }else{
             if(bandera){
@@ -2364,7 +2364,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
             if (!response.is_empty()) {
                 while (!response.is_empty()) {
-                    Agregar_Mensaje_Curso(response.unlist());
+                    Agregar_Mensaje_Curso(response.delist());
                 }
             } else {
                 if(bandera){
@@ -2385,7 +2385,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
             if (!lista.is_empty()) {
                 while (!lista.is_empty()) {
-                    Agregar_Miembro(lista.unlist());
+                    Agregar_Miembro(lista.delist());
                 }
             } else {
                 if(bandera){
@@ -2402,7 +2402,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         Tarea_Profesor_Panel tarea_Profesor_Panel;
         while(!tareas_Profesor_Lista.is_empty()){
-            tarea_Profesor_Panel = tareas_Profesor_Lista.unlist();
+            tarea_Profesor_Panel = tareas_Profesor_Lista.delist();
             if(!Tareas_Profesor_Panel.Existe_Tarea(tarea_Profesor_Panel.Id_Tarea())){
                 Tablero_Profesor_Panel.Retirar_Vista(tarea_Profesor_Panel);
                 tarea_Profesor_Panel.Limpiar();
@@ -2413,7 +2413,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         
         if(!response.is_empty()){
             while(!response.is_empty()){
-                Agregar_Tarea(response.unlist());
+                Agregar_Tarea(response.delist());
             }
         } else{
             if(bandera){
