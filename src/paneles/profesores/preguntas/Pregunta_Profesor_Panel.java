@@ -325,6 +325,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
             enviar_Mensaje_Chat_JPanel.add(enviar_Archivo_Chat_JButton, java.awt.BorderLayout.WEST);
 
             redactar_Mensaje_Chat_JTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+            redactar_Mensaje_Chat_JTextField.setToolTipText("<html> <h3>Presione ENTER Para Enviar El Mensaje.</h3> </html>");
             redactar_Mensaje_Chat_JTextField.setPreferredSize(new java.awt.Dimension(71, 34));
             redactar_Mensaje_Chat_JTextField.addKeyListener(new java.awt.event.KeyAdapter() {
                 public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -448,6 +449,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Mensaje Que Deseas Enviar<br>Rebasa Los 500 Caracteres");
             }else{
                 Enviar_Mensaje();
+                redactar_Mensaje_Chat_JTextField.setText("");
             }
         }
     }//GEN-LAST:event_redactar_Mensaje_Chat_JTextFieldKeyPressed
