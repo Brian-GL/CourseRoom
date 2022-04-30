@@ -515,8 +515,10 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
         Chat_Estudiante_Panel chat_Estudiante_Panel;
         while(!buscar_Chats_Lista.is_empty()){
             chat_Estudiante_Panel= buscar_Chats_Lista.unlist();
-            Tablero_Estudiante_Panel.Retirar_Vista(chat_Estudiante_Panel);
-            chat_Estudiante_Panel.Limpiar();
+            if(!Existe_Chat(chat_Estudiante_Panel.Id_Chat())){
+                Tablero_Estudiante_Panel.Retirar_Vista(chat_Estudiante_Panel);
+                chat_Estudiante_Panel.Limpiar();
+            }
         }
         SwingUtilities.invokeLater(() -> {
             Lista<ChatsPersonalesModel> lista

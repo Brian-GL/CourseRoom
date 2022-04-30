@@ -468,8 +468,10 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         Pregunta_Estudiante_Panel pregunta_Estudiante_Panel;
         while(!buscar_Preguntas_Lista.is_empty()){
             pregunta_Estudiante_Panel = buscar_Preguntas_Lista.unlist();
-            Tablero_Estudiante_Panel.Retirar_Vista(pregunta_Estudiante_Panel);
-            pregunta_Estudiante_Panel.Limpiar();
+            if(!Existe_Pregunta(pregunta_Estudiante_Panel.Id_Pregunta())){
+                Tablero_Estudiante_Panel.Retirar_Vista(pregunta_Estudiante_Panel);
+                pregunta_Estudiante_Panel.Limpiar();
+            }
         }
         SwingUtilities.invokeLater(() -> {
             Lista<PreguntasModel> lista

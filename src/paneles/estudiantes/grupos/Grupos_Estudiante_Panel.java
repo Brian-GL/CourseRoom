@@ -512,8 +512,10 @@ public class Grupos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         Grupo_Estudiante_Panel grupo_Estudiante_Panel;
         while(!buscar_Grupos_Lista.is_empty()){
             grupo_Estudiante_Panel= buscar_Grupos_Lista.unlist();
-            Tablero_Estudiante_Panel.Retirar_Vista(grupo_Estudiante_Panel);
-            grupo_Estudiante_Panel.Limpiar();
+            if(!Existe_Grupo(grupo_Estudiante_Panel.Id_Grupo())){
+                Tablero_Estudiante_Panel.Retirar_Vista(grupo_Estudiante_Panel);
+                grupo_Estudiante_Panel.Limpiar();
+            }
         }
         SwingUtilities.invokeLater(() -> {
             Lista<GruposModel> lista

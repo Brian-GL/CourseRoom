@@ -895,8 +895,12 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         Curso_Estudiante_Panel curso_Estudiante_Panel;
         while(!buscar_Cursos_Lista.is_empty()){
             curso_Estudiante_Panel = buscar_Cursos_Lista.unlist();
-            Tablero_Estudiante_Panel.Retirar_Vista(curso_Estudiante_Panel);
-            curso_Estudiante_Panel.Limpiar();
+            if(!Existe_Curso_Actual(curso_Estudiante_Panel.Id_Curso())
+                    && !Existe_Curso_Finalizado(curso_Estudiante_Panel.Id_Curso())
+                    && !Existe_Curso_Nuevo(curso_Estudiante_Panel.Id_Curso())){
+                Tablero_Estudiante_Panel.Retirar_Vista(curso_Estudiante_Panel);
+                curso_Estudiante_Panel.Limpiar();
+            }
         }
         SwingUtilities.invokeLater(() -> {
             Lista<BuscarCursosModel> lista
