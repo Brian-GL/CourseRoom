@@ -861,27 +861,24 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
         if (!archivo.exists()) {
 
-            SwingUtilities.invokeLater(() -> {
+            ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Material_Subido_Curso(id_Material);
 
-                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Material_Subido_Curso(id_Material);
+            if (archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()) {
 
-                if (archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()) {
+                try {
 
-                    try {
+                    FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
 
-                        FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
+                    CourseRoom.Utilerias().Abrir_Archivo(archivo);
 
-                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
-
-                    } catch (IOException ex) {
-                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
-                    }
-
-                } else {
-                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                } catch (IOException ex) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
                 }
 
-            });
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+            }
+
         } else {
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
