@@ -32,23 +32,22 @@ import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
-
 /**
  *
  * @author LENOVO
  */
-public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface{
+public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface {
 
     private byte carta_Visible;
     private int id_Curso;
     private String id_Curso_Vista;
-    
+
     public Crear_Curso_Profesor_Panel(int Id_Curso, String Id_Curso_Vista) {
         initComponents();
-       
+
         this.id_Curso = Id_Curso;
         this.id_Curso_Vista = Id_Curso_Vista;
-        
+
         Iniciar_Componentes();
     }
 
@@ -629,8 +628,8 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
     private void materiales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_materiales_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)curso_JLayeredPane.getLayout()).show(curso_JLayeredPane, "Materiales");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) curso_JLayeredPane.getLayout()).show(curso_JLayeredPane, "Materiales");
             carta_Visible = 2;
             Carta_Visible();
         }
@@ -638,7 +637,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
     private void informacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacion_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             ((CardLayout) curso_JLayeredPane.getLayout()).show(curso_JLayeredPane, "Informacion");
             carta_Visible = 0;
             Carta_Visible();
@@ -647,7 +646,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Retirar_Vista(this);
             Tablero_Profesor_Panel.Mostrar_Vista("Cursos");
             this.Limpiar();
@@ -666,7 +665,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
     private void imagen_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             ((CardLayout) curso_JLayeredPane.getLayout()).show(curso_JLayeredPane, "Imagen");
             carta_Visible = 1;
             Carta_Visible();
@@ -674,8 +673,8 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
     }//GEN-LAST:event_imagen_JButtonMouseClicked
 
     private void cambiar_Imagen_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseClicked
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "jpg", "jpeg");
             escogedor_Archivos.addChoosableFileFilter(filtro);
@@ -687,39 +686,37 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
             if (resultado == JFileChooser.APPROVE_OPTION) {
                 File archivo = escogedor_Archivos.getSelectedFile();
 
-                if(archivo != null){
+                if (archivo != null) {
                     try {
                         tamanio = FileUtils.sizeOf(archivo);
                         tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                        if(tamanio < 16){
+                        if (tamanio < 16) {
 
                             Image abrir_Imagen = ImageIO.read(archivo);
                             int largo_Imagen = imagen_Curso_JLabel.getHeight();
-                            ImageIcon icono_Grupo = new ImageIcon(abrir_Imagen.getScaledInstance(largo_Imagen,largo_Imagen,Image.SCALE_SMOOTH));
+                            ImageIcon icono_Grupo = new ImageIcon(abrir_Imagen.getScaledInstance(largo_Imagen, largo_Imagen, Image.SCALE_SMOOTH));
 
                             imagen_Curso_JLabel.setIcon(icono_Grupo);
-                            SwingUtilities.invokeLater(() -> {
-                                ResponseModel respuesta;
-                                try {
-                                    respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Curso(id_Curso, FileUtils.readFileToByteArray(archivo));
-                                    if (respuesta.Is_Success()) {
-                                        CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                                    } else {
-                                        CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-                                    }
-                                } catch (IOException ex) {
-                                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                            ResponseModel respuesta;
+                            try {
+                                respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Curso(id_Curso, FileUtils.readFileToByteArray(archivo));
+                                if (respuesta.Is_Success()) {
+                                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                                } else {
+                                    CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
                                 }
-                            });
+                            } catch (IOException ex) {
+                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                            }
                             abrir_Imagen.flush();
 
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Imagen Supera El Tamaño Aceptado De Subida");
+                        } else {
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "La Imagen Supera El Tamaño Aceptado De Subida");
                         }
                     } catch (IOException ex) {
-                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen",ex.getMessage());
+                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen", ex.getMessage());
                     }
-                }     
+                }
             }
         }
     }//GEN-LAST:event_cambiar_Imagen_JButtonMouseClicked
@@ -739,11 +736,11 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
     private void agregar_Tematica_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Tematica_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            if(id_Curso > 0){
+            if (id_Curso > 0) {
                 ComboOptionModel interes = ((ComboOptionModel) tematicas_AutoCompletionComboBox.getSelectedItem()) != null
                         ? ((ComboOptionModel) tematicas_AutoCompletionComboBox.getSelectedItem()) : new ComboOptionModel();
                 Agregar_Nuevo_Interes_Tematica(interes);
-            } else{
+            } else {
                 CourseRoom.Utilerias().Mensaje_Alerta("Agregar Temática", "Primero Registre Los Datos Generales Del Curso");
             }
         }
@@ -763,7 +760,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
     private void compartir_Materiales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_compartir_Materiales_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Enviar_Materiales();
         }
     }//GEN-LAST:event_compartir_Materiales_JButtonMouseClicked
@@ -782,41 +779,38 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
     private void nombre_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombre_JTextFieldKeyTyped
         char c = evt.getKeyChar();
-            if (Character.isDigit(c)) {
+        if (Character.isDigit(c)) {
             getToolkit().beep();//sonido de no aceptar más caracteres. 
             evt.consume();//hace que esa pulsación de tecla se rechace.
         }
         int longitud = nombre_JTextField.getText().length();
-            if(longitud > 79){
-            nombre_JTextField.setText(nombre_JTextField.getText().substring(0,longitud-1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Título Del Curso","El título De Tu Curso<br>Rebasa Los 80 Caracteres");
+        if (longitud > 79) {
+            nombre_JTextField.setText(nombre_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Título Del Curso", "El título De Tu Curso<br>Rebasa Los 80 Caracteres");
         }
     }//GEN-LAST:event_nombre_JTextFieldKeyTyped
 
     private void descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripcion_JTextPaneKeyTyped
         int longitud = descripcion_JTextPane.getText().length();
-            if (longitud > 1499) {
+        if (longitud > 1499) {
             descripcion_JTextPane.setText(descripcion_JTextPane.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Descripción Del Curso","La Descripción De Tu Curso<br>Rebasa Los 1500 Caracteres");
-          }
+            CourseRoom.Utilerias().Mensaje_Alerta("Descripción Del Curso", "La Descripción De Tu Curso<br>Rebasa Los 1500 Caracteres");
+        }
     }//GEN-LAST:event_descripcion_JTextPaneKeyTyped
 
     private void guardar_Datos_Generales_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Datos_Generales_Curso_JButtonMouseClicked
-        // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            SwingUtilities.invokeLater(() -> {
-                ResponseModel respuesta = CourseRoom.Solicitudes().Agregar_Curso(nombre_JTextField.getText(), descripcion_JTextPane.getText(), Tablero_Profesor_Panel.Id_Usuario());
+            ResponseModel respuesta = CourseRoom.Solicitudes().Agregar_Curso(nombre_JTextField.getText(), descripcion_JTextPane.getText(), Tablero_Profesor_Panel.Id_Usuario());
 
-                if (respuesta.Is_Success()) {
-                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                    id_Curso = respuesta.Codigo();
-                    imagen_JButton.setEnabled(true);
-                    informacion_JButton.setEnabled(true);
-                    materiales_JButton.setEnabled(true);
-                } else {
-                    CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-                }
-            });
+            if (respuesta.Is_Success()) {
+                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                id_Curso = respuesta.Codigo();
+                imagen_JButton.setEnabled(true);
+                informacion_JButton.setEnabled(true);
+                materiales_JButton.setEnabled(true);
+            } else {
+                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+            }
         }
     }//GEN-LAST:event_guardar_Datos_Generales_Curso_JButtonMouseClicked
 
@@ -832,36 +826,34 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         guardar_Datos_Generales_Curso_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_guardar_Datos_Generales_Curso_JButtonMouseExited
 
-    private void Agregar_Nuevo_Interes_Tematica(ComboOptionModel interes){
+    private void Agregar_Nuevo_Interes_Tematica(ComboOptionModel interes) {
         try {
             DefaultTableModel modelo = (DefaultTableModel) tematicas_JTable.getModel();
-            
+
             Celda_Renderer[] celdas = new Celda_Renderer[2];
             Celda_Renderer celda;
-            
+
             Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
             ImageIcon remover = new ImageIcon(icono);
-            
-            celda = new Celda_Renderer(interes.Valor(),interes.Id().toString());
+
+            celda = new Celda_Renderer(interes.Valor(), interes.Id().toString());
             celdas[0] = celda;
-            
+
             celda = new Celda_Renderer(remover);
             celdas[1] = celda;
-            SwingUtilities.invokeLater(() -> {
-                ResponseModel responseModel = CourseRoom.Solicitudes().Agregar_Interes(Tablero_Profesor_Panel.Id_Usuario(), interes.Id());
-                if (responseModel.Is_Success()) {
-                    CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
-                } else {
-                    CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
-                }
-            });
+            ResponseModel responseModel = CourseRoom.Solicitudes().Agregar_Interes(Tablero_Profesor_Panel.Id_Usuario(), interes.Id());
+            if (responseModel.Is_Success()) {
+                CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
+            } else {
+                CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
+            }
             modelo.addRow(celdas);
-            
-            tematicas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
-            
+
+            tematicas_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
+
             icono.flush();
         } catch (IOException ex) {
-            
+
         }
     }
     
@@ -933,79 +925,73 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         imagen_JButton.setEnabled(false);
         informacion_JButton.setEnabled(false);
         //Informacion curso:
-       
+
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
-        
+
         // Materiales:
         materiales_JScrollPane.getViewport().setOpaque(false);
         materiales_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         materiales_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-      
+
         materiales_JTable.getTableHeader().setFont(gadugi);
         materiales_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
+
         // Editar curso:
-        
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
+
         tematicas_JScrollPane.getViewport().setOpaque(false);
         tematicas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         tematicas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
+
         tematicas_JTable.getTableHeader().setFont(gadugi);
         tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
-        SwingUtilities.invokeLater(() -> {
-            // Obtener temáticas:
-            Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
+        // Obtener temáticas:
+        Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
 
-            if (!tematicas.is_empty()) {
-                while (!tematicas.is_empty()) {
-                    tematicas_AutoCompletionComboBox.addItem(tematicas.delist());
-                }
-                tematicas_AutoCompletionComboBox.setSelectedIndex(0);
-            } else {
-                tematicas_AutoCompletionComboBox.setEnabled(false);
-                agregar_Tematica_JButton.setEnabled(false);
-                tematicas_JTable.setEnabled(false);
+        if (!tematicas.is_empty()) {
+            while (!tematicas.is_empty()) {
+                tematicas_AutoCompletionComboBox.addItem(tematicas.delist());
             }
-        });
+            tematicas_AutoCompletionComboBox.setSelectedIndex(0);
+        } else {
+            tematicas_AutoCompletionComboBox.setEnabled(false);
+            agregar_Tematica_JButton.setEnabled(false);
+            tematicas_JTable.setEnabled(false);
+        }
         Colorear_Componentes();
     }
 
     @Override
     public void Colorear_Componentes() {
-        
+
         titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        
+
         titulo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         titulo_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+
         regresar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        
-        
+
         agregar_Tematica_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         agregar_Tematica_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
 
         Carta_Visible();
-        
+
         // Informacion curso:
-       
         DefaultTableModel modelo;
         Celda_Renderer celda;
-        
+
         guardar_Datos_Generales_Curso_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         guardar_Datos_Generales_Curso_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
-        
+
         //Materiales:
         materiales_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
         materiales_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+
         materiales_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
         materiales_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         materiales_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color());
-        
+
         materiales_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
         materiales_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
@@ -1016,10 +1002,10 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                 celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
-        
+
         compartir_Materiales_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         compartir_Materiales_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
-       
+
         //Informacion curso:
         descripcion_JTextPane.setBackground(CourseRoom.Utilerias().Tercer_Color());
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
@@ -1031,10 +1017,10 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         nombre_JTextField.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         nombre_JTextField.setCaretColor(CourseRoom.Utilerias().Tercer_Color_Fuente());
         nombre_JTextField.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+
         tematicas_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
         tematicas_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         tematicas_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
         tematicas_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
 
@@ -1054,77 +1040,72 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         }
 
         tematicas_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+
     }
-    
+
     public void Enviar_Materiales() {
         Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
         int resultado = escogedor_Archivos.showOpenDialog(this);
 
         if (resultado == JFileChooser.APPROVE_OPTION) {
             File archivo_Abierto = escogedor_Archivos.getSelectedFile();
-            
-            if(archivo_Abierto != null){
-                
+
+            if (archivo_Abierto != null) {
+
                 long tamanio = FileUtils.sizeOf(archivo_Abierto);
                 tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                if(tamanio < 15){
-                    
-                    SwingUtilities.invokeLater(() -> {
-                        try {
-                            
-                            Celda_Renderer[] celdas = new Celda_Renderer[4];
-                            DefaultTableModel modelo = (DefaultTableModel) materiales_JTable.getModel();
-                            Celda_Renderer celda;
-                            
-                            ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Adjunto_Tarea(Tablero_Profesor_Panel.Id_Usuario(), archivo_Abierto.getName(),
-                                    FileUtils.readFileToByteArray(archivo_Abierto),
-                                    FilenameUtils.getExtension(archivo_Abierto.getName()));
+                if (tamanio < 35) {
+                    try {
 
-                            if(response.Is_Success()){
-                                String id_Archivo = String.valueOf(response.Codigo());
-                                
-                                Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-                                ImageIcon icono = new ImageIcon(imagen);
-                                celda = new Celda_Renderer(icono, archivo_Abierto.getName(), id_Archivo);
-                                celdas[0] = celda;
-                                celda = new Celda_Renderer(Perfil_Profesor_Panel.Nombre_Completo(), id_Archivo);
-                                celdas[1] = celda;
-                                celda = new Celda_Renderer(CourseRoom.Utilerias().Fecha_Hora_Local(), id_Archivo);
-                                celdas[2] = celda;
-                                imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-                                icono = new ImageIcon(imagen);
-                                celda = new Celda_Renderer(icono, id_Archivo);
-                                celdas[3] = celda;
-                                modelo.insertRow(0,celdas);
-                                CourseRoom.Utilerias().Mensaje_Informativo("Curso",response.Mensaje());
-                                imagen.flush();
-                                
-                            } else{
-                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
-                            }
+                        Celda_Renderer[] celdas = new Celda_Renderer[4];
+                        DefaultTableModel modelo = (DefaultTableModel) materiales_JTable.getModel();
+                        Celda_Renderer celda;
 
-                        } catch (IOException ex) {
-                            CourseRoom.Utilerias().Mensaje_Error("Error!!!","Se Encontro Un Error Al Compartir El Archivo");
+                        ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Adjunto_Tarea(Tablero_Profesor_Panel.Id_Usuario(), archivo_Abierto.getName(),
+                                FileUtils.readFileToByteArray(archivo_Abierto),
+                                FilenameUtils.getExtension(archivo_Abierto.getName()));
+
+                        if (response.Is_Success()) {
+                            String id_Archivo = String.valueOf(response.Codigo());
+
+                            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                            ImageIcon icono = new ImageIcon(imagen);
+                            celda = new Celda_Renderer(icono, archivo_Abierto.getName(), id_Archivo);
+                            celdas[0] = celda;
+                            celda = new Celda_Renderer(Perfil_Profesor_Panel.Nombre_Completo(), id_Archivo);
+                            celdas[1] = celda;
+                            celda = new Celda_Renderer(CourseRoom.Utilerias().Fecha_Hora_Local(), id_Archivo);
+                            celdas[2] = celda;
+                            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+                            icono = new ImageIcon(imagen);
+                            celda = new Celda_Renderer(icono, id_Archivo);
+                            celdas[3] = celda;
+                            modelo.insertRow(0, celdas);
+                            CourseRoom.Utilerias().Mensaje_Informativo("Curso", response.Mensaje());
+                            imagen.flush();
+
+                        } else {
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", response.Mensaje());
                         }
-                    
-                    });
-                    
+
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Error("Error!!!", "Se Encontro Un Error Al Compartir El Archivo");
+                    }
                 } else {
-                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-                }                 
-                    
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                }
+
             }
         }
     }
-   
+
     @Override
     public void Limpiar() {
         DefaultTableModel modelo = (DefaultTableModel) tematicas_JTable.getModel();
         modelo.setRowCount(0);
         modelo = (DefaultTableModel) materiales_JTable.getModel();
         modelo.setRowCount(0);
-        
+
     }
 
     @Override
@@ -1145,7 +1126,6 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                 imagen_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
                 materiales_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
                 break;
-            
         }
     }
 }

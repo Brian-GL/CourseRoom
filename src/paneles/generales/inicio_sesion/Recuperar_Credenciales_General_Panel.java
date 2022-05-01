@@ -19,7 +19,7 @@ import org.apache.xmlrpc.XmlRpcException;
  *
  * @author LENOVO
  */
-public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel implements Componentes_Interface{
+public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel implements Componentes_Interface {
 
     /**
      * Creates new form RecuperarCredencialesPanel
@@ -27,7 +27,7 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public Recuperar_Credenciales_General_Panel() {
         initComponents();
-        
+
         Iniciar_Componentes();
     }
 
@@ -161,25 +161,24 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
     }// </editor-fold>//GEN-END:initComponents
 
 
-    
     private void correo_Electronico_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_correo_Electronico_JTextFieldKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-             try {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
                 Recuperar_Credenciales();
             } catch (XmlRpcException | IOException ex) {
-                
+
             }
         }
     }//GEN-LAST:event_correo_Electronico_JTextFieldKeyPressed
 
     private void recuperar_Credenciales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recuperar_Credenciales_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             try {
                 Recuperar_Credenciales();
             } catch (XmlRpcException | IOException ex) {
-                CourseRoom.Utilerias().Mensaje_Error("Recuperar Credenciales","Mmmm...<br>Parece que el correo electrónico no existe o estamos experimentando problemas en el envío");
+                CourseRoom.Utilerias().Mensaje_Error("Recuperar Credenciales", "Mmmm...<br>Parece que el correo electrónico no existe o estamos experimentando problemas en el envío");
             }
         }
 
@@ -193,14 +192,14 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
 
     private void recuperar_Credenciales_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recuperar_Credenciales_JButtonMouseExited
         // TODO add your handling code here:
-        
+
         recuperar_Credenciales_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         recuperar_Credenciales_JButton.setForeground(CourseRoom.Utilerias().Primer_Color());
     }//GEN-LAST:event_recuperar_Credenciales_JButtonMouseExited
 
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             CourseRoom.Frame().Mostrar_Vista("Inicio_Sesion");
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
@@ -216,26 +215,23 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
     }//GEN-LAST:event_regresar_JButtonMouseExited
 
     public void Recuperar_Credenciales() throws XmlRpcException, IOException {
- 
-        if(CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(correo_Electronico_JTextField.getText())){
-            SwingUtilities.invokeLater(() -> {
-                Boolean respuesta = CourseRoom.Solicitudes().Recuperar_Credenciales(correo_Electronico_JTextField.getText());
-                if (respuesta) {
-                    CourseRoom.Utilerias().Mensaje_Informativo("Recuperar Credenciales",
-                            "Hemos enviado las credenciales al correo electr\u00f3nico.<br>"
-                            + "Te recomendamos que revises la bandeja de entrada como en spam o correo no deseado.<br>"
-                            + "La informaci\u00f3n llegará siempre y cuando exista una cuenta vinculada con el correo electr\u00f3nico");
-                } else {
-                    CourseRoom.Utilerias().Mensaje_Error("Recuperar Credenciales", "Mmmm...<br>Parece que el correo electrónico no existe<br>o estamos experimentando problemas en el envío");
-                }
-            });
-        }
-        else{
-            CourseRoom.Utilerias().Mensaje_Alerta("Recuperar Credenciales","Mmmm...<br>Parece que el formato de texto que ingresaste no es el adecuado");
+
+        if (CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(correo_Electronico_JTextField.getText())) {
+            Boolean respuesta = CourseRoom.Solicitudes().Recuperar_Credenciales(correo_Electronico_JTextField.getText());
+            if (respuesta) {
+                CourseRoom.Utilerias().Mensaje_Informativo("Recuperar Credenciales",
+                        "Hemos enviado las credenciales al correo electr\u00f3nico.<br>"
+                        + "Te recomendamos que revises la bandeja de entrada como en spam o correo no deseado.<br>"
+                        + "La informaci\u00f3n llegará siempre y cuando exista una cuenta vinculada con el correo electr\u00f3nico");
+            } else {
+                CourseRoom.Utilerias().Mensaje_Error("Recuperar Credenciales", "Mmmm...<br>Parece que el correo electrónico no existe<br>o estamos experimentando problemas en el envío");
+            }
+        } else {
+            CourseRoom.Utilerias().Mensaje_Alerta("Recuperar Credenciales", "Mmmm...<br>Parece que el formato de texto que ingresaste no es el adecuado");
         }
         correo_Electronico_JTextField.setText("");
     }
-  
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel correo_Electronico_JLabel;
@@ -249,7 +245,7 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
 
     @Override
     public void Iniciar_Componentes() {
-        
+
         try {
             Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
             logo_Imagen = logo_Imagen.getScaledInstance(150, 125, Image.SCALE_SMOOTH);
@@ -259,7 +255,7 @@ public class Recuperar_Credenciales_General_Panel extends javax.swing.JPanel imp
             icono.getImage().flush();
             Colorear_Componentes();
         } catch (IOException ex) {
-            
+
         }
     }
 

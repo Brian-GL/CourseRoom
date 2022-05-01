@@ -36,12 +36,12 @@ import paneles.profesores.cursos.Cursos_Profesor_Panel;
  *
  * @author LENOVO
  */
-public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface{
+public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface {
 
     private static Image imagen_Usuario;
 
     private static Integer IdUsuario, IdSesion;
-    
+
     private static Chats_Profesor_Panel chats_Panel;
     private static Acerca_General_Panel acerca_De_Panel;
     private static Perfil_Profesor_Panel perfil_Panel;
@@ -53,13 +53,12 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     private static Cursos_Profesor_Panel cursos_Panel;
     private static Preguntas_Profesor_Panel preguntas_Panel;
     private static Tiempo_Servidor tiempo_Servidor;
-    
-   
+
     public Tablero_Profesor_Panel(Integer _id_Usuario) {
         initComponents();
         IdUsuario = _id_Usuario;
         Iniciar_Componentes();
-        
+
     }
 
     /**
@@ -412,18 +411,17 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+
     private void imagen_Perfil_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagen_Perfil_JLabelMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Mostrar_Vista("Perfil");
         }
     }//GEN-LAST:event_imagen_Perfil_JLabelMouseClicked
 
     private void menu_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             menu_JPanel.setVisible(!menu_JPanel.isVisible());
         }
     }//GEN-LAST:event_menu_JButtonMouseClicked
@@ -442,7 +440,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     private void cursos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cursos_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Mostrar_Vista("Cursos");
         }
     }//GEN-LAST:event_cursos_JButtonMouseClicked
@@ -461,10 +459,10 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     private void tareas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Mostrar_Vista("Tareas");
         }
-        
+
     }//GEN-LAST:event_tareas_JButtonMouseClicked
 
     private void tareas_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_JButtonMouseEntered
@@ -481,7 +479,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     private void fechas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fechas_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Mostrar_Vista("Fechas");
         }
     }//GEN-LAST:event_fechas_JButtonMouseClicked
@@ -500,7 +498,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     private void avisos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_avisos_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Mostrar_Vista("Avisos");
         }
     }//GEN-LAST:event_avisos_JButtonMouseClicked
@@ -519,7 +517,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     private void chats_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chats_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Mostrar_Vista("Chats");
         }
     }//GEN-LAST:event_chats_JButtonMouseClicked
@@ -538,7 +536,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     private void reproductor_Musica_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reproductor_Musica_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Mostrar_Vista("Musica");
         }
     }//GEN-LAST:event_reproductor_Musica_JButtonMouseClicked
@@ -557,7 +555,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     private void acerca_De_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acerca_De_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Mostrar_Vista("Acerca_De");
         }
     }//GEN-LAST:event_acerca_De_JButtonMouseClicked
@@ -576,7 +574,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     private void ajustes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ajustes_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Mostrar_Vista("Ajustes");
         }
     }//GEN-LAST:event_ajustes_JButtonMouseClicked
@@ -595,7 +593,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     private void salir_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salir_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             CourseRoom.Frame().Cerrar_Sesion();
             this.Limpiar();
         }
@@ -615,7 +613,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     private void preguntas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preguntas_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Mostrar_Vista("Preguntas");
         }
     }//GEN-LAST:event_preguntas_JButtonMouseClicked
@@ -632,12 +630,11 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         preguntas_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
     }//GEN-LAST:event_preguntas_JButtonMouseExited
 
-   
-    public static void Establecer_Colores(){
-            if(imagen_Usuario != null){
+    public static void Establecer_Colores() {
+        if (imagen_Usuario != null) {
             try {
 
-                Color primer_Color, segundo_Color, tercer_Color,primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
+                Color primer_Color, segundo_Color, tercer_Color, primer_Color_Fuente, segundo_Color_Fuente, tercer_Color_Fuente;
                 int maximo_auxiliar = 0;
                 primer_Color = Color.BLACK;
                 Faker faker = new Faker();
@@ -645,21 +642,21 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                 PixelGrabber obtener_Pixeles = new PixelGrabber(imagen_Usuario, 0, 0, -1, -1, false);
                 int largo_Imagen = imagen_Usuario.getWidth(null);
                 int[] pixeles;
-                int pixel,rojo,verde,azul,numero_Auxiliar,posicion;
+                int pixel, rojo, verde, azul, numero_Auxiliar, posicion;
                 Color color;
                 Par<Integer, Color> par;
                 if (obtener_Pixeles.grabPixels()) {
                     pixeles = (int[]) obtener_Pixeles.getPixels();
-                    for(int i = 0; i < pixeles.length; i++){
+                    for (int i = 0; i < pixeles.length; i++) {
                         pixel = pixeles[i];
-                        rojo = (pixel  & 0x00ff0000) >> 16;
+                        rojo = (pixel & 0x00ff0000) >> 16;
                         verde = (pixel & 0x0000ff00) >> 8;
                         azul = pixel & 0x000000ff;
-                        color = new Color(rojo,verde,azul);
+                        color = new Color(rojo, verde, azul);
                         par = lista_Colores.get_from_second(color);
 
                         if (par != null) { //existe
-                            numero_Auxiliar = par.first()+ 1;
+                            numero_Auxiliar = par.first() + 1;
                             par.first(numero_Auxiliar);
                             if (numero_Auxiliar > maximo_auxiliar) {
                                 primer_Color = color;
@@ -669,40 +666,40 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                             lista_Colores.push_back(1, color);
                         }
 
-                        i += faker.number().numberBetween(1,largo_Imagen);
+                        i += faker.number().numberBetween(1, largo_Imagen);
                     }
 
                     segundo_Color = primer_Color;
 
                     int iteraciones = 0;
-                    if(lista_Colores.size() > 1){
+                    if (lista_Colores.size() > 1) {
 
-                        while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                            posicion = faker.number().numberBetween(0,lista_Colores.size()-1);
+                        while (Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000) {
+                            posicion = faker.number().numberBetween(0, lista_Colores.size() - 1);
                             segundo_Color = lista_Colores.get(posicion).second();
                             iteraciones++;
-                            if(iteraciones > 25){
-                                 while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                    posicion = faker.number().numberBetween(0,lista_Colores.size()-1);
+                            if (iteraciones > 25) {
+                                while (primer_Color.getRGB() == segundo_Color.getRGB()) {
+                                    posicion = faker.number().numberBetween(0, lista_Colores.size() - 1);
                                     segundo_Color = lista_Colores.get(posicion).second();
                                 }
-                                 break;
+                                break;
                             }
                         }
                     }
 
                     tercer_Color = segundo_Color;
 
-                    if(lista_Colores.size() > 2){
+                    if (lista_Colores.size() > 2) {
                         iteraciones = 0;
 
-                        while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
-                            posicion = faker.number().numberBetween(0,lista_Colores.size()-1);
+                        while (Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000) {
+                            posicion = faker.number().numberBetween(0, lista_Colores.size() - 1);
                             tercer_Color = lista_Colores.get(posicion).second();
                             iteraciones++;
-                            if(iteraciones > 50){
-                                while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
-                                    posicion = faker.number().numberBetween(0,lista_Colores.size()-1);
+                            if (iteraciones > 50) {
+                                while (tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()) {
+                                    posicion = faker.number().numberBetween(0, lista_Colores.size() - 1);
                                     tercer_Color = lista_Colores.get(posicion).second();
                                 }
                                 break;
@@ -725,16 +722,16 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                     CourseRoom.Utilerias().Segundo_Color_Fuente(segundo_Color_Fuente);
                     CourseRoom.Utilerias().Tercer_Color_Fuente(tercer_Color_Fuente);
 
-                    CourseRoom_Frame.Colorear(); 
+                    CourseRoom_Frame.Colorear();
                     Colorear();
 
                 }
 
             } catch (InterruptedException ex) {
-                CourseRoom.Utilerias().Mensaje_Error("Error Al Establecer Colores",ex.getMessage());
+                CourseRoom.Utilerias().Mensaje_Error("Error Al Establecer Colores", ex.getMessage());
             }
 
-        }else{
+        } else {
             CourseRoom.Utilerias().Primer_Color(CourseRoom.Utilerias().Color_Azul_Oscuro());
             CourseRoom.Utilerias().Segundo_Color(CourseRoom.Utilerias().Color_Azul_Claro());
             CourseRoom.Utilerias().Tercer_Color(CourseRoom.Utilerias().Color_Azul_Oscuro());
@@ -742,14 +739,14 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
             CourseRoom.Utilerias().Segundo_Color_Fuente(CourseRoom.Utilerias().Color_Azul_Oscuro());
             CourseRoom.Utilerias().Tercer_Color_Fuente(CourseRoom.Utilerias().Color_Azul_Claro());
 
-            CourseRoom_Frame.Colorear(); 
+            CourseRoom_Frame.Colorear();
             Colorear();
         }
-            
+
     }
-    
-    public static void Colorear(){
-         
+
+    public static void Colorear() {
+
         acerca_De_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         ajustes_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         avisos_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
@@ -773,10 +770,10 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         preguntas_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         menu_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         menu_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
-        
+
         mensaje_Bienvenida_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         fecha_Hora_Servidor_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-       
+
         perfil_Panel.Colorear_Componentes();
         avisos_Panel.Colorear_Componentes();
         tareas_Panel.Colorear_Componentes();
@@ -789,9 +786,9 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         preguntas_Panel.Colorear_Componentes();
         cursos_Panel.Colorear_Componentes();
     }
-    
+
     @Override
-    public void Limpiar(){
+    public void Limpiar() {
         tiempo_Servidor.interrupt();
         tareas_Panel.Limpiar();
         reproductor_Musica_Panel.Limpiar();
@@ -800,60 +797,58 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         fechas_Panel.Limpiar();
         cursos_Panel.Limpiar();
         perfil_Panel.Limpiar();
-        
+
     }
-    
-    public static void Agregar_Vista(Component componente, String llave){
-        visualizador_JPanel.add(llave,componente);
+
+    public static void Agregar_Vista(Component componente, String llave) {
+        visualizador_JPanel.add(llave, componente);
     }
-    
-    public static void Mostrar_Vista(String llave){
-        ((CardLayout)visualizador_JPanel.getLayout()).show(visualizador_JPanel, llave);
+
+    public static void Mostrar_Vista(String llave) {
+        ((CardLayout) visualizador_JPanel.getLayout()).show(visualizador_JPanel, llave);
     }
-    
-    public static void Retirar_Vista(Component componente){
-        ((CardLayout)visualizador_JPanel.getLayout()).removeLayoutComponent(componente);
+
+    public static void Retirar_Vista(Component componente) {
+        ((CardLayout) visualizador_JPanel.getLayout()).removeLayoutComponent(componente);
     }
-    
+
     public static Integer Id_Usuario() {
         return IdUsuario;
     }
-    
+
     /**
-    * @return the imagen_Usuario
-    */
+     * @return the imagen_Usuario
+     */
     public static Image Obtener_Imagen_Usuario() {
         return imagen_Usuario;
     }
-    
+
     public static void Cambiar_Imagen_Usuario(byte[] bytes_Imagen_Perfil, Image imagen) {
-        
-        if(bytes_Imagen_Perfil.length > 0){
-            SwingUtilities.invokeLater(() -> {
-                ResponseModel response = CourseRoom.Solicitudes().Actualizar_Imagen_Perfil(IdUsuario, bytes_Imagen_Perfil);
-                if (response.Is_Success()) {
-                    imagen_Usuario = imagen;
-                    if (imagen_Usuario != null) {
-                        Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-                        ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
-                        imagen_Perfil_JLabel.setIcon(icono_Imagen);
-                        icono_Imagen.getImage().flush();
-                        imagen_Redimensionada.flush();
-                        Establecer_Colores();
-                        CourseRoom.Utilerias().Mensaje_Informativo("Cambiar Imagen Perfil", response.Mensaje());
-                    }
-                } else {
-                    CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar La Imagen De Perfil", response.Mensaje());
+
+        if (bytes_Imagen_Perfil.length > 0) {
+            ResponseModel response = CourseRoom.Solicitudes().Actualizar_Imagen_Perfil(IdUsuario, bytes_Imagen_Perfil);
+            if (response.Is_Success()) {
+                imagen_Usuario = imagen;
+                if (imagen_Usuario != null) {
+                    Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                    ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
+                    imagen_Perfil_JLabel.setIcon(icono_Imagen);
+                    icono_Imagen.getImage().flush();
+                    imagen_Redimensionada.flush();
+                    Establecer_Colores();
+                    CourseRoom.Utilerias().Mensaje_Informativo("Cambiar Imagen Perfil", response.Mensaje());
                 }
-            });
-        }            
+            } else {
+                CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar La Imagen De Perfil", response.Mensaje());
+            }
+        }
     }
-    
+
     public static Integer Id_Sesion() {
         return IdSesion;
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JButton acerca_De_JButton;
     private static javax.swing.JButton ajustes_JButton;
@@ -876,26 +871,21 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
 
     @Override
     public void Iniciar_Componentes() {
-        
-        
-            byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(IdUsuario);
+        byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(IdUsuario);
 
-            if (bytes_Imagen_Perfil.length > 0) {
-                imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
+        if (bytes_Imagen_Perfil.length > 0) {
+            imagen_Usuario = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Perfil);
 
-                if (imagen_Usuario != null) {
-                    Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-                    ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
-                    imagen_Perfil_JLabel.setIcon(icono_Imagen);
-                    icono_Imagen.getImage().flush();
-                    imagen_Redimensionada.flush();
-                }
+            if (imagen_Usuario != null) {
+                Image imagen_Redimensionada = imagen_Usuario.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+                ImageIcon icono_Imagen = new ImageIcon(imagen_Redimensionada);
+                imagen_Perfil_JLabel.setIcon(icono_Imagen);
+                icono_Imagen.getImage().flush();
+                imagen_Redimensionada.flush();
             }
-        
-        
+        }
         perfil_Panel = new Perfil_Profesor_Panel();
-        visualizador_JPanel.add("Perfil",perfil_Panel);
-        
+        visualizador_JPanel.add("Perfil", perfil_Panel);
         ResponseModel response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
 
         if (!response.Is_Success()) {
@@ -909,63 +899,62 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
         visualizador_JPanel.add("Chats", chats_Panel);
 
         tareas_Panel = new Tareas_Profesor_Panel();
-        visualizador_JPanel.add("Tareas",tareas_Panel);
+        visualizador_JPanel.add("Tareas", tareas_Panel);
 
         fechas_Panel = new Fechas_General_Panel(true);
-        visualizador_JPanel.add("Fechas",fechas_Panel);
+        visualizador_JPanel.add("Fechas", fechas_Panel);
 
         avisos_Panel = new Avisos_General_Panel(true);
-        visualizador_JPanel.add("Avisos",avisos_Panel);
+        visualizador_JPanel.add("Avisos", avisos_Panel);
 
         acerca_De_Panel = new Acerca_General_Panel();
-        visualizador_JPanel.add("Acerca_De",acerca_De_Panel);
+        visualizador_JPanel.add("Acerca_De", acerca_De_Panel);
 
         reproductor_Musica_Panel = new Reproductor_Musica_General_Panel();
-        visualizador_JPanel.add("Musica",reproductor_Musica_Panel);
+        visualizador_JPanel.add("Musica", reproductor_Musica_Panel);
 
         ajustes_Panel = new Ajustes_Profesor_Panel();
-        visualizador_JPanel.add("Ajustes",ajustes_Panel);
+        visualizador_JPanel.add("Ajustes", ajustes_Panel);
 
         preguntas_Panel = new Preguntas_Profesor_Panel();
         visualizador_JPanel.add("Preguntas", preguntas_Panel);
 
         cursos_Panel = new Cursos_Profesor_Panel();
         visualizador_JPanel.add("Cursos", cursos_Panel);
-        
+
         mensaje_Bienvenida_JLabel.setText(CourseRoom.Utilerias().Concatenar("Bienvenid@ ", Perfil_Profesor_Panel.Nombre_Completo()));
 
         tiempo_Servidor = new Tiempo_Servidor();
         tiempo_Servidor.start();
-        
+
     }
 
     @Override
     public void Colorear_Componentes() {
         Colorear();
     }
-    
-    public class Tiempo_Servidor extends Thread{
-    
 
-        public Tiempo_Servidor(){
+    public class Tiempo_Servidor extends Thread {
+
+        public Tiempo_Servidor() {
         }
 
         @Override
         @SuppressWarnings("SleepWhileInLoop")
-        public void run(){
-           
+        public void run() {
+
             LocalDateTime fecha_Hora_Servidor;
             Vector<Integer> respuesta = CourseRoom.Solicitudes().Fecha_Hora_Servidor();
 
-            if(!respuesta.isEmpty()){
+            if (!respuesta.isEmpty()) {
 
-                fecha_Hora_Servidor = 
-                        LocalDateTime.of(respuesta.elementAt(0),respuesta.elementAt(1),
-                                respuesta.elementAt(2), respuesta.elementAt(3), 
+                fecha_Hora_Servidor
+                        = LocalDateTime.of(respuesta.elementAt(0), respuesta.elementAt(1),
+                                respuesta.elementAt(2), respuesta.elementAt(3),
                                 respuesta.elementAt(4), respuesta.elementAt(5));
 
                 String tiempo;
-                while(fecha_Hora_Servidor != null){
+                while (fecha_Hora_Servidor != null) {
 
                     try {
                         fecha_Hora_Servidor = fecha_Hora_Servidor.plusSeconds(1);
@@ -974,14 +963,13 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                         fecha_Hora_Servidor_JLabel.setText(tiempo);
                         Thread.sleep(1000);
                     } catch (InterruptedException ex) {
-                        
+
                     }
 
                 }
-            }else{
+            } else {
                 fecha_Hora_Servidor_JLabel.setText("No Disponible");
             }
         }
-
     }
 }

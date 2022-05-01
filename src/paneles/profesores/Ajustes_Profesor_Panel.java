@@ -31,20 +31,20 @@ import modelos.SesionesModel;
  *
  * @author LENOVO
  */
-public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Carta_Visibilidad_Interface, Limpieza_Interface{
+public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Carta_Visibilidad_Interface, Limpieza_Interface {
 
     private byte carta_Visible;
     private boolean chats_Conmigo, avisos_Activo;
     private Color primer_Color_Personalizado, segundo_Color_Personalizado, tercer_Color_Personalizado, primer_Color_Fuente_Personalizado, segundo_Color_Fuente_Personalizado, tercer_Color_Fuente_Personalizado;
-    
+
     /**
      * Creates new form GeneralConfigurationPanel
      */
     public Ajustes_Profesor_Panel() {
         initComponents();
-        
+
         Iniciar_Componentes();
-        
+
     }
 
     /**
@@ -389,7 +389,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
     private void recargar_Colores_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recargar_Colores_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Establecer_Colores();
         }
     }//GEN-LAST:event_recargar_Colores_JButtonMouseClicked
@@ -408,30 +408,30 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
     private void primer_Color_Personalizado_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primer_Color_Personalizado_JLabelMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-           Color nuevo_Primer_Color  = JColorChooser.showDialog(this, "Escogedor De Primer Color", primer_Color_Personalizado);
-           if(nuevo_Primer_Color != null){
-               
-               primer_Color_Personalizado = nuevo_Primer_Color;
-               int rojo = primer_Color_Personalizado.getRed();
-               primer_Color_Fuente_Personalizado = (rojo >= 155) ? Color.BLACK : Color.WHITE;
-               primer_Color_Personalizado_JLabel.setBackground(primer_Color_Personalizado);
-               primer_Color_Personalizado_JLabel.setForeground(primer_Color_Fuente_Personalizado);
-               primer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(primer_Color_Personalizado));
-               primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), primer_Color_Fuente_Personalizado));
-               
-               CourseRoom.Utilerias().Primer_Color(primer_Color_Personalizado);
-               CourseRoom.Utilerias().Primer_Color_Fuente(primer_Color_Fuente_Personalizado);
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            Color nuevo_Primer_Color = JColorChooser.showDialog(this, "Escogedor De Primer Color", primer_Color_Personalizado);
+            if (nuevo_Primer_Color != null) {
 
-               CourseRoom_Frame.Colorear();
-               Tablero_Profesor_Panel.Colorear();
-           }
+                primer_Color_Personalizado = nuevo_Primer_Color;
+                int rojo = primer_Color_Personalizado.getRed();
+                primer_Color_Fuente_Personalizado = (rojo >= 155) ? Color.BLACK : Color.WHITE;
+                primer_Color_Personalizado_JLabel.setBackground(primer_Color_Personalizado);
+                primer_Color_Personalizado_JLabel.setForeground(primer_Color_Fuente_Personalizado);
+                primer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(primer_Color_Personalizado));
+                primer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Primer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), primer_Color_Fuente_Personalizado));
+
+                CourseRoom.Utilerias().Primer_Color(primer_Color_Personalizado);
+                CourseRoom.Utilerias().Primer_Color_Fuente(primer_Color_Fuente_Personalizado);
+
+                CourseRoom_Frame.Colorear();
+                Tablero_Profesor_Panel.Colorear();
+            }
         }
     }//GEN-LAST:event_primer_Color_Personalizado_JLabelMouseClicked
 
     private void segundo_Color_Personalizado_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_segundo_Color_Personalizado_JLabelMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Color nuevo_Segundo_Color = JColorChooser.showDialog(this, "Escogedor De Segundo Color", segundo_Color_Personalizado);
             if (nuevo_Segundo_Color != null) {
 
@@ -442,19 +442,19 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                 segundo_Color_Personalizado_JLabel.setForeground(segundo_Color_Fuente_Personalizado);
                 segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(segundo_Color_Personalizado));
                 segundo_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segundo Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), segundo_Color_Fuente_Personalizado));
-                
+
                 CourseRoom.Utilerias().Segundo_Color(segundo_Color_Personalizado);
                 CourseRoom.Utilerias().Segundo_Color_Fuente(segundo_Color_Fuente_Personalizado);
 
                 CourseRoom_Frame.Colorear();
                 Tablero_Profesor_Panel.Colorear();
-            } 
+            }
         }
     }//GEN-LAST:event_segundo_Color_Personalizado_JLabelMouseClicked
 
     private void tercer_Color_Personalizado_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tercer_Color_Personalizado_JLabelMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Color nuevo_Tercer_Color = JColorChooser.showDialog(this, "Escogedor De Tercer Color", tercer_Color_Personalizado);
             if (nuevo_Tercer_Color != null) {
 
@@ -465,10 +465,10 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                 tercer_Color_Personalizado_JLabel.setForeground(tercer_Color_Fuente_Personalizado);
                 tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(tercer_Color_Personalizado));
                 tercer_Color_Personalizado_JLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tercer Color", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), tercer_Color_Fuente_Personalizado));
-                
+
                 CourseRoom.Utilerias().Tercer_Color(tercer_Color_Personalizado);
                 CourseRoom.Utilerias().Tercer_Color_Fuente(tercer_Color_Fuente_Personalizado);
-                
+
                 CourseRoom_Frame.Colorear();
                 Tablero_Profesor_Panel.Colorear();
             }
@@ -477,7 +477,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
     private void interfaz_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_interfaz_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             carta_Visible = 0;
             Carta_Visible();
             ((CardLayout) ajustes_JLayeredPane.getLayout()).show(ajustes_JLayeredPane, "Interfaz");
@@ -486,7 +486,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
     private void cuenta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cuenta_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             carta_Visible = 2;
             Carta_Visible();
             ((CardLayout) ajustes_JLayeredPane.getLayout()).show(ajustes_JLayeredPane, "Cuenta");
@@ -495,7 +495,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
     private void sesiones_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sesiones_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             carta_Visible = 1;
             Carta_Visible();
             ((CardLayout) ajustes_JLayeredPane.getLayout()).show(ajustes_JLayeredPane, "Sesiones");
@@ -504,22 +504,19 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
     private void eliminar_Cuenta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Cuenta_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
-                    "¿Estás Segur@ De Eliminar Tu Cuenta?", "Pregunta", 
-                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
-            
-            if(resultado == JOptionPane.YES_OPTION){
-            
-                SwingUtilities.invokeLater(() -> {
-                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), chats_Conmigo, avisos_Activo, false);
+                    "¿Estás Segur@ De Eliminar Tu Cuenta?", "Pregunta",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-                    if(response.Is_Success()){
-                        CourseRoom.Utilerias().Mensaje_Informativo("Eliminar Cuenta", response.Mensaje());
-                    }else{
-                        CourseRoom.Utilerias().Mensaje_Alerta("Eliminar Cuenta", response.Mensaje());
-                    }
-                });
+            if (resultado == JOptionPane.YES_OPTION) {
+                ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), chats_Conmigo, avisos_Activo, false);
+
+                if (response.Is_Success()) {
+                    CourseRoom.Utilerias().Mensaje_Informativo("Eliminar Cuenta", response.Mensaje());
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Eliminar Cuenta", response.Mensaje());
+                }
             }
         }
     }//GEN-LAST:event_eliminar_Cuenta_JButtonMouseClicked
@@ -538,48 +535,40 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
     private void desactivar_Activar_Notificaciones_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_desactivar_Activar_Notificaciones_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-            if(desactivar_Activar_Notificaciones_JButton.getText().equals("¿Desactivar Notificaciones?")){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+
+            if (desactivar_Activar_Notificaciones_JButton.getText().equals("¿Desactivar Notificaciones?")) {
                 int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
-                    "¿Estás Segur@ De Desactivar Las Notificaciones?", "Pregunta", 
-                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
-            
-                if(resultado == JOptionPane.YES_OPTION){
+                        "¿Estás Segur@ De Desactivar Las Notificaciones?", "Pregunta",
+                        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (resultado == JOptionPane.YES_OPTION) {
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(),
+                            chats_Conmigo, false, true);
 
-                    SwingUtilities.invokeLater(() -> {
-                        ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
-                                chats_Conmigo, false, true);
-
-                        if(response.Is_Success()){
-                            CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Notificaciones", response.Mensaje());
-                            avisos_Activo = false;
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Notificaciones", response.Mensaje());
-                        }
-                    });
+                    if (response.Is_Success()) {
+                        CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Notificaciones", response.Mensaje());
+                        avisos_Activo = false;
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Notificaciones", response.Mensaje());
+                    }
                 }
-            }else{
+            } else {
                 int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
-                    "¿Estás Segur@ De Activar Las Notificaciones?", "Pregunta", 
-                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
-            
-                if(resultado == JOptionPane.YES_OPTION){
+                        "¿Estás Segur@ De Activar Las Notificaciones?", "Pregunta",
+                        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-                    SwingUtilities.invokeLater(() -> {
-                        ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
-                                chats_Conmigo, true, true);
+                if (resultado == JOptionPane.YES_OPTION) {
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(),
+                            chats_Conmigo, true, true);
 
-                        if(response.Is_Success()){
-                            CourseRoom.Utilerias().Mensaje_Informativo("Activar Notificaciones", response.Mensaje());
-                            avisos_Activo = true;
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Activar Notificaciones", response.Mensaje());
-                        }
-                    });
+                    if (response.Is_Success()) {
+                        CourseRoom.Utilerias().Mensaje_Informativo("Activar Notificaciones", response.Mensaje());
+                        avisos_Activo = true;
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Activar Notificaciones", response.Mensaje());
+                    }
                 }
             }
-            
         }
     }//GEN-LAST:event_desactivar_Activar_Notificaciones_JButtonMouseClicked
 
@@ -597,50 +586,38 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
     private void permitir_No_Permitir_Chats_Conmigo_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if(desactivar_Activar_Notificaciones_JButton.getText().equals("¿Desactivar Chats Conmigo?")){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            if (desactivar_Activar_Notificaciones_JButton.getText().equals("¿Desactivar Chats Conmigo?")) {
                 int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
-                    "¿Estás Segur@ De Desactivar Los Chats Con Usted?", "Pregunta", 
-                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
-            
-                if(resultado == JOptionPane.YES_OPTION){
+                        "¿Estás Segur@ De Desactivar Los Chats Con Usted?", "Pregunta",
+                        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-                    
-                    SwingUtilities.invokeLater(() -> {
-                        ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
-                                false, avisos_Activo, true);
-                        
-                        if(response.Is_Success()){
-                            CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Chats Conmigo", response.Mensaje());
-                            chats_Conmigo = false;
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Chats Conmigo", response.Mensaje());
-                        }
-                        
-                    });
+                if (resultado == JOptionPane.YES_OPTION) {
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(),
+                            false, avisos_Activo, true);
 
-                    
+                    if (response.Is_Success()) {
+                        CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Chats Conmigo", response.Mensaje());
+                        chats_Conmigo = false;
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Chats Conmigo", response.Mensaje());
+                    }
                 }
-            }else{
+            } else {
                 int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
-                    "¿Estás Segur@ De Activar Los Chats Conmigo?", "Pregunta", 
-                    JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
-            
-                if(resultado == JOptionPane.YES_OPTION){
+                        "¿Estás Segur@ De Activar Los Chats Conmigo?", "Pregunta",
+                        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-                    SwingUtilities.invokeLater(() -> {
-                        ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
+                if (resultado == JOptionPane.YES_OPTION) {
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(),
                             true, avisos_Activo, true);
-                        
-                        if(response.Is_Success()){
-                            CourseRoom.Utilerias().Mensaje_Informativo("Activar Chats Conmigo", response.Mensaje());
-                            chats_Conmigo = true;
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Activar Chats Conmigo", response.Mensaje());
-                        }
-                    });
 
-                    
+                    if (response.Is_Success()) {
+                        CourseRoom.Utilerias().Mensaje_Informativo("Activar Chats Conmigo", response.Mensaje());
+                        chats_Conmigo = true;
+                    } else {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Activar Chats Conmigo", response.Mensaje());
+                    }
                 }
             }
         }
@@ -658,73 +635,65 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
     }//GEN-LAST:event_permitir_No_Permitir_Chats_Conmigo_JButtonMouseExited
 
-    private void Obtener_Sesiones(){
-        
-        SwingUtilities.invokeLater(() -> {
-            Lista<SesionesModel> sesiones = CourseRoom.Solicitudes().Obtener_Sesiones(Tablero_Profesor_Panel.Id_Usuario());
-            while(!sesiones.is_empty()){
-                Agregar_Sesion(sesiones.delist());
-            }
-        });
-        
+    private void Obtener_Sesiones() {
+        Lista<SesionesModel> sesiones = CourseRoom.Solicitudes().Obtener_Sesiones(Tablero_Profesor_Panel.Id_Usuario());
+        while (!sesiones.is_empty()) {
+            Agregar_Sesion(sesiones.delist());
+        }
     }
-    
-    private void Obtener_Configuraciones(){
-        
-        SwingUtilities.invokeLater(() -> {
-            ConfiguracionesModel configuracionesModel = 
-                    CourseRoom.Solicitudes().Obtener_Configuraciones(Tablero_Profesor_Panel.Id_Usuario());
 
-            chats_Conmigo = configuracionesModel.Chats_Conmigo();
-            avisos_Activo = configuracionesModel.Avisos_Activos();
+    private void Obtener_Configuraciones() {
+        ConfiguracionesModel configuracionesModel
+                = CourseRoom.Solicitudes().Obtener_Configuraciones(Tablero_Profesor_Panel.Id_Usuario());
 
-            if(configuracionesModel.Avisos_Activos()){
-                desactivar_Activar_Notificaciones_JButton.setText("¿Desactivar Notificaciones?");
-                desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Desactivar Sus Notificaciones?");
-            }else{
-                desactivar_Activar_Notificaciones_JButton.setText("¿Activar Notificaciones?");
-                desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Activar Sus Notificaciones?");
-            }
+        chats_Conmigo = configuracionesModel.Chats_Conmigo();
+        avisos_Activo = configuracionesModel.Avisos_Activos();
 
-            if(configuracionesModel.Chats_Conmigo()){
-                permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Desactivar Chats Conmigo?");
-                permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Desactivar La Opción De Permitir Chats Con Usted?");
-            }else{
-                permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Activar Chats Conmigo?");
-                permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Activar La Opción De Permitir Chats Con Usted?");
-            }
-            
-        });
+        if (configuracionesModel.Avisos_Activos()) {
+            desactivar_Activar_Notificaciones_JButton.setText("¿Desactivar Notificaciones?");
+            desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Desactivar Sus Notificaciones?");
+        } else {
+            desactivar_Activar_Notificaciones_JButton.setText("¿Activar Notificaciones?");
+            desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Activar Sus Notificaciones?");
+        }
+
+        if (configuracionesModel.Chats_Conmigo()) {
+            permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Desactivar Chats Conmigo?");
+            permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Desactivar La Opción De Permitir Chats Con Usted?");
+        } else {
+            permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Activar Chats Conmigo?");
+            permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Activar La Opción De Permitir Chats Con Usted?");
+        }
     }
-    
-    private void Agregar_Sesion(SesionesModel sesionModel){
-        
+
+    private void Agregar_Sesion(SesionesModel sesionModel) {
+
         Celda_Renderer[] celdas = new Celda_Renderer[6];
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
-       
+
         String id = sesionModel.Id_Sesion().toString();
-        
-        celda = new Celda_Renderer(sesionModel.Dispositivo(),id);
+
+        celda = new Celda_Renderer(sesionModel.Dispositivo(), id);
         celdas[0] = celda;
-        celda = new Celda_Renderer(sesionModel.Fabricante(),id);
+        celda = new Celda_Renderer(sesionModel.Fabricante(), id);
         celdas[1] = celda;
-        celda = new Celda_Renderer(sesionModel.Uuid(),id);
+        celda = new Celda_Renderer(sesionModel.Uuid(), id);
         celdas[2] = celda;
-        celda = new Celda_Renderer(sesionModel.Ultima_Conexion(),id);
+        celda = new Celda_Renderer(sesionModel.Ultima_Conexion(), id);
         celdas[3] = celda;
-        celda = new Celda_Renderer(sesionModel.Direccion_Ip(),id);
+        celda = new Celda_Renderer(sesionModel.Direccion_Ip(), id);
         celdas[4] = celda;
-        celda = new Celda_Renderer(sesionModel.Estatus(),id);
+        celda = new Celda_Renderer(sesionModel.Estatus(), id);
         celdas[5] = celda;
 
         modelo.addRow(celdas);
 
         int altura = CourseRoom.Utilerias().Altura_Fila_Tabla(sesionModel.Uuid().length());
-        sesiones_JTable.setRowHeight(modelo.getRowCount()-1, altura);
-        
+        sesiones_JTable.setRowHeight(modelo.getRowCount() - 1, altura);
+
     }
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel acciones_JPanel;
@@ -749,7 +718,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
     @Override
     public void Iniciar_Componentes() {
-        
+
         carta_Visible = 0;
         sesiones_JScrollPane.getViewport().setOpaque(false);
         sesiones_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -759,42 +728,42 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         sesiones_JTable.getTableHeader().setFont(fuente);
 
         sesiones_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-       
+
         Obtener_Sesiones();
         Obtener_Configuraciones();
-        
+
     }
-    
+
     @Override
     public void Colorear_Componentes() {
-        
+
         Font fuente = new Font("Segoe UI", 1, 24);
-        
+
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         titulo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         Carta_Visible();
-        
+
         primer_Color_Personalizado = CourseRoom.Utilerias().Primer_Color();
         segundo_Color_Personalizado = CourseRoom.Utilerias().Segundo_Color();
         tercer_Color_Personalizado = CourseRoom.Utilerias().Tercer_Color();
         primer_Color_Fuente_Personalizado = CourseRoom.Utilerias().Primer_Color_Fuente();
         segundo_Color_Fuente_Personalizado = CourseRoom.Utilerias().Segundo_Color_Fuente();
         tercer_Color_Fuente_Personalizado = CourseRoom.Utilerias().Tercer_Color_Fuente();
-        
+
         recargar_Colores_JButton.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         recargar_Colores_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        
+
         eliminar_Cuenta_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         eliminar_Cuenta_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+
         desactivar_Activar_Notificaciones_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         desactivar_Activar_Notificaciones_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+
         permitir_No_Permitir_Chats_Conmigo_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         permitir_No_Permitir_Chats_Conmigo_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+
         primer_Color_Personalizado_JLabel.setBackground(CourseRoom.Utilerias().Primer_Color());
         primer_Color_Personalizado_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
 
@@ -807,41 +776,41 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         primer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(CourseRoom.Utilerias().Primer_Color()));
         segundo_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(CourseRoom.Utilerias().Segundo_Color()));
         tercer_Color_Personalizado_JLabel.setText(CourseRoom.Utilerias().RGB_Cadena(CourseRoom.Utilerias().Tercer_Color()));
-        
+
         BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Primer Color", TitledBorder.CENTER,
-                TitledBorder.TOP,  fuente, CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+                TitledBorder.TOP, fuente, CourseRoom.Utilerias().Primer_Color_Fuente());
+
         primer_Color_Personalizado_JLabel.setBorder(borde_Titulo);
-        
+
         borde_Titulo = new TitledBorder(borde_Linea, "Segundo Color", TitledBorder.CENTER,
-                TitledBorder.TOP,  fuente, CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+                TitledBorder.TOP, fuente, CourseRoom.Utilerias().Segundo_Color_Fuente());
+
         segundo_Color_Personalizado_JLabel.setBorder(borde_Titulo);
-        
+
         borde_Titulo = new TitledBorder(borde_Linea, "Tercer Color", TitledBorder.CENTER,
-                TitledBorder.TOP,  fuente, CourseRoom.Utilerias().Tercer_Color_Fuente());
+                TitledBorder.TOP, fuente, CourseRoom.Utilerias().Tercer_Color_Fuente());
         tercer_Color_Personalizado_JLabel.setBorder(borde_Titulo);
-        
+
         sesiones_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
         sesiones_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+
         sesiones_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
         sesiones_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         sesiones_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color());
-        
+
         sesiones_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
         sesiones_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         Celda_Renderer celda;
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
-        for(int i = 0; i < modelo.getRowCount();i++){
-            for(int j = 0; j < modelo.getColumnCount(); j++){
-                celda = (Celda_Renderer)modelo.getValueAt(i, j);
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            for (int j = 0; j < modelo.getColumnCount(); j++) {
+                celda = (Celda_Renderer) modelo.getValueAt(i, j);
                 celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
-       
+
     }
 
     @Override
@@ -870,6 +839,4 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
         DefaultTableModel modelo = (DefaultTableModel) sesiones_JTable.getModel();
         modelo.setRowCount(0);
     }
-
-
 }

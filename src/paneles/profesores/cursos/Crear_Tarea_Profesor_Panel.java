@@ -36,13 +36,13 @@ import paneles.profesores.Tablero_Profesor_Panel;
  *
  * @author LENOVO
  */
-public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
+public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface {
 
     private byte carta_Visible;
     private int Id_Curso;
     private String Id_Vista;
     private int Id_Tarea;
-    
+
     /**
      * Creates new form Crear_Tarea_Profesor_Panel
      */
@@ -428,7 +428,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
 
     private void informacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacion_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             ((CardLayout) tarea_JLayeredPane.getLayout()).show(tarea_JLayeredPane, "Informacion");
             carta_Visible = 0;
             Carta_Visible();
@@ -437,8 +437,8 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
 
     private void archivos_Adjuntos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archivos_Adjuntos_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)tarea_JLayeredPane.getLayout()).show(tarea_JLayeredPane, "Archivos_Adjuntos");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) tarea_JLayeredPane.getLayout()).show(tarea_JLayeredPane, "Archivos_Adjuntos");
             carta_Visible = 1;
             Carta_Visible();
         }
@@ -446,7 +446,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
 
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Retirar_Vista(this);
             Tablero_Profesor_Panel.Mostrar_Vista(Id_Vista);
             this.Limpiar();
@@ -465,7 +465,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
 
     private void subir_Archivos_Adjuntos_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Archivos_Adjuntos_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Compartir_Archivos();
         }
     }//GEN-LAST:event_subir_Archivos_Adjuntos_JButtonMouseClicked
@@ -484,44 +484,42 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
 
     private void editar_Nombre_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Nombre_JTextFieldKeyTyped
         char c = evt.getKeyChar();
-            if (Character.isDigit(c)) {
+        if (Character.isDigit(c)) {
             getToolkit().beep();//sonido de no aceptar más caracteres. 
             evt.consume();//hace que esa pulsación de tecla se rechace.
         }
         int longitud = editar_Nombre_JTextField.getText().length();
-            if(longitud > 79){
-            editar_Nombre_JTextField.setText(editar_Nombre_JTextField.getText().substring(0,longitud-1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Título De Tu Tarea<br>Rebasa Los 80 Caracteres");
+        if (longitud > 79) {
+            editar_Nombre_JTextField.setText(editar_Nombre_JTextField.getText().substring(0, longitud - 1));
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "El Título De Tu Tarea<br>Rebasa Los 80 Caracteres");
         }
     }//GEN-LAST:event_editar_Nombre_JTextFieldKeyTyped
 
     private void editar_Descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Descripcion_JTextPaneKeyTyped
         int longitud = editar_Descripcion_JTextPane.getText().length();
-            if (longitud > 1499) {
+        if (longitud > 1499) {
             editar_Descripcion_JTextPane.setText(editar_Descripcion_JTextPane.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Descripción De Tu Tarea<br>Rebasa Los 1500 Caracteres");
-          }
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "La Descripción De Tu Tarea<br>Rebasa Los 1500 Caracteres");
+        }
     }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
     private void guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            SwingUtilities.invokeLater(() -> {
-                String fecha_Finalizacion = CourseRoom.Utilerias().Fecha_Hora(escogedor_Fecha_Hora.getDatePicker().getDate(), escogedor_Fecha_Hora.getTimePicker().getTime());
-                ResponseModel respuesta = CourseRoom.Solicitudes().Agregar_Tarea(Id_Curso, editar_Nombre_JTextField.getText()
-                        , editar_Descripcion_JTextPane.getText(), fecha_Finalizacion);
-                if (respuesta.Is_Success()) {
-                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                    Id_Tarea = respuesta.Codigo();
-                    archivos_Adjuntos_JButton.setEnabled(true);
-                    informacion_JButton.setEnabled(false);
-                    ((CardLayout)tarea_JLayeredPane.getLayout()).show(tarea_JLayeredPane, "Archivos_Adjuntos");
-                    carta_Visible = 1;
-                    Carta_Visible();
-                } else {
-                    CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-                }
-            });
+            String fecha_Finalizacion = CourseRoom.Utilerias().Fecha_Hora(escogedor_Fecha_Hora.getDatePicker().getDate(), escogedor_Fecha_Hora.getTimePicker().getTime());
+            ResponseModel respuesta = CourseRoom.Solicitudes().Agregar_Tarea(Id_Curso, editar_Nombre_JTextField.getText(),
+                     editar_Descripcion_JTextPane.getText(), fecha_Finalizacion);
+            if (respuesta.Is_Success()) {
+                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                Id_Tarea = respuesta.Codigo();
+                archivos_Adjuntos_JButton.setEnabled(true);
+                informacion_JButton.setEnabled(false);
+                ((CardLayout) tarea_JLayeredPane.getLayout()).show(tarea_JLayeredPane, "Archivos_Adjuntos");
+                carta_Visible = 1;
+                Carta_Visible();
+            } else {
+                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+            }
         }
     }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseClicked
 
@@ -536,62 +534,57 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         guardar_Cambios_Datos_Generales_Tarea_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         guardar_Cambios_Datos_Generales_Tarea_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
     }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseExited
-  
+
     public void Compartir_Archivos() {
         Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
         int resultado = escogedor_Archivos.showOpenDialog(this);
 
         if (resultado == JFileChooser.APPROVE_OPTION) {
             File archivo_Abierto = escogedor_Archivos.getSelectedFile();
-            
-            if(archivo_Abierto != null){
-                
+
+            if (archivo_Abierto != null) {
+
                 long tamanio = FileUtils.sizeOf(archivo_Abierto);
                 tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                if(tamanio < 15){
-                    
-                    SwingUtilities.invokeLater(() -> {
-                        try {
-                            
-                            Celda_Renderer[] celdas = new Celda_Renderer[3];
-                            DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
-                            Celda_Renderer celda;
-                            
-                            ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Adjunto_Tarea(Tablero_Profesor_Panel.Id_Usuario(), archivo_Abierto.getName(),
-                                    FileUtils.readFileToByteArray(archivo_Abierto),
-                                    FilenameUtils.getExtension(archivo_Abierto.getName()));
+                if (tamanio < 35) {
+                    try {
 
-                            if(response.Is_Success()){
-                                String id_Archivo = String.valueOf(response.Codigo());
-                                
-                                Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
-                                ImageIcon icono = new ImageIcon(imagen);
-                                celda = new Celda_Renderer(icono, archivo_Abierto.getName(), id_Archivo);
-                                celdas[0] = celda;
-                                celda = new Celda_Renderer(CourseRoom.Utilerias().Fecha_Hora_Local(), id_Archivo);
-                                celdas[1] = celda;
-                                imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-                                icono = new ImageIcon(imagen);
-                                celda = new Celda_Renderer(icono, id_Archivo);
-                                celdas[2] = celda;
-                                modelo.insertRow(0,celdas);
-                                CourseRoom.Utilerias().Mensaje_Informativo("Tarea",response.Mensaje());
-                                imagen.flush();
-                                
-                            } else{
-                                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());
-                            }
+                        Celda_Renderer[] celdas = new Celda_Renderer[3];
+                        DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
+                        Celda_Renderer celda;
 
-                        } catch (IOException ex) {
-                            CourseRoom.Utilerias().Mensaje_Error("Error!!!","Se Encontro Un Error Al Compartir El Archivo");
+                        ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Adjunto_Tarea(Tablero_Profesor_Panel.Id_Usuario(), archivo_Abierto.getName(),
+                                FileUtils.readFileToByteArray(archivo_Abierto),
+                                FilenameUtils.getExtension(archivo_Abierto.getName()));
+
+                        if (response.Is_Success()) {
+                            String id_Archivo = String.valueOf(response.Codigo());
+
+                            Image imagen = ImageIO.read(getClass().getResource("/recursos/iconos/box.png"));
+                            ImageIcon icono = new ImageIcon(imagen);
+                            celda = new Celda_Renderer(icono, archivo_Abierto.getName(), id_Archivo);
+                            celdas[0] = celda;
+                            celda = new Celda_Renderer(CourseRoom.Utilerias().Fecha_Hora_Local(), id_Archivo);
+                            celdas[1] = celda;
+                            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+                            icono = new ImageIcon(imagen);
+                            celda = new Celda_Renderer(icono, id_Archivo);
+                            celdas[2] = celda;
+                            modelo.insertRow(0, celdas);
+                            CourseRoom.Utilerias().Mensaje_Informativo("Tarea", response.Mensaje());
+                            imagen.flush();
+
+                        } else {
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", response.Mensaje());
                         }
-                    
-                    });
-                    
+
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Error("Error!!!", "Se Encontro Un Error Al Compartir El Archivo");
+                    }
                 } else {
-                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
-                }                 
-                    
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
+                }
+
             }
         }
     }
@@ -631,7 +624,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         archivos_Adjuntos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         archivos_Adjuntos_JTable.getTableHeader().setFont(gadugi);
         archivos_Adjuntos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
+
         archivos_Adjuntos_JTable.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -643,15 +636,15 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
 
                     //Remover
                     if (columna == 2) {
-                        
+
                     }
 
                 }
             }
         });
-        
+
         LocalDate fecha_Minima = LocalDate.now();
-        Locale local = new Locale("es","MX");
+        Locale local = new Locale("es", "MX");
         DatePickerSettings ajustes_Fecha = new DatePickerSettings(local);
         ajustes_Fecha.setFirstDayOfWeek(DayOfWeek.MONDAY);
         ajustes_Fecha.setFontVetoedDate(gadugi);
@@ -670,13 +663,13 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         escogedor_Fecha_Hora.getDatePicker().setDate(fecha_Minima);
         escogedor_Fecha_Hora.getDatePicker().setOpaque(false);
         escogedor_Fecha_Hora.getDatePicker().setVisible(true);
-        
+
         escogedor_Fecha_Hora.getTimePicker().setFont(gadugi);
         escogedor_Fecha_Hora.getTimePicker().getComponent(0).setFont(gadugi);
         escogedor_Fecha_Hora.getTimePicker().setTime(LocalTime.now());
         escogedor_Fecha_Hora.getTimePicker().setOpaque(false);
         escogedor_Fecha_Hora.getTimePicker().setVisible(true);
-        
+
         Colorear_Componentes();
     }
 
@@ -685,8 +678,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         regresar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         titulo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        
-        
+
         archivos_Adjuntos_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
         archivos_Adjuntos_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
 
@@ -705,7 +697,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                 celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
-        
+
         editar_Nombre_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Descripcion_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Fecha_Entrega_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
@@ -722,7 +714,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
 
         subir_Archivos_Adjuntos_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         subir_Archivos_Adjuntos_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
-        
+
         guardar_Cambios_Datos_Generales_Tarea_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         guardar_Cambios_Datos_Generales_Tarea_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
 

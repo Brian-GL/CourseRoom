@@ -596,7 +596,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
             if(resultado == JOptionPane.YES_OPTION){
-                SwingUtilities.invokeLater(() -> {
                     ResponseModel response = CourseRoom.Solicitudes().Remover_Chat_Personal(Id_Chat,
                             Tablero_Estudiante_Panel.Id_Usuario());
 
@@ -609,7 +608,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     Tablero_Estudiante_Panel.Mostrar_Vista("Chats");
                     Tablero_Estudiante_Panel.Retirar_Vista(this);
                     this.Limpiar();
-                });
             }
         }
     }//GEN-LAST:event_eliminar_Chat_JButtonMouseClicked
@@ -627,7 +625,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
     }//GEN-LAST:event_eliminar_Chat_JButtonMouseExited
 
     private void Obtener_Datos_Generales_Chat(boolean bandera){
-        SwingUtilities.invokeLater(() -> {
            
             DatosPerfilChatPersonalModel datosPerfilChatPersonalModel
                     = CourseRoom.Solicitudes().Obtener_Datos_Perfil_Chat_Personal(Id_Usuario);
@@ -668,9 +665,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Chat", "No Se Encontraron Datos Generales En El Chat");
                 }
             }
-
-            
-        });
     }
     
     private void Agregar_Interes_Tematica(ComboOptionModel comboOptionModel){
@@ -720,7 +714,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
-        SwingUtilities.invokeLater(() -> {
             Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Chat(Id_Chat);
 
             if (!response.is_empty()) {
@@ -732,7 +725,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Chat", "No Se Encontraron Mensajes En El Chat");
                 }
             }
-        });
     }
     
     private void Agregar_Mensaje_Chat(MensajesModel mensajesModel){
@@ -771,9 +763,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"),"/descargas/chats/", nombre_Archivo));
         
         if(!archivo.exists()){
-
-            SwingUtilities.invokeLater(() -> {
-
                 ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Chat(id_Mensaje);
 
                 if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
@@ -791,8 +780,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                 }else{
                     CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
                 }
-
-            });
         } else{
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
@@ -923,8 +910,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
         
         String mensaje = redactar_Mensaje_Chat_JTextField.getText();
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
-            
-            SwingUtilities.invokeLater(() -> {
                 ResponseChatModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(mensaje, new byte[]{}, new String(),
                         Tablero_Estudiante_Panel.Id_Usuario(), Id_Chat);
                 String fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
@@ -951,7 +936,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                     redactar_Mensaje_Chat_JTextField.setText("");
                     redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
                 }
-            }); 
         }
     }
 
@@ -972,8 +956,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
 
                     String nombre_Archivo = archivo_Abierto.getName();
                     String emisor = Perfil_Estudiante_Panel.Nombre_Completo();
-                    
-                    SwingUtilities.invokeLater(() -> {
                         try {
 
                             ResponseChatModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(nombre_Archivo, 
@@ -1006,8 +988,6 @@ public class Chat_Estudiante_Panel extends javax.swing.JPanel  implements Compon
                         } catch (IOException ex) {
                             CourseRoom.Utilerias().Mensaje_Error("Error!!!","Se Encontro Un Error Al Enviar El Mensaje");
                         }
-                    });
-
                 }
                 else{
                     CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Archivo Supera El Tamaño Aceptado De Subida");
