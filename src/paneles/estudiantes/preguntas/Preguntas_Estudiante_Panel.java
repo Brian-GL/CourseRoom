@@ -512,15 +512,20 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
             String descripcion_Pregunta,
             String fecha_Pregunta) {
         
-        
+        Image imagen_Usuario = null;
         String estatus = "Abierta";
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
-        Image imagen_Usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-        ImageIcon icono_Usuario = new ImageIcon(imagen_Usuario);
         
-        celda = new Celda_Renderer(icono_Usuario, preguntador_Nombre,id);
-        celdas[0] = celda;
+        if(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario() != null){
+            imagen_Usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+            ImageIcon icono_Usuario = new ImageIcon(imagen_Usuario);
+            celda = new Celda_Renderer(icono_Usuario, preguntador_Nombre,id);
+            celdas[0] = celda;
+        }else{
+            celda = new Celda_Renderer(preguntador_Nombre,id);
+            celdas[0] = celda;
+        }
         celda = new Celda_Renderer(pregunta,id);
         celdas[1] = celda;
         celda = new Celda_Renderer(fecha_Pregunta,id);
@@ -533,8 +538,9 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         modelo.insertRow(0,celdas);
         
         mostrar_Preguntas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(pregunta.length()));
-        
-        imagen_Usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(48, 48, Image.SCALE_SMOOTH);
+        if(imagen_Usuario != null){
+            imagen_Usuario = imagen_Usuario.getScaledInstance(48, 48, Image.SCALE_SMOOTH);
+        }
         
         Pregunta_Estudiante_Panel pregunta_Estudiante_Panel = 
                 new Pregunta_Estudiante_Panel(real_ID,imagen_Usuario);
@@ -563,12 +569,16 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
-        
-        Image imagen_Usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-        ImageIcon icono_Usuario = new ImageIcon(imagen_Usuario);
-        
-        celda = new Celda_Renderer(icono_Usuario, preguntasModel.Nombre_Completo(),id_Pregunta);
-        celdas[0] = celda;
+        Image imagen_Usuario = null;
+        if(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario() != null){
+            imagen_Usuario = Tablero_Estudiante_Panel.Obtener_Imagen_Usuario().getScaledInstance(95, 95, Image.SCALE_SMOOTH);
+            ImageIcon icono_Usuario = new ImageIcon(imagen_Usuario);
+            celda = new Celda_Renderer(icono_Usuario, preguntasModel.Nombre_Completo(),id_Pregunta);
+            celdas[0] = celda;
+        }else{
+            celda = new Celda_Renderer(preguntasModel.Nombre_Completo(),id_Pregunta);
+            celdas[0] = celda;
+        }
         celda = new Celda_Renderer(preguntasModel.Pregunta(),id_Pregunta);
         celdas[1] = celda;
         celda = new Celda_Renderer(preguntasModel.Fecha_Creacion(),id_Pregunta);
@@ -579,8 +589,9 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
         modelo.addRow(celdas);
         mostrar_Preguntas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(preguntasModel.Pregunta().length()));
-        
-        imagen_Usuario = imagen_Usuario.getScaledInstance(48, 48, Image.SCALE_SMOOTH);
+        if(imagen_Usuario != null){
+            imagen_Usuario = imagen_Usuario.getScaledInstance(48, 48, Image.SCALE_SMOOTH);
+        }
         
         Pregunta_Estudiante_Panel pregunta_Estudiante_Panel = 
                 new Pregunta_Estudiante_Panel(preguntasModel.Id_Pregunta(),imagen_Usuario);
