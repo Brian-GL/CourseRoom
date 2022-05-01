@@ -922,7 +922,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             if(Verificar_Campos_Autenticacion()){
                 SwingUtilities.invokeLater(() -> {
                     ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Autenticacion(Tablero_Profesor_Panel.Id_Usuario(),
-                            editar_Correo_Electronico_JTextField.getText(), String.valueOf(contrasena_JPasswordField.getPassword()));
+                            editar_Correo_Electronico_JTextField.getText().toUpperCase(), String.valueOf(contrasena_JPasswordField.getPassword()));
                     if (respuesta.Is_Success()) {
                         CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
                     } else {

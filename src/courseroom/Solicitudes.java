@@ -51,6 +51,7 @@ import modelos.TareasPendientesGrupoModel;
 import modelos.MensajesModel;
 import modelos.MiembrosGrupoModel;
 import modelos.PreguntasModel;
+import modelos.ResponseChatModel;
 import modelos.ResponseModel;
 import modelos.RetroalimentacionesTareaModel;
 import modelos.SesionesModel;
@@ -1531,9 +1532,9 @@ public class Solicitudes {
         return response;
     }
     
-    public ResponseModel Enviar_Mensaje_Chat(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Chat){
+    public ResponseChatModel Enviar_Mensaje_Chat(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Chat){
 
-        ResponseModel response = new ResponseModel();
+        ResponseChatModel response = new ResponseChatModel();
         
         try {
             
@@ -1552,7 +1553,7 @@ public class Solicitudes {
             if(respuesta != null){
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
-                
+                response.Id((Integer)resultado.remove(0));
                 response.Codigo((Integer)resultado.remove(0));
                 response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
@@ -1645,9 +1646,9 @@ public class Solicitudes {
         return response;
     }
     
-    public ResponseModel Enviar_Mensaje_Pregunta(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Pregunta){
+    public ResponseChatModel Enviar_Mensaje_Pregunta(String mensaje, byte[] archivo, String extension, int id_Usuario_Emisor, int id_Pregunta){
 
-        ResponseModel response = new ResponseModel();
+        ResponseChatModel response = new ResponseChatModel();
         
         try {
             
@@ -1666,7 +1667,7 @@ public class Solicitudes {
             if(respuesta != null){
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
-                
+                response.Id((Integer)resultado.remove(0));
                 response.Codigo((Integer)resultado.remove(0));
                 response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
