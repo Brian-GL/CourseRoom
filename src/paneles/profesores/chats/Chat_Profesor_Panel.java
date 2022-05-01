@@ -923,12 +923,12 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
             
             SwingUtilities.invokeLater(() -> {
-                ResponseModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(mensaje, new byte[]{}, "",
+                ResponseChatModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(mensaje, new byte[]{}, "",
                         Tablero_Profesor_Panel.Id_Usuario(), Id_Chat);
                 if (!response.Is_Success()) {
                     CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", response.Mensaje());
                 }else{
-                    String id = String.valueOf(response.Codigo());
+                    String id = String.valueOf(response.Id());
                     String emisor = Perfil_Profesor_Panel.Nombre_Completo();
                     String fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
                     Celda_Renderer[] celdas = new Celda_Renderer[3];
@@ -974,14 +974,14 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel  implements Componen
                     SwingUtilities.invokeLater(() -> {
                         try {
 
-                            ResponseModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(nombre_Archivo, 
+                            ResponseChatModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Chat(nombre_Archivo, 
                                     FileUtils.readFileToByteArray(archivo_Abierto), 
                                     FilenameUtils.getExtension(nombre_Archivo), 
                                     Tablero_Profesor_Panel.Id_Usuario(), Id_Chat);
 
                             String fecha = CourseRoom.Utilerias().Fecha_Hora_Local();
                             if(response.Is_Success()){
-                                String id = String.valueOf(response.Codigo());
+                                String id = String.valueOf(response.Id());
                                 Celda_Renderer[] celdas = new Celda_Renderer[3];
                                 DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
                                 Celda_Renderer celda;
