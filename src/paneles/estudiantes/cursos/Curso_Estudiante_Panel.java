@@ -802,17 +802,15 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                                                     int id_Archivo = Integer.parseInt(celda.ID());
 
-                                                    SwingUtilities.invokeLater(() -> {
-                                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Material_Curso(
-                                                            id_Archivo,Tablero_Estudiante_Panel.Id_Usuario());
+                                                    ResponseModel response = CourseRoom.Solicitudes().Remover_Material_Curso(
+                                                        id_Archivo,Tablero_Estudiante_Panel.Id_Usuario());
 
-                                                        if(response.Is_Success()){
-                                                            CourseRoom.Utilerias().Mensaje_Informativo("Material", response.Mensaje());
-                                                            modelo.removeRow(fila);
-                                                        }else{
-                                                            CourseRoom.Utilerias().Mensaje_Alerta("Material", response.Mensaje());
-                                                        }
-                                                    });
+                                                    if(response.Is_Success()){
+                                                        CourseRoom.Utilerias().Mensaje_Informativo("Material", response.Mensaje());
+                                                        modelo.removeRow(fila);
+                                                    }else{
+                                                        CourseRoom.Utilerias().Mensaje_Alerta("Material", response.Mensaje());
+                                                    }
                                                 }
 
                                                 break;
@@ -1185,7 +1183,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
             if(resultado == JOptionPane.YES_OPTION){
-                SwingUtilities.invokeLater(() -> {
                     ResponseModel response = CourseRoom.Solicitudes().Abandonar_Curso(Id_Curso,
                             Tablero_Estudiante_Panel.Id_Usuario());
 
@@ -1194,7 +1191,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     } else {
                         CourseRoom.Utilerias().Mensaje_Alerta("Abandonar Curso", response.Mensaje());
                     }
-                });
                 Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
                 Tablero_Estudiante_Panel.Retirar_Vista(this);
                 this.Limpiar();
@@ -1218,7 +1214,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
     private void contestar_Cuestionario_Finalizar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contestar_Cuestionario_Finalizar_Curso_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            SwingUtilities.invokeLater(() -> {
                 ResponseModel response = CourseRoom.Solicitudes().Validacion_Contestar_Cuestionario(Id_Curso, Tablero_Estudiante_Panel.Id_Usuario());
 
                 if (response.Is_Success()) {
@@ -1232,7 +1227,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 } else {
                     CourseRoom.Utilerias().Mensaje_Alerta("Contestar Cuestionario", response.Mensaje());
                 }
-            });
         }
     }//GEN-LAST:event_contestar_Cuestionario_Finalizar_Curso_JButtonMouseClicked
 
@@ -1294,7 +1288,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
-        SwingUtilities.invokeLater(() -> {
             Lista<MensajesModel> response = CourseRoom.Solicitudes().Obtener_Mensajes_Curso(Id_Curso);
 
             if (!response.is_empty()) {
@@ -1306,7 +1299,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Curso", "No Se Encontraron Mensajes En El Curso");
                 }
             }
-        });
     }
     
     private void Agregar_Mensaje_Curso(MensajesModel mensajesModel){
@@ -1797,8 +1789,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         if(!archivo.exists()){
 
-            SwingUtilities.invokeLater(() -> {
-
                 ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Mensaje_Curso(id_Mensaje);
 
                 if(archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()){
@@ -1816,8 +1806,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 }else{
                     CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
                 }
-
-            });
         } else{
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
@@ -1828,9 +1816,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"), "/descargas/cursos/", nombre_Archivo));
 
         if (!archivo.exists()) {
-
-            SwingUtilities.invokeLater(() -> {
-
                 ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Material_Subido_Curso(id_Material);
 
                 if (archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()) {
@@ -1848,8 +1833,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 } else {
                     CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
                 }
-
-            });
         } else {
             CourseRoom.Utilerias().Abrir_Archivo(archivo);
         }
@@ -2242,9 +2225,7 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                 
                 long tamanio = FileUtils.sizeOf(archivo_Abierto);
                 tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                if(tamanio < 15){
-                    
-                    SwingUtilities.invokeLater(() -> {
+                if(tamanio < 35){
                         try {
                             
                             Celda_Renderer[] celdas = new Celda_Renderer[4];
@@ -2282,9 +2263,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         } catch (IOException ex) {
                             CourseRoom.Utilerias().Mensaje_Error("Error!!!","Se Encontro Un Error Al Subir El Archivo");
                         }
-                    
-                    });
-                    
                 } else {
                     CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Hay Archivo(s) Que Superan El Tamaño Aceptado De Subida");
                 }                 
@@ -2298,8 +2276,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
         
         String mensaje = redactar_Mensaje_Chat_JTextField.getText();
         if (!mensaje.isEmpty() && !mensaje.isBlank()) {
-            
-            SwingUtilities.invokeLater(() -> {
                 ResponseModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Curso(mensaje, new byte[]{}, "",
                         Tablero_Estudiante_Panel.Id_Usuario(), Id_Curso);
                 if (!response.Is_Success()) {
@@ -2325,7 +2301,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                     redactar_Mensaje_Chat_JTextField.setText("");
                     redactar_Mensaje_Chat_JTextField.setCaretPosition(0);
                 }
-            }); 
         }
     }
 
@@ -2347,8 +2322,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
 
                     String nombre_Archivo = archivo_Abierto.getName();
                     String emisor = Perfil_Estudiante_Panel.Nombre_Completo();
-                    
-                    SwingUtilities.invokeLater(() -> {
                         try {
 
                             ResponseModel response = CourseRoom.Solicitudes().Enviar_Mensaje_Curso(nombre_Archivo, 
@@ -2381,8 +2354,6 @@ public class Curso_Estudiante_Panel extends javax.swing.JPanel implements Limpie
                         } catch (IOException ex) {
                             CourseRoom.Utilerias().Mensaje_Error("Error!!!","Se Encontro Un Error Al Enviar El Mensaje");
                         }
-                    });
-
                 }
                 else{
                     CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","El Archivo Supera El Tamaño Aceptado De Subida");

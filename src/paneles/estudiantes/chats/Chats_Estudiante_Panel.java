@@ -415,10 +415,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                 buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Chats<br>Rebasa Los 100 Caracteres");
             }else{
-                SwingUtilities.invokeLater(() -> {
                     Buscar_Chats_Personales(buscar_JTextField.getText());
-                });
-
             }
         }
 
@@ -445,9 +442,7 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            SwingUtilities.invokeLater(() -> {
                 Obtener_Chats_Personales(true);
-            });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -491,7 +486,6 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             Tablero_Estudiante_Panel.Retirar_Vista(chat_Estudiante_Panel);
             chat_Estudiante_Panel.Limpiar();
         }
-        SwingUtilities.invokeLater(() -> {
             Lista<ChatsPersonalesModel> lista
                     = CourseRoom.Solicitudes().Obtener_Chats_Personales(Tablero_Estudiante_Panel.Id_Usuario());
 
@@ -504,7 +498,6 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                     CourseRoom.Utilerias().Mensaje_Alerta("Chats Personales", "No Se Encontraron Chats Personales");
                 }
             }
-        });
     }
     
     private void Buscar_Chats_Personales(String busqueda){
@@ -520,7 +513,6 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                 chat_Estudiante_Panel.Limpiar();
             }
         }
-        SwingUtilities.invokeLater(() -> {
             Lista<ChatsPersonalesModel> lista
                     = CourseRoom.Solicitudes().Buscar_Chats_Personales(busqueda, Tablero_Estudiante_Panel.Id_Usuario());
 
@@ -531,13 +523,11 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             } else {
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Chats");
             }
-        });
     }
     
     private void Agregar_Chat(ChatsPersonalesModel chatsPersonalesModel) {
 
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Chats_JTable.getModel();
-        SwingUtilities.invokeLater(() -> {
             String id_Chat = CourseRoom.Utilerias().Concatenar("Chat_Personal_", chatsPersonalesModel.Id_Chat());
             Celda_Renderer[] celdas = new Celda_Renderer[3];
             Celda_Renderer celda;
@@ -576,11 +566,9 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
             mostrar_Chats_Lista.push_back(chat_Estudiante_Panel);
 
             Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, id_Chat);
-        });
     }
     
     private void Agregar_Chat_Busqueda(ChatsPersonalesModel chatsPersonalesModel) {
-        SwingUtilities.invokeLater(() -> {
             String id_Chat = CourseRoom.Utilerias().Concatenar("Chat_Personal_", chatsPersonalesModel.Id_Chat());
             DefaultTableModel modelo = (DefaultTableModel) buscar_Chats_JTable.getModel();
 
@@ -625,7 +613,6 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                 Tablero_Estudiante_Panel.Agregar_Vista(chat_Estudiante_Panel, 
                 CourseRoom.Utilerias().Concatenar("Chat_Personal_", chatsPersonalesModel.Id_Chat()));
             }
-        });
     }
     
     private boolean Existe_Chat(int id_Chat){

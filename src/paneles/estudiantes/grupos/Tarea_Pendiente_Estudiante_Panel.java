@@ -33,23 +33,20 @@ import modelos.ResponseModel;
  *
  * @author LENOVO
  */
-public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface{
+public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface {
 
-    
     private String grupo_ID;
     private int Id_Tarea_Pendiente;
-    
-    
+
     /**
      * Creates new form Tarea_Pendiente_Estudiante_Panel
      */
     public Tarea_Pendiente_Estudiante_Panel(int id_Tarea_Pendiente, String id_vista_Grupo) {
         initComponents();
-  
+
         this.Id_Tarea_Pendiente = id_Tarea_Pendiente;
         this.grupo_ID = id_vista_Grupo;
-        
-        
+
         Iniciar_Componentes();
     }
 
@@ -238,7 +235,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
 
     private void regresar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Estudiante_Panel.Mostrar_Vista(grupo_ID);
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
@@ -255,7 +252,7 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Obtener_Datos_Generales(true);
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -271,56 +268,53 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
     private void estatus_Tarea_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_estatus_Tarea_JComboBoxItemStateChanged
-        SwingUtilities.invokeLater(() -> {
-            ResponseModel response = CourseRoom.Solicitudes().Cambiar_Estatus_Tarea_Pendiente(Id_Tarea_Pendiente, (String) estatus_Tarea_JComboBox.getSelectedItem(), Tablero_Estudiante_Panel.Id_Usuario());
-            if (response.Is_Success()) {
-                CourseRoom.Utilerias().Mensaje_Informativo("Tarea Pendiente", response.Mensaje());
-            } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Tarea Pendiente", response.Mensaje());
-            }
-        });
+        ResponseModel response = CourseRoom.Solicitudes().Cambiar_Estatus_Tarea_Pendiente(Id_Tarea_Pendiente, (String) estatus_Tarea_JComboBox.getSelectedItem(), Tablero_Estudiante_Panel.Id_Usuario());
+        if (response.Is_Success()) {
+            CourseRoom.Utilerias().Mensaje_Informativo("Tarea Pendiente", response.Mensaje());
+        } else {
+            CourseRoom.Utilerias().Mensaje_Alerta("Tarea Pendiente", response.Mensaje());
+        }
     }//GEN-LAST:event_estatus_Tarea_JComboBoxItemStateChanged
 
-    private void Obtener_Datos_Generales(boolean bandera){
-        
+    private void Obtener_Datos_Generales(boolean bandera) {
+
         DatosGeneralesTareaPendienteModel datosGeneralesTareaPendienteModel
                 = CourseRoom.Solicitudes().Obtener_Datos_Generales_Tarea_Pendiente(Id_Tarea_Pendiente);
-        
-        if(!datosGeneralesTareaPendienteModel.Estatus().isBlank()){
+
+        if (!datosGeneralesTareaPendienteModel.Estatus().isBlank()) {
             titulo_JLabel.setText(datosGeneralesTareaPendienteModel.Nombre());
-            
-            byte[] bytes_Imagen_Grupo = 
-                    CourseRoom.Solicitudes().Obtener_Imagen_Perfil(datosGeneralesTareaPendienteModel.Id_Usuario());
-            
-            if(bytes_Imagen_Grupo.length > 0){
-                
+
+            byte[] bytes_Imagen_Grupo
+                    = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(datosGeneralesTareaPendienteModel.Id_Usuario());
+
+            if (bytes_Imagen_Grupo.length > 0) {
+
                 Image imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Grupo);
-                
-                if(imagen != null){
-                    
-                    
+
+                if (imagen != null) {
+
                     imagen = imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
                     ImageIcon icono = new ImageIcon(imagen);
                     miembro_A_Cargo_JLabel.setIcon(icono);
                 }
             }
-            
+
             nombre_Miembro_A_Cargo_JLabel.setText(datosGeneralesTareaPendienteModel.Nombre_Completo());
-            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Creada El ",datosGeneralesTareaPendienteModel.Fecha_Creacion())));
-            fecha_Finalizacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Fecha A Finalizar: ",datosGeneralesTareaPendienteModel.Fecha_Finalizacion())));
+            fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Creada El ", datosGeneralesTareaPendienteModel.Fecha_Creacion())));
+            fecha_Finalizacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Fecha A Finalizar: ", datosGeneralesTareaPendienteModel.Fecha_Finalizacion())));
             descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesTareaPendienteModel.Descripcion()));
 
             estatus_Tarea_JComboBox.setSelectedItem(datosGeneralesTareaPendienteModel.Estatus());
 
-            if(datosGeneralesTareaPendienteModel.Estatus().equals("Realizando")){
+            if (datosGeneralesTareaPendienteModel.Estatus().equals("Realizando")) {
                 estatus_Tarea_JComboBox.removeItemAt(0);
             }
 
-            if(datosGeneralesTareaPendienteModel.Estatus().equals("Finalizado")){
+            if (datosGeneralesTareaPendienteModel.Estatus().equals("Finalizado")) {
                 estatus_Tarea_JComboBox.removeItemAt(0);
             }
-        }else{
-            if(bandera){
+        } else {
+            if (bandera) {
                 CourseRoom.Utilerias().Mensaje_Alerta("Datos Generales", "No Se Encontraron Los Datos Generales De La Tarea Pendiente");
             }
         }
@@ -342,44 +336,44 @@ public class Tarea_Pendiente_Estudiante_Panel extends javax.swing.JPanel impleme
 
     @Override
     public void Iniciar_Componentes() {
-        
+
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
+
         Colorear_Componentes();
-        
+
         Obtener_Datos_Generales(false);
     }
 
     @Override
     public void Colorear_Componentes() {
-        
+
         titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        
+
         titulo_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         titulo_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+
         regresar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        
+
         Font fuente = new Font("Segoe UI", 1, 18);
         BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Descripción", TitledBorder.CENTER,
-                TitledBorder.TOP,  fuente, CourseRoom.Utilerias().Primer_Color_Fuente());
+                TitledBorder.TOP, fuente, CourseRoom.Utilerias().Primer_Color_Fuente());
 
         descripcion_JScrollPane.setBorder(borde_Titulo);
-        
+
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+
         nombre_Miembro_A_Cargo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         nombre_Miembro_A_Cargo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        
+
         estatus_Tarea_JComboBox.setBackground(CourseRoom.Utilerias().Tercer_Color());
         estatus_Tarea_JComboBox.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
-        
+
         fecha_Creacion_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         fecha_Finalizacion_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+
     }
 }

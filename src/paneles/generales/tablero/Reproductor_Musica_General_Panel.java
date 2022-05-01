@@ -63,33 +63,30 @@ import javax.swing.text.StyledDocument;
  *
  * @author brian-gl
  */
-public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel implements Color_Interface, Limpieza_Interface, Componentes_Interface, Reproductor_Interface{
+public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel implements Color_Interface, Limpieza_Interface, Componentes_Interface, Reproductor_Interface {
 
     //Private attributes
-    
     //Banderas
     private boolean bandera_Mouse_Auxiliar, bandera_Siguiente_Pista, bandera_Anterior_Pista;
     private static boolean bandera_Indice_Cero;
-    
+
     //Data Structures
-    private Map<String,Equalizer> mapa_presets;
+    private Map<String, Equalizer> mapa_presets;
     private static Lista<String> rutas;
     private static Nodo<String> nodo_actual;
-     
+
     //Others
     private static int indice;
     private Color primer_Color, segundo_Color, segundo_Color_Fuente, tercer_Color;
 
-    
     public Reproductor_Musica_General_Panel() {
-        
+
         initComponents();
-        
-        
+
         Iniciar_Componentes();
-        
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -869,34 +866,38 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-      
-    /**Sets all available presets*/
-    public void Establecer_Presets_Ecualizador(){
-        
-        Iterator<Entry<String,Equalizer>> iterador = mapa_presets.entrySet().iterator();
-        
-        while(iterador.hasNext()){
-            Entry<String,Equalizer> entrada = iterador.next();
+
+    /**
+     * Sets all available presets
+     */
+    public void Establecer_Presets_Ecualizador() {
+
+        Iterator<Entry<String, Equalizer>> iterador = mapa_presets.entrySet().iterator();
+
+        while (iterador.hasNext()) {
+            Entry<String, Equalizer> entrada = iterador.next();
             presets_JComboBox.addItem(entrada.getKey());
         }
-        
+
         presets_JComboBox.setSelectedItem("Flat");
     }
-    
-    /**Stablish all ecualizador bands from the audio list media player ecualizador*/
-    private void Establecer_Amperajes(){
-        
-        int amp0 = (int)CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(0);
-        int amp1 = (int)CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(1);
-        int amp2 = (int)CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(2);
-        int amp3 = (int)CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(3);
-        int amp4 = (int)CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(4);
-        int amp5 = (int)CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(5);
-        int amp6 = (int)CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(6);
-        int amp7 = (int)CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(7);
-        int amp8 = (int)CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(8);
-        int amp9 = (int)CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(9);
-        int preamp = (int)CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().preamp();
+
+    /**
+     * Stablish all ecualizador bands from the audio list media player ecualizador
+     */
+    private void Establecer_Amperajes() {
+
+        int amp0 = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(0);
+        int amp1 = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(1);
+        int amp2 = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(2);
+        int amp3 = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(3);
+        int amp4 = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(4);
+        int amp5 = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(5);
+        int amp6 = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(6);
+        int amp7 = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(7);
+        int amp8 = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(8);
+        int amp9 = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(9);
+        int preamp = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().preamp();
 
         banda0_JSlider.setValue(amp0);
         banda1_JSlider.setValue(amp1);
@@ -926,10 +927,10 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void subir_Volumen_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Volumen_JLabelMouseClicked
         // TODO add your handling code here:
         int volumen;
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             volumen = CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().volume();
-            volumen+=10;
-            if(volumen <= 100){
+            volumen += 10;
+            if (volumen <= 100) {
                 volumen_JSlider.setValue(volumen);
             }
         }
@@ -938,10 +939,10 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void bajar_Volumen_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bajar_Volumen_JLabelMouseClicked
         // TODO add your handling code here:
         int volumen;
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             volumen = CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().volume();
-            volumen-=10;
-            if(volumen >= 0){
+            volumen -= 10;
+            if (volumen >= 0) {
                 volumen_JSlider.setValue(volumen);
             }
         }
@@ -950,12 +951,12 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
     private void subir_Rate_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subir_Rate_JLabelMouseClicked
         // TODO add your handling code here:
         float rate;
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             rate = CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().rate();
             rate += 0.1f;
             if (rate <= 1.5f) {
                 rate = rate * 100;
-                rate_JSlider.setValue((int)rate);
+                rate_JSlider.setValue((int) rate);
             }
         }
 
@@ -969,35 +970,35 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             rate -= 0.1f;
             if (rate >= 0.5f) {
                 rate = rate * 100;
-                rate_JSlider.setValue((int)rate);
+                rate_JSlider.setValue((int) rate);
             }
         }
     }//GEN-LAST:event_bajar_Rate_JLabelMouseClicked
 
     private void siguiente_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguiente_JLabelMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Siguiente_Pista();
         }
     }//GEN-LAST:event_siguiente_JLabelMouseClicked
 
     private void play_Pausa_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_play_Pausa_JLabelMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Establecer_Reproduccion_Pausa();
         }
     }//GEN-LAST:event_play_Pausa_JLabelMouseClicked
 
     private void anterior_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anterior_JLabelMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Anterior_Pista();
         }
     }//GEN-LAST:event_anterior_JLabelMouseClicked
 
     private void alto_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alto_JLabelMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Establecer_Alto();
             Limpiar_Informacion();
         }
@@ -1010,7 +1011,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         File folder;
         FileFilter filtro;
         File[] archivos_Abiertos;
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
 
             escogedor_Archivos = new Escogedor_Archivos();
             escogedor_Archivos.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -1019,20 +1020,20 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
             if (resultado == JFileChooser.APPROVE_OPTION) {
                 folder = escogedor_Archivos.getSelectedFile();
-                if(folder != null){
+                if (folder != null) {
                     filtro = (File rutaname) -> {
-                        if(rutaname != null){
-                            return rutaname.getName().endsWith(".mp3") ||
-                                    rutaname.getName().endsWith(".flac") ||
-                                    rutaname.getName().endsWith(".aac") ||
-                                    rutaname.getName().endsWith(".wma") ||
-                                    rutaname.getName().endsWith(".ogg");
+                        if (rutaname != null) {
+                            return rutaname.getName().endsWith(".mp3")
+                                    || rutaname.getName().endsWith(".flac")
+                                    || rutaname.getName().endsWith(".aac")
+                                    || rutaname.getName().endsWith(".wma")
+                                    || rutaname.getName().endsWith(".ogg");
                         }
                         return false;
                     };
 
-                   archivos_Abiertos = folder.listFiles(filtro);
-                    if(archivos_Abiertos.length > 0){
+                    archivos_Abiertos = folder.listFiles(filtro);
+                    if (archivos_Abiertos.length > 0) {
                         rutas.clear();
                         bandera_Indice_Cero = false;
                         bandera_Siguiente_Pista = false;
@@ -1041,23 +1042,23 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().clear();
                         lista_Reproduccion_JPanel.removeAll();
                         int idx = 0;
-                        
+
                         File archivos_Abierto;
                         String ruta;
                         String nombre_Archivo;
                         Entrada_Lista_Reproduccion_General_Panel entrada_Lista_Reproduccion_General_Panel;
-                        
+
                         for (File archivos_Abierto1 : archivos_Abiertos) {
                             archivos_Abierto = archivos_Abierto1;
                             ruta = archivos_Abierto.getAbsolutePath();
                             nombre_Archivo = archivos_Abierto.getName();
-                            entrada_Lista_Reproduccion_General_Panel = new Entrada_Lista_Reproduccion_General_Panel(nombre_Archivo,idx);
+                            entrada_Lista_Reproduccion_General_Panel = new Entrada_Lista_Reproduccion_General_Panel(nombre_Archivo, idx);
                             lista_Reproduccion_JPanel.add(entrada_Lista_Reproduccion_General_Panel);
                             rutas.push_back(ruta);
                             CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().add(ruta);
                             idx++;
                         }
-                        
+
                         nodo_actual = rutas.front();
                         indice = 0;
                         Cargar_Metadatos();
@@ -1073,21 +1074,18 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         anterior_JLabel.setEnabled(true);
                         alto_JLabel.setEnabled(true);
                         play_Pausa_JLabel.setEnabled(true);
-                        
+
                         bandas_JPanel.setEnabled(true);
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
-                        
-                        SwingUtilities.invokeLater(() -> {
-                            CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
-                        });
+                        CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
                         progreso_JSlider.setEnabled(true);
-                        
+
                     }
                 }
             }
         }
-        
+
         System.gc();
     }//GEN-LAST:event_abrir_Carpeta_JLabelMouseClicked
 
@@ -1099,10 +1097,10 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         FileNameExtensionFilter filtro;
         int resultado;
         File[] archivos_Abiertos;
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
 
             escogedor_Archivos = new Escogedor_Archivos();
-            filtro = new FileNameExtensionFilter("Archivos De Música", "mp3", "flac", "aac", "wav","ogg");
+            filtro = new FileNameExtensionFilter("Archivos De Música", "mp3", "flac", "aac", "wav", "ogg");
             escogedor_Archivos.addChoosableFileFilter(filtro);
             escogedor_Archivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
             escogedor_Archivos.setAcceptAllFileFilterUsed(true);
@@ -1112,9 +1110,9 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
             if (resultado == JFileChooser.APPROVE_OPTION) {
                 archivos_Abiertos = escogedor_Archivos.getSelectedFiles();
-                if(archivos_Abiertos != null){
-                    
-                    if(archivos_Abiertos.length > 0){
+                if (archivos_Abiertos != null) {
+
+                    if (archivos_Abiertos.length > 0) {
                         int indice_auxiliar = 0;
                         rutas.clear();
                         bandera_Siguiente_Pista = false;
@@ -1157,14 +1155,10 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         bandas_JPanel.setEnabled(true);
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
-                        
-                        SwingUtilities.invokeLater(() -> {
-                            CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
-                        });
-                        
+                        CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
                         progreso_JSlider.setEnabled(true);
                     }
-                    
+
                 }
             }
         }
@@ -1260,10 +1254,10 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
     private void presets_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_presets_JComboBoxItemStateChanged
         // TODO add your handling code here:
-        
+
         @SuppressWarnings("element-type-mismatch")
         Equalizer ecualizador = mapa_presets.get(presets_JComboBox.getSelectedItem());
-        if(ecualizador != null){
+        if (ecualizador != null) {
             CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().setEqualizer(ecualizador);
 
             int amp0 = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().equalizer().amp(0);
@@ -1303,12 +1297,14 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             preamp_JLabel.setText(String.valueOf(preamp));
 
         }
-        
+
     }//GEN-LAST:event_presets_JComboBoxItemStateChanged
 
-    /**Sets Play And Pause Functions*/
+    /**
+     * Sets Play And Pause Functions
+     */
     private void Establecer_Reproduccion_Pausa() {
-        
+
         if (CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && !rutas.is_empty()) {
 
             if (CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PLAYING) {
@@ -1324,20 +1320,24 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             }
         }
     }
-    
-    /**Sets Next Media Function*/
-    private void Siguiente_Pista(){
-        if(nodo_actual != null){
-            if(nodo_actual.has_next()){
+
+    /**
+     * Sets Next Media Function
+     */
+    private void Siguiente_Pista() {
+        if (nodo_actual != null) {
+            if (nodo_actual.has_next()) {
                 CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().playNext();
             }
         }
     }
-    
-    /**Sets Previous Media Function*/
-    private void Anterior_Pista(){
-        if(nodo_actual != null){
-            if(nodo_actual.has_previous()){
+
+    /**
+     * Sets Previous Media Function
+     */
+    private void Anterior_Pista() {
+        if (nodo_actual != null) {
+            if (nodo_actual.has_previous()) {
                 bandera_Anterior_Pista = true;
                 bandera_Siguiente_Pista = false;
                 CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().playPrevious();
@@ -1345,15 +1345,19 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         }
     }
 
-    /**Sets Stop Function*/
+    /**
+     * Sets Stop Function
+     */
     private void Establecer_Alto() {
         if (CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() != State.STOPPED && !rutas.is_empty()) {
             CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().controls().stop();
         }
     }
 
-    /**Cleans Screen Information*/
-    private void Limpiar_Informacion(){
+    /**
+     * Cleans Screen Information
+     */
+    private void Limpiar_Informacion() {
         titulo_JLabel.setText("Titulo");
         artista_JLabel.setText("Artista");
         album_JLabel.setText("Album");
@@ -1384,18 +1388,18 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         System.gc();
     }
 
-    public static void Play_Indice(int _indice){
-        if(_indice > 0){
-            indice = (_indice-1);
+    public static void Play_Indice(int _indice) {
+        if (_indice > 0) {
+            indice = (_indice - 1);
             nodo_actual = rutas.node(indice);
             CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play(_indice);
             bandera_Indice_Cero = false;
-        } else{
+        } else {
             indice = 0;
             bandera_Indice_Cero = true;
             CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play(0);
         }
-    }  
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel abrir_Archivos_JLabel;
@@ -1457,7 +1461,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
     @Override
     public void Iniciar_Componentes() {
-        
+
         bandera_Mouse_Auxiliar = true;
         bandera_Indice_Cero = false;
         rutas = new Lista<>();
@@ -1467,39 +1471,39 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         ImageIcon icono_Play = new ImageIcon(getClass().getResource("/recursos/iconos/play-button.png"));
         play_Pausa_JLabel.setIcon(icono_Play);
         icono_Play.getImage().flush();
-       
+
         letras_JScrollPane.getViewport().setOpaque(false);
         lista_Reproduccion_JScrollPane.getViewport().setOpaque(false);
         letras_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         letras_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         lista_Reproduccion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         lista_Reproduccion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-       
+
         Establecer_Eventos_Reproductor();
-        
+
         Establecer_Presets_Ecualizador();
-        
+
         Establecer_Amperajes();
-        
+
         primer_Color = CourseRoom.Utilerias().Primer_Color();
         segundo_Color = CourseRoom.Utilerias().Segundo_Color();
         segundo_Color_Fuente = CourseRoom.Utilerias().Segundo_Color_Fuente();
-        
+
         StyledDocument documento = letras_JTextPane.getStyledDocument();
         SimpleAttributeSet centro = new SimpleAttributeSet();
         StyleConstants.setAlignment(centro, StyleConstants.ALIGN_CENTER);
         documento.setParagraphAttributes(0, documento.getLength(), centro, false);
-        
+
         Colorear_Componentes();
     }
-    
+
     @Override
     public void Colorear_Componentes() {
-        
+
         //this.setBackground(primer_Color);
         controles_JPanel.setBackground(segundo_Color);
-        
-        Color transparente = new Color(0,0,0,0);
+
+        Color transparente = new Color(0, 0, 0, 0);
         controles_JTabbedPane.setBackground(transparente);
         Component[] componentes = this.getComponents();
         Component componente;
@@ -1532,7 +1536,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             componente.setBackground(primer_Color);
             componente.setForeground(segundo_Color_Fuente);
         }
-        
+
         preamp_JSlider.setBackground(segundo_Color_Fuente);
 
         componentes = lista_Reproduccion_JPanel.getComponents();
@@ -1540,43 +1544,42 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
         Entrada_Lista_Reproduccion_General_Panel entrada_Lista_Reproduccion_General_Panel;
         for (Component componente1 : componentes) {
             componente = componente1;
-            entrada_Lista_Reproduccion_General_Panel = (Entrada_Lista_Reproduccion_General_Panel)componente;
+            entrada_Lista_Reproduccion_General_Panel = (Entrada_Lista_Reproduccion_General_Panel) componente;
             entrada_Lista_Reproduccion_General_Panel.Colores(segundo_Color_Fuente, segundo_Color);
         }
 
-        
         presets_JComboBox.setForeground(segundo_Color_Fuente);
         presets_JComboBox.setBackground(segundo_Color);
         letras_JTextPane.setForeground(segundo_Color_Fuente);
-        
+
         this.repaint();
     }
-      
+
     @Override
     public void Establecer_Colores(Image image) {
-       try {
+        try {
             int maximo_auxiliar = 0;
-            
+
             Lista_Pares<Integer, Color> lista_Colores = new Lista_Pares<>();
             PixelGrabber obtener_Pixeles = new PixelGrabber(image, 0, 0, -1, -1, false);
             int largo_Imagen = image.getWidth(null);
             int[] pixeles;
-            int pixel,rojo,verde,azul,numero_Auxiliar,posicion;
+            int pixel, rojo, verde, azul, numero_Auxiliar, posicion;
             Color color;
             Par<Integer, Color> par;
             Faker faker = new Faker();
             if (obtener_Pixeles.grabPixels()) {
                 pixeles = (int[]) obtener_Pixeles.getPixels();
-                for(int i = 0; i < pixeles.length; i++){
+                for (int i = 0; i < pixeles.length; i++) {
                     pixel = pixeles[i];
-                    rojo = (pixel  & 0x00ff0000) >> 16;
+                    rojo = (pixel & 0x00ff0000) >> 16;
                     verde = (pixel & 0x0000ff00) >> 8;
                     azul = pixel & 0x000000ff;
-                    color = new Color(rojo,verde,azul);
+                    color = new Color(rojo, verde, azul);
                     par = lista_Colores.get_from_second(color);
-            
+
                     if (par != null) { //existe
-                        numero_Auxiliar = par.first()+ 1;
+                        numero_Auxiliar = par.first() + 1;
                         par.first(numero_Auxiliar);
                         if (numero_Auxiliar > maximo_auxiliar) {
                             primer_Color = color;
@@ -1586,79 +1589,79 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         lista_Colores.push_back(1, color);
                     }
 
-                    i += faker.number().numberBetween(1,largo_Imagen+1);
+                    i += faker.number().numberBetween(1, largo_Imagen + 1);
                 }
 
                 segundo_Color = primer_Color;
-            
+
                 int iteraciones = 0;
-                if(lista_Colores.size() > 1){
-                    
-                    while(Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000){
-                        posicion = faker.number().numberBetween(0,lista_Colores.size()-1);
+                if (lista_Colores.size() > 1) {
+
+                    while (Math.abs(segundo_Color.getRGB() - primer_Color.getRGB()) < 3000000) {
+                        posicion = faker.number().numberBetween(0, lista_Colores.size() - 1);
                         segundo_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
-                        if(iteraciones > 25){
-                             while(primer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = faker.number().numberBetween(0,lista_Colores.size()-1);
+                        if (iteraciones > 25) {
+                            while (primer_Color.getRGB() == segundo_Color.getRGB()) {
+                                posicion = faker.number().numberBetween(0, lista_Colores.size() - 1);
                                 segundo_Color = lista_Colores.get(posicion).second();
                             }
-                             break;
+                            break;
                         }
                     }
                 }
-               
+
                 tercer_Color = segundo_Color;
-                if(lista_Colores.size() > 2){
+                if (lista_Colores.size() > 2) {
                     iteraciones = 0;
-                    
-                    while(Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000){
-                        posicion = faker.number().numberBetween(0,lista_Colores.size()-1);
+
+                    while (Math.abs(tercer_Color.getRGB() - primer_Color.getRGB()) < 3000000 || Math.abs(segundo_Color.getRGB() - tercer_Color.getRGB()) < 3000000) {
+                        posicion = faker.number().numberBetween(0, lista_Colores.size() - 1);
                         tercer_Color = lista_Colores.get(posicion).second();
                         iteraciones++;
-                        if(iteraciones > 50){
-                            while(tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()){
-                                posicion = faker.number().numberBetween(0,lista_Colores.size()-1);
+                        if (iteraciones > 50) {
+                            while (tercer_Color.getRGB() == primer_Color.getRGB() || tercer_Color.getRGB() == segundo_Color.getRGB()) {
+                                posicion = faker.number().numberBetween(0, lista_Colores.size() - 1);
                                 tercer_Color = lista_Colores.get(posicion).second();
                             }
                             break;
                         }
                     }
                 }
-                
+
                 rojo = segundo_Color.getRed();
                 segundo_Color_Fuente = (rojo >= 155) ? Color.BLACK : Color.WHITE;
                 lista_Colores.clear();
-                
+
                 Colorear_Componentes();
-                
+
             }
-            
+
         } catch (InterruptedException ex) {
-            
+
         }
     }
-    
+
     @Override
-    public void Limpiar()  {
+    public void Limpiar() {
         lista_Reproduccion_JPanel.removeAll();
         rutas.clear();
     }
 
     @Override
     public void Establecer_Eventos_Reproductor() {
-         rate_JSlider.addChangeListener((ChangeEvent e) -> {
+        rate_JSlider.addChangeListener((ChangeEvent e) -> {
             Object fuente = e.getSource();
-            float rate = (float)(((JSlider) fuente).getValue() / 100f);
-            CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().controls().setRate(rate); 
+            float rate = (float) (((JSlider) fuente).getValue() / 100f);
+            CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().controls().setRate(rate);
         });
-        
+
         rate_JSlider.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if(SwingUtilities.isRightMouseButton(e)){
+                if (SwingUtilities.isRightMouseButton(e)) {
                     rate_JSlider.setValue(100);
-                    CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaPlayer().controls().setRate(1); 
+                    CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaPlayer().controls().setRate(1);
                 }
             }
 
@@ -1678,7 +1681,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             public void mouseExited(MouseEvent e) {
             }
         });
-        
+
         volumen_JSlider.addChangeListener((ChangeEvent e) -> {
             Object fuente = e.getSource();
             int volumen = ((JSlider) fuente).getValue();
@@ -1710,31 +1713,30 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             public void mouseExited(MouseEvent e) {
             }
         });
-        
-        
+
         //Listener para el slider progress
         progreso_JSlider.addMouseListener(new MouseListener() {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-               
+
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-                if(SwingUtilities.isLeftMouseButton(e)){
-                    if(CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PLAYING && progreso_JSlider.isEnabled()){
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    if (CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PLAYING && progreso_JSlider.isEnabled()) {
                         bandera_Mouse_Auxiliar = false;
                     }
-                    
+
                 }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                if(CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PLAYING && progreso_JSlider.isEnabled()){
-                    if(!bandera_Mouse_Auxiliar){
-                      bandera_Mouse_Auxiliar = true;
+                if (CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().state() == State.PLAYING && progreso_JSlider.isEnabled()) {
+                    if (!bandera_Mouse_Auxiliar) {
+                        bandera_Mouse_Auxiliar = true;
                     }
                 }
             }
@@ -1746,7 +1748,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
             @Override
             public void mouseExited(MouseEvent e) {
             }
-            
+
         });
 
         //Control para cambiar a posicion de reproduccion
@@ -1756,7 +1758,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().controls().setTime(((JSlider) fuente).getValue());
             }
         });
-        
+
         CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().events().addMediaListPlayerEventListener(new MediaListPlayerEventListener() {
             @Override
             public void mediaListPlayerFinished(MediaListPlayer mlp) {
@@ -1774,12 +1776,12 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                 Limpiar_Informacion();
             }
         });
-       
+
         CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().events().addMediaPlayerEventListener(new MediaPlayerEventListener() {
             String segundos;
             int tiempo, valor, longitud_Real;
             long longitud;
-            
+
             @Override
             public void mediaChanged(MediaPlayer mp, MediaRef mr) {
                 progreso_JSlider.setEnabled(false);
@@ -1792,9 +1794,9 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                             nodo_actual = rutas.front();
                             bandera_Indice_Cero = false;
                         }
-                        
+
                         Cargar_Metadatos();
-                        
+
                         bandera_Siguiente_Pista = true;
                     }
                 }
@@ -1802,7 +1804,7 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                     if (nodo_actual.has_previous()) {
                         indice--;
                         nodo_actual = nodo_actual.previous();
-                        
+
                         Cargar_Metadatos();
                     }
                 }
@@ -1815,32 +1817,32 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
             @Override
             public void buffering(MediaPlayer mp, float f) {
-                
+
             }
 
             @Override
             public void playing(MediaPlayer mp) {
-                
+
             }
 
             @Override
             public void paused(MediaPlayer mp) {
-                
+
             }
 
             @Override
             public void stopped(MediaPlayer mp) {
-                
+
             }
 
             @Override
             public void forward(MediaPlayer mp) {
-                
+
             }
 
             @Override
             public void backward(MediaPlayer mp) {
-                
+
             }
 
             @Override
@@ -1849,210 +1851,209 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
 
             @Override
             public void timeChanged(MediaPlayer mp, long l) {
-                
+
             }
 
             @Override
             public void positionChanged(MediaPlayer mp, float f) {
-               
-                if(bandera_Mouse_Auxiliar){
-                    if(CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio() != null){
-                        tiempo = (int)CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().time();
+
+                if (bandera_Mouse_Auxiliar) {
+                    if (CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio() != null) {
+                        tiempo = (int) CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().time();
                         valor = tiempo / 1000;
                         progreso_JSlider.setValue(tiempo);
                         segundos = CourseRoom.Utilerias().Convertir_Segundos(valor);
                         progreso_JLabel.setText(segundos);
                     }
-                    
+
                 }
             }
 
             @Override
             public void seekableChanged(MediaPlayer mp, int i) {
-                
+
             }
 
             @Override
             public void pausableChanged(MediaPlayer mp, int i) {
-                
+
             }
 
             @Override
             public void titleChanged(MediaPlayer mp, int i) {
-                
+
             }
 
             @Override
             public void snapshotTaken(MediaPlayer mp, String string) {
-                
+
             }
 
             @Override
             public void lengthChanged(MediaPlayer mp, long l) {
-                
+
             }
 
             @Override
             public void videoOutput(MediaPlayer mp, int i) {
-                
+
             }
 
             @Override
             public void scrambledChanged(MediaPlayer mp, int i) {
-                
+
             }
 
             @Override
             public void elementaryStreamAdded(MediaPlayer mp, TrackType tt, int i) {
-                
+
             }
 
             @Override
             public void elementaryStreamDeleted(MediaPlayer mp, TrackType tt, int i) {
-                
+
             }
 
             @Override
             public void elementaryStreamSelected(MediaPlayer mp, TrackType tt, int i) {
-                
+
             }
 
             @Override
             public void corked(MediaPlayer mp, boolean bln) {
-                
+
             }
 
             @Override
             public void muted(MediaPlayer mp, boolean bln) {
-                
+
             }
 
             @Override
             public void volumeChanged(MediaPlayer mp, float f) {
-                
+
             }
 
             @Override
             public void audioDeviceChanged(MediaPlayer mp, String string) {
-                
+
             }
 
             @Override
             public void chapterChanged(MediaPlayer mp, int i) {
-                
+
             }
 
             @Override
             public void error(MediaPlayer mp) {
-                
+
             }
 
             @Override
             public void mediaPlayerReady(MediaPlayer mp) {
-                
+
                 longitud = CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().status().length();
-                if(longitud < Integer.MAX_VALUE){
-                    longitud_Real = (int)longitud;
+                if (longitud < Integer.MAX_VALUE) {
+                    longitud_Real = (int) longitud;
                     progreso_JSlider.setMaximum(longitud_Real);
-                    duracion_Total_JLabel.setText(CourseRoom.Utilerias().Convertir_Segundos(longitud_Real/1000));
+                    duracion_Total_JLabel.setText(CourseRoom.Utilerias().Convertir_Segundos(longitud_Real / 1000));
                     ImageIcon icono_Pause = new ImageIcon(getClass().getResource("/recursos/iconos/pause.png"));
                     play_Pausa_JLabel.setIcon(icono_Pause);
                     icono_Pause.getImage().flush();
                     CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().mediaPlayer().mediaPlayer().audio().setVolume(volumen_JSlider.getValue());
-                    
-                }else{
-                    CourseRoom.Utilerias().Mensaje_Error("ERROR","Archivo Demasiado Grande");
-                } 
+
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Error("ERROR", "Archivo Demasiado Grande");
+                }
             }
         });
     }
-    
+
     @Override
-    public void Cargar_Metadatos(){
+    public void Cargar_Metadatos() {
         try {
             String mrl;
             File archivo_Leer = new File(nodo_actual.element());
             AudioFile archivo_Audio;
             Tag tag;
-            
-            if(archivo_Leer.exists()){      
-               
+
+            if (archivo_Leer.exists()) {
+
                 archivo_Audio = AudioFileIO.read(archivo_Leer);
-                
+
                 tag = archivo_Audio.getTag();
                 String titulo = tag.getFirst(FieldKey.TITLE);
                 String artista = tag.getFirst(FieldKey.ARTIST);
                 String album = tag.getFirst(FieldKey.ALBUM);
 
                 String letras = tag.getFirst(FieldKey.LYRICS);
-                if(titulo == null){
+                if (titulo == null) {
                     titulo = archivo_Leer.getName();
                 }
-                if(titulo.isEmpty()){
+                if (titulo.isEmpty()) {
                     titulo = archivo_Leer.getName();
                 }
-                titulo_JLabel.setToolTipText(CourseRoom.Utilerias().Concatenar("<html><h3>Titulo: ",titulo,"</h3></html>"));
-                artista_JLabel.setToolTipText(CourseRoom.Utilerias().Concatenar("<html><h3>Artista: ",artista,"</h3></html>"));
-                album_JLabel.setToolTipText(CourseRoom.Utilerias().Concatenar("<html><h3>Album: ",album,"</h3></html>"));
+                titulo_JLabel.setToolTipText(CourseRoom.Utilerias().Concatenar("<html><h3>Titulo: ", titulo, "</h3></html>"));
+                artista_JLabel.setToolTipText(CourseRoom.Utilerias().Concatenar("<html><h3>Artista: ", artista, "</h3></html>"));
+                album_JLabel.setToolTipText(CourseRoom.Utilerias().Concatenar("<html><h3>Album: ", album, "</h3></html>"));
 
                 titulo_JLabel.setText(titulo);
                 artista_JLabel.setText(artista);
                 album_JLabel.setText(album);
-                
+
                 letras_JTextPane.setText(letras);
                 letras_JTextPane.setCaretPosition(0);
 
                 Artwork arte = tag.getFirstArtwork();
-                Entrada_Lista_Reproduccion_General_Panel entrada_Lista_Reproduccion_General_Panel = 
-                        (Entrada_Lista_Reproduccion_General_Panel) lista_Reproduccion_JPanel.getComponent(indice);
-                if(arte != null){
-                    
-                    Image imagen_Real = ((Image)arte.getImage());
-                    if(imagen_Real != null){
+                Entrada_Lista_Reproduccion_General_Panel entrada_Lista_Reproduccion_General_Panel
+                        = (Entrada_Lista_Reproduccion_General_Panel) lista_Reproduccion_JPanel.getComponent(indice);
+                if (arte != null) {
+
+                    Image imagen_Real = ((Image) arte.getImage());
+                    if (imagen_Real != null) {
                         imagen_Real = imagen_Real.getScaledInstance(550, 550, Image.SCALE_SMOOTH);
                         Establecer_Colores(imagen_Real);
                         ImageIcon cover = new ImageIcon(imagen_Real);
                         imagen_Arte_JLabel.setIcon(cover);
                         cover.getImage().flush();
                         imagen_Real.flush();
-                    } 
-                } 
-                
+                    }
+                }
+
                 if (entrada_Lista_Reproduccion_General_Panel.Vacio()) {
                     entrada_Lista_Reproduccion_General_Panel.Titulo(titulo);
                     entrada_Lista_Reproduccion_General_Panel.Artista(artista);
                     entrada_Lista_Reproduccion_General_Panel.Album(album);
                 }
-                
-                
-            }else{
+
+            } else {
                 mrl = nodo_actual.element();
-                CourseRoom.Utilerias().Mensaje_Error("El Archivo No Se Encontró",mrl);
+                CourseRoom.Utilerias().Mensaje_Error("El Archivo No Se Encontró", mrl);
                 rutas.remove(mrl);
-                if((indice+1) < rutas.size()){
+                if ((indice + 1) < rutas.size()) {
                     Siguiente_Pista();
-                } else if((indice - 1) > 0){
+                } else if ((indice - 1) > 0) {
                     Anterior_Pista();
-                } else{
+                } else {
                     Establecer_Alto();
                 }
             }
         } catch (CannotReadException | IOException | TagException | ReadOnlyFileException | InvalidAudioFrameException ex) {
-            
+
         }
-        
+
     }
-    
+
     @Override
-    protected void paintComponent(Graphics g){
-        if(primer_Color != null && segundo_Color != null
-                && tercer_Color != null){
+    protected void paintComponent(Graphics g) {
+        if (primer_Color != null && segundo_Color != null
+                && tercer_Color != null) {
             super.paintComponent(g);
-            Graphics2D g2d = (Graphics2D)g;
+            Graphics2D g2d = (Graphics2D) g;
             int w = getWidth();
             int h = getHeight();
-            
-            Color transparente = new Color(0,0,0,0);
+
+            Color transparente = new Color(0, 0, 0, 0);
             // Vertical
             GradientPaint gp = new GradientPaint(
                     0, 0, transparente,

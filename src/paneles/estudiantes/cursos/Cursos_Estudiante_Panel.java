@@ -645,9 +645,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Cursos<br>Rebasa Los 100 Caracteres");
           }else{
-                SwingUtilities.invokeLater(() -> {
                     Buscar_Cursos(buscar_JTextField.getText());
-                });
             }
         }
     }//GEN-LAST:event_buscar_JTextFieldKeyPressed
@@ -902,7 +900,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 curso_Estudiante_Panel.Limpiar();
             }
         }
-        SwingUtilities.invokeLater(() -> {
             Lista<BuscarCursosModel> lista
                     = CourseRoom.Solicitudes().Buscar_Cursos(busqueda,Tablero_Estudiante_Panel.Id_Usuario());
 
@@ -913,7 +910,6 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
             } else {
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Registros");
             }
-        });
     }
     
     private void Agregar_Curso_Actual(CursosModel cursosModel){
