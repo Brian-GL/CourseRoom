@@ -240,6 +240,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         tematicas_JScrollPane.setOpaque(false);
 
         tematicas_JTable.setAutoCreateRowSorter(true);
+        tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tematicas_JTable.setModel(
 
             new javax.swing.table.DefaultTableModel(
@@ -273,7 +274,6 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                     return super.getColumnClass(column);
                 }
             });
-            tematicas_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             tematicas_JTable.setRowHeight(32);
             tematicas_JTable.setShowGrid(true);
             tematicas_JTable.setSurrendersFocusOnKeystroke(true);
@@ -302,16 +302,14 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
                                 int id_Tematica = Integer.parseInt(celda.ID());
 
-                                SwingUtilities.invokeLater(() -> {
-                                    ResponseModel response = CourseRoom.Solicitudes().Remover_Tematica_Curso(id_Tematica,Tablero_Profesor_Panel.Id_Usuario());
+                                ResponseModel response = CourseRoom.Solicitudes().Remover_Tematica_Curso(id_Tematica,Tablero_Profesor_Panel.Id_Usuario());
 
-                                    if(response.Is_Success()){
-                                        CourseRoom.Utilerias().Mensaje_Informativo("Remover Interes", response.Mensaje());
-                                        modelo.removeRow(fila);
-                                    }else{
-                                        CourseRoom.Utilerias().Mensaje_Alerta("Remover Interes", response.Mensaje());
-                                    }
-                                });
+                                if(response.Is_Success()){
+                                    CourseRoom.Utilerias().Mensaje_Informativo("Remover Interes", response.Mensaje());
+                                    modelo.removeRow(fila);
+                                }else{
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Remover Interes", response.Mensaje());
+                                }
 
                             }
                         }
@@ -622,7 +620,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                         .addContainerGap()
                         .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
+                        .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 534, Short.MAX_VALUE)
                         .addContainerGap())
                 );
             }// </editor-fold>//GEN-END:initComponents

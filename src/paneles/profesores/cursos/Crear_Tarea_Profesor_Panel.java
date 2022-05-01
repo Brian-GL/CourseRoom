@@ -357,16 +357,15 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                                     Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
 
                                     int id_Archivo_Subido = Integer.parseInt(celda.ID());
-                                    SwingUtilities.invokeLater(() -> {
-                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Profesor_Panel.Id_Usuario());
 
-                                        if(response.Is_Success()){
-                                            CourseRoom.Utilerias().Mensaje_Informativo("Remover Archivo Adjunto", response.Mensaje());
-                                            modelo.removeRow(fila);
-                                        }else{
-                                            CourseRoom.Utilerias().Mensaje_Alerta("Remover Archivo Adjunto", response.Mensaje());
-                                        }
-                                    });
+                                    ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Profesor_Panel.Id_Usuario());
+
+                                    if(response.Is_Success()){
+                                        CourseRoom.Utilerias().Mensaje_Informativo("Remover Archivo Adjunto", response.Mensaje());
+                                        modelo.removeRow(fila);
+                                    }else{
+                                        CourseRoom.Utilerias().Mensaje_Alerta("Remover Archivo Adjunto", response.Mensaje());
+                                    }
                                 }
 
                                 break;

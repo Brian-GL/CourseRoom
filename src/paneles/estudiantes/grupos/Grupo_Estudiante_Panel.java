@@ -438,16 +438,14 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                                 int id_Grupo = Integer.parseInt(celda.ID());
 
-                                SwingUtilities.invokeLater(() -> {
-                                    ResponseModel response = CourseRoom.Solicitudes().Remover_Voto_Miembro_Grupo(id_Grupo, Tablero_Estudiante_Panel.Id_Usuario());
+                                ResponseModel response = CourseRoom.Solicitudes().Remover_Voto_Miembro_Grupo(id_Grupo, Tablero_Estudiante_Panel.Id_Usuario());
 
-                                    if(response.Is_Success()){
-                                        CourseRoom.Utilerias().Mensaje_Informativo("Remover Usuario", response.Mensaje());
-                                        modelo.removeRow(fila);
-                                    }else{
-                                        CourseRoom.Utilerias().Mensaje_Alerta("Remover Usuario", response.Mensaje());
-                                    }
-                                });
+                                if(response.Is_Success()){
+                                    CourseRoom.Utilerias().Mensaje_Informativo("Remover Usuario", response.Mensaje());
+                                    modelo.removeRow(fila);
+                                }else{
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Remover Usuario", response.Mensaje());
+                                }
 
                             }
                         }
@@ -685,17 +683,15 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                                             int id_Archivo_Compartido = Integer.parseInt(celda.ID());
 
-                                            SwingUtilities.invokeLater(() -> {
-                                                ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Compartido_Grupo(
-                                                    id_Archivo_Compartido,Tablero_Estudiante_Panel.Id_Usuario());
+                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Compartido_Grupo(
+                                                id_Archivo_Compartido,Tablero_Estudiante_Panel.Id_Usuario());
 
-                                                if(response.Is_Success()){
-                                                    CourseRoom.Utilerias().Mensaje_Informativo("Archivo Compartido", response.Mensaje());
-                                                    modelo.removeRow(fila);
-                                                }else{
-                                                    CourseRoom.Utilerias().Mensaje_Alerta("Archivo Compartido", response.Mensaje());
-                                                }
-                                            });
+                                            if(response.Is_Success()){
+                                                CourseRoom.Utilerias().Mensaje_Informativo("Archivo Compartido", response.Mensaje());
+                                                modelo.removeRow(fila);
+                                            }else{
+                                                CourseRoom.Utilerias().Mensaje_Alerta("Archivo Compartido", response.Mensaje());
+                                            }
                                         }
 
                                         break;

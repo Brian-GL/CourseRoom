@@ -640,16 +640,14 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements  Compo
 
                                             int id_Archivo_Subido = Integer.parseInt(celda.ID());
 
-                                            SwingUtilities.invokeLater(() -> {
-                                                ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Estudiante_Panel.Id_Usuario());
+                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Subido_Tarea(id_Archivo_Subido, Tablero_Estudiante_Panel.Id_Usuario());
 
-                                                if(response.Is_Success()){
-                                                    CourseRoom.Utilerias().Mensaje_Informativo("Remover Tarea", response.Mensaje());
-                                                    modelo.removeRow(fila);
-                                                }else{
-                                                    CourseRoom.Utilerias().Mensaje_Alerta("Remover Tarea", response.Mensaje());
-                                                }
-                                            });
+                                            if(response.Is_Success()){
+                                                CourseRoom.Utilerias().Mensaje_Informativo("Remover Tarea", response.Mensaje());
+                                                modelo.removeRow(fila);
+                                            }else{
+                                                CourseRoom.Utilerias().Mensaje_Alerta("Remover Tarea", response.Mensaje());
+                                            }
                                         }
 
                                         break;

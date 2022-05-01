@@ -545,16 +545,14 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
                                     int id_Usuario = Integer.parseInt(celda.ID());
 
-                                    SwingUtilities.invokeLater(() -> {
-                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Miembro_Curso(Id_Curso,id_Usuario);
+                                    ResponseModel response = CourseRoom.Solicitudes().Remover_Miembro_Curso(Id_Curso,id_Usuario);
 
-                                        if(response.Is_Success()){
-                                            CourseRoom.Utilerias().Mensaje_Informativo("Remover Usuario", response.Mensaje());
-                                            modelo.removeRow(fila);
-                                        }else{
-                                            CourseRoom.Utilerias().Mensaje_Alerta("Remover Usuario", response.Mensaje());
-                                        }
-                                    });
+                                    if(response.Is_Success()){
+                                        CourseRoom.Utilerias().Mensaje_Informativo("Remover Usuario", response.Mensaje());
+                                        modelo.removeRow(fila);
+                                    }else{
+                                        CourseRoom.Utilerias().Mensaje_Alerta("Remover Usuario", response.Mensaje());
+                                    }
 
                                 }
                             }
@@ -902,16 +900,15 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                                     Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
 
                                                     int id_Material_Subido = Integer.parseInt(celda.ID());
-                                                    SwingUtilities.invokeLater(() -> {
-                                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Material_Curso(id_Material_Subido,Tablero_Profesor_Panel.Id_Usuario());
 
-                                                        if(response.Is_Success()){
-                                                            CourseRoom.Utilerias().Mensaje_Informativo("Materiales Compartidos", response.Mensaje());
-                                                            modelo.removeRow(fila);
-                                                        }else{
-                                                            CourseRoom.Utilerias().Mensaje_Alerta("Materiales Compartidos", response.Mensaje());
-                                                        }
-                                                    });
+                                                    ResponseModel response = CourseRoom.Solicitudes().Remover_Material_Curso(id_Material_Subido,Tablero_Profesor_Panel.Id_Usuario());
+
+                                                    if(response.Is_Success()){
+                                                        CourseRoom.Utilerias().Mensaje_Informativo("Materiales Compartidos", response.Mensaje());
+                                                        modelo.removeRow(fila);
+                                                    }else{
+                                                        CourseRoom.Utilerias().Mensaje_Alerta("Materiales Compartidos", response.Mensaje());
+                                                    }
                                                 }
 
                                                 break;
@@ -1196,16 +1193,15 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                                         Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
 
                                                         int id_Tematica = Integer.parseInt(celda.ID());
-                                                        SwingUtilities.invokeLater(() -> {
-                                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Tematica_Curso(id_Tematica,Tablero_Profesor_Panel.Id_Usuario());
 
-                                                            if(response.Is_Success()){
-                                                                CourseRoom.Utilerias().Mensaje_Informativo("Remover Interes Curso", response.Mensaje());
-                                                                modelo.removeRow(fila);
-                                                            }else{
-                                                                CourseRoom.Utilerias().Mensaje_Alerta("Remover Interes Curso", response.Mensaje());
-                                                            }
-                                                        });
+                                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Tematica_Curso(id_Tematica,Tablero_Profesor_Panel.Id_Usuario());
+
+                                                        if(response.Is_Success()){
+                                                            CourseRoom.Utilerias().Mensaje_Informativo("Remover Interes Curso", response.Mensaje());
+                                                            modelo.removeRow(fila);
+                                                        }else{
+                                                            CourseRoom.Utilerias().Mensaje_Alerta("Remover Interes Curso", response.Mensaje());
+                                                        }
                                                     }
                                                 }
 
