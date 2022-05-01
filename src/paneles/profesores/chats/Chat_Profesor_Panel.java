@@ -46,6 +46,7 @@ import modelos.ArchivoModel;
 import modelos.ComboOptionModel;
 import modelos.DatosPerfilChatPersonalModel;
 import modelos.MensajesModel;
+import modelos.ResponseChatModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;

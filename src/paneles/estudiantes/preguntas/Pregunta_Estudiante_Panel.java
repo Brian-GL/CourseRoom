@@ -31,6 +31,7 @@ import javax.swing.table.TableRowSorter;
 import modelos.ArchivoModel;
 import modelos.DatosGeneralesPreguntaModel;
 import modelos.MensajesModel;
+import modelos.ResponseChatModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
