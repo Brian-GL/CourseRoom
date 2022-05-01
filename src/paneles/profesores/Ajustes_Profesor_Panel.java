@@ -544,19 +544,18 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                 
                 if(resultado == JOptionPane.YES_OPTION){
 
-                    SwingUtilities.invokeLater(() -> {
-                        ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
-                                chats_Conmigo, false, true);
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
+                            chats_Conmigo, false, true);
 
-                        if(response.Is_Success()){
-                            CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Notificaciones", response.Mensaje());
-                            avisos_Activo = false;
-                            desactivar_Activar_Notificaciones_JButton.setText("¿Activar Notificaciones?");
-                            desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Activar Sus Notificaciones?");
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Notificaciones", response.Mensaje());
-                        }
-                    });
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Notificaciones", response.Mensaje());
+                        avisos_Activo = false;
+                        desactivar_Activar_Notificaciones_JButton.setText("¿Activar Notificaciones?");
+                        desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Activar Sus Notificaciones?");
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Notificaciones", response.Mensaje());
+                    }
+                    
                 }
             } else {
                 int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
@@ -565,20 +564,18 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
             
                 if(resultado == JOptionPane.YES_OPTION){
 
-                    SwingUtilities.invokeLater(() -> {
-                        ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
-                                chats_Conmigo, true, true);
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
+                            chats_Conmigo, true, true);
 
-                        if(response.Is_Success()){
-                            CourseRoom.Utilerias().Mensaje_Informativo("Activar Notificaciones", response.Mensaje());
-                            desactivar_Activar_Notificaciones_JButton.setText("¿Desactivar Notificaciones?");
-                            desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Desactivar Sus Notificaciones?");
-                            avisos_Activo = true;
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Activar Notificaciones", response.Mensaje());
-                        }
-                    });
-                }
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Informativo("Activar Notificaciones", response.Mensaje());
+                        desactivar_Activar_Notificaciones_JButton.setText("¿Desactivar Notificaciones?");
+                        desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Desactivar Sus Notificaciones?");
+                        avisos_Activo = true;
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Activar Notificaciones", response.Mensaje());
+                    }
+                
                 }
             }
         }
@@ -606,23 +603,17 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                 
                 if(resultado == JOptionPane.YES_OPTION){
 
-                    
-                    SwingUtilities.invokeLater(() -> {
-                        ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
-                                false, avisos_Activo, true);
-                        
-                        if(response.Is_Success()){
-                            CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Chats Conmigo", response.Mensaje());
-                            chats_Conmigo = false;
-                            permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Activar Chats Conmigo?");
-                            permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Activar La Opción De Permitir Chats Con Usted?");
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Chats Conmigo", response.Mensaje());
-                        }
-                        
-                    });
+                    ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(), 
+                            false, avisos_Activo, true);
 
-                    
+                    if(response.Is_Success()){
+                        CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Chats Conmigo", response.Mensaje());
+                        chats_Conmigo = false;
+                        permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Activar Chats Conmigo?");
+                        permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Activar La Opción De Permitir Chats Con Usted?");
+                    }else{
+                        CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Chats Conmigo", response.Mensaje());
+                    }
                 }
             } else {
                 int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
@@ -633,14 +624,11 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                     ResponseModel response = CourseRoom.Solicitudes().Actualizar_Configuracion(Tablero_Profesor_Panel.Id_Usuario(),
                             true, avisos_Activo, true);
                         
-                        if(response.Is_Success()){
-                            CourseRoom.Utilerias().Mensaje_Informativo("Activar Chats Conmigo", response.Mensaje());
-                            chats_Conmigo = true;
-                            permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Desactivar Chats Conmigo?");
-
-                    if (response.Is_Success()) {
+                    if(response.Is_Success()){
                         CourseRoom.Utilerias().Mensaje_Informativo("Activar Chats Conmigo", response.Mensaje());
                         chats_Conmigo = true;
+                        permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Desactivar Chats Conmigo?");
+                        permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Desactivar La Opción De Permitir Chats Con Usted?");
                     } else {
                         CourseRoom.Utilerias().Mensaje_Alerta("Activar Chats Conmigo", response.Mensaje());
                     }

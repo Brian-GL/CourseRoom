@@ -1598,7 +1598,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
 
                 long tamanio = FileUtils.sizeOf(archivo_Abierto);
                 tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                if (tamanio < 35) {
+                if (tamanio < 15) {
 
                     String nombre_Archivo = archivo_Abierto.getName();
                     String emisor = Perfil_Profesor_Panel.Nombre_Completo();
@@ -1966,7 +1966,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
 
                     long tamanio = FileUtils.sizeOf(archivo_Abierto);
                     tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                    if (tamanio < 35) {
+                    if (tamanio < 15) {
                         archivo_Adjunto = archivo_Abierto;
                     } else {
                         CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "El Archivo Adjunto Supera El Tamaño Aceptado De Subida");

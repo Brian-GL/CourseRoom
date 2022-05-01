@@ -1078,7 +1078,9 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         bandas_JPanel.setEnabled(true);
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
-                        CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
+                        SwingUtilities.invokeLater(() -> {
+                            CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
+                        });
                         progreso_JSlider.setEnabled(true);
 
                     }
@@ -1155,7 +1157,9 @@ public final class Reproductor_Musica_General_Panel extends javax.swing.JPanel i
                         bandas_JPanel.setEnabled(true);
                         preamp_JSlider.setEnabled(true);
                         presets_JComboBox.setEnabled(true);
-                        CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
+                        SwingUtilities.invokeLater(() -> {
+                            CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().play();
+                        });
                         progreso_JSlider.setEnabled(true);
                     }
 
