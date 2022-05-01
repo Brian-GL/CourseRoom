@@ -321,7 +321,6 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             
             if(resultado == JOptionPane.YES_OPTION){
-                SwingUtilities.invokeLater(() -> {
                     ResponseModel response = CourseRoom.Solicitudes().Enrolar_Usuario_Curso(Id_Curso,
                             Tablero_Estudiante_Panel.Id_Usuario());
 
@@ -333,7 +332,6 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
                     } else {
                         CourseRoom.Utilerias().Mensaje_Alerta("Enrolar Curso", response.Mensaje());
                     }
-                });
                 Tablero_Estudiante_Panel.Mostrar_Vista("Cursos");
                 Tablero_Estudiante_Panel.Retirar_Vista(this);
                 this.Limpiar();

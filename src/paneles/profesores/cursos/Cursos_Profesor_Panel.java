@@ -230,9 +230,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
-            SwingUtilities.invokeLater(() -> {
                 Obtener_Cursos_Creados_Profesor(true);
-            });
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 

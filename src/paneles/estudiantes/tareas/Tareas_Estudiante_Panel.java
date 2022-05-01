@@ -44,19 +44,19 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  *
  * @author LENOVO
  */
-public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface{
+public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_Interface, Componentes_Interface {
 
     private static Lista<Tarea_Estudiante_Panel> mostrar_Tareas_Lista;
     private Lista<Tarea_Estudiante_Panel> buscar_Tareas_Lista;
-    
+
     /**
      * Creates new form Tareas_Estudiante
      */
     public Tareas_Estudiante_Panel() {
         initComponents();
-        
+
         Iniciar_Componentes();
-        
+
     }
 
     /**
@@ -370,8 +370,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     private void buscar_Tareas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_Tareas_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this,"Buscar");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) this.getLayout()).show(this, "Buscar");
         }
     }//GEN-LAST:event_buscar_Tareas_JButtonMouseClicked
 
@@ -387,11 +387,11 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     private void buscar_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_JTextFieldKeyPressed
         int longitud = buscar_JTextField.getText().length();
-        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+        if (KeyEvent.VK_ENTER == evt.getKeyCode()) {
             if (longitud > 99) {
-            buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Tareas<br>Rebasa Los 100 Caracteres");
-          }else{
+                buscar_JTextField.setText(buscar_JTextField.getText().substring(0, longitud - 1));
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "La Busqueda De Tareas<br>Rebasa Los 100 Caracteres");
+            } else {
                 Buscar_Tareas(buscar_JTextField.getText());
             }
         }
@@ -399,8 +399,8 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     private void mostrar_Tareas_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Tareas_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this,"Mostrar");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) this.getLayout()).show(this, "Mostrar");
         }
     }//GEN-LAST:event_mostrar_Tareas_JButtonMouseClicked
 
@@ -416,7 +416,7 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Obtener_Tareas(true);
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
@@ -431,193 +431,187 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
     }//GEN-LAST:event_actualizar_JButtonMouseExited
 
-    private void Agregar_Tarea(TareasEstudianteModel tareasEstudianteModel){
-        
+    private void Agregar_Tarea(TareasEstudianteModel tareasEstudianteModel) {
+
         DefaultTableModel modelo_Mostrar_Tareas = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
-        
+
         String id_Tarea = CourseRoom.Utilerias().Concatenar("Tarea_", tareasEstudianteModel.Id_Tarea());
-        
+
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
-        
+
         celda = new Celda_Renderer(tareasEstudianteModel.Nombre(), id_Tarea);
         celdas[0] = celda;
-        
+
         byte[] bytes_Imagen_Curso = CourseRoom.Solicitudes().Obtener_Imagen_Curso(tareasEstudianteModel.Id_Curso());
-        
-        if(bytes_Imagen_Curso.length > 0 ){
-            
+
+        if (bytes_Imagen_Curso.length > 0) {
+
             Image imagen_Curso = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen_Curso);
-            if(imagen_Curso != null){
+            if (imagen_Curso != null) {
                 imagen_Curso = imagen_Curso.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
-                
+
                 ImageIcon icono_Curso = new ImageIcon(imagen_Curso);
-                celda = new Celda_Renderer(icono_Curso,tareasEstudianteModel.Nombre_Curso(),id_Tarea);
+                celda = new Celda_Renderer(icono_Curso, tareasEstudianteModel.Nombre_Curso(), id_Tarea);
                 celdas[1] = celda;
-                
+
                 icono_Curso.getImage().flush();
-                
-            }else{
-                celda = new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(),id_Tarea);
+
+            } else {
+                celda = new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(), id_Tarea);
                 celdas[1] = celda;
             }
-            
-        }else{
-            celda = new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(),id_Tarea);
+
+        } else {
+            celda = new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(), id_Tarea);
             celdas[1] = celda;
         }
-        
+
         celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Creacion(), id_Tarea);
         celdas[2] = celda;
         celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Entrega(), id_Tarea);
         celdas[3] = celda;
         celda = new Celda_Renderer(tareasEstudianteModel.Estatus(), id_Tarea);
         celdas[4] = celda;
-        
+
         modelo_Mostrar_Tareas.addRow(celdas);
-        
-        Tarea_Estudiante_Panel tarea_Estudiante_Panel =
-                new Tarea_Estudiante_Panel(tareasEstudianteModel.Id_Tarea());
-        
+
+        Tarea_Estudiante_Panel tarea_Estudiante_Panel
+                = new Tarea_Estudiante_Panel(tareasEstudianteModel.Id_Tarea());
+
         mostrar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
-        
+
         Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, id_Tarea);
     }
-    
-    private void Obtener_Tareas(boolean bandera){
-        
+
+    private void Obtener_Tareas(boolean bandera) {
+
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Tareas_JTable.getModel();
         modelo.setRowCount(0);
-        
+
         Tarea_Estudiante_Panel tarea_Estudiante_Panel;
-        while(!mostrar_Tareas_Lista.is_empty()){
-            tarea_Estudiante_Panel  = mostrar_Tareas_Lista.delist();
+        while (!mostrar_Tareas_Lista.is_empty()) {
+            tarea_Estudiante_Panel = mostrar_Tareas_Lista.delist();
             Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
         }
-        
-        SwingUtilities.invokeLater(() -> {
-            Lista<TareasEstudianteModel> tareas_Estudiante
-                    = CourseRoom.Solicitudes().Obtener_Tareas_Estudiante(Tablero_Estudiante_Panel.Id_Usuario());
-            if(!tareas_Estudiante.is_empty()){
-                while (!tareas_Estudiante.is_empty()) {
-                    Agregar_Tarea(tareas_Estudiante.delist());
-                }
-            }else{
-                if(bandera){
-                    CourseRoom.Utilerias().Mensaje_Alerta("Obtener Tareas", "No Se Obtuvieron Las Tareas");
-                }
+        Lista<TareasEstudianteModel> tareas_Estudiante
+                = CourseRoom.Solicitudes().Obtener_Tareas_Estudiante(Tablero_Estudiante_Panel.Id_Usuario());
+        if (!tareas_Estudiante.is_empty()) {
+            while (!tareas_Estudiante.is_empty()) {
+                Agregar_Tarea(tareas_Estudiante.delist());
             }
-        });
+        } else {
+            if (bandera) {
+                CourseRoom.Utilerias().Mensaje_Alerta("Obtener Tareas", "No Se Obtuvieron Las Tareas");
+            }
+        }
     }
-    
-    private void Buscar_Tareas(String busqueda){
-        
+
+    private void Buscar_Tareas(String busqueda) {
+
         DefaultTableModel modelo = (DefaultTableModel) buscar_Tareas_JTable.getModel();
         modelo.setRowCount(0);
-        
+
         Tarea_Estudiante_Panel tarea_Estudiante_Panel;
-        while(!buscar_Tareas_Lista.is_empty()){
+        while (!buscar_Tareas_Lista.is_empty()) {
             tarea_Estudiante_Panel = buscar_Tareas_Lista.delist();
-            if(!Existe_Tarea(tarea_Estudiante_Panel.Id_Tarea())){
+            if (!Existe_Tarea(tarea_Estudiante_Panel.Id_Tarea())) {
                 Tablero_Estudiante_Panel.Retirar_Vista(tarea_Estudiante_Panel);
                 tarea_Estudiante_Panel.Limpiar();
             }
         }
-        
-        SwingUtilities.invokeLater(() -> {
-            Lista<TareasEstudianteModel> lista
-                    = CourseRoom.Solicitudes().Buscar_Tareas(busqueda, Tablero_Estudiante_Panel.Id_Usuario());
-            if (!lista.is_empty()) {
-                while (!lista.is_empty()) {
-                    Agregar_Tarea_Busqueda(lista.delist());
-                }
-            } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Registros");
+        Lista<TareasEstudianteModel> lista
+                = CourseRoom.Solicitudes().Buscar_Tareas(busqueda, Tablero_Estudiante_Panel.Id_Usuario());
+        if (!lista.is_empty()) {
+            while (!lista.is_empty()) {
+                Agregar_Tarea_Busqueda(lista.delist());
             }
-        });
+        } else {
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Registros");
+        }
     }
-    
+
     public void Agregar_Tarea_Busqueda(TareasEstudianteModel tareasEstudianteModel) {
-        String id_Tarea = CourseRoom.Utilerias().Concatenar("Tarea_",tareasEstudianteModel.Id_Tarea());
-        
+        String id_Tarea = CourseRoom.Utilerias().Concatenar("Tarea_", tareasEstudianteModel.Id_Tarea());
+
         Celda_Renderer[] celdas = new Celda_Renderer[5];
         Celda_Renderer celda;
-        
+
         Image imagen;
         byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(tareasEstudianteModel.Id_Curso());
-        
-        if(bytes_Imagen.length > 0){
-            
+
+        if (bytes_Imagen.length > 0) {
+
             imagen = CourseRoom.Utilerias().Obtener_Imagen(bytes_Imagen);
-            
-            if(imagen != null){
-                
+
+            if (imagen != null) {
+
                 imagen = imagen.getScaledInstance(95, 95, Image.SCALE_SMOOTH);
                 ImageIcon icono_Imagen = new ImageIcon(imagen);
-                celda =  new Celda_Renderer(icono_Imagen,tareasEstudianteModel.Nombre_Curso(), id_Tarea);
+                celda = new Celda_Renderer(icono_Imagen, tareasEstudianteModel.Nombre_Curso(), id_Tarea);
                 celdas[1] = celda;
-            }else{
-                celda =  new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(), id_Tarea);
+            } else {
+                celda = new Celda_Renderer(tareasEstudianteModel.Nombre_Curso(), id_Tarea);
                 celdas[1] = celda;
             }
         }
-        
-        celda = new Celda_Renderer(tareasEstudianteModel.Nombre(),id_Tarea);
+
+        celda = new Celda_Renderer(tareasEstudianteModel.Nombre(), id_Tarea);
         celdas[0] = celda;
-        celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Creacion(),id_Tarea);
+        celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Creacion(), id_Tarea);
         celdas[2] = celda;
-        celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Entrega(),id_Tarea);
+        celda = new Celda_Renderer(tareasEstudianteModel.Fecha_Entrega(), id_Tarea);
         celdas[3] = celda;
-        celda = new Celda_Renderer(tareasEstudianteModel.Estatus(),id_Tarea);
+        celda = new Celda_Renderer(tareasEstudianteModel.Estatus(), id_Tarea);
         celdas[4] = celda;
-        
+
         DefaultTableModel modelo = (DefaultTableModel) buscar_Tareas_JTable.getModel();
         modelo.insertRow(0, celdas);
-        buscar_Tareas_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(tareasEstudianteModel.Nombre().length()));
-        
-        if(!Existe_Tarea(tareasEstudianteModel.Id_Tarea())){
+        buscar_Tareas_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(tareasEstudianteModel.Nombre().length()));
 
-            Tarea_Estudiante_Panel tarea_Estudiante_Panel = 
-                    new Tarea_Estudiante_Panel(tareasEstudianteModel.Id_Tarea());
+        if (!Existe_Tarea(tareasEstudianteModel.Id_Tarea())) {
+
+            Tarea_Estudiante_Panel tarea_Estudiante_Panel
+                    = new Tarea_Estudiante_Panel(tareasEstudianteModel.Id_Tarea());
 
             buscar_Tareas_Lista.push_back(tarea_Estudiante_Panel);
 
             Tablero_Estudiante_Panel.Agregar_Vista(tarea_Estudiante_Panel, id_Tarea);
         }
     }
-    
-    public static boolean Existe_Tarea(int id_Tarea){
+
+    public static boolean Existe_Tarea(int id_Tarea) {
         Nodo<Tarea_Estudiante_Panel> first = mostrar_Tareas_Lista.front();
         Nodo<Tarea_Estudiante_Panel> last = mostrar_Tareas_Lista.back();
 
-        int middle_index = (mostrar_Tareas_Lista.size())/2;
+        int middle_index = (mostrar_Tareas_Lista.size()) / 2;
 
-        if(middle_index % 2 == 0){
+        if (middle_index % 2 == 0) {
             for (int i = 0; i < middle_index; i++) {
 
-                if (first.element().Id_Tarea() == id_Tarea){
+                if (first.element().Id_Tarea() == id_Tarea) {
                     return true;
                 }
-                if (last.element().Id_Tarea() == id_Tarea){
+                if (last.element().Id_Tarea() == id_Tarea) {
                     return true;
                 }
                 first = first.next();
                 last = last.previous();
             }
             return false;
-        }else{
-            for(int i = 0; i < middle_index;i++) {
-                if(first.element().Id_Tarea() == id_Tarea){
+        } else {
+            for (int i = 0; i < middle_index; i++) {
+                if (first.element().Id_Tarea() == id_Tarea) {
                     return true;
                 }
-                if(last.element().Id_Tarea() == id_Tarea){
+                if (last.element().Id_Tarea() == id_Tarea) {
                     return true;
                 }
                 first = first.next();
                 last = last.previous();
             }
             return mostrar_Tareas_Lista.medium().Id_Tarea() == id_Tarea;
-        }      
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -638,13 +632,13 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
     @Override
     public void Iniciar_Componentes() {
-        
+
         mostrar_Tareas_JScrollPane.getViewport().setOpaque(false);
         mostrar_Tareas_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         mostrar_Tareas_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        
+
         mostrar_Tareas_Lista = new Lista<>();
-        
+
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         mostrar_Tareas_JTable.getTableHeader().setFont(gadugi);
 
@@ -659,13 +653,13 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
         buscar_Tareas_JTable.getTableHeader().setFont(gadugi);
 
         buscar_Tareas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        
+
         Obtener_Tareas(false);
     }
 
     @Override
     public void Colorear_Componentes() {
-        
+
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
         titulo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
@@ -675,14 +669,14 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
 
         mostrar_Tareas_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
         mostrar_Tareas_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+
         mostrar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
         mostrar_Tareas_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         mostrar_Tareas_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color());
-        
+
         mostrar_Tareas_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
         mostrar_Tareas_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         buscar_Tareas_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
         buscar_Tareas_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         buscar_Tareas_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
@@ -699,24 +693,24 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
-        
+
         Tarea_Estudiante_Panel tarea_Estudiante_Panel;
         for (Nodo<Tarea_Estudiante_Panel> nodo = mostrar_Tareas_Lista.front(); nodo != null; nodo = nodo.next()) {
             tarea_Estudiante_Panel = nodo.element();
             tarea_Estudiante_Panel.Colorear_Componentes();
         }
-        
+
         Font fuente = new java.awt.Font("Segoe UI", 1, 14);
         BevelBorder borde_Linea = new BevelBorder(BevelBorder.LOWERED);
         TitledBorder borde_Titulo = new TitledBorder(borde_Linea, "Buscar Tarea(s)", TitledBorder.DEFAULT_JUSTIFICATION,
-                TitledBorder.TOP,  fuente, CourseRoom.Utilerias().Tercer_Color_Fuente());
-        
+                TitledBorder.TOP, fuente, CourseRoom.Utilerias().Tercer_Color_Fuente());
+
         buscar_JTextField.setBorder(borde_Titulo);
 
         buscar_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         buscar_JTextField.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         buscar_JTextField.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
 
         mostrar_Tareas_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
@@ -728,13 +722,13 @@ public class Tareas_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                 celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
-        
+
         for (Nodo<Tarea_Estudiante_Panel> nodo = buscar_Tareas_Lista.front(); nodo != null; nodo = nodo.next()) {
             tarea_Estudiante_Panel = nodo.element();
             tarea_Estudiante_Panel.Colorear_Componentes();
         }
     }
-    
+
     @Override
     public void Limpiar() {
         mostrar_Tareas_Lista.clear();

@@ -33,13 +33,13 @@ import java.util.Locale;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 
-public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componentes_Interface, Limpieza_Interface, Validaciones_Interface{
+public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componentes_Interface, Limpieza_Interface, Validaciones_Interface {
 
     private byte[] imagen;
-  
+
     public Crear_Cuenta_General_Panel() {
         initComponents();
-        
+
         Iniciar_Componentes();
     }
 
@@ -925,8 +925,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void continuar_Autenticacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Autenticacion_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this,"Autenticacion");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) this.getLayout()).show(this, "Autenticacion");
         }
     }//GEN-LAST:event_continuar_Autenticacion_JButtonMouseClicked
 
@@ -942,7 +942,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void regresar_Inicio_Sesion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Inicio_Sesion_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             CourseRoom.Frame().Mostrar_Vista("Inicio_Sesion");
         }
     }//GEN-LAST:event_regresar_Inicio_Sesion_JButtonMouseClicked
@@ -959,8 +959,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void regresar_Inicio_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Inicio_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this,"Inicio");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) this.getLayout()).show(this, "Inicio");
         }
     }//GEN-LAST:event_regresar_Inicio_JButtonMouseClicked
 
@@ -976,7 +976,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void continuar_Datos_Personales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Datos_Personales_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             verificar_Campos_Autenticacion();
         }
     }//GEN-LAST:event_continuar_Datos_Personales_JButtonMouseClicked
@@ -993,7 +993,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void continuar_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Perfil_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             verificar_Datos_Personales();
         }
     }//GEN-LAST:event_continuar_Perfil_JButtonMouseClicked
@@ -1010,8 +1010,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void regresar_Autenticacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Autenticacion_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this,"Autenticacion");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) this.getLayout()).show(this, "Autenticacion");
         }
     }//GEN-LAST:event_regresar_Autenticacion_JButtonMouseClicked
 
@@ -1027,7 +1027,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void cargar_Imagen_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargar_Imagen_Perfil_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagenes", "jpg", "jpeg");
             escogedor_Archivos.addChoosableFileFilter(filtro);
@@ -1039,31 +1039,31 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
             if (resultado == JFileChooser.APPROVE_OPTION) {
                 File archivo_Abierto = escogedor_Archivos.getSelectedFile();
-                
-                if(archivo_Abierto != null){
-                try {
-                    tamanio = FileUtils.sizeOf(archivo_Abierto);
-                    tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                    if(tamanio < 16){
-                        
-                    Image abrir_Imagen = ImageIO.read(archivo_Abierto);
-                    imagen = FileUtils.readFileToByteArray(archivo_Abierto);
-                    abrir_Imagen = abrir_Imagen.getScaledInstance(450,450,Image.SCALE_SMOOTH);
-                    ImageIcon icono = new ImageIcon(abrir_Imagen);
-                    imagen_Perfil_JLabel.setIcon(icono);
-                    icono.getImage().flush();
-                    abrir_Imagen.flush();
 
-                }else{
+                if (archivo_Abierto != null) {
+                    try {
+                        tamanio = FileUtils.sizeOf(archivo_Abierto);
+                        tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
+                        if (tamanio < 16) {
+
+                            Image abrir_Imagen = ImageIO.read(archivo_Abierto);
+                            imagen = FileUtils.readFileToByteArray(archivo_Abierto);
+                            abrir_Imagen = abrir_Imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
+                            ImageIcon icono = new ImageIcon(abrir_Imagen);
+                            imagen_Perfil_JLabel.setIcon(icono);
+                            icono.getImage().flush();
+                            abrir_Imagen.flush();
+
+                        } else {
                             archivo_Mayor = true;
                         }
                     } catch (IOException ex) {
-                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen",ex.getMessage());
+                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen", ex.getMessage());
                     }
                 }
-                
-                if(archivo_Mayor){
-                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Imagen Supera El Tamaño Aceptado De Subida");
+
+                if (archivo_Mayor) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "La Imagen Supera El Tamaño Aceptado De Subida");
                 }
             }
 
@@ -1084,8 +1084,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void regresar_Datos_Personales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Datos_Personales_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this,"Datos_Personales");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) this.getLayout()).show(this, "Datos_Personales");
         }
     }//GEN-LAST:event_regresar_Datos_Personales_JButtonMouseClicked
 
@@ -1101,8 +1101,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void continuar_Informacion_Extra_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_continuar_Informacion_Extra_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if(tipo_Perfil_JComboBox.getSelectedItem().equals("Profesor")){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            if (tipo_Perfil_JComboBox.getSelectedItem().equals("Profesor")) {
                 promedio_General_JFormattedTextField.setVisible(false);
                 promedio_General_JLabel.setVisible(false);
                 agregar_Interes_JButton.setVisible(false);
@@ -1110,8 +1110,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 intereses_JLabel.setVisible(false);
                 intereses_JScrollPane.setVisible(false);
                 intereses_JTable.setVisible(false);
-            }
-            else{
+            } else {
                 promedio_General_JFormattedTextField.setVisible(true);
                 promedio_General_JLabel.setVisible(true);
                 agregar_Interes_JButton.setVisible(true);
@@ -1119,9 +1118,9 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 intereses_JLabel.setVisible(true);
                 intereses_JScrollPane.setVisible(true);
                 intereses_JTable.setVisible(true);
-                
+
             }
-            ((CardLayout)this.getLayout()).show(this,"Informacion_Extra");
+            ((CardLayout) this.getLayout()).show(this, "Informacion_Extra");
         }
     }//GEN-LAST:event_continuar_Informacion_Extra_JButtonMouseClicked
 
@@ -1137,7 +1136,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void crear_Cuenta_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_Cuenta_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Validar_Campos();
         }
     }//GEN-LAST:event_crear_Cuenta_JButtonMouseClicked
@@ -1154,8 +1153,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void regresar_Perfil_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresar_Perfil_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)this.getLayout()).show(this,"Perfil");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) this.getLayout()).show(this, "Perfil");
         }
     }//GEN-LAST:event_regresar_Perfil_JButtonMouseClicked
 
@@ -1171,13 +1170,13 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void agregar_Interes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-            ComboOptionModel interes = ((ComboOptionModel)intereses_AutoCompletionComboBox.getSelectedItem()) != null
-                    ? ((ComboOptionModel)intereses_AutoCompletionComboBox.getSelectedItem()) : new ComboOptionModel();
-            
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+
+            ComboOptionModel interes = ((ComboOptionModel) intereses_AutoCompletionComboBox.getSelectedItem()) != null
+                    ? ((ComboOptionModel) intereses_AutoCompletionComboBox.getSelectedItem()) : new ComboOptionModel();
+
             Agregar_Interes_Tematica(interes);
-            
+
         }
     }//GEN-LAST:event_agregar_Interes_JButtonMouseClicked
 
@@ -1196,14 +1195,14 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     private void nombres_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombres_JTextFieldKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-            if (Character.isDigit(c)) {
+        if (Character.isDigit(c)) {
             getToolkit().beep();//sonido de no aceptar más caracteres. 
             evt.consume();//hace que esa pulsación de tecla se rechace.
         }
         int longitud = nombres_JTextField.getText().length();
-            if(longitud > 29){
-            nombres_JTextField.setText(nombres_JTextField.getText().substring(0,longitud-1));
-            getToolkit().beep(); 
+        if (longitud > 29) {
+            nombres_JTextField.setText(nombres_JTextField.getText().substring(0, longitud - 1));
+            getToolkit().beep();
             evt.consume();
         }
     }//GEN-LAST:event_nombres_JTextFieldKeyTyped
@@ -1215,8 +1214,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             evt.consume();//hace que esa pulsación de tecla se rechace.
         }
         int longitud = apellido_Paterno_JTextField.getText().length();
-        if(longitud > 29){
-            apellido_Paterno_JTextField.setText(apellido_Paterno_JTextField.getText().substring(0,longitud-1));
+        if (longitud > 29) {
+            apellido_Paterno_JTextField.setText(apellido_Paterno_JTextField.getText().substring(0, longitud - 1));
             getToolkit().beep();
             evt.consume();
         }
@@ -1230,8 +1229,8 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             evt.consume();//hace que esa pulsación de tecla se rechace.
         }
         int longitud = apellido_Materno_JTextField.getText().length();
-        if(longitud > 29){
-            apellido_Materno_JTextField.setText(apellido_Materno_JTextField.getText().substring(0,longitud-1));
+        if (longitud > 29) {
+            apellido_Materno_JTextField.setText(apellido_Materno_JTextField.getText().substring(0, longitud - 1));
             getToolkit().beep();
             evt.consume();
         }
@@ -1245,20 +1244,19 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             evt.consume();//hace que esa pulsación de tecla se rechace.
         }
         int longitud = genero_JTextField.getText().length();
-        if(longitud > 29){
-            genero_JTextField.setText(genero_JTextField.getText().substring(0,longitud-1));
-            getToolkit().beep(); 
+        if (longitud > 29) {
+            genero_JTextField.setText(genero_JTextField.getText().substring(0, longitud - 1));
+            getToolkit().beep();
             evt.consume();
         }
     }//GEN-LAST:event_genero_JTextFieldKeyTyped
 
     private void mostrar_Contrasena_JCheckBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Contrasena_JCheckBoxMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if (mostrar_Contrasena_JCheckBox.isSelected()){
-                contrasenia_Autenticacion_JPasswordField.setEchoChar((char)0);
-            }
-            else{
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            if (mostrar_Contrasena_JCheckBox.isSelected()) {
+                contrasenia_Autenticacion_JPasswordField.setEchoChar((char) 0);
+            } else {
                 contrasenia_Autenticacion_JPasswordField.setEchoChar('\u25CF');
             }
         }
@@ -1266,11 +1264,10 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void mostrar_Repetir_Contrasena_JCheckBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrar_Repetir_Contrasena_JCheckBoxMouseClicked
         // TODO add your handling code here:
-         if(SwingUtilities.isLeftMouseButton(evt)){
-            if (mostrar_Repetir_Contrasena_JCheckBox.isSelected()){
-                repetir_Contrasenia_JTextField.setEchoChar((char)0);
-            }
-            else{
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            if (mostrar_Repetir_Contrasena_JCheckBox.isSelected()) {
+                repetir_Contrasenia_JTextField.setEchoChar((char) 0);
+            } else {
                 repetir_Contrasenia_JTextField.setEchoChar('\u25CF');
             }
         }
@@ -1278,11 +1275,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     private void promedio_General_JFormattedTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_promedio_General_JFormattedTextFieldKeyTyped
         int longitud = promedio_General_JFormattedTextField.getText().length();
-            if (longitud > 4) {
+        if (longitud > 4) {
             promedio_General_JFormattedTextField.setText(promedio_General_JFormattedTextField.getText().substring(0, longitud - 1));
-            getToolkit().beep(); 
+            getToolkit().beep();
             evt.consume();
-          }
+        }
     }//GEN-LAST:event_promedio_General_JFormattedTextFieldKeyTyped
 
     private void estado_AutoCompletionComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_estado_AutoCompletionComboBoxItemStateChanged
@@ -1291,11 +1288,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
     }//GEN-LAST:event_estado_AutoCompletionComboBoxItemStateChanged
 
     private void descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descripcion_JTextPaneKeyTyped
-       int longitud = descripcion_JTextPane.getText().length();
-            if (longitud > 499) {
+        int longitud = descripcion_JTextPane.getText().length();
+        if (longitud > 499) {
             descripcion_JTextPane.setText(descripcion_JTextPane.getText().substring(0, longitud - 1));
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Descripción Rebasa<br>Los 500 Caracteres");
-          }
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "La Descripción Rebasa<br>Los 500 Caracteres");
+        }
     }//GEN-LAST:event_descripcion_JTextPaneKeyTyped
 
     public void verificar_Campos_Autenticacion() {
@@ -1304,16 +1301,16 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         // Checa Los Campos Vacíos.
         if (correo_JTextField.getText().isBlank() || Password.isBlank() || Password2.isBlank()) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","No Se Permiten Campos Vacios !!!");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Permiten Campos Vacios !!!");
         } else {
             if (Password.equals(Password2)) {
                 var valor = CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(correo_JTextField.getText().trim());
                 if (!valor) {
-                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Correo No Valido");
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Correo No Valido");
                     correo_JTextField.requestFocus();
                 } else {
                     if (Password.length() <= 7 || Password2.length() <= 7) {
-                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Las Contraseñas Deben Tener Al Menos 8 Caracteres");
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Las Contraseñas Deben Tener Al Menos 8 Caracteres");
                         contrasenia_Autenticacion_JPasswordField.requestFocus();
                     } else {
                         ((CardLayout) this.getLayout()).show(this, "Datos_Personales");
@@ -1322,84 +1319,79 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 }
             } else {
                 // Si Las Dos Contraseñas No Son Iguales Manda Mensaje De Error.
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Contraseñas Distintas Revisa!!!");
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Contraseñas Distintas Revisa!!!");
                 contrasenia_Autenticacion_JPasswordField.requestFocus();
             }
         }
     }
-    
-    public void verificar_Datos_Personales(){
+
+    public void verificar_Datos_Personales() {
         int longitud = nombres_JTextField.getText().length();
         int longitud1 = apellido_Paterno_JTextField.getText().length();
         int longitud2 = apellido_Materno_JTextField.getText().length();
-            if (nombres_JTextField.getText().isBlank() || apellido_Paterno_JTextField.getText().isBlank()
-                    || apellido_Materno_JTextField.getText().isBlank()) {
+        if (nombres_JTextField.getText().isBlank() || apellido_Paterno_JTextField.getText().isBlank()
+                || apellido_Materno_JTextField.getText().isBlank()) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Ingresa Los Campos Obligatorios!!!");
-            if(nombres_JTextField.getText().startsWith(" ") || apellido_Paterno_JTextField.getText().startsWith(" ")
-               || apellido_Materno_JTextField.getText().startsWith(" ") || genero_JTextField.getText().startsWith(" ")){
-            // Si Los Campos Inician Con Un Espacio Manda Mensaje De Error.
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Probablemente Estes Usando Un Espacio<br>Al Principío En Algun Apartado");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Ingresa Los Campos Obligatorios!!!");
+            if (nombres_JTextField.getText().startsWith(" ") || apellido_Paterno_JTextField.getText().startsWith(" ")
+                    || apellido_Materno_JTextField.getText().startsWith(" ") || genero_JTextField.getText().startsWith(" ")) {
+                // Si Los Campos Inician Con Un Espacio Manda Mensaje De Error.
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Probablemente Estes Usando Un Espacio<br>Al Principío En Algun Apartado");
             }
         } else {
-                 if(longitud <=2){
-                     CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Los Campos Obligatorios<br>Deben Contener Al Menos 3 Caracteres");
-            nombres_JTextField.requestFocus();
-        }else if(longitud1 <=2){
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Los Campos Obligatorios<br>Deben Contener Al Menos 3 Caracteres");
-            apellido_Paterno_JTextField.requestFocus();
-        }
-        else if(longitud2 <=2){
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Los Campos Obligatorios<br>Deben Contener Al Menos 3 Caracteres");
-            apellido_Materno_JTextField.requestFocus();
-        }
-        else{
-            ((CardLayout) this.getLayout()).show(this, "Perfil");
-        }
+            if (longitud <= 2) {
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Los Campos Obligatorios<br>Deben Contener Al Menos 3 Caracteres");
+                nombres_JTextField.requestFocus();
+            } else if (longitud1 <= 2) {
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Los Campos Obligatorios<br>Deben Contener Al Menos 3 Caracteres");
+                apellido_Paterno_JTextField.requestFocus();
+            } else if (longitud2 <= 2) {
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Los Campos Obligatorios<br>Deben Contener Al Menos 3 Caracteres");
+                apellido_Materno_JTextField.requestFocus();
+            } else {
+                ((CardLayout) this.getLayout()).show(this, "Perfil");
+            }
         }
     }
 
-    private void Agregar_Interes_Tematica(ComboOptionModel interes){
+    private void Agregar_Interes_Tematica(ComboOptionModel interes) {
         try {
             DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
-            
+
             Celda_Renderer[] celdas = new Celda_Renderer[2];
             Celda_Renderer celda;
-            
+
             Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
             ImageIcon remover = new ImageIcon(icono);
-            
-            celda = new Celda_Renderer(interes.Valor(),interes.Id().toString());
+
+            celda = new Celda_Renderer(interes.Valor(), interes.Id().toString());
             celda.Color_Fuente(CourseRoom.Utilerias().Color_Azul_Claro());
             celdas[0] = celda;
-            
+
             celda = new Celda_Renderer(remover);
             celda.Color_Fuente(CourseRoom.Utilerias().Color_Azul_Claro());
             celdas[1] = celda;
             modelo.addRow(celdas);
-            
-            
-            intereses_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
-            
+
+            intereses_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
+
             icono.flush();
         } catch (IOException ex) {
-            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Interes/Tematica",ex.getMessage());
+            CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Interes/Tematica", ex.getMessage());
         }
     }
-    
-    private void Obtener_Localidades_Estado(){
-        String estado = (String)estado_AutoCompletionComboBox.getSelectedItem();
-        localidad_AutoCompletionComboBox.removeAllItems();
-        SwingUtilities.invokeLater(() -> {
-            //Obtener localidades:
-            Lista<ComboOptionModel> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
 
-            while (!localidades.is_empty()) {
-                localidad_AutoCompletionComboBox.addItem(localidades.delist());
-            }
-        });
+    private void Obtener_Localidades_Estado() {
+        String estado = (String) estado_AutoCompletionComboBox.getSelectedItem();
+        localidad_AutoCompletionComboBox.removeAllItems();
+        //Obtener localidades:
+        Lista<ComboOptionModel> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
+
+        while (!localidades.is_empty()) {
+            localidad_AutoCompletionComboBox.addItem(localidades.delist());
+        }
     }
-        
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar_Interes_JButton;
     private javax.swing.JLabel apellido_Materno_JLabel;
@@ -1467,7 +1459,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
     @Override
     public void Iniciar_Componentes() {
-         
+
         Image logo_Imagen;
         try {
             logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));
@@ -1481,7 +1473,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
             logo_Imagen.flush();
             icono.getImage().flush();
         } catch (IOException ex) {
-            
+
         }
 
         intereses_JScrollPane.getViewport().setOpaque(false);
@@ -1517,39 +1509,34 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
 
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
-        SwingUtilities.invokeLater(() -> {
-            //Obtener estados:
-            Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
+        //Obtener estados:
+        Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
 
-            if (!estados.is_empty()) {
-                while (!estados.is_empty()) {
-                    estado_AutoCompletionComboBox.addItem(estados.delist());
-                }
-
-                estado_AutoCompletionComboBox.setSelectedIndex(0);
-            } else {
-                estado_AutoCompletionComboBox.setEnabled(false);
-                localidad_AutoCompletionComboBox.setEnabled(false);
+        if (!estados.is_empty()) {
+            while (!estados.is_empty()) {
+                estado_AutoCompletionComboBox.addItem(estados.delist());
             }
-        });
 
-        SwingUtilities.invokeLater(() -> {
-            // Obtener temáticas:
-            Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
+            estado_AutoCompletionComboBox.setSelectedIndex(0);
+        } else {
+            estado_AutoCompletionComboBox.setEnabled(false);
+            localidad_AutoCompletionComboBox.setEnabled(false);
+        }
+        // Obtener temáticas:
+        Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
 
-            if (!tematicas.is_empty()) {
-                while (!tematicas.is_empty()) {
-                    intereses_AutoCompletionComboBox.addItem(tematicas.delist());
-                }
-
-                intereses_AutoCompletionComboBox.setSelectedIndex(0);
-            } else {
-                intereses_AutoCompletionComboBox.setEnabled(false);
-                agregar_Interes_JButton.setEnabled(false);
-                intereses_JTable.setEnabled(false);
+        if (!tematicas.is_empty()) {
+            while (!tematicas.is_empty()) {
+                intereses_AutoCompletionComboBox.addItem(tematicas.delist());
             }
-        });
-        
+
+            intereses_AutoCompletionComboBox.setSelectedIndex(0);
+        } else {
+            intereses_AutoCompletionComboBox.setEnabled(false);
+            agregar_Interes_JButton.setEnabled(false);
+            intereses_JTable.setEnabled(false);
+        }
+
         Colorear_Componentes();
     }
 
@@ -1620,7 +1607,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 CourseRoom.Utilerias().Segundo_Color());
         fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.TextCalendarPanelLabelsOnHover,
                 CourseRoom.Utilerias().Primer_Color());
-        
+
         cargar_Imagen_Perfil_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
         cargar_Imagen_Perfil_JButton.setForeground(CourseRoom.Utilerias().Primer_Color());
         tipo_Perfil_JComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
@@ -1631,7 +1618,7 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         titulo_Perfil_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
         continuar_Informacion_Extra_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
         regresar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
-        
+
         descripcion_JTextPane.setBackground(CourseRoom.Utilerias().Segundo_Color());
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Primer_Color());
         descripcion_JTextPane.setCaretColor(CourseRoom.Utilerias().Primer_Color());
@@ -1649,11 +1636,11 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
         intereses_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color());
         crear_Cuenta_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
         regresar_Perfil_JButton.setBackground(CourseRoom.Utilerias().Primer_Color());
-        
+
         intereses_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Segundo_Color());
         intereses_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         intereses_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
         Celda_Renderer celda;
         for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -1662,27 +1649,25 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 celda.Color_Fuente(CourseRoom.Utilerias().Color_Azul_Claro());
             }
         }
-        
+
         mostrar_Contrasena_JCheckBox.setForeground(CourseRoom.Utilerias().Segundo_Color());
         mostrar_Repetir_Contrasena_JCheckBox.setForeground(CourseRoom.Utilerias().Segundo_Color());
-        
+
     }
-    
+
     @Override
-    public void Limpiar(){
-       DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
-       modelo.setRowCount(0);
+    public void Limpiar() {
+        DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
+        modelo.setRowCount(0);
     }
 
     @Override
     public void Validar_Campos() {
         int longitud = descripcion_JTextPane.getText().length();
-        if(longitud > 500)
-        {
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Descripción Rebasa Los 500 Caracteres");
-        }
-        else{      
-            if(localidad_AutoCompletionComboBox.getItemCount() > 0){
+        if (longitud > 500) {
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "La Descripción Rebasa Los 500 Caracteres");
+        } else {
+            if (localidad_AutoCompletionComboBox.getItemCount() > 0) {
 
                 String correoElectronico = correo_JTextField.getText();
                 String contrasena = String.valueOf(contrasenia_Autenticacion_JPasswordField.getPassword());
@@ -1692,50 +1677,45 @@ public class Crear_Cuenta_General_Panel extends JLayeredPane implements Componen
                 String genero = genero_JTextField.getText();
                 String fecha_Nacimiento = CourseRoom.Utilerias().Fecha(fecha_Nacimiento_DatePicker.getDate());
                 String descripcion = descripcion_JTextPane.getText();
-                Double promedio_General = promedio_General_JFormattedTextField.getText().isBlank() || promedio_General_JFormattedTextField.getText().isEmpty()? Double.valueOf(-1) : Double.valueOf(promedio_General_JFormattedTextField.getText());
-                String tipo_Usuario = (String)tipo_Perfil_JComboBox.getSelectedItem();
+                Double promedio_General = promedio_General_JFormattedTextField.getText().isBlank() || promedio_General_JFormattedTextField.getText().isEmpty() ? Double.valueOf(-1) : Double.valueOf(promedio_General_JFormattedTextField.getText());
+                String tipo_Usuario = (String) tipo_Perfil_JComboBox.getSelectedItem();
                 Integer idLocalidad = ((ComboOptionModel) localidad_AutoCompletionComboBox.getSelectedItem()).Id();
 
-                if(imagen == null){
+                if (imagen == null) {
                     imagen = new byte[]{};
                 }
-                
-                SwingUtilities.invokeLater(() -> {
-                    ResponseModel response = CourseRoom.Solicitudes().Agregar_Usuario(correoElectronico, contrasena,
-                            nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario, imagen, promedio_General, descripcion);
+                ResponseModel response = CourseRoom.Solicitudes().Agregar_Usuario(correoElectronico, contrasena,
+                        nombre, paterno, materno, idLocalidad, genero, fecha_Nacimiento, tipo_Usuario, imagen, promedio_General, descripcion);
 
-                    int codigo = response.Codigo();
-                    String mensaje = response.Mensaje();
+                int codigo = response.Codigo();
+                String mensaje = response.Mensaje();
 
-                    if (response.Is_Success()) {
+                if (response.Is_Success()) {
 
-                        //Agregar intereses:
-                        DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
-                        Celda_Renderer celda;
-                        for (int i = 0; i < modelo.getRowCount(); i++) {
-                            celda = (Celda_Renderer) modelo.getValueAt(i, 0);
-                            response = CourseRoom.Solicitudes().Agregar_Interes(codigo, Integer.parseInt(celda.ID()));
+                    //Agregar intereses:
+                    DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
+                    Celda_Renderer celda;
+                    for (int i = 0; i < modelo.getRowCount(); i++) {
+                        celda = (Celda_Renderer) modelo.getValueAt(i, 0);
+                        response = CourseRoom.Solicitudes().Agregar_Interes(codigo, Integer.parseInt(celda.ID()));
 //                            if (!response.Is_Success()) {
 //                                CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Ínteres", response.Mensaje());
 //                                break;
 //                            }
-                        }
-                        CourseRoom.Utilerias().Mensaje_Informativo("Agregar Usuario", mensaje);
-
-                        CourseRoom.Esconder_Frame();
-
-                        CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"), codigo);
-
-                        CourseRoom.Mostrar_Frame();
-                    } else {
-                        CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario", mensaje);
                     }
-                });
-            }else{
-                CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario","No Se Ha Seleccionado Una Localidad");
-            }
+                    CourseRoom.Utilerias().Mensaje_Informativo("Agregar Usuario", mensaje);
 
+                    CourseRoom.Esconder_Frame();
+
+                    CourseRoom.Frame().Mostrar_Tablero(tipo_Usuario.equals("Estudiante"), codigo);
+
+                    CourseRoom.Mostrar_Frame();
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario", mensaje);
+                }
+            } else {
+                CourseRoom.Utilerias().Mensaje_Error("Error Al Agregar Usuario", "No Se Ha Seleccionado Una Localidad");
+            }
         }
     }
-
 }

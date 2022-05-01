@@ -422,14 +422,12 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
 
     private void buscar_Preguntas_JTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscar_Preguntas_JTextFieldKeyPressed
         int longitud = buscar_Preguntas_JTextField.getText().length();
-        if(KeyEvent.VK_ENTER == evt.getKeyCode()){
+        if (KeyEvent.VK_ENTER == evt.getKeyCode()) {
             if (longitud > 99) {
                 buscar_Preguntas_JTextField.setText(buscar_Preguntas_JTextField.getText().substring(0, longitud - 1));
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Busqueda De Preguntas<br>Rebasa Los 100 Caracteres");
-            }else{
-                SwingUtilities.invokeLater(() -> {
-                    Buscar_Preguntas(buscar_Preguntas_JTextField.getText());
-                });
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "La Busqueda De Preguntas<br>Rebasa Los 100 Caracteres");
+            } else {
+                Buscar_Preguntas(buscar_Preguntas_JTextField.getText());
             }
         }
     }//GEN-LAST:event_buscar_Preguntas_JTextFieldKeyPressed
@@ -452,11 +450,8 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
     }//GEN-LAST:event_mostrar_Preguntas_JButtonMouseExited
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            SwingUtilities.invokeLater(() -> {
-                Obtener_Preguntas(true);
-            });
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            Obtener_Preguntas(true);
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -473,18 +468,16 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                 pregunta_Estudiante_Panel.Limpiar();
             }
         }
-        SwingUtilities.invokeLater(() -> {
-            Lista<PreguntasModel> lista
-                    = CourseRoom.Solicitudes().Buscar_Preguntas(busqueda);
+        Lista<PreguntasModel> lista
+                = CourseRoom.Solicitudes().Buscar_Preguntas(busqueda);
 
-            if (!lista.is_empty()) {
-                while (!lista.is_empty()) {
-                    Agregar_Pregunta_Busqueda(lista.delist());
-                }
-            } else {
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Registros");
+        if (!lista.is_empty()) {
+            while (!lista.is_empty()) {
+                Agregar_Pregunta_Busqueda(lista.delist());
             }
-        });
+        } else {
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta", "No Se Encontraron Registros");
+        }
     }
     
     private void Obtener_Preguntas(boolean bandera){
@@ -498,19 +491,17 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
             Tablero_Estudiante_Panel.Retirar_Vista(pregunta_Estudiante_Panel);
             pregunta_Estudiante_Panel.Limpiar();
         }
-        SwingUtilities.invokeLater(() -> {
-            Lista<PreguntasModel> lista
-                    = CourseRoom.Solicitudes().Obtener_Preguntas(Tablero_Estudiante_Panel.Id_Usuario());
-            if(!lista.is_empty()){    
-                while (!lista.is_empty()) {
-                    Agregar_Pregunta(lista.delist());
-                }
-            }else{
-                if(bandera){
-                    CourseRoom.Utilerias().Mensaje_Alerta("Obtener Preguntas", "No Se Encontraron Preguntas");
-                }
+        Lista<PreguntasModel> lista
+                = CourseRoom.Solicitudes().Obtener_Preguntas(Tablero_Estudiante_Panel.Id_Usuario());
+        if (!lista.is_empty()) {
+            while (!lista.is_empty()) {
+                Agregar_Pregunta(lista.delist());
             }
-        });
+        } else {
+            if (bandera) {
+                CourseRoom.Utilerias().Mensaje_Alerta("Obtener Preguntas", "No Se Encontraron Preguntas");
+            }
+        }
     }
     
     public void Agregar_Pregunta_Local(
@@ -939,22 +930,19 @@ public class Preguntas_Estudiante_Panel extends javax.swing.JPanel implements Li
                         }else{
                             if(longitud1 > 499){
                                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Descripción De La Pregunta<br>Rebasa Los 500 Caracteres");
-                            }else{
-                                
+                            } else {
                                 String fecha_Local = CourseRoom.Utilerias().Fecha_Hora_Local();
-                                SwingUtilities.invokeLater(() -> {
-                                    ResponseModel response = CourseRoom.Solicitudes().Agregar_Pregunta(Tablero_Estudiante_Panel.Id_Usuario(),
-                                            pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText());
-                                    if (response.Is_Success()) {
-                                        CourseRoom.Utilerias().Mensaje_Informativo("Información", response.Mensaje());
-                                        String id = CourseRoom.Utilerias().Concatenar("Pregunta_", response.Codigo());
-                                        Agregar_Pregunta_Local(response.Codigo(), id, Perfil_Estudiante_Panel.Nombre_Completo(),
-                                                pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText(), fecha_Local);
-                                        this.dispose();
-                                    } else {
-                                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", response.Mensaje());
-                                    }
-                                });
+                                ResponseModel response = CourseRoom.Solicitudes().Agregar_Pregunta(Tablero_Estudiante_Panel.Id_Usuario(),
+                                        pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText());
+                                if (response.Is_Success()) {
+                                    CourseRoom.Utilerias().Mensaje_Informativo("Información", response.Mensaje());
+                                    String id = CourseRoom.Utilerias().Concatenar("Pregunta_", response.Codigo());
+                                    Agregar_Pregunta_Local(response.Codigo(), id, Perfil_Estudiante_Panel.Nombre_Completo(),
+                                            pregunta_JTextField.getText(), descripcion_Pregunta_JTextPane.getText(), fecha_Local);
+                                    this.dispose();
+                                } else {
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", response.Mensaje());
+                                }
                             }
                         }
                     }

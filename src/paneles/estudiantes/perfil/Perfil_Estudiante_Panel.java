@@ -37,11 +37,10 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  *
  * @author LENOVO
  */
-public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
+public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface {
 
     private byte carta_Visible;
-    
- 
+
     public Perfil_Estudiante_Panel() {
         initComponents();
         Iniciar_Componentes();
@@ -1084,8 +1083,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void editar_Autenticacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Autenticacion_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Autenticacion");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Autenticacion");
             carta_Visible = 1;
             Carta_Visible();
         }
@@ -1094,41 +1093,36 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void informacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacion_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Informacion");
+            ((CardLayout) perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Informacion");
             carta_Visible = 0;
             Carta_Visible();
-           
+
         }
     }//GEN-LAST:event_informacion_JButtonMouseClicked
 
     private void editar_Datos_Personales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Datos_Personales_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Datos_Personales");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Datos_Personales");
             carta_Visible = 2;
             Carta_Visible();
         }
     }//GEN-LAST:event_editar_Datos_Personales_JButtonMouseClicked
 
     private void guardar_Cambios_Autenticacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Autenticacion_JButtonMouseClicked
-        // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-            if(Verificar_Campos_Autenticacion()){
-                SwingUtilities.invokeLater(() -> {
-                    ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Autenticacion(Tablero_Estudiante_Panel.Id_Usuario(),
-                            editar_Correo_Electronico_JTextField.getText().toUpperCase(), String.valueOf(contrasena_JPasswordField.getPassword()));
+        if (SwingUtilities.isLeftMouseButton(evt)) {
 
-                    if (respuesta.Is_Success()) {
-                        CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                    } else {
-                        CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar Los Datos De Autenticación", respuesta.Mensaje());
-                    }
-                });
+            if (Verificar_Campos_Autenticacion()) {
+                ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Autenticacion(Tablero_Estudiante_Panel.Id_Usuario(),
+                        editar_Correo_Electronico_JTextField.getText().toUpperCase(), String.valueOf(contrasena_JPasswordField.getPassword()));
+
+                if (respuesta.Is_Success()) {
+                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar Los Datos De Autenticación", respuesta.Mensaje());
+                }
             }
-
         }
-
     }//GEN-LAST:event_guardar_Cambios_Autenticacion_JButtonMouseClicked
 
     private void guardar_Cambios_Autenticacion_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Autenticacion_JButtonMouseEntered
@@ -1144,7 +1138,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     }//GEN-LAST:event_guardar_Cambios_Autenticacion_JButtonMouseExited
 
     private void cambiar_Imagen_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseClicked
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
 
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "jpg", "jpeg");
@@ -1157,25 +1151,25 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             if (result == JFileChooser.APPROVE_OPTION) {
                 File archivo_Abierto = escogedor_Archivos.getSelectedFile();
 
-                if(archivo_Abierto != null){
+                if (archivo_Abierto != null) {
                     try {
 
                         tamanio = FileUtils.sizeOf(archivo_Abierto);
                         tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                        if(tamanio < 16){
+                        if (tamanio < 16) {
                             Image obtener_Imagen = ImageIO.read(archivo_Abierto);
                             obtener_Imagen = obtener_Imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
                             ImageIcon icono_Imagen = new ImageIcon(obtener_Imagen);
 
                             imagen_Perfil_JLabel.setIcon(icono_Imagen);
 
-                            Tablero_Estudiante_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto),obtener_Imagen);
+                            Tablero_Estudiante_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto), obtener_Imagen);
                             obtener_Imagen.flush();
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Imagen Supera El Tamaño Aceptado De Subida");
+                        } else {
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "La Imagen Supera El Tamaño Aceptado De Subida");
                         }
                     } catch (IOException ex) {
-                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen",ex.getMessage());
+                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen", ex.getMessage());
                     }
                 }
             }
@@ -1197,7 +1191,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void editar_Correo_Electronico_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Correo_Electronico_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Correo_Electronico_JTextField.setEnabled(!editar_Correo_Electronico_JTextField.isEnabled());
         }
 
@@ -1215,7 +1209,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void editar_Contrasena_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Contrasena_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             contrasena_JPasswordField.setEnabled(!contrasena_JPasswordField.isEnabled());
             repetir_Contrasena_JPasswordField.setEnabled(!repetir_Contrasena_JPasswordField.isEnabled());
         }
@@ -1233,21 +1227,19 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void guardar_Cambios_Datos_Personales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Personales_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-            ComboOptionModel comboOption = (ComboOptionModel)editar_Localidad_AutoCompletionComboBox.getSelectedItem();
-            SwingUtilities.invokeLater(() -> {
-                ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Personales(Tablero_Estudiante_Panel.Id_Usuario(),
-                        editar_Nombres_JTextField.getText(), editar_Apellido_Paterno_JTextField.getText(),
-                        editar_Apellido_Materno_JTextField.getText(), editar_Genero_JTextField.getText(),
-                        CourseRoom.Utilerias().Fecha(editar_Fecha_Nacimiento_DatePicker.getDate()), comboOption.Id());
+        if (SwingUtilities.isLeftMouseButton(evt)) {
 
-                if (respuesta.Is_Success()) {
-                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                } else {
-                    CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-                }
-            });
+            ComboOptionModel comboOption = (ComboOptionModel) editar_Localidad_AutoCompletionComboBox.getSelectedItem();
+            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Personales(Tablero_Estudiante_Panel.Id_Usuario(),
+                    editar_Nombres_JTextField.getText(), editar_Apellido_Paterno_JTextField.getText(),
+                    editar_Apellido_Materno_JTextField.getText(), editar_Genero_JTextField.getText(),
+                    CourseRoom.Utilerias().Fecha(editar_Fecha_Nacimiento_DatePicker.getDate()), comboOption.Id());
+
+            if (respuesta.Is_Success()) {
+                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+            } else {
+                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+            }
         }
     }//GEN-LAST:event_guardar_Cambios_Datos_Personales_JButtonMouseClicked
 
@@ -1265,8 +1257,8 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void editar_Informacion_Extra_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Informacion_Extra_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Informacion_Extra");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Informacion_Extra");
             carta_Visible = 3;
             Carta_Visible();
         }
@@ -1274,18 +1266,16 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void guardar_Cambios_Informacion_Extra_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Informacion_Extra_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-            Double promedio_General = editar_Promedio_General_JFormattedTextField.getText().isBlank() || editar_Promedio_General_JFormattedTextField.getText().isEmpty()? Double.valueOf(-1) : Double.valueOf(editar_Promedio_General_JFormattedTextField.getText());
-            SwingUtilities.invokeLater(() -> {
-                ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Informacion_Extra(Tablero_Estudiante_Panel.Id_Usuario(),
-                        "Estudiante", promedio_General, editar_Descripcion_JTextPane.getText());
-                if (respuesta.Is_Success()) {
-                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                } else {
-                    CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-                }
-            });
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+
+            Double promedio_General = editar_Promedio_General_JFormattedTextField.getText().isBlank() || editar_Promedio_General_JFormattedTextField.getText().isEmpty() ? Double.valueOf(-1) : Double.valueOf(editar_Promedio_General_JFormattedTextField.getText());
+            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Informacion_Extra(Tablero_Estudiante_Panel.Id_Usuario(),
+                    "Estudiante", promedio_General, editar_Descripcion_JTextPane.getText());
+            if (respuesta.Is_Success()) {
+                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+            } else {
+                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+            }
         }
     }//GEN-LAST:event_guardar_Cambios_Informacion_Extra_JButtonMouseClicked
 
@@ -1303,12 +1293,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void agregar_Interes_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Interes_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-            ComboOptionModel interes = ((ComboOptionModel)intereses_AutoCompletionComboBox.getSelectedItem()) != null
-                    ? ((ComboOptionModel)intereses_AutoCompletionComboBox.getSelectedItem()) : new ComboOptionModel();
-            
-            Agregar_Nuevo_Interes_Tematica(interes);            
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+
+            ComboOptionModel interes = ((ComboOptionModel) intereses_AutoCompletionComboBox.getSelectedItem()) != null
+                    ? ((ComboOptionModel) intereses_AutoCompletionComboBox.getSelectedItem()) : new ComboOptionModel();
+
+            Agregar_Nuevo_Interes_Tematica(interes);
         }
     }//GEN-LAST:event_agregar_Interes_JButtonMouseClicked
 
@@ -1326,7 +1316,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void editar_Nombres_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombres_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Nombres_JTextField.setEnabled(!editar_Nombres_JTextField.isEnabled());
         }
     }//GEN-LAST:event_editar_Nombres_JButtonMouseClicked
@@ -1339,12 +1329,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     private void editar_Nombres_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombres_JButtonMouseExited
         // TODO add your handling code here:
         editar_Nombres_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+
     }//GEN-LAST:event_editar_Nombres_JButtonMouseExited
 
     private void editar_Apellido_Paterno_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Apellido_Paterno_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Apellido_Paterno_JTextField.setEnabled(!editar_Apellido_Paterno_JTextField.isEnabled());
         }
     }//GEN-LAST:event_editar_Apellido_Paterno_JButtonMouseClicked
@@ -1361,10 +1351,10 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void editar_Apellido_Materno_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Apellido_Materno_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Apellido_Materno_JTextField.setEnabled(!editar_Apellido_Materno_JTextField.isEnabled());
         }
-        
+
     }//GEN-LAST:event_editar_Apellido_Materno_JButtonMouseClicked
 
     private void editar_Apellido_Materno_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Apellido_Materno_JButtonMouseEntered
@@ -1379,11 +1369,11 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void editar_Estado_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Estado_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Estado_AutoCompletionComboBox.setEnabled(!editar_Estado_AutoCompletionComboBox.isEnabled());
             editar_Localidad_AutoCompletionComboBox.setEnabled(!editar_Localidad_AutoCompletionComboBox.isEnabled());
         }
-        
+
     }//GEN-LAST:event_editar_Estado_JButtonMouseClicked
 
     private void editar_Estado_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Estado_JButtonMouseEntered
@@ -1398,10 +1388,10 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void editar_Genero_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Genero_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Genero_JTextField.setEnabled(!editar_Genero_JTextField.isEnabled());
         }
-        
+
     }//GEN-LAST:event_editar_Genero_JButtonMouseClicked
 
     private void editar_Genero_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Genero_JButtonMouseEntered
@@ -1416,7 +1406,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void editar_Fecha_Nacimiento_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Fecha_Nacimiento_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Fecha_Nacimiento_DatePicker.setEnabled(!editar_Fecha_Nacimiento_DatePicker.isEnabled());
         }
     }//GEN-LAST:event_editar_Fecha_Nacimiento_JButtonMouseClicked
@@ -1433,7 +1423,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void editar_Descripcion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Descripcion_JTextPane.setEnabled(!editar_Descripcion_JTextPane.isEnabled());
         }
     }//GEN-LAST:event_editar_Descripcion_JButtonMouseClicked
@@ -1450,11 +1440,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            SwingUtilities.invokeLater(() -> {
-                Obtener_Datos_Perfil(true);
-                Obtener_Localidades_Estado();
-            });
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            Obtener_Datos_Perfil(true);
+            Obtener_Localidades_Estado();
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -1484,7 +1472,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             editar_Nombres_JTextField.setText(editar_Nombres_JTextField.getText().substring(0, longitud - 1));
             getToolkit().beep();
             evt.consume();
-        }        
+        }
     }//GEN-LAST:event_editar_Nombres_JTextFieldKeyTyped
 
     private void editar_Apellido_Paterno_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Apellido_Paterno_JTextFieldKeyTyped
@@ -1498,7 +1486,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             editar_Apellido_Paterno_JTextField.setText(editar_Apellido_Paterno_JTextField.getText().substring(0, longitud - 1));
             getToolkit().beep();
             evt.consume();
-        } 
+        }
     }//GEN-LAST:event_editar_Apellido_Paterno_JTextFieldKeyTyped
 
     private void editar_Apellido_Materno_JTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Apellido_Materno_JTextFieldKeyTyped
@@ -1533,13 +1521,13 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         int longitud = editar_Promedio_General_JFormattedTextField.getText().length();
         if (longitud > 6) {
             editar_Promedio_General_JFormattedTextField.setText(editar_Promedio_General_JFormattedTextField.getText().substring(0, longitud - 1));
-            getToolkit().beep(); 
+            getToolkit().beep();
             evt.consume();
         }
     }//GEN-LAST:event_editar_Promedio_General_JFormattedTextFieldKeyTyped
 
     private void editar_Descripcion_JTextPaneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editar_Descripcion_JTextPaneKeyTyped
-       int longitud = editar_Descripcion_JTextPane.getText().length();
+        int longitud = editar_Descripcion_JTextPane.getText().length();
         if (longitud > 499) {
             editar_Descripcion_JTextPane.setText(editar_Descripcion_JTextPane.getText().substring(0, longitud - 1));
             getToolkit().beep();//sonido de no aceptar más caracteres. 
@@ -1548,119 +1536,114 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     }//GEN-LAST:event_editar_Descripcion_JTextPaneKeyTyped
 
     private void Agregar_Nuevo_Interes_Tematica(ComboOptionModel interes) {
+        ResponseModel responseModel = CourseRoom.Solicitudes().Agregar_Interes(Tablero_Estudiante_Panel.Id_Usuario(), interes.Id());
+        if (responseModel.Is_Success()) {
+            try {
+                DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
 
-        SwingUtilities.invokeLater(() -> {
-            ResponseModel responseModel = CourseRoom.Solicitudes().Agregar_Interes(Tablero_Estudiante_Panel.Id_Usuario(), interes.Id());
-            if (responseModel.Is_Success()) {
-                try {
-                    DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
+                Celda_Renderer[] celdas = new Celda_Renderer[2];
+                Celda_Renderer celda;
 
-                    Celda_Renderer[] celdas = new Celda_Renderer[2];
-                    Celda_Renderer celda;
+                Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+                ImageIcon remover = new ImageIcon(icono);
 
-                    Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-                    ImageIcon remover = new ImageIcon(icono);
+                celda = new Celda_Renderer(interes.Valor(), interes.Id().toString());
+                celdas[0] = celda;
 
-                    celda = new Celda_Renderer(interes.Valor(), interes.Id().toString());
-                    celdas[0] = celda;
-
-                    celda = new Celda_Renderer(remover);
-                    celdas[1] = celda;
-                    CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
-                    modelo.addRow(celdas);
-                    intereses_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
-                    icono.flush();
-                } catch (IOException ex) {
-
-                }
-            } else {
+                celda = new Celda_Renderer(remover);
+                celdas[1] = celda;
                 CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
+                modelo.addRow(celdas);
+                intereses_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
+                icono.flush();
+            } catch (IOException ex) {
+
             }
-        });
-    }
-    
-    private void Agregar_Interes_Tematica(ComboOptionModel interes){
-        try {
-            DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
-            
-            Celda_Renderer[] celdas = new Celda_Renderer[2];
-            Celda_Renderer celda;
-            
-            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-            ImageIcon remover = new ImageIcon(icono);
-            
-            celda = new Celda_Renderer(interes.Valor(),interes.Id().toString());
-            celdas[0] = celda;
-            
-            celda = new Celda_Renderer(remover,interes.Id().toString());
-            celdas[1] = celda;
-            
-            modelo.addRow(celdas);
-            
-            intereses_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
-            
-            icono.flush();
-        } catch (IOException ex) {
-            
+        } else {
+            CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
         }
     }
-    
-    public static String Nombre_Completo(){
-        return CourseRoom.Utilerias().Concatenar(nombres_JLabel.getText(), " " ,apellidos_JLabel.getText());
+
+    private void Agregar_Interes_Tematica(ComboOptionModel interes) {
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
+
+            Celda_Renderer[] celdas = new Celda_Renderer[2];
+            Celda_Renderer celda;
+
+            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+            ImageIcon remover = new ImageIcon(icono);
+
+            celda = new Celda_Renderer(interes.Valor(), interes.Id().toString());
+            celdas[0] = celda;
+
+            celda = new Celda_Renderer(remover, interes.Id().toString());
+            celdas[1] = celda;
+
+            modelo.addRow(celdas);
+
+            intereses_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
+
+            icono.flush();
+        } catch (IOException ex) {
+
+        }
     }
-    
-    private void Obtener_Localidades_Estado(){
-        String estado = (String)editar_Estado_AutoCompletionComboBox.getSelectedItem();
+
+    public static String Nombre_Completo() {
+        return CourseRoom.Utilerias().Concatenar(nombres_JLabel.getText(), " ", apellidos_JLabel.getText());
+    }
+
+    private void Obtener_Localidades_Estado() {
+        String estado = (String) editar_Estado_AutoCompletionComboBox.getSelectedItem();
         editar_Localidad_AutoCompletionComboBox.removeAllItems();
-        SwingUtilities.invokeLater(() -> {
-            //Obtener localidades:
-            Lista<ComboOptionModel> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
-            while (!localidades.is_empty()) {
-                editar_Localidad_AutoCompletionComboBox.addItem((ComboOptionModel) localidades.delist());
-            }
-        });
+        //Obtener localidades:
+        Lista<ComboOptionModel> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
+        while (!localidades.is_empty()) {
+            editar_Localidad_AutoCompletionComboBox.addItem((ComboOptionModel) localidades.delist());
+        }
     }
-    
+
     private boolean Verificar_Campos_Autenticacion() {
         String Password = String.valueOf(contrasena_JPasswordField.getPassword());
         String Password2 = String.valueOf(repetir_Contrasena_JPasswordField.getPassword());
-        
+
         // Checa Los Campos Vacíos.
         if (editar_Correo_Electronico_JTextField.getText().isBlank() || Password.isBlank() || Password2.isBlank()) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","No Se Permiten Campos Vacios !!!");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Permiten Campos Vacios !!!");
             return false;
         } else {
             if (Password.equals(Password2)) {
                 var valor = CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(editar_Correo_Electronico_JTextField.getText().trim());
                 if (!valor) {
-                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Correo No Valido");
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Correo No Valido");
                     editar_Correo_Electronico_JTextField.requestFocus();
                     return false;
                 } else {
                     if (Password.length() <= 7 || Password2.length() <= 7) {
-                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Las Contraseñas Deben Tener Al Menos 8 Caracteres");
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Las Contraseñas Deben Tener Al Menos 8 Caracteres");
                         contrasena_JPasswordField.requestFocus();
                         return false;
-                    } else{
+                    } else {
                         return true;
                     }
                 }
             } else {
                 // Si Las Dos Contraseñas No Son Iguales Manda Mensaje De Error.
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Contraseñas Distintas Revisa!!!");
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Contraseñas Distintas Revisa!!!");
                 contrasena_JPasswordField.requestFocus();
                 return false;
             }
         }
     }
-    
-    private void Obtener_Datos_Perfil(boolean bandera){
-        
+
+    private void Obtener_Datos_Perfil(boolean bandera) {
+
         DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Tablero_Estudiante_Panel.Id_Usuario());
-        if(datosPerfilModel != null){
-            
-            if(datosPerfilModel.Tipo_Usuario().equals("Profesor")){
+        if (datosPerfilModel != null) {
+
+            if (datosPerfilModel.Tipo_Usuario().equals("Profesor")) {
                 editar_Promedio_General_JFormattedTextField.setVisible(false);
                 editar_Promedio_General_JLabel.setVisible(false);
                 agregar_Interes_JButton.setVisible(false);
@@ -1669,14 +1652,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 intereses_JScrollPane.setVisible(false);
                 intereses_JTable.setVisible(false);
             }
-            
+
             nombres_JLabel.setText(datosPerfilModel.Nombre());
-            apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Paterno()," ",datosPerfilModel.Materno()));
+            apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Paterno(), " ", datosPerfilModel.Materno()));
             correo_Electronico_JLabel.setText(datosPerfilModel.Correo_Electronico());
             localidad_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Localidad(), " - ", datosPerfilModel.Estado())));
             descripcion_JTextPane.setText(
                     CourseRoom.Utilerias().Formato_HTML_Izquierda(
-                            CourseRoom.Utilerias().Concatenar(datosPerfilModel.Descripcion(), " <br><br><br>Registrad@ El ",datosPerfilModel.Fecha_Creacion())));
+                            CourseRoom.Utilerias().Concatenar(datosPerfilModel.Descripcion(), " <br><br><br>Registrad@ El ", datosPerfilModel.Fecha_Creacion())));
             genero_JLabel.setText(datosPerfilModel.Genero());
             fecha_Nacimiento_JLabel.setText(datosPerfilModel.Fecha_Nacimiento());
             tipo_Perfil_JLabel.setText(datosPerfilModel.Tipo_Usuario());
@@ -1693,33 +1676,33 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             editar_Fecha_Nacimiento_DatePicker.setDate(LocalDate.of(tripleta.third(), tripleta.second(), tripleta.first()));
             editar_Genero_JTextField.setText(datosPerfilModel.Genero());
 
-            if(datosPerfilModel.Promedio_General() >= 0){
-                editar_Promedio_General_JFormattedTextField.setValue(datosPerfilModel.Promedio_General()); 
+            if (datosPerfilModel.Promedio_General() >= 0) {
+                editar_Promedio_General_JFormattedTextField.setValue(datosPerfilModel.Promedio_General());
             }
 
             //Obtener estados:
             Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
 
-            if(!estados.is_empty()){
-                while(!estados.is_empty()){
+            if (!estados.is_empty()) {
+                while (!estados.is_empty()) {
                     editar_Estado_AutoCompletionComboBox.addItem(estados.delist());
                 }
                 editar_Estado_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.Estado());
                 editar_Localidad_AutoCompletionComboBox.setSelectedItem(datosPerfilModel.Localidad());
                 editar_Estado_JButton.setVisible(true);
-            }else{
+            } else {
                 editar_Estado_AutoCompletionComboBox.setEnabled(false);
                 editar_Localidad_AutoCompletionComboBox.setEnabled(false);
                 editar_Estado_JButton.setVisible(false);
             }
-            
+
             //Obtener intereses usuario:
             Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Intereses_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
-            while(!tematicas.is_empty()){
+            while (!tematicas.is_empty()) {
                 Agregar_Interes_Tematica(tematicas.delist());
             }
-        }else{
-            if(bandera){
+        } else {
+            if (bandera) {
                 CourseRoom.Utilerias().Mensaje_Alerta("Datos Perfil", "No Se Encontraron Datos Del Perfil");
             }
         }
@@ -1798,20 +1781,21 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
     public void Iniciar_Componentes() {
 
         carta_Visible = 0;
-        
-        if(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario() != null){
+
+        if (Tablero_Estudiante_Panel.Obtener_Imagen_Usuario() != null) {
             ImageIcon imagen_Icono = new ImageIcon(Tablero_Estudiante_Panel.Obtener_Imagen_Usuario());
 
             imagen_Perfil_JLabel.setIcon(imagen_Icono);
             imagen_Icono.getImage().flush();
         }
         
+
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
 
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-        
+
         intereses_JScrollPane.getViewport().setOpaque(false);
         intereses_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         intereses_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -1819,38 +1803,36 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         intereses_JTable.getTableHeader().setFont(gadugi);
         intereses_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        SwingUtilities.invokeLater(() -> {
-            // Obtener temáticas:
-            Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
+        // Obtener temáticas:
+        Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
 
-            if (!tematicas.is_empty()) {
-                while (!tematicas.is_empty()) {
-                    intereses_AutoCompletionComboBox.addItem(tematicas.delist());
-                }
-                intereses_AutoCompletionComboBox.setSelectedIndex(0);
-            } else {
-                intereses_AutoCompletionComboBox.setEnabled(false);
-                agregar_Interes_JButton.setEnabled(false);
-                intereses_JTable.setEnabled(false);
+        if (!tematicas.is_empty()) {
+            while (!tematicas.is_empty()) {
+                intereses_AutoCompletionComboBox.addItem(tematicas.delist());
             }
-        });
+            intereses_AutoCompletionComboBox.setSelectedIndex(0);
+        } else {
+            intereses_AutoCompletionComboBox.setEnabled(false);
+            agregar_Interes_JButton.setEnabled(false);
+            intereses_JTable.setEnabled(false);
+        }
         Colorear_Componentes();
         Obtener_Datos_Perfil(false);
         Obtener_Localidades_Estado();
-                
+
     }
 
     @Override
     public void Colorear_Componentes() {
-        
+
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         titulo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         Carta_Visible();
-        
+
         actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        
+
         imagen_Perfil_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         apellidos_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
         apellidos_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
@@ -1864,14 +1846,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         imagen_Perfil_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         descripcion_JScrollPane.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+
         contrasena_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Correo_Electronico_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         repetir_Contrasena_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-       
+
         cambiar_Imagen_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         cambiar_Imagen_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+
         contrasena_JPasswordField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         contrasena_JPasswordField.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         contrasena_JPasswordField.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
@@ -1881,12 +1863,12 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Correo_Electronico_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Correo_Electronico_JTextField.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         editar_Correo_Electronico_JTextField.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         editar_Genero_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Genero_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Genero_JTextField.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         editar_Genero_JTextField.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         editar_Descripcion_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
 
         editar_Promedio_General_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
@@ -1899,14 +1881,14 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Promedio_General_JFormattedTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Promedio_General_JFormattedTextField.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         editar_Promedio_General_JFormattedTextField.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
-     
+
         editar_Apellido_Paterno_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Apellido_Paterno_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color());
         editar_Apellido_Paterno_JTextField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
         editar_Apellido_Materno_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Apellido_Materno_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color());
         editar_Apellido_Materno_JTextField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
-        
+
         editar_Localidad_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Localidad_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias().Primer_Color());
         editar_Estado_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
@@ -1921,7 +1903,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Localidad_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Estado_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Nombres_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+
         editar_Fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.CalendarBackgroundNormalDates,
                 CourseRoom.Utilerias().Segundo_Color());
         editar_Fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.CalendarTextNormalDates,
@@ -1938,7 +1920,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 CourseRoom.Utilerias().Segundo_Color());
         editar_Fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.TextCalendarPanelLabelsOnHover,
                 CourseRoom.Utilerias().Tercer_Color());
-        
+
         editar_Nombres_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Apellido_Materno_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Apellido_Paterno_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
@@ -1948,27 +1930,27 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
         editar_Correo_Electronico_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Contrasena_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Descripcion_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+
         guardar_Cambios_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         guardar_Cambios_Datos_Personales_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         guardar_Cambios_Informacion_Extra_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         guardar_Cambios_Informacion_Extra_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         guardar_Cambios_Autenticacion_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         guardar_Cambios_Autenticacion_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
-        
+
         agregar_Interes_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         agregar_Interes_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
-        
+
         intereses_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
         intereses_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         intereses_JTable.setBackground(CourseRoom.Utilerias().Primer_Color());
         intereses_JTable.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+
         intereses_JTable.getTableHeader().setBackground(CourseRoom.Utilerias().Tercer_Color());
         intereses_JTable.getTableHeader().setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         intereses_JTable.setGridColor(CourseRoom.Utilerias().Segundo_Color());
-        
+
         intereses_JTable.setSelectionBackground(CourseRoom.Utilerias().Segundo_Color());
         intereses_JTable.setSelectionForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
 
@@ -1980,9 +1962,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 celda.Color_Fuente(CourseRoom.Utilerias().Primer_Color_Fuente());
             }
         }
-        
+
         intereses_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+
     }
 
     @Override
@@ -2018,7 +2000,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 editar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 editar_Informacion_Extra_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
                 break;
-            
+
         }
     }
 }

@@ -28,10 +28,10 @@ import paneles.profesores.Tablero_Profesor_Panel;
  *
  * @author LENOVO
  */
-public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface{
+public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Limpieza_Interface, Carta_Visibilidad_Interface {
 
     private byte carta_Visible;
-    
+
     /**
      * Creates new form Profile_Profesor_Panel
      */
@@ -890,8 +890,8 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void editar_Autenticacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Autenticacion_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Autenticacion");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Autenticacion");
             carta_Visible = 1;
             Carta_Visible();
         }
@@ -900,17 +900,17 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void informacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacion_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Informacion");
+            ((CardLayout) perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Informacion");
             carta_Visible = 0;
             Carta_Visible();
-           
+
         }
     }//GEN-LAST:event_informacion_JButtonMouseClicked
 
     private void editar_Datos_Personales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Datos_Personales_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Datos_Personales");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Datos_Personales");
             carta_Visible = 2;
             Carta_Visible();
         }
@@ -918,17 +918,15 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void guardar_Cambios_Autenticacion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Autenticacion_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            if(Verificar_Campos_Autenticacion()){
-                SwingUtilities.invokeLater(() -> {
-                    ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Autenticacion(Tablero_Profesor_Panel.Id_Usuario(),
-                            editar_Correo_Electronico_JTextField.getText().toUpperCase(), String.valueOf(contrasena_JPasswordField.getPassword()));
-                    if (respuesta.Is_Success()) {
-                        CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                    } else {
-                        CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar Los Datos De Autenticación", respuesta.Mensaje());
-                    }
-                });
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            if (Verificar_Campos_Autenticacion()) {
+                ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Autenticacion(Tablero_Profesor_Panel.Id_Usuario(),
+                        editar_Correo_Electronico_JTextField.getText().toUpperCase(), String.valueOf(contrasena_JPasswordField.getPassword()));
+                if (respuesta.Is_Success()) {
+                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Error("Error Al Actualizar Los Datos De Autenticación", respuesta.Mensaje());
+                }
             }
         }
 
@@ -947,7 +945,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     }//GEN-LAST:event_guardar_Cambios_Autenticacion_JButtonMouseExited
 
     private void cambiar_Imagen_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiar_Imagen_JButtonMouseClicked
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
 
             Escogedor_Archivos escogedor_Archivos = new Escogedor_Archivos();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos De Imagen", "jpg", "jpeg");
@@ -960,12 +958,12 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
             if (result == JFileChooser.APPROVE_OPTION) {
                 File archivo_Abierto = escogedor_Archivos.getSelectedFile();
 
-                if(archivo_Abierto != null){
+                if (archivo_Abierto != null) {
                     try {
 
                         tamanio = FileUtils.sizeOf(archivo_Abierto);
                         tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                        if(tamanio < 16){
+                        if (tamanio < 16) {
 
                             Image obtener_Imagen = ImageIO.read(archivo_Abierto);
                             obtener_Imagen = obtener_Imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
@@ -973,14 +971,14 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
                             imagen_Perfil_JLabel.setIcon(icono_Imagen);
 
-                            Tablero_Profesor_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto),obtener_Imagen);
+                            Tablero_Profesor_Panel.Cambiar_Imagen_Usuario(FileUtils.readFileToByteArray(archivo_Abierto), obtener_Imagen);
 
                             obtener_Imagen.flush();
-                        }else{
-                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","La Imagen Supera El Tamaño Aceptado De Subida");
+                        } else {
+                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "La Imagen Supera El Tamaño Aceptado De Subida");
                         }
                     } catch (IOException ex) {
-                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen",ex.getMessage());
+                        CourseRoom.Utilerias().Mensaje_Error("Error Al Subir La Imagen", ex.getMessage());
                     }
                 }
             }
@@ -1002,7 +1000,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void editar_Correo_Electronico_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Correo_Electronico_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Correo_Electronico_JTextField.setEnabled(!editar_Correo_Electronico_JTextField.isEnabled());
         }
 
@@ -1020,7 +1018,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void editar_Contrasena_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Contrasena_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             contrasena_JPasswordField.setEnabled(!contrasena_JPasswordField.isEnabled());
             repetir_Contrasena_JPasswordField.setEnabled(!repetir_Contrasena_JPasswordField.isEnabled());
         }
@@ -1038,20 +1036,18 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void guardar_Cambios_Datos_Personales_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Datos_Personales_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            
-            ComboOptionModel comboOption = (ComboOptionModel)editar_Localidad_AutoCompletionComboBox.getSelectedItem();
-            SwingUtilities.invokeLater(() -> {
-                ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Personales(Tablero_Profesor_Panel.Id_Usuario(),
-                        editar_Nombres_JTextField.getText(), editar_Apellido_Paterno_JTextField.getText(),
-                        editar_Apellido_Materno_JTextField.getText(), editar_Genero_JTextField.getText(),
-                        CourseRoom.Utilerias().Fecha(editar_Fecha_Nacimiento_DatePicker.getDate()), comboOption.Id());
-                if (respuesta.Is_Success()) {
-                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", "Se Han Actualizado Los Datos Personales Correctamente.");
-                } else {
-                    CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-                }
-            });
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+
+            ComboOptionModel comboOption = (ComboOptionModel) editar_Localidad_AutoCompletionComboBox.getSelectedItem();
+            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Datos_Personales(Tablero_Profesor_Panel.Id_Usuario(),
+                    editar_Nombres_JTextField.getText(), editar_Apellido_Paterno_JTextField.getText(),
+                    editar_Apellido_Materno_JTextField.getText(), editar_Genero_JTextField.getText(),
+                    CourseRoom.Utilerias().Fecha(editar_Fecha_Nacimiento_DatePicker.getDate()), comboOption.Id());
+            if (respuesta.Is_Success()) {
+                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", "Se Han Actualizado Los Datos Personales Correctamente.");
+            } else {
+                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+            }
         }
     }//GEN-LAST:event_guardar_Cambios_Datos_Personales_JButtonMouseClicked
 
@@ -1069,8 +1065,8 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void editar_Informacion_Extra_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Informacion_Extra_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            ((CardLayout)perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Informacion_Extra");
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ((CardLayout) perfil_JLayeredPane.getLayout()).show(perfil_JLayeredPane, "Informacion_Extra");
             carta_Visible = 3;
             Carta_Visible();
         }
@@ -1078,15 +1074,13 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void guardar_Cambios_Informacion_Extra_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_Cambios_Informacion_Extra_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
-            SwingUtilities.invokeLater(() -> {
-                ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Informacion_Extra(Tablero_Profesor_Panel.Id_Usuario(), "Profesor", -1, editar_Descripcion_JTextPane.getText());
-                if (respuesta.Is_Success()) {
-                    CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                } else {
-                    CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
-                }
-            });
+        if (SwingUtilities.isLeftMouseButton(evt)) {
+            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Informacion_Extra(Tablero_Profesor_Panel.Id_Usuario(), "Profesor", -1, editar_Descripcion_JTextPane.getText());
+            if (respuesta.Is_Success()) {
+                CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
+            } else {
+                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+            }
         }
     }//GEN-LAST:event_guardar_Cambios_Informacion_Extra_JButtonMouseClicked
 
@@ -1104,7 +1098,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void editar_Nombres_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombres_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Nombres_JTextField.setEnabled(!editar_Nombres_JTextField.isEnabled());
         }
     }//GEN-LAST:event_editar_Nombres_JButtonMouseClicked
@@ -1117,12 +1111,12 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
     private void editar_Nombres_JButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombres_JButtonMouseExited
         // TODO add your handling code here:
         editar_Nombres_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+
     }//GEN-LAST:event_editar_Nombres_JButtonMouseExited
 
     private void editar_Apellido_Paterno_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Apellido_Paterno_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Apellido_Paterno_JTextField.setEnabled(!editar_Apellido_Paterno_JTextField.isEnabled());
         }
     }//GEN-LAST:event_editar_Apellido_Paterno_JButtonMouseClicked
@@ -1139,10 +1133,10 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void editar_Apellido_Materno_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Apellido_Materno_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Apellido_Materno_JTextField.setEnabled(!editar_Apellido_Materno_JTextField.isEnabled());
         }
-        
+
     }//GEN-LAST:event_editar_Apellido_Materno_JButtonMouseClicked
 
     private void editar_Apellido_Materno_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Apellido_Materno_JButtonMouseEntered
@@ -1157,11 +1151,11 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void editar_Estado_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Estado_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Estado_AutoCompletionComboBox.setEnabled(!editar_Estado_AutoCompletionComboBox.isEnabled());
             editar_Localidad_AutoCompletionComboBox.setEnabled(!editar_Localidad_AutoCompletionComboBox.isEnabled());
         }
-        
+
     }//GEN-LAST:event_editar_Estado_JButtonMouseClicked
 
     private void editar_Estado_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Estado_JButtonMouseEntered
@@ -1176,10 +1170,10 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void editar_Genero_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Genero_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Genero_JTextField.setEnabled(!editar_Genero_JTextField.isEnabled());
         }
-        
+
     }//GEN-LAST:event_editar_Genero_JButtonMouseClicked
 
     private void editar_Genero_JButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Genero_JButtonMouseEntered
@@ -1194,7 +1188,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void editar_Fecha_Nacimiento_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Fecha_Nacimiento_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Fecha_Nacimiento_DatePicker.setEnabled(!editar_Fecha_Nacimiento_DatePicker.isEnabled());
         }
     }//GEN-LAST:event_editar_Fecha_Nacimiento_JButtonMouseClicked
@@ -1211,7 +1205,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void editar_Descripcion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             editar_Descripcion_JTextPane.setEnabled(!editar_Descripcion_JTextPane.isEnabled());
         }
     }//GEN-LAST:event_editar_Descripcion_JButtonMouseClicked
@@ -1228,7 +1222,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         // TODO add your handling code here:
-        if(SwingUtilities.isLeftMouseButton(evt)){
+        if (SwingUtilities.isLeftMouseButton(evt)) {
             Obtener_Datos_Perfil(true);
             Obtener_Localidades_Estado();
         }
@@ -1249,66 +1243,62 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         Obtener_Localidades_Estado();
     }//GEN-LAST:event_editar_Estado_AutoCompletionComboBoxItemStateChanged
 
-    public static String Nombre_Completo(){
-        return CourseRoom.Utilerias().Concatenar(nombres_JLabel.getText(), " " ,apellidos_JLabel.getText());
+    public static String Nombre_Completo() {
+        return CourseRoom.Utilerias().Concatenar(nombres_JLabel.getText(), " ", apellidos_JLabel.getText());
     }
-    
-    private void Obtener_Localidades_Estado(){
-        String estado = (String)editar_Estado_AutoCompletionComboBox.getSelectedItem();
-        editar_Localidad_AutoCompletionComboBox.removeAllItems();
-        SwingUtilities.invokeLater(() -> {
-            //Obtener localidades:
-            Lista<ComboOptionModel> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
 
-            while (!localidades.is_empty()) {
-                editar_Localidad_AutoCompletionComboBox.addItem((ComboOptionModel) localidades.delist());
-            }
-        });
+    private void Obtener_Localidades_Estado() {
+        String estado = (String) editar_Estado_AutoCompletionComboBox.getSelectedItem();
+        editar_Localidad_AutoCompletionComboBox.removeAllItems();
+        //Obtener localidades:
+        Lista<ComboOptionModel> localidades = CourseRoom.Solicitudes().Obtener_Localidades_Por_Estado(estado);
+
+        while (!localidades.is_empty()) {
+            editar_Localidad_AutoCompletionComboBox.addItem((ComboOptionModel) localidades.delist());
+        }
     }
-    
+
     private boolean Verificar_Campos_Autenticacion() {
         String Password = String.valueOf(contrasena_JPasswordField.getPassword());
         String Password2 = String.valueOf(repetir_Contrasena_JPasswordField.getPassword());
-        
+
         // Checa Los Campos Vacíos.
         if (editar_Correo_Electronico_JTextField.getText().isBlank() || Password.isBlank() || Password2.isBlank()) {
             // Si Los Campos No Estan Vacíos Manda Mensaje De Error.
-            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","No Se Permiten Campos Vacios !!!");
+            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Permiten Campos Vacios !!!");
             return false;
         } else {
-            
+
             if (Password.equals(Password2)) {
                 var valor = CourseRoom.Utilerias().Regex_Correo_Electronico_Valido(editar_Correo_Electronico_JTextField.getText().trim());
                 if (!valor) {
-                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Correo No Valido");
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Correo No Valido");
                     editar_Correo_Electronico_JTextField.requestFocus();
                     return false;
                 } else {
                     if (Password.length() <= 7 || Password2.length() <= 7) {
-                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Las Contraseñas Deben Tener Al Menos 8 Caracteres");
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Las Contraseñas Deben Tener Al Menos 8 Caracteres");
                         contrasena_JPasswordField.requestFocus();
                         return false;
-                    } else{
+                    } else {
                         return true;
                     }
 
                 }
             } else {
                 // Si Las Dos Contraseñas No Son Iguales Manda Mensaje De Error.
-                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!","Contraseñas Distintas Revisa!!!");
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "Contraseñas Distintas Revisa!!!");
                 contrasena_JPasswordField.requestFocus();
                 return false;
             }
-            
+
         }
-        
+
     }
-    
-    private void Obtener_Datos_Perfil(boolean bandera){
-        
+
+    private void Obtener_Datos_Perfil(boolean bandera) {
         DatosPerfilModel datosPerfilModel = CourseRoom.Solicitudes().Obtener_Datos_Perfil(Tablero_Profesor_Panel.Id_Usuario());
         if (datosPerfilModel != null) {
-
             nombres_JLabel.setText(datosPerfilModel.Nombre());
             apellidos_JLabel.setText(CourseRoom.Utilerias().Concatenar(datosPerfilModel.Paterno(), " ", datosPerfilModel.Materno()));
             correo_Electronico_JLabel.setText(datosPerfilModel.Correo_Electronico());
@@ -1442,15 +1432,15 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
     @Override
     public void Colorear_Componentes() {
-        
+
         contenido_Titulo_JPanel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         titulo_JLabel.setBackground(CourseRoom.Utilerias().Segundo_Color());
         titulo_JLabel.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         Carta_Visible();
-        
+
         actualizar_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
-        
+
         imagen_Perfil_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         apellidos_JLabel.setBackground(CourseRoom.Utilerias().Tercer_Color());
         apellidos_JLabel.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
@@ -1464,14 +1454,14 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         imagen_Perfil_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         descripcion_JTextPane.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         descripcion_JScrollPane.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+
         contrasena_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Correo_Electronico_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         repetir_Contrasena_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-       
+
         cambiar_Imagen_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         cambiar_Imagen_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+
         contrasena_JPasswordField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         contrasena_JPasswordField.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         contrasena_JPasswordField.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
@@ -1481,12 +1471,12 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Correo_Electronico_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Correo_Electronico_JTextField.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         editar_Correo_Electronico_JTextField.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         editar_Genero_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Genero_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Genero_JTextField.setForeground(CourseRoom.Utilerias().Segundo_Color_Fuente());
         editar_Genero_JTextField.setCaretColor(CourseRoom.Utilerias().Segundo_Color_Fuente());
-        
+
         editar_Descripcion_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
 
         editar_Descripcion_JTextPane.setBackground(CourseRoom.Utilerias().Segundo_Color());
@@ -1500,7 +1490,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Apellido_Materno_JTextField.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Apellido_Materno_JTextField.setForeground(CourseRoom.Utilerias().Primer_Color());
         editar_Apellido_Materno_JTextField.setCaretColor(CourseRoom.Utilerias().Primer_Color());
-        
+
         editar_Localidad_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
         editar_Localidad_AutoCompletionComboBox.setForeground(CourseRoom.Utilerias().Primer_Color());
         editar_Estado_AutoCompletionComboBox.setBackground(CourseRoom.Utilerias().Segundo_Color());
@@ -1515,7 +1505,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Localidad_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Estado_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
         editar_Nombres_JLabel.setForeground(CourseRoom.Utilerias().Primer_Color_Fuente());
-        
+
         editar_Fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.CalendarBackgroundNormalDates,
                 CourseRoom.Utilerias().Segundo_Color());
         editar_Fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.CalendarTextNormalDates,
@@ -1532,7 +1522,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                 CourseRoom.Utilerias().Segundo_Color());
         editar_Fecha_Nacimiento_DatePicker.getSettings().setColor(DatePickerSettings.DateArea.TextCalendarPanelLabelsOnHover,
                 CourseRoom.Utilerias().Tercer_Color());
-        
+
         editar_Nombres_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Apellido_Materno_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Apellido_Paterno_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
@@ -1542,19 +1532,19 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
         editar_Correo_Electronico_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Contrasena_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         editar_Descripcion_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
-        
+
         guardar_Cambios_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         guardar_Cambios_Datos_Personales_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         guardar_Cambios_Informacion_Extra_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         guardar_Cambios_Informacion_Extra_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
         guardar_Cambios_Autenticacion_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         guardar_Cambios_Autenticacion_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
-        
+
     }
 
     @Override
     public void Limpiar() {
-        
+
     }
 
     @Override
@@ -1584,8 +1574,6 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
                 editar_Datos_Personales_JButton.setBackground(CourseRoom.Utilerias().Segundo_Color());
                 editar_Informacion_Extra_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
                 break;
-            
         }
     }
-
 }
