@@ -544,7 +544,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                 int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
                     "¿Estás Segur@ De Desactivar Las Notificaciones?", "Pregunta", 
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
-            
+                
                 if(resultado == JOptionPane.YES_OPTION){
 
                     SwingUtilities.invokeLater(() -> {
@@ -554,6 +554,8 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                         if(response.Is_Success()){
                             CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Notificaciones", response.Mensaje());
                             avisos_Activo = false;
+                            desactivar_Activar_Notificaciones_JButton.setText("¿Activar Notificaciones?");
+                            desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Activar Sus Notificaciones?");
                         }else{
                             CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Notificaciones", response.Mensaje());
                         }
@@ -572,6 +574,8 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
 
                         if(response.Is_Success()){
                             CourseRoom.Utilerias().Mensaje_Informativo("Activar Notificaciones", response.Mensaje());
+                            desactivar_Activar_Notificaciones_JButton.setText("¿Desactivar Notificaciones?");
+                            desactivar_Activar_Notificaciones_JButton.setToolTipText("¿Desea Desactivar Sus Notificaciones?");
                             avisos_Activo = true;
                         }else{
                             CourseRoom.Utilerias().Mensaje_Alerta("Activar Notificaciones", response.Mensaje());
@@ -602,7 +606,7 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                 int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
                     "¿Estás Segur@ De Desactivar Los Chats Con Usted?", "Pregunta", 
                     JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
-            
+                
                 if(resultado == JOptionPane.YES_OPTION){
 
                     
@@ -613,6 +617,8 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                         if(response.Is_Success()){
                             CourseRoom.Utilerias().Mensaje_Informativo("Desactivar Chats Conmigo", response.Mensaje());
                             chats_Conmigo = false;
+                            permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Activar Chats Conmigo?");
+                            permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Activar La Opción De Permitir Chats Con Usted?");
                         }else{
                             CourseRoom.Utilerias().Mensaje_Alerta("Desactivar Chats Conmigo", response.Mensaje());
                         }
@@ -635,6 +641,8 @@ public final class Ajustes_Profesor_Panel extends javax.swing.JPanel implements 
                         if(response.Is_Success()){
                             CourseRoom.Utilerias().Mensaje_Informativo("Activar Chats Conmigo", response.Mensaje());
                             chats_Conmigo = true;
+                            permitir_No_Permitir_Chats_Conmigo_JButton.setText("¿Desactivar Chats Conmigo?");
+                            permitir_No_Permitir_Chats_Conmigo_JButton.setToolTipText("¿Desea Desactivar La Opción De Permitir Chats Con Usted?");
                         }else{
                             CourseRoom.Utilerias().Mensaje_Alerta("Activar Chats Conmigo", response.Mensaje());
                         }

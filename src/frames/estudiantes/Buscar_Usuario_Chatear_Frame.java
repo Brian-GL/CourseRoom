@@ -280,8 +280,7 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
             Celda_Renderer celda;
             Image imagen;
             ImageIcon icono;
-            
-            System.out.println(usuario.Id());
+            String id = String.valueOf(usuario.Id());
             
             byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(usuario.Id());
         
@@ -293,27 +292,28 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
                     imagen = imagen.getScaledInstance(60, 60, Image.SCALE_SMOOTH);
                     icono = new ImageIcon(imagen);
             
-                    celda = new Celda_Renderer(icono, usuario.Valor(),usuario.Id().toString());
+                    celda = new Celda_Renderer(icono, usuario.Valor(),id);
                     celdas[0] = celda;
                 }else{
-                    celda = new Celda_Renderer(usuario.Valor(),usuario.Id().toString());
+                    celda = new Celda_Renderer(usuario.Valor(),id);
                     celdas[0] = celda;
                 }
             }else{
-                celda = new Celda_Renderer(usuario.Valor(),usuario.Id().toString());
+                celda = new Celda_Renderer(usuario.Valor(),id);
                 celdas[0] = celda;
             }
             
             imagen = ImageIO.read(getClass().getResource("/recursos/iconos/check.png"));
             icono = new ImageIcon(imagen);
             
-            celda = new Celda_Renderer(icono,usuario.Id().toString());
+            celda = new Celda_Renderer(icono,id);
             celdas[1] = celda;
+            
             modelo.addRow(celdas);
             
             imagen.flush();
         } catch (IOException ex) {
-            
+            System.err.println(ex.getMessage());
         }
     }
 

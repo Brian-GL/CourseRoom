@@ -1322,6 +1322,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
             String contrasenia = CourseRoom.Utilerias().Decodificacion(datosPerfilModel.Contrasenia());
             contrasena_JPasswordField.setText(contrasenia);
+            repetir_Contrasena_JPasswordField.setText(contrasenia);
             editar_Correo_Electronico_JTextField.setText(datosPerfilModel.Correo_Electronico());
             editar_Nombres_JTextField.setText(datosPerfilModel.Nombre());
 
@@ -1334,6 +1335,7 @@ public class Perfil_Profesor_Panel extends javax.swing.JPanel implements Compone
 
             //Obtener estados:
             Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
+            editar_Estado_AutoCompletionComboBox.removeAll();
 
             if (!estados.is_empty()) {
                 while (!estados.is_empty()) {

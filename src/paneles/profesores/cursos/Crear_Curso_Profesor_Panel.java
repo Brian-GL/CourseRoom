@@ -1077,7 +1077,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                             DefaultTableModel modelo = (DefaultTableModel) materiales_JTable.getModel();
                             Celda_Renderer celda;
                             
-                            ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Adjunto_Tarea(Tablero_Profesor_Panel.Id_Usuario(), archivo_Abierto.getName(),
+                            ResponseModel response = CourseRoom.Solicitudes().Enviar_Material_Curso(id_Curso,Tablero_Profesor_Panel.Id_Usuario(),archivo_Abierto.getName(),
                                     FileUtils.readFileToByteArray(archivo_Abierto),
                                     FilenameUtils.getExtension(archivo_Abierto.getName()));
 

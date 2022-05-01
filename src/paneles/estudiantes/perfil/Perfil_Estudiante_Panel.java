@@ -1685,6 +1685,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
             String contrasenia = CourseRoom.Utilerias().Decodificacion(datosPerfilModel.Contrasenia());
             contrasena_JPasswordField.setText(contrasenia);
+            repetir_Contrasena_JPasswordField.setText(contrasenia);
             editar_Correo_Electronico_JTextField.setText(datosPerfilModel.Correo_Electronico());
             editar_Nombres_JTextField.setText(datosPerfilModel.Nombre());
 
@@ -1701,6 +1702,7 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
 
             //Obtener estados:
             Lista<String> estados = CourseRoom.Solicitudes().Obtener_Estados();
+            editar_Estado_AutoCompletionComboBox.removeAll();
 
             if(!estados.is_empty()){
                 while(!estados.is_empty()){
@@ -1714,6 +1716,9 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
                 editar_Localidad_AutoCompletionComboBox.setEnabled(false);
                 editar_Estado_JButton.setVisible(false);
             }
+            
+            DefaultTableModel modelo = (DefaultTableModel) intereses_JTable.getModel();
+            modelo.setRowCount(0);
             
             //Obtener intereses usuario:
             Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Intereses_Usuario(Tablero_Estudiante_Panel.Id_Usuario());
