@@ -26,6 +26,7 @@ import javax.swing.table.TableRowSorter;
 import paneles.profesores.Tablero_Profesor_Panel;
 import paneles.profesores.perfil.Perfil_Profesor_Panel;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import modelos.ArchivoModel;
 import modelos.ComboOptionModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
@@ -91,8 +92,8 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         setPreferredSize(new java.awt.Dimension(1110, 630));
 
         titulo_JPanel.setMaximumSize(new java.awt.Dimension(32767, 72));
-        titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
         titulo_JPanel.setOpaque(false);
+        titulo_JPanel.setPreferredSize(new java.awt.Dimension(982, 72));
 
         titulo_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         titulo_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -105,8 +106,8 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         titulo_JLabel.setPreferredSize(new java.awt.Dimension(818, 68));
 
         materiales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/book.png"))); // NOI18N
-        materiales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         materiales_JButton.setToolTipText("<html>\n<h3>Materiales</h3></html>");
+        materiales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)materiales_JButton.getIcon()).getImage().flush();
         materiales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -115,8 +116,8 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         });
 
         informacion_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/info_1.png"))); // NOI18N
-        informacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         informacion_JButton.setToolTipText("<html>\n<h3>Información Del Curso\n</h3></html>");
+        informacion_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)informacion_JButton.getIcon()).getImage().flush();
         informacion_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -142,8 +143,8 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         });
 
         imagen_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/edit-video.png"))); // NOI18N
-        imagen_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         imagen_JButton.setToolTipText("<html><h3>Imagen<br>Del Curso</h3></html>");
+        imagen_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ((ImageIcon)imagen_JButton.getIcon()).getImage().flush();
         imagen_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -196,11 +197,11 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
             }
         });
 
-        nombre_JLabel.setText("Nombre");
         nombre_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        nombre_JLabel.setText("Nombre");
 
-        descripcion_JLabel.setText("Descripción");
         descripcion_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        descripcion_JLabel.setText("Descripción");
 
         descripcion_JTextPane.setContentType("text/html"); // NOI18N
         descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -213,16 +214,16 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         });
         descripcion_JScrollPane.setViewportView(descripcion_JTextPane);
 
-        tematicas_JLabel.setText("Temáticas");
         tematicas_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tematicas_JLabel.setText("Temáticas");
         tematicas_JLabel.setPreferredSize(new java.awt.Dimension(320, 25));
 
-        tematicas_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tematicas_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
+        tematicas_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
+        agregar_Tematica_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         agregar_Tematica_JButton.setText("Agregar");
         agregar_Tematica_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        agregar_Tematica_JButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         agregar_Tematica_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 agregar_Tematica_JButtonMouseClicked(evt);
@@ -453,15 +454,15 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
             curso_JLayeredPane.add(imagen_JPanel, "Imagen");
 
-            materiales_JPanel.setPreferredSize(new java.awt.Dimension(1046, 630));
             materiales_JPanel.setToolTipText("");
             materiales_JPanel.setOpaque(false);
+            materiales_JPanel.setPreferredSize(new java.awt.Dimension(1046, 630));
 
+            compartir_Materiales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
             compartir_Materiales_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/submit.png"))); // NOI18N
             compartir_Materiales_JButton.setText("Compartir Material(es)");
-            compartir_Materiales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-            compartir_Materiales_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
             compartir_Materiales_JButton.setToolTipText("Compartir Y Subir Archivo");
+            compartir_Materiales_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
             ((ImageIcon)compartir_Materiales_JButton.getIcon()).getImage().flush();
             compartir_Materiales_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -479,6 +480,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
             materiales_JScrollPane.setOpaque(false);
 
             materiales_JTable.setAutoCreateRowSorter(true);
+            materiales_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
             materiales_JTable.setModel(
 
                 new javax.swing.table.DefaultTableModel(
@@ -512,7 +514,6 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                         return super.getColumnClass(column);
                     }
                 });
-                materiales_JTable.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 materiales_JTable.setRowHeight(75);
                 materiales_JTable.setShowGrid(true);
                 materiales_JTable.setSurrendersFocusOnKeystroke(true);
@@ -528,16 +529,22 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
                             switch (columna) {
                                 // Abrir
-                                /*case 0:
+                                case 0:
                                 {
                                     int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                                     DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                                     Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
-                                    String extension = FilenameUtils.getExtension(celda.Texto());
-                                    String ruta = celda.ID();
-                                    CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+                                    if(celda.Tiene_Icono()){
+                                        int id_Archivo = Integer.parseInt(celda.ID());
+
+                                        if (id_Archivo > 0){
+                                            Descargar_Material(id_Archivo,celda.Texto());
+                                        }else{
+                                            CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                                        }
+                                    }
                                 }
-                                break;*/
+                                break;
                                 // Remover
                                 case 3:
                                 {
@@ -552,16 +559,15 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                                         Celda_Renderer celda = (Celda_Renderer)  modelo.getValueAt(fila, columna);
 
                                         int id_Archivo_Subido = Integer.parseInt(celda.ID());
-                                        SwingUtilities.invokeLater(() -> {
-                                            ResponseModel response = CourseRoom.Solicitudes().Remover_Material_Curso(id_Archivo_Subido, Tablero_Profesor_Panel.Id_Usuario());
 
-                                            if(response.Is_Success()){
-                                                CourseRoom.Utilerias().Mensaje_Informativo("Remover Material Compartido", response.Mensaje());
-                                                modelo.removeRow(fila);
-                                            }else{
-                                                CourseRoom.Utilerias().Mensaje_Alerta("Remover Material Compartido", response.Mensaje());
-                                            }
-                                        });
+                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Material_Curso(id_Archivo_Subido, Tablero_Profesor_Panel.Id_Usuario());
+
+                                        if(response.Is_Success()){
+                                            CourseRoom.Utilerias().Mensaje_Informativo("Remover Material Compartido", response.Mensaje());
+                                            modelo.removeRow(fila);
+                                        }else{
+                                            CourseRoom.Utilerias().Mensaje_Alerta("Remover Material Compartido", response.Mensaje());
+                                        }
                                     }
 
                                     break;
@@ -616,7 +622,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                         .addContainerGap()
                         .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 534, Short.MAX_VALUE)
+                        .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
                         .addContainerGap())
                 );
             }// </editor-fold>//GEN-END:initComponents
@@ -859,6 +865,38 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         }
     }
     
+    private void Descargar_Material(int id_Material, String nombre_Archivo) {
+
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"), "/descargas/cursos/", nombre_Archivo));
+
+        if (!archivo.exists()) {
+
+            SwingUtilities.invokeLater(() -> {
+
+                ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Material_Subido_Curso(id_Material);
+
+                if (archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()) {
+
+                    try {
+
+                        FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
+
+                        CourseRoom.Utilerias().Abrir_Archivo(archivo);
+
+                    } catch (IOException ex) {
+                        CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                    }
+
+                } else {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                }
+
+            });
+        } else {
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar_Tematica_JButton;
     private javax.swing.JButton cambiar_Imagen_JButton;
@@ -1030,7 +1068,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                 
                 long tamanio = FileUtils.sizeOf(archivo_Abierto);
                 tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                if(tamanio < 35){
+                if(tamanio < 15){
                     
                     SwingUtilities.invokeLater(() -> {
                         try {

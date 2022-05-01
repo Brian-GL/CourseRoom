@@ -144,19 +144,16 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
 
                             int id_Usuario_Receptor = Integer.parseInt(celda.ID());
 
-                            SwingUtilities.invokeLater(() -> {
-                                ResponseModel response = CourseRoom.Solicitudes().Agregar_Chat(Tablero_Estudiante_Panel.Id_Usuario()
-                                    ,id_Usuario_Receptor);
+                            ResponseModel response = CourseRoom.Solicitudes().Agregar_Chat(Tablero_Estudiante_Panel.Id_Usuario()
+                                ,id_Usuario_Receptor);
 
-                                if(response.Is_Success()){
-                                    CourseRoom.Utilerias().Mensaje_Informativo("Agregar Chat", response.Mensaje());
-                                    Buscar_Usuario_Chatear_Frame.Limpiar();
+                            if(response.Is_Success()){
+                                CourseRoom.Utilerias().Mensaje_Informativo("Agregar Chat", response.Mensaje());
+                                Buscar_Usuario_Chatear_Frame.Limpiar();
 
-                                }else{
-                                    CourseRoom.Utilerias().Mensaje_Alerta("Agregar Chat", response.Mensaje());
-                                }
-
-                            });
+                            }else{
+                                CourseRoom.Utilerias().Mensaje_Alerta("Agregar Chat", response.Mensaje());
+                            }
 
                         }
 

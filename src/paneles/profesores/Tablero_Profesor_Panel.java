@@ -877,7 +877,7 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
     @Override
     public void Iniciar_Componentes() {
         
-        SwingUtilities.invokeLater(() -> {
+        
             byte[] bytes_Imagen_Perfil = CourseRoom.Solicitudes().Obtener_Imagen_Perfil(IdUsuario);
 
             if (bytes_Imagen_Perfil.length > 0) {
@@ -891,20 +891,20 @@ public class Tablero_Profesor_Panel extends javax.swing.JPanel implements Limpie
                     imagen_Redimensionada.flush();
                 }
             }
-        });
+        
+        
         perfil_Panel = new Perfil_Profesor_Panel();
         visualizador_JPanel.add("Perfil",perfil_Panel);
-        SwingUtilities.invokeLater(() -> {
-            ResponseModel response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
+        
+        ResponseModel response = CourseRoom.Solicitudes().Agregar_Sesion(IdUsuario);
 
-            if (!response.Is_Success()) {
-                IdSesion = -1;
-                System.err.println(response.Mensaje());
-            } else {
-                IdSesion = response.Codigo();
-            }
-        });
-
+        if (!response.Is_Success()) {
+            IdSesion = -1;
+            System.err.println(response.Mensaje());
+        } else {
+            IdSesion = response.Codigo();
+        }
+        
         chats_Panel = new Chats_Profesor_Panel();
         visualizador_JPanel.add("Chats", chats_Panel);
 

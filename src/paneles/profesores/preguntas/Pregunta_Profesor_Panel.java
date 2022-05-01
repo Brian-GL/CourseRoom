@@ -746,7 +746,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements  Comp
                
                 long tamanio = FileUtils.sizeOf(archivo_Abierto);
                 tamanio = (0 != tamanio) ? tamanio / 1000 / 1000 : 0;
-                if(tamanio < 35){
+                if(tamanio < 15){
 
                     SwingUtilities.invokeLater(() -> {
 

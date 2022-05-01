@@ -1808,7 +1808,6 @@ public class Perfil_Estudiante_Panel extends javax.swing.JPanel implements Compo
             imagen_Icono.getImage().flush();
         }
         
-
         descripcion_JScrollPane.getViewport().setOpaque(false);
         descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
