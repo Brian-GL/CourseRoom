@@ -4857,6 +4857,10 @@ public class Solicitudes {
                 
                 Vector<Object> resultado  = (Vector<Object>)respuesta;
                 
+                resultado.removeElementAt(0);
+                resultado.removeElementAt(0);
+                resultado.removeElementAt(0);
+                
                 response.Codigo((Integer)resultado.remove(0));
                 response.Mensaje(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));
                 
