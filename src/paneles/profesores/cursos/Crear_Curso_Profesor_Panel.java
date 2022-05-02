@@ -808,14 +808,17 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                 compartir_Materiales_JButton.setVisible(true);
                 imagen_Curso_JLabel.setVisible(true);
                 imagen_JButton.setVisible(true);
-                descripcion_JTextPane.setVisible(false);
-                nombre_JTextField.setVisible(false);
                 materiales_JButton.setVisible(true);
-                guardar_Datos_Generales_Curso_JButton.setVisible(false);
                 materiales_JTable.setVisible(true);
-
                 tematicas_AutoCompletionComboBox.setVisible(true);
-                tematicas_JTable.setVisible(true);
+                tematicas_JScrollPane.setVisible(true);
+                tematicas_JLabel.setVisible(true);
+                
+                descripcion_JLabel.setVisible(false);
+                descripcion_JScrollPane.setVisible(false);
+                nombre_JLabel.setVisible(false);
+                nombre_JTextField.setVisible(false);
+                guardar_Datos_Generales_Curso_JButton.setVisible(false);
                 
             } else {
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta", respuesta.Mensaje());
@@ -859,10 +862,6 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
                 celda = new Celda_Renderer(remover,interes.Id().toString());
                 celdas[1] = celda;
-                modelo.addRow(celdas);
-
-                tematicas_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
-
                 modelo.addRow(celdas);
 
                 tematicas_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
@@ -939,9 +938,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
     @Override
     public void Iniciar_Componentes() {
         carta_Visible = 0;
-        materiales_JButton.setVisible(false);
-        imagen_JButton.setVisible(false);
-        informacion_JButton.setVisible(false);
+        
         //Informacion curso:
 
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
@@ -965,7 +962,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         tematicas_JTable.getTableHeader().setFont(gadugi);
         tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
         
-// Obtener temáticas:
+        // Obtener temáticas:
         Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
 
         if (!tematicas.is_empty()) {
@@ -984,12 +981,15 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
         compartir_Materiales_JButton.setVisible(false);
         imagen_Curso_JLabel.setVisible(false);
         imagen_JButton.setVisible(false);
-        
+        materiales_JButton.setVisible(false);
+        imagen_JButton.setVisible(false);
+        informacion_JButton.setVisible(false);
         materiales_JButton.setVisible(false);
         materiales_JTable.setVisible(false);
-       
+        
+        tematicas_JLabel.setVisible(false);
         tematicas_AutoCompletionComboBox.setVisible(false);
-        tematicas_JTable.setVisible(false);
+        tematicas_JScrollPane.setVisible(false);
         
         Colorear_Componentes();
     }
@@ -1093,7 +1093,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                         DefaultTableModel modelo = (DefaultTableModel) materiales_JTable.getModel();
                         Celda_Renderer celda;
 
-                        ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Adjunto_Tarea(Tablero_Profesor_Panel.Id_Usuario(), archivo_Abierto.getName(),
+                        ResponseModel response = CourseRoom.Solicitudes().Enviar_Material_Curso(Id_Curso,Tablero_Profesor_Panel.Id_Usuario(), archivo_Abierto.getName(),
                                 FileUtils.readFileToByteArray(archivo_Abierto),
                                 FilenameUtils.getExtension(archivo_Abierto.getName()));
 
