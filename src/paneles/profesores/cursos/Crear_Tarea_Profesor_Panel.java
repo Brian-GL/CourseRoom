@@ -27,6 +27,7 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import modelos.ArchivoModel;
 import modelos.ResponseModel;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -333,16 +334,21 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
 
                         switch (columna) {
                             // Abrir
-                            /*case 0:
+                            case 0:
                             {
                                 int fila = tabla.getRowSorter().convertRowIndexToModel(tabla.getSelectedRow());
                                 DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                                 Celda_Renderer celda = (Celda_Renderer) modelo.getValueAt(fila, 0);
-                                String extension = FilenameUtils.getExtension(celda.Texto());
-                                String ruta = celda.ID();
-                                CourseRoom.Utilerias().Abrir_Archivo(ruta, extension, celda.Texto());
+
+                                int id_Archivo = Integer.parseInt(celda.ID());
+
+                                if (id_Archivo > 0){
+                                    Descargar_Archivo_Adjunto(id_Archivo,celda.Texto());
+                                }else{
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+                                }
                             }
-                            break;*/
+                            break;
                             // Remover
                             case 3:
                             {
@@ -447,7 +453,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Retirar_Vista(this);
-            Tablero_Profesor_Panel.Mostrar_Vista(Id_Vista);
+            Tablero_Profesor_Panel.Mostrar_Vista("Tarea_Temporal");
             this.Limpiar();
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
@@ -511,8 +517,15 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
             if (respuesta.Is_Success()) {
                 CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
                 Id_Tarea = respuesta.Codigo();
-                archivos_Adjuntos_JButton.setEnabled(true);
-                informacion_JButton.setEnabled(false);
+                archivos_Adjuntos_JButton.setVisible(true);
+                informacion_JButton.setVisible(false);
+                editar_Descripcion_JLabel.setVisible(false);
+                editar_Descripcion_JScrollPane.setVisible(false);
+                editar_Fecha_Entrega_JLabel.setVisible(false);
+                editar_Nombre_JLabel.setVisible(false);
+                editar_Nombre_JTextField.setVisible(false);
+                escogedor_Fecha_Hora.setVisible(false);
+                guardar_Cambios_Datos_Generales_Tarea_JButton.setVisible(false);
                 ((CardLayout) tarea_JLayeredPane.getLayout()).show(tarea_JLayeredPane, "Archivos_Adjuntos");
                 carta_Visible = 1;
                 Carta_Visible();
@@ -552,7 +565,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                         DefaultTableModel modelo = (DefaultTableModel) archivos_Adjuntos_JTable.getModel();
                         Celda_Renderer celda;
 
-                        ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Adjunto_Tarea(Tablero_Profesor_Panel.Id_Usuario(), archivo_Abierto.getName(),
+                        ResponseModel response = CourseRoom.Solicitudes().Enviar_Archivo_Adjunto_Tarea(Id_Tarea, archivo_Abierto.getName(),
                                 FileUtils.readFileToByteArray(archivo_Abierto),
                                 FilenameUtils.getExtension(archivo_Abierto.getName()));
 
@@ -587,6 +600,33 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
             }
         }
     }
+    
+    private void Descargar_Archivo_Adjunto(int id_Archivo, String nombre_Archivo) {
+
+        File archivo = new File(CourseRoom.Utilerias().Concatenar(System.getProperty("user.dir"), "/descargas/tareas/", nombre_Archivo));
+
+        if (!archivo.exists()) {
+            ArchivoModel archivoModel = CourseRoom.Solicitudes().Obtener_Archivo_Adjunto_Tarea(id_Archivo);
+
+            if (archivoModel.Archivo().length > 0 && !archivoModel.Extension().isBlank()) {
+
+                try {
+
+                    FileUtils.writeByteArrayToFile(archivo, archivoModel.Archivo());
+
+                    CourseRoom.Utilerias().Abrir_Archivo(archivo);
+
+                } catch (IOException ex) {
+                    CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", ex.getMessage());
+                }
+
+            } else {
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", "No Se Pudo Descargar El Archivo");
+            }
+        } else {
+            CourseRoom.Utilerias().Abrir_Archivo(archivo);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton archivos_Adjuntos_JButton;
@@ -613,7 +653,6 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
     @Override
     public void Iniciar_Componentes() {
         carta_Visible = 0;
-        archivos_Adjuntos_JButton.setEnabled(false);
         editar_Descripcion_JScrollPane.getViewport().setOpaque(false);
         editar_Descripcion_JScrollPane.getVerticalScrollBar().setUnitIncrement(15);
         editar_Descripcion_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
@@ -623,24 +662,6 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         archivos_Adjuntos_JScrollPane.getHorizontalScrollBar().setUnitIncrement(15);
         archivos_Adjuntos_JTable.getTableHeader().setFont(gadugi);
         archivos_Adjuntos_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-
-        archivos_Adjuntos_JTable.addMouseListener(new MouseAdapter() {
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-
-                    JTable tabla = (JTable) e.getComponent();
-                    int columna = tabla.getSelectedColumn();
-
-                    //Remover
-                    if (columna == 2) {
-
-                    }
-
-                }
-            }
-        });
 
         LocalDate fecha_Minima = LocalDate.now();
         Locale local = new Locale("es", "MX");
@@ -668,6 +689,8 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         escogedor_Fecha_Hora.getTimePicker().setTime(LocalTime.now());
         escogedor_Fecha_Hora.getTimePicker().setOpaque(false);
         escogedor_Fecha_Hora.getTimePicker().setVisible(true);
+        
+        archivos_Adjuntos_JButton.setVisible(false);
 
         Colorear_Componentes();
     }

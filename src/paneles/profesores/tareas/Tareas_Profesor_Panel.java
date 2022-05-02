@@ -379,8 +379,6 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                     icono = new ImageIcon(imagen);
                     celda = new Celda_Renderer(icono,tareasEstudianteModel.Nombre_Curso(), id);
                     celdas[1] = celda;
-                    
-                    imagen.flush();
                 }
             }
             else{
@@ -439,8 +437,6 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                     icono = new ImageIcon(imagen);
                     celda = new Celda_Renderer(icono,tareasPorCalificarModel.Nombre_Curso(), id);
                     celdas[1] = celda;
-                    
-                    imagen.flush();
                 }
             }
             else{
@@ -468,7 +464,6 @@ public class Tareas_Profesor_Panel extends javax.swing.JPanel implements Limpiez
                     celda = new Celda_Renderer(icono,tareasPorCalificarModel.Nombre_Completo(), id);
                     celdas[2] = celda;
                     
-                    imagen.flush();
                 }
             }
             else{
