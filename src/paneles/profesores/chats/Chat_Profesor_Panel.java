@@ -750,6 +750,7 @@ public class Chat_Profesor_Panel extends javax.swing.JPanel implements Component
 
                 if (imagen_Usuario != null) {
 
+                    imagen_Usuario = imagen_Usuario.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
                     ImageIcon icono_Imagen = new ImageIcon(imagen_Usuario);
                     imagen_Perfil_JLabel.setIcon(icono_Imagen);
                     icono_Imagen.getImage().flush();
