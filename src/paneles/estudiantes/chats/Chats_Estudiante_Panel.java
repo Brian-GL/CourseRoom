@@ -24,7 +24,7 @@ import datos.estructuras.Nodo;
 import courseroom.CourseRoom;
 import datos.interfaces.Componentes_Interface;
 import datos.interfaces.Limpieza_Interface;
-import frames.estudiantes.Buscar_Usuario_Chatear_Frame;
+import frames.estudiantes.Buscar_Usuario_Chatear_Estudiante_Frame;
 import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.Image;
@@ -459,8 +459,8 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
     private void chatear_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chatear_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            Buscar_Usuario_Chatear_Frame buscar_Usuario_Chatear_Frame
-            = new Buscar_Usuario_Chatear_Frame();
+            Buscar_Usuario_Chatear_Estudiante_Frame buscar_Usuario_Chatear_Frame
+            = new Buscar_Usuario_Chatear_Estudiante_Frame();
             buscar_Usuario_Chatear_Frame.setVisible(true);
         }
     }//GEN-LAST:event_chatear_JButtonMouseClicked

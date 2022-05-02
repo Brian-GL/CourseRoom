@@ -365,7 +365,6 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
             System.out.println("Esperando Conexión Con CourseRoom Notifier Desde Aviso...");
             byte[] entryBuffer = new byte[16];
             DatagramPacket datagramPacket = new DatagramPacket(entryBuffer,entryBuffer.length);
-            String mensaje;
             String valor;
             int longitud;
             int indice;
@@ -395,21 +394,20 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
                     //Estudiante:
                     if(!tipo_Usuario){
                         if(id_Usuario == Tablero_Estudiante_Panel.Id_Usuario()){
-                            mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Una Nueva Notificación\n";
-                            CourseRoom.Utilerias().Mostrar_Aviso();
                             avisosModel = CourseRoom.Solicitudes().Obtener_Ultimo_Aviso(id_Usuario);
                             if(avisosModel.Id_Aviso() > 0){
+                                CourseRoom.Utilerias().Mostrar_Aviso(avisosModel.Aviso());
                                 Agregar_Ultimo_Aviso(avisosModel);
                             }
                             
                         }
                     }else{
                         if(id_Usuario == Tablero_Profesor_Panel.Id_Usuario()){
-                            mensaje = "\nEl Usuario "+String.valueOf(id_Usuario)+" Tiene Una Nueva Notificación\n";
-                            CourseRoom.Utilerias().Mostrar_Aviso();
+                            
                             avisosModel = CourseRoom.Solicitudes().Obtener_Ultimo_Aviso(id_Usuario);
                             if(avisosModel.Id_Aviso() > 0){
                                 Agregar_Ultimo_Aviso(avisosModel);
+                                CourseRoom.Utilerias().Mostrar_Aviso(avisosModel.Aviso());
                             }
                         }
                     }

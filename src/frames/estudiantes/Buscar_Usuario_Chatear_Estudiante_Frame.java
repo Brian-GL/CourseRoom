@@ -41,14 +41,14 @@ import paneles.estudiantes.Tablero_Estudiante_Panel;
  *
  * @author LENOVO
  */
-public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements Componentes_Interface{
+public class Buscar_Usuario_Chatear_Estudiante_Frame extends javax.swing.JFrame implements Componentes_Interface{
 
-    private static Buscar_Usuario_Chatear_Frame _this;
+    private static Buscar_Usuario_Chatear_Estudiante_Frame _this;
     
     /**
      * Creates new form Buscar_Usuario_Chatear_Frame
      */
-    public Buscar_Usuario_Chatear_Frame() {
+    public Buscar_Usuario_Chatear_Estudiante_Frame() {
         initComponents();
         Iniciar_Componentes();
     }
@@ -71,11 +71,8 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Chatear");
-        setMaximumSize(new java.awt.Dimension(800, 495));
         setMinimumSize(new java.awt.Dimension(800, 495));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 495));
         setResizable(false);
 
         usuarios_JLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -149,7 +146,7 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
 
                             if(response.Is_Success()){
                                 CourseRoom.Utilerias().Mensaje_Informativo("Agregar Chat", response.Mensaje());
-                                Buscar_Usuario_Chatear_Frame.Limpiar();
+                                Buscar_Usuario_Chatear_Estudiante_Frame.Limpiar();
 
                             }else{
                                 CourseRoom.Utilerias().Mensaje_Alerta("Agregar Chat", response.Mensaje());
@@ -329,7 +326,7 @@ public class Buscar_Usuario_Chatear_Frame extends javax.swing.JFrame implements 
     @Override
     public void Iniciar_Componentes() {
         this.setLocationRelativeTo(null);
-        this.setAlwaysOnTop(true);
+        
         
         try {
             Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));

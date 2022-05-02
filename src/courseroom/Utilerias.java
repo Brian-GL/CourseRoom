@@ -445,7 +445,7 @@ public class Utilerias {
         }
     }
     
-    public void Mostrar_Aviso(){
+    public void Mostrar_Aviso(String mensaje){
         try {
             //Obtain only one instance of the SystemTray object
             SystemTray tray = SystemTray.getSystemTray();
@@ -462,7 +462,7 @@ public class Utilerias {
             trayIcon.setToolTip("Nueva Notificación De CourseRoom");
             tray.add(trayIcon);
             
-            trayIcon.displayMessage("CourseRoom", "Tienes Una Nueva Notificación", MessageType.INFO);
+            trayIcon.displayMessage("CourseRoom", mensaje, MessageType.INFO);
         } catch (AWTException | IOException ex) {
             
         }
