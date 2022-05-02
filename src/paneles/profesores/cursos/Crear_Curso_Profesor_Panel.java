@@ -39,14 +39,12 @@ import org.apache.commons.io.FilenameUtils;
 public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza_Interface, Componentes_Interface, Carta_Visibilidad_Interface {
 
     private byte carta_Visible;
-    private int id_Curso;
-    private String id_Curso_Vista;
+    private int Id_Curso;
 
-    public Crear_Curso_Profesor_Panel(int Id_Curso, String Id_Curso_Vista) {
+    public Crear_Curso_Profesor_Panel() {
         initComponents();
 
-        this.id_Curso = Id_Curso;
-        this.id_Curso_Vista = Id_Curso_Vista;
+        this.Id_Curso = -1;
 
         Iniciar_Componentes();
     }
@@ -697,7 +695,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                             imagen_Curso_JLabel.setIcon(icono_Grupo);
                             ResponseModel respuesta;
                             try {
-                                respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Curso(id_Curso, FileUtils.readFileToByteArray(archivo));
+                                respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Curso(Id_Curso, FileUtils.readFileToByteArray(archivo));
                                 if (respuesta.Is_Success()) {
                                     CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
                                 } else {
@@ -734,7 +732,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
     private void agregar_Tematica_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregar_Tematica_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            if (id_Curso > 0) {
+            if (Id_Curso > 0) {
                 ComboOptionModel interes = ((ComboOptionModel) tematicas_AutoCompletionComboBox.getSelectedItem()) != null
                         ? ((ComboOptionModel) tematicas_AutoCompletionComboBox.getSelectedItem()) : new ComboOptionModel();
                 Agregar_Nuevo_Interes_Tematica(interes);
@@ -801,13 +799,26 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
             ResponseModel respuesta = CourseRoom.Solicitudes().Agregar_Curso(nombre_JTextField.getText(), descripcion_JTextPane.getText(), Tablero_Profesor_Panel.Id_Usuario());
 
             if (respuesta.Is_Success()) {
+                
                 CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
-                id_Curso = respuesta.Codigo();
+                Id_Curso = respuesta.Codigo();
+                
+                agregar_Tematica_JButton.setEnabled(true);
+                cambiar_Imagen_JButton.setEnabled(true);
+                compartir_Materiales_JButton.setEnabled(true);
+                imagen_Curso_JLabel.setEnabled(true);
                 imagen_JButton.setEnabled(true);
-                informacion_JButton.setEnabled(true);
+                descripcion_JTextPane.setEnabled(false);
+                nombre_JTextField.setEnabled(false);
                 materiales_JButton.setEnabled(true);
+                guardar_Datos_Generales_Curso_JButton.setEnabled(false);
+                materiales_JTable.setEnabled(true);
+
+                tematicas_AutoCompletionComboBox.setEnabled(true);
+                tematicas_JTable.setEnabled(true);
+                
             } else {
-                CourseRoom.Utilerias().Mensaje_Error("Error", respuesta.Mensaje());
+                CourseRoom.Utilerias().Mensaje_Alerta("Alerta", respuesta.Mensaje());
             }
         }
     }//GEN-LAST:event_guardar_Datos_Generales_Curso_JButtonMouseClicked
@@ -941,7 +952,8 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
         tematicas_JTable.getTableHeader().setFont(gadugi);
         tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
-        // Obtener temáticas:
+        
+// Obtener temáticas:
         Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
 
         if (!tematicas.is_empty()) {
@@ -954,6 +966,19 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
             agregar_Tematica_JButton.setEnabled(false);
             tematicas_JTable.setEnabled(false);
         }
+        
+        agregar_Tematica_JButton.setEnabled(false);
+        cambiar_Imagen_JButton.setEnabled(false);
+        compartir_Materiales_JButton.setEnabled(false);
+        imagen_Curso_JLabel.setEnabled(false);
+        imagen_JButton.setEnabled(false);
+        
+        materiales_JButton.setEnabled(false);
+        materiales_JTable.setEnabled(false);
+       
+        tematicas_AutoCompletionComboBox.setEnabled(false);
+        tematicas_JTable.setEnabled(false);
+        
         Colorear_Componentes();
     }
 

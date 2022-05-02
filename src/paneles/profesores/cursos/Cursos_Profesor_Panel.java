@@ -15,11 +15,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import courseroom.CourseRoom;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import modelos.CursosCreadosProfesorModel;
 import paneles.profesores.Tablero_Profesor_Panel;
@@ -221,7 +216,7 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
         // TODO add your handling code here:
         if(SwingUtilities.isLeftMouseButton(evt)){
             String id = "Curso_Temporal";
-            Crear_Curso_Profesor_Panel crear_Curso_Profesor_Panel = new Crear_Curso_Profesor_Panel(-1,id);
+            Crear_Curso_Profesor_Panel crear_Curso_Profesor_Panel = new Crear_Curso_Profesor_Panel();
             Tablero_Profesor_Panel.Agregar_Vista(crear_Curso_Profesor_Panel,id);
             Tablero_Profesor_Panel.Mostrar_Vista(id);
         }
