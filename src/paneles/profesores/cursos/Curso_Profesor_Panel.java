@@ -410,11 +410,11 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
                 },
                 new String [] {
-                    "Tarea", "Creada", "Entrega", "Estatus" , "Remover?"
+                    "Tarea", "Creada", "Entrega", "Estatus"
                 }
             ) {
                 boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false
+                    false, false, false, false
                 };
 
                 public boolean isCellEditable(int rowIndex, int columnIndex) {
