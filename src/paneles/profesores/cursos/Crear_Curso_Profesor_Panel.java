@@ -288,7 +288,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                         if (columna == 1) {
 
                             int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
-                                "¿Estás Segur@ De Remover El Interes?", "Remover Interes", 
+                                "¿Estás Segur@ De Remover La Temática?", "Remover Temática", 
                                 JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
                             if(resultado == JOptionPane.YES_OPTION){
@@ -299,13 +299,13 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
 
                                 int id_Tematica = Integer.parseInt(celda.ID());
 
-                                ResponseModel response = CourseRoom.Solicitudes().Remover_Tematica_Curso(id_Tematica,Tablero_Profesor_Panel.Id_Usuario());
+                                ResponseModel response = CourseRoom.Solicitudes().Remover_Tematica_Curso(id_Tematica,Id_Curso);
 
                                 if(response.Is_Success()){
-                                    CourseRoom.Utilerias().Mensaje_Informativo("Remover Interes", response.Mensaje());
+                                    CourseRoom.Utilerias().Mensaje_Informativo("Remover Temática", response.Mensaje());
                                     modelo.removeRow(fila);
                                 }else{
-                                    CourseRoom.Utilerias().Mensaje_Alerta("Remover Interes", response.Mensaje());
+                                    CourseRoom.Utilerias().Mensaje_Alerta("Remover Temática", response.Mensaje());
                                 }
 
                             }
@@ -617,7 +617,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                         .addContainerGap()
                         .addComponent(titulo_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, 534, Short.MAX_VALUE)
+                        .addComponent(curso_JLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
                         .addContainerGap())
                 );
             }// </editor-fold>//GEN-END:initComponents
@@ -855,7 +855,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                 celda = new Celda_Renderer(interes.Valor(), interes.Id().toString());
                 celdas[0] = celda;
 
-                celda = new Celda_Renderer(remover);
+                celda = new Celda_Renderer(remover,interes.Id().toString());
                 celdas[1] = celda;
                 modelo.addRow(celdas);
 
