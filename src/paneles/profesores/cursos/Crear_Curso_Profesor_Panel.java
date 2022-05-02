@@ -836,7 +836,13 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
     }//GEN-LAST:event_guardar_Datos_Generales_Curso_JButtonMouseExited
 
     private void Agregar_Nuevo_Interes_Tematica(ComboOptionModel interes) {
-        try {
+        
+            
+        ResponseModel response = CourseRoom.Solicitudes().Agregar_Tematica(Id_Curso, interes.Id());
+
+        if(response.Is_Success()){
+
+            try {
             DefaultTableModel modelo = (DefaultTableModel) tematicas_JTable.getModel();
 
             Celda_Renderer[] celdas = new Celda_Renderer[2];
@@ -848,32 +854,31 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
             celda = new Celda_Renderer(interes.Valor(), interes.Id().toString());
             celdas[0] = celda;
 
+            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+            ImageIcon remover = new ImageIcon(icono);
 
-                Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-                ImageIcon remover = new ImageIcon(icono);
+            celda = new Celda_Renderer(interes.Valor(), interes.Id().toString());
+            celdas[0] = celda;
 
-                celda = new Celda_Renderer(interes.Valor(), interes.Id().toString());
-                celdas[0] = celda;
+            celda = new Celda_Renderer(remover,interes.Id().toString());
+            celdas[1] = celda;
+            modelo.addRow(celdas);
 
-                celda = new Celda_Renderer(remover,interes.Id().toString());
-                celdas[1] = celda;
-                modelo.addRow(celdas);
+            tematicas_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
 
-                tematicas_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
-
-                icono.flush();
-                CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
-            } else {
-                CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
-            }
             modelo.addRow(celdas);
 
             tematicas_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
 
             icono.flush();
-        } catch (IOException ex) {
-
+            CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", response.Mensaje());
+            } catch (IOException ex) {
+                System.err.println(ex.getMessage());
+            }
+        } else {
+            CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", response.Mensaje());
         }
+        
     }
     
     private void Descargar_Material(int id_Material, String nombre_Archivo) {
