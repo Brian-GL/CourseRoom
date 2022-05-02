@@ -380,7 +380,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements Compo
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
             Obtener_Datos_Generales_Pregunta(true);
-            Obtener_Mensajes_Pregunta();
+            Obtener_Mensajes_Pregunta(true);
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -503,6 +503,8 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements Compo
 
                 valor = CourseRoom.Utilerias().Concatenar(datosGeneralesPreguntaModel.Descripcion(), "<br><br>Por ", datosGeneralesPreguntaModel.Nombre_Completo(), " A ", datosGeneralesPreguntaModel.Fecha_Creacion());
                 descripcion_Pregunta_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(valor));
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Pregunta", "No Se Encontraron Datos Generales");
             }
         } else {
             DatosGeneralesPreguntaModel datosGeneralesPreguntaModel = CourseRoom.Solicitudes().Obtener_Datos_Generales_Pregunta(Id_Pregunta);
@@ -527,7 +529,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements Compo
         return Id_Pregunta;
     }
 
-    private void Obtener_Mensajes_Pregunta() {
+    private void Obtener_Mensajes_Pregunta(boolean bandera) {
 
         DefaultTableModel modelo = (DefaultTableModel) mensajes_Chat_JTable.getModel();
         modelo.setRowCount(0);
@@ -537,7 +539,9 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements Compo
                 Agregar_Mensaje_Pregunta(response.delist());
             }
         } else {
-            CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Pregunta", "No Se Encontraron Mensajes En Las Preguntas");
+            if(bandera){
+                CourseRoom.Utilerias().Mensaje_Alerta("Mensajes Pregunta", "No Se Encontraron Mensajes En La Pregunta");
+            }
         }
     }
 
@@ -637,7 +641,7 @@ public class Pregunta_Profesor_Panel extends javax.swing.JPanel implements Compo
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
         Obtener_Datos_Generales_Pregunta(false);
-        Obtener_Mensajes_Pregunta();
+        Obtener_Mensajes_Pregunta(false);
 
         Colorear_Componentes();
 

@@ -446,7 +446,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
 
     private void actualizar_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_JButtonMouseClicked
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            Obtener_Preguntas();
+            Obtener_Preguntas(true);
         }
     }//GEN-LAST:event_actualizar_JButtonMouseClicked
 
@@ -532,22 +532,27 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         }
     }
 
-    private void Obtener_Preguntas() {
-
+    private void Obtener_Preguntas(boolean bandera){
+        
         DefaultTableModel modelo = (DefaultTableModel) mostrar_Preguntas_JTable.getModel();
         modelo.setRowCount(0);
-
-        Pregunta_Profesor_Panel pregunta_Estudiante_Panel;
-        while (!mostrar_Preguntas_Lista.is_empty()) {
-            pregunta_Estudiante_Panel = mostrar_Preguntas_Lista.delist();
-            Tablero_Profesor_Panel.Retirar_Vista(pregunta_Estudiante_Panel);
-            pregunta_Estudiante_Panel.Limpiar();
+        
+        Pregunta_Profesor_Panel pregunta_Profesor_Panel;
+        while(!mostrar_Preguntas_Lista.is_empty()){
+            pregunta_Profesor_Panel = mostrar_Preguntas_Lista.delist();
+            Tablero_Profesor_Panel.Retirar_Vista(pregunta_Profesor_Panel);
+            pregunta_Profesor_Panel.Limpiar();
         }
         Lista<PreguntasModel> lista
                 = CourseRoom.Solicitudes().Obtener_Preguntas(Tablero_Profesor_Panel.Id_Usuario());
-
-        while (!lista.is_empty()) {
-            Agregar_Pregunta(lista.delist());
+        if (!lista.is_empty()) {
+            while (!lista.is_empty()) {
+                Agregar_Pregunta(lista.delist());
+            }
+        } else {
+            if (bandera) {
+                CourseRoom.Utilerias().Mensaje_Alerta("Obtener Preguntas", "No Se Encontraron Preguntas");
+            }
         }
     }
 
@@ -719,7 +724,7 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
         buscar_Preguntas_JTable.getTableHeader().setFont(gadugi);
         buscar_Preguntas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-        Obtener_Preguntas();
+        Obtener_Preguntas(false);
     }
 
     @Override

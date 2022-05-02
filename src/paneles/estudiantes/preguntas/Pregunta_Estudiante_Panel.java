@@ -499,6 +499,8 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements Com
                 pregunta_JLabel.setText(valor);
                 valor = CourseRoom.Utilerias().Concatenar(datosGeneralesPreguntaModel.Descripcion(), "<br><br>Por ", datosGeneralesPreguntaModel.Nombre_Completo(), " A ", datosGeneralesPreguntaModel.Fecha_Creacion());
                 descripcion_Pregunta_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(valor));
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Pregunta", "No Se Encontraron Datos De La Pregunta");
             }
         } else {
             DatosGeneralesPreguntaModel datosGeneralesPreguntaModel = CourseRoom.Solicitudes().Obtener_Datos_Generales_Pregunta(Id_Pregunta);
@@ -633,7 +635,7 @@ public class Pregunta_Estudiante_Panel extends javax.swing.JPanel implements Com
 
         mensajes_Chat_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());
 
-        Obtener_Datos_Generales_Pregunta(true);
+        Obtener_Datos_Generales_Pregunta(false);
         Obtener_Mensajes_Pregunta(false);
 
         Colorear_Componentes();
