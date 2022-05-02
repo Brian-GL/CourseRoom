@@ -1657,7 +1657,15 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private void editar_Descripcion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-
+            ResponseModel response = CourseRoom.Solicitudes().Remover_Curso(Id_Curso, Tablero_Profesor_Panel.Id_Usuario());
+            
+            if(response.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Informativo("Curso",response.Mensaje());
+                Tablero_Profesor_Panel.Retirar_Vista(this);
+                this.Limpiar();
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Curso",response.Mensaje());
+            }
         }
     }//GEN-LAST:event_editar_Descripcion_JButtonMouseClicked
 
@@ -1798,7 +1806,15 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private void finalizar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizar_Curso_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-
+            ResponseModel response = CourseRoom.Solicitudes().Finalizar_Curso(Id_Curso, Tablero_Profesor_Panel.Id_Usuario());
+            
+            if(response.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Informativo("Curso",response.Mensaje());
+                Tablero_Profesor_Panel.Retirar_Vista(this);
+                this.Limpiar();
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Curso",response.Mensaje());
+            }
         }
     }//GEN-LAST:event_finalizar_Curso_JButtonMouseClicked
 
