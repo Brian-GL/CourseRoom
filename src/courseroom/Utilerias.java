@@ -45,8 +45,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.JDialog;
@@ -371,19 +369,6 @@ public class Utilerias {
         return segundos < 0 ? Concatenar("-", valor_Positivo) : valor_Positivo;
     }
 
-    public boolean Comprobar_Conexion_Internet() {
-        try {
-            URL url = new URL("http://www.google.com");
-            URLConnection conexion = url.openConnection();
-            conexion.connect();
-            return true;
-        } catch (MalformedURLException e) {
-            return false;
-        } catch (IOException e) {
-            return false;
-        }
-    }
-
     public boolean Regex_Correo_Electronico_Valido(String value){
         return Pattern.compile("[ -~]+@[ -~]+", Pattern.CASE_INSENSITIVE).matcher(value).find();
     }
@@ -403,61 +388,6 @@ public class Utilerias {
     }
 
     public void Abrir_Archivo(File archivo){
-
-//        try{
-//            switch (extension) {
-//                case "pdf":
-//                    Lector_PDF_General_Frame lector_PDF_General_Frame =
-//                            new Lector_PDF_General_Frame(ruta);
-//                    lector_PDF_General_Frame.setVisible(true);
-//                    break;
-//                case "mp4":
-//                case "webm":
-//                case "mkv":
-//                case "wmv":
-//                case "3gp":
-//                case "avi":
-//                case "ogg":
-//                    Lector_Video_General_Panel lector_Video_General_Panel =
-//                            new Lector_Video_General_Panel(ruta, nombre_Archivo);
-//                    lector_Video_General_Panel.setVisible(true);
-//                    break;
-//                case "mp3":
-//                case "aac":
-//                case "ac3":
-//                case "flac":
-//                case "opus":
-//                case "alac":
-//                case "amr":
-//                case "wma":
-//                case "m4a":
-//                case "aiff":
-//                    Lector_Audio_General_Frame lector_Audio_General_Frame =
-//                            new Lector_Audio_General_Frame(ruta, nombre_Archivo);
-//                    lector_Audio_General_Frame.setVisible(true);
-//                    break;
-//                case "png":
-//                case "jpeg":
-//                case "jpg":
-//                case "bmp":
-//                        //Cargar imagen
-//                        java.io.File archivo_Imagen = new java.io.File(ruta);
-//                        BufferedImage imagen = ImageIO.read(archivo_Imagen);
-//                        Viewer viewer = new Viewer(imagen);
-//                        viewer.show();
-//                        imagen.flush();
-//                        imagen.getGraphics().dispose();
-//                    break;
-//                default:
-//                    JOptionPane.showMessageDialog(null, "Formato De Archivo No Válido", Concatenar("Error Al Abrir El Archivo ",nombre_Archivo), JOptionPane.WARNING_MESSAGE);
-//                    break;
-//            }
-//
-//        } catch(HeadlessException | MalformedURLException ex){
-//            JOptionPane.showMessageDialog(null, ex.getMessage(), Concatenar("Error Encontrado Al Abrir El Archivo ",nombre_Archivo), JOptionPane.ERROR_MESSAGE);
-//        } catch (IOException ex) {
-//            JOptionPane.showMessageDialog(null, ex.getMessage(), Concatenar("Error Encontrado Al Abrir El Archivo ",nombre_Archivo), JOptionPane.ERROR_MESSAGE);
-//        }
 
         try{
             Desktop.getDesktop().open(archivo);
@@ -502,62 +432,7 @@ public class Utilerias {
         return retorno;
     }
     
-    private Integer Dias_Mes(Integer mes) {
-
-        Integer dias = 0;
-        
-        if( mes <= 1){
-            dias = 31;
-        }
-        if( mes <= 2){
-            if (Es_Anio_Bisiesto(LocalDateTime.now().getYear())) {
-                dias += 29;
-            } else {
-                dias += 28;
-            }
-        }
-        if(mes <= 3){
-            dias += 31;
-        }
-        if(mes <= 4){
-            dias += 30;
-        }
-        if( mes <= 5){
-            dias += 31;
-        }
-        if( mes <= 6){
-            dias += 30;
-        }
-        if( mes <= 7){
-            dias += 31;
-        }
-        if( mes <= 8){
-            dias += 31;
-        }
-        if( mes <= 9){
-            dias += 30;
-        }
-        if( mes <= 10){
-            dias += 31;
-        }
-        if( mes <= 11){
-            dias += 30;
-        }
-        if( mes <= 12){
-            dias += 31;
-        }
-
-        return dias;
-    }
-    
-    private boolean Es_Anio_Bisiesto(int anio) {
-        if (anio % 4 != 0) {
-            return false;
-        } else if (anio % 400 == 0) {
-            return true;
-        } else return anio % 100 != 0;
-    }
-    
+   
     public String MiUidd(){
         return Codificacion(getComputerSystem().getHardwareUUID());
     }

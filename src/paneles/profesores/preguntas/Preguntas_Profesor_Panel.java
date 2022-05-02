@@ -518,13 +518,12 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
                 Tablero_Profesor_Panel.Retirar_Vista(pregunta_Estudiante_Panel);
                 pregunta_Estudiante_Panel.Limpiar();
             }
-
         }
         Lista<PreguntasModel> lista
                 = CourseRoom.Solicitudes().Buscar_Preguntas(busqueda);
 
         if (!lista.is_empty()) {
-            while (!lista.is_empty()) {
+            while(!lista.is_empty()) {
                 Agregar_Pregunta_Busqueda(lista.delist());
             }
         } else {

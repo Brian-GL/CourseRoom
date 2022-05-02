@@ -193,11 +193,6 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
             Crear_Cuenta_General_Panel crear_Cuenta = new Crear_Cuenta_General_Panel();
             visualizador_JPanel.add("Crear_Cuenta", crear_Cuenta);
             
-            if (!CourseRoom.Utilerias().Comprobar_Conexion_Internet()) {
-                JOptionPane.showMessageDialog(null,"Mmmm...\nLo Sentimos Pero Al Parecer No Tienes Conexión A Internet","Error",JOptionPane.ERROR_MESSAGE);
-                this.Limpiar();
-            }
-
             Colorear_Componentes();
             
         } catch (IOException ex) {
@@ -224,6 +219,7 @@ public class CourseRoom_Frame extends javax.swing.JFrame implements Limpieza_Int
         CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().controls().stop();
         CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().mediaListPlayer().list().media().clear();
         CourseRoom.Utilerias().Componente_Reproducto_Lista_Audio().release();
+        
         super.dispose();
     }
     

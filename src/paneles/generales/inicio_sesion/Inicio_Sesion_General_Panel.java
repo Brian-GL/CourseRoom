@@ -405,7 +405,7 @@ public class Inicio_Sesion_General_Panel extends javax.swing.JPanel implements C
             if (response.Is_Success()) {
                 CourseRoom.Esconder_Frame();
                 CourseRoom.Frame().Mostrar_Tablero(response.Mensaje().equals("Estudiante"), response.Codigo());
-                CourseRoom.Mostrar_Frame();;
+                CourseRoom.Mostrar_Frame();
             } else {
                 getToolkit().beep();
                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta", response.Mensaje());

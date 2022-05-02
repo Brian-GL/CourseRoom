@@ -544,7 +544,6 @@ public class Chats_Estudiante_Panel extends JLayeredPane implements Limpieza_Int
                     ImageIcon icono_Imagen = new ImageIcon(imagen);
                     celda = new Celda_Renderer(icono_Imagen, chatsPersonalesModel.Nombre_Completo(), id_Chat);
                     celdas[0] = celda;
-                    //icono_Imagen.getImage().flush();
                 } else {
                     celda = new Celda_Renderer(chatsPersonalesModel.Nombre_Completo(), id_Chat);
                     celdas[0] = celda;

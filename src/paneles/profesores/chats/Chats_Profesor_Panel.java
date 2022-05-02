@@ -496,7 +496,6 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
                 ImageIcon icono_Imagen = new ImageIcon(imagen);
                 celda = new Celda_Renderer(icono_Imagen, chatsPersonalesModel.Nombre_Completo(), id_Chat);
                 celdas[0] = celda;
-                icono_Imagen.getImage().flush();
             } else {
                 celda = new Celda_Renderer(chatsPersonalesModel.Nombre_Completo(), id_Chat);
                 celdas[0] = celda;
@@ -582,6 +581,7 @@ public class Chats_Profesor_Panel extends JLayeredPane implements Limpieza_Inter
         }
         Lista<ChatsPersonalesModel> lista
                 = CourseRoom.Solicitudes().Buscar_Chats_Personales(busqueda, Tablero_Profesor_Panel.Id_Usuario());
+        
         if (!lista.is_empty()) {
             while (!lista.is_empty()) {
                 Agregar_Chat_Busqueda(lista.delist());
