@@ -63,7 +63,6 @@ public class Generar_Grupo_Curso_Profesor_Frame extends javax.swing.JFrame imple
         setMaximumSize(new java.awt.Dimension(500, 250));
         setMinimumSize(new java.awt.Dimension(500, 250));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-        setUndecorated(true);
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -210,7 +209,7 @@ public class Generar_Grupo_Curso_Profesor_Frame extends javax.swing.JFrame imple
     public void Iniciar_Componentes() {
         
         this.setLocationRelativeTo(null);
-        this.setAlwaysOnTop(true);
+        
 
         try {
             Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));

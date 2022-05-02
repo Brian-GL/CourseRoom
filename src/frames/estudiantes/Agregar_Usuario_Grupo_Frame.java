@@ -64,8 +64,6 @@ public class Agregar_Usuario_Grupo_Frame extends javax.swing.JFrame implements C
         setMaximumSize(new java.awt.Dimension(1000, 400));
         setMinimumSize(new java.awt.Dimension(1000, 400));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1000, 400));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -228,7 +226,7 @@ public class Agregar_Usuario_Grupo_Frame extends javax.swing.JFrame implements C
     public void Iniciar_Componentes() {
         
         this.setLocationRelativeTo(null);
-        this.setAlwaysOnTop(true);
+        
 
         try {
             Image logo_Imagen = ImageIO.read(getClass().getResource("/recursos/imagenes/Course_Room_Brand_Blue.png"));

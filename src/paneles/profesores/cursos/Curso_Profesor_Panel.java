@@ -2126,7 +2126,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
         Tarea_Profesor_Panel tarea_Estudiante_Panel = new Tarea_Profesor_Panel(tareasCursoModel.Id_Tarea());
         tareas_Profesor_Lista.push_back(tarea_Estudiante_Panel);
 
-        tareas_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Tarea.length()));
+        tareas_JTable.setRowHeight(modelo.getRowCount() - 1, 
+                CourseRoom.Utilerias().Altura_Fila_Tabla(nombre_Tarea.length()));
     }
 
     private void Agregar_Nueva_Tematica(ComboOptionModel interes) {

@@ -1729,7 +1729,6 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
             setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
             setMinimumSize(new java.awt.Dimension(1000, 300));
             setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-            setUndecorated(true);
             setResizable(false);
             setType(java.awt.Window.Type.POPUP);
             getContentPane().setLayout(new java.awt.CardLayout());
@@ -2007,7 +2006,6 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
                 setMaximumSize(new java.awt.Dimension(460, 140));
                 setMinimumSize(new java.awt.Dimension(460, 140));
                 setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-                setUndecorated(true);
                 setPreferredSize(new java.awt.Dimension(460, 140));
                 setResizable(false);
                 setType(java.awt.Window.Type.POPUP);

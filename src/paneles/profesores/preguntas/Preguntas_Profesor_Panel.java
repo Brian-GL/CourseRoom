@@ -838,7 +838,6 @@ public class Preguntas_Profesor_Panel extends javax.swing.JPanel implements Limp
             setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
             setMinimumSize(new java.awt.Dimension(1000, 300));
             setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-            setUndecorated(true);
             setResizable(false);
             setType(java.awt.Window.Type.POPUP);
             getContentPane().setLayout(new java.awt.CardLayout());

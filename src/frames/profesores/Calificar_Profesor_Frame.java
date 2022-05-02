@@ -45,12 +45,12 @@ public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Com
         calificacion_JFormattedTextField = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Calificar Tarea");
         setAlwaysOnTop(true);
         setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         setMaximumSize(new java.awt.Dimension(460, 140));
         setMinimumSize(new java.awt.Dimension(460, 140));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(460, 140));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
@@ -60,9 +60,9 @@ public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Com
         contenido_JPanel.setMinimumSize(new java.awt.Dimension(800, 140));
         contenido_JPanel.setPreferredSize(new java.awt.Dimension(800, 140));
 
+        calificar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         calificar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/quality.png"))); // NOI18N
         calificar_JButton.setText("Calificar");
-        calificar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         ((ImageIcon)calificar_JButton.getIcon()).getImage().flush();
         calificar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -76,9 +76,9 @@ public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Com
             }
         });
 
+        cerrar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         cerrar_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/close.png"))); // NOI18N
         cerrar_JButton.setText("Cerrar");
-        cerrar_JButton.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         ((ImageIcon)cerrar_JButton.getIcon()).getImage().flush();
         cerrar_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -206,7 +206,7 @@ public class Calificar_Profesor_Frame extends javax.swing.JDialog implements Com
     @Override
     public void Iniciar_Componentes() {
         this.setLocationRelativeTo(null);
-        this.setAlwaysOnTop(true);
+        
         Font gadugi = new java.awt.Font("Segoe UI", 1, 16);
         
         calificacion_JFormattedTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(),
