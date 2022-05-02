@@ -5183,7 +5183,7 @@ public class Solicitudes {
         return response;
     }
     
-    public ResponseModel Remover_Tematica_Curso(int id_Tematica, int id_Usuario){
+    public ResponseModel Remover_Tematica_Curso(int id_Tematica, int id_Curso){
         ResponseModel response = new ResponseModel();
         
         try {
@@ -5191,7 +5191,7 @@ public class Solicitudes {
             Vector parametros = new Vector();
             
             parametros.add(id_Tematica);
-            parametros.add(id_Usuario);
+            parametros.add(id_Curso);
             parametros.add(CourseRoom.Utilerias().MiUidd());
             parametros.add(CourseRoom.Utilerias().MiIP());
             
