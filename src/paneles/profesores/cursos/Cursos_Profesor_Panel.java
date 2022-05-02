@@ -278,7 +278,6 @@ public class Cursos_Profesor_Panel extends JLayeredPane implements Limpieza_Inte
                     celda = new Celda_Renderer(icono,cursosCreadosProfesorModel.Nombre(), id);
                     celdas[0] = celda;
                     
-                    imagen.flush();
                 }
             }
             else{
