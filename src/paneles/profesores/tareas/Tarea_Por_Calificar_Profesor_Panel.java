@@ -1046,7 +1046,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
             modelo.addRow(celdas);
             retroalimentacion_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
 
-            imagen.flush();
+            
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
@@ -1099,7 +1099,7 @@ public class Tarea_Por_Calificar_Profesor_Panel extends javax.swing.JPanel imple
             modelo.addRow(celdas);
             retroalimentacion_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(retroalimentacion.length()));
 
-            imagen.flush();
+            
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }

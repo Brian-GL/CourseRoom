@@ -398,7 +398,7 @@ public final class Desempeno_Escolar_Estudiante_Panel extends javax.swing.JPanel
 
             modelo.addRow(celdas);
 
-            imagen.flush();
+            
         } catch(IOException ex){
             
         }

@@ -1516,7 +1516,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             celda = new Celda_Renderer(icono,"Pendiente",Id_Tarea_Pendiente);
             celdas[2] = celda;
             modelo.addRow(celdas);
-            imagen.flush();
+            
             
             Tarea_Pendiente_Estudiante_Panel tarea_Pendiente_Estudiante_Panel =
                     new Tarea_Pendiente_Estudiante_Panel(id_Tarea_Pendiente,Id_Vista);
@@ -1581,7 +1581,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
             
             modelo.addRow(celdas);
             
-            imagen.flush();
+            
             
             Tarea_Pendiente_Estudiante_Panel tarea_Pendiente_Estudiante_Panel =
                     new Tarea_Pendiente_Estudiante_Panel(tareasPendientesGrupoModel.Id_Tarea_Pendiente(), this.Id_Vista);
@@ -2232,7 +2232,7 @@ public class Grupo_Estudiante_Panel extends javax.swing.JPanel implements  Compo
                                 celdas[3] = celda;
                                 modelo.insertRow(0,celdas);
                                 CourseRoom.Utilerias().Mensaje_Informativo("Grupo",response.Mensaje());
-                                imagen.flush();
+                                
                                 
                             } else{
                                 CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!",response.Mensaje());

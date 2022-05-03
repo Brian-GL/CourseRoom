@@ -1036,7 +1036,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Compon
             modelo.addRow(celdas);
             retroalimentacion_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(retroalimentacion.length()));
 
-            imagen.flush();
+            
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
@@ -1059,7 +1059,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Compon
             celda = new Celda_Renderer(icono, archivo_Adjunto, id);
             celdas[0] = celda;
 
-            imagen.flush();
+            
         } catch (IOException ex) {
             celda = new Celda_Renderer(archivo_Adjunto, id);
             celdas[0] = celda;
@@ -1352,7 +1352,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Compon
             retroalimentacion_JTable.setRowHeight(modelo.getRowCount() - 1,
                     CourseRoom.Utilerias().Altura_Fila_Tabla_Icono(0));
 
-            imagen.flush();
+            
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
@@ -1610,7 +1610,7 @@ public class Tarea_Estudiante_Panel extends javax.swing.JPanel implements Compon
                             celdas[3] = celda;
                             modelo.insertRow(0, celdas);
                             CourseRoom.Utilerias().Mensaje_Informativo("Tarea", response.Mensaje());
-                            imagen.flush();
+                            
 
                         } else {
                             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", response.Mensaje());

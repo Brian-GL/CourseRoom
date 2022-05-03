@@ -56,7 +56,6 @@ import paneles.profesores.perfil.Perfil_Profesor_Panel;
 
 public class Tarea_Profesor_Panel extends javax.swing.JPanel implements Componentes_Interface, Envio_Interface, Limpieza_Interface, Carta_Visibilidad_Interface {
 
-    private String ID;
     private byte carta_Visible;
     private int Id_Tarea;
 
@@ -901,7 +900,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements Componen
     private void editar_Nombre_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombre_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-
+            editar_Nombre_JTextField.setEditable(!editar_Nombre_JTextField.isEditable());
         }
     }//GEN-LAST:event_editar_Nombre_JButtonMouseClicked
 
@@ -918,7 +917,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements Componen
     private void editar_Descripcion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-
+            editar_Descripcion_JTextPane.setEditable(!editar_Descripcion_JTextPane.isEditable());
         }
     }//GEN-LAST:event_editar_Descripcion_JButtonMouseClicked
 
@@ -943,7 +942,11 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements Componen
                 ResponseModel response = CourseRoom.Solicitudes().Remover_Tarea(Id_Tarea, Tablero_Profesor_Panel.Id_Usuario());
 
                 if (response.Is_Success()) {
+                    
                     CourseRoom.Utilerias().Mensaje_Informativo("Eliminar Tarea", response.Mensaje());
+                    Tablero_Profesor_Panel.Retirar_Vista(this);
+                    this.Limpiar();
+                    
                 } else {
                     CourseRoom.Utilerias().Mensaje_Alerta("Eliminar Tarea", response.Mensaje());
                 }
@@ -1035,7 +1038,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements Componen
             celda = new Celda_Renderer(icono, id);
             celdas[2] = celda;
             
-            imagen.flush();
+            
         } catch (IOException ex) {
             
         }
@@ -1399,7 +1402,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements Componen
                             celdas[2] = celda;
                             modelo.insertRow(0, celdas);
                             CourseRoom.Utilerias().Mensaje_Informativo("Tarea", response.Mensaje());
-                            imagen.flush();
+                            
 
                         } else {
                             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", response.Mensaje());

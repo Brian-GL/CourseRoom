@@ -1945,7 +1945,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
             modelo.addRow(celdas);
 
-            imagen.flush();
+            
         } catch (IOException ex) {
 
         }
@@ -2278,7 +2278,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                         imagen = imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
                         icono = new ImageIcon(imagen);
                         imagen_Curso_JLabel.setIcon(icono);
-                        imagen.flush();
+                        
 
                     }
                 }
@@ -2870,7 +2870,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                             celdas[3] = celda;
                             modelo.insertRow(0, celdas);
                             CourseRoom.Utilerias().Mensaje_Informativo("Curso", response.Mensaje());
-                            imagen.flush();
+                            
 
                         } else {
                             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", response.Mensaje());

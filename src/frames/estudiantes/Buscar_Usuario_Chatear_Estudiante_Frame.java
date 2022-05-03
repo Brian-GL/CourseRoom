@@ -308,7 +308,7 @@ public class Buscar_Usuario_Chatear_Estudiante_Frame extends javax.swing.JFrame 
             
             modelo.addRow(celdas);
             
-            imagen.flush();
+            
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }

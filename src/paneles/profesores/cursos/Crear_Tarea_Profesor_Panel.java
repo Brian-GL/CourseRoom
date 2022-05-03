@@ -584,7 +584,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                             celdas[2] = celda;
                             modelo.insertRow(0, celdas);
                             CourseRoom.Utilerias().Mensaje_Informativo("Tarea", response.Mensaje());
-                            imagen.flush();
+                            
 
                         } else {
                             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", response.Mensaje());

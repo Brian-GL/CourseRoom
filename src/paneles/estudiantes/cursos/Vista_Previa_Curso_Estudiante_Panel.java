@@ -429,7 +429,7 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
                         imagen = imagen.getScaledInstance(450, 450, Image.SCALE_SMOOTH);
                         icono = new ImageIcon(imagen);
                         imagen_Curso_JLabel.setIcon(icono);
-                        imagen.flush();
+                        
 
                     }
                 }

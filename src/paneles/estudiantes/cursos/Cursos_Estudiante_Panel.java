@@ -855,7 +855,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     celda = new Celda_Renderer(icono,buscarCursosModel.Nombre_Completo(), id);
                     celdas[1] = celda;
                     
-                    imagen.flush();
+                    
                 }
             }
             else{
@@ -940,7 +940,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     celda = new Celda_Renderer(icono,cursosModel.Nombre(), id);
                     celdas[0] = celda;
                     
-                    imagen.flush();
+                    
                 }
             }
             else{
@@ -968,7 +968,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     celda = new Celda_Renderer(icono,cursosModel.Nombre_Completo(), id);
                     celdas[1] = celda;
                     
-                    imagen.flush();
+                    
                 }
             }
             else{
@@ -1124,7 +1124,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     celda = new Celda_Renderer(icono,cursosModel.Nombre(), id);
                     celdas[0] = celda;
                     
-                    imagen.flush();
+                    
                 }
             }
             else{
@@ -1154,7 +1154,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     celda = new Celda_Renderer(icono,cursosModel.Nombre_Completo(), id);
                     celdas[1] = celda;
                     
-                    imagen.flush();
+                    
                 }
             }
             else{
@@ -1275,7 +1275,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     celda = new Celda_Renderer(icono,cursosModel.Nombre(), id);
                     celdas[0] = celda;
                     
-                    imagen.flush();
+                    
                 }
             }
             else{
@@ -1305,7 +1305,7 @@ public class Cursos_Estudiante_Panel extends JLayeredPane implements Limpieza_In
                     celda = new Celda_Renderer(icono,cursosModel.Nombre_Completo(), id);
                     celdas[1] = celda;
                     
-                    imagen.flush();
+                    
                 }
             }
             else{

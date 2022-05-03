@@ -268,7 +268,7 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
             modelo.addRow(celdas);
             avisos_JTable.setRowHeight(modelo.getRowCount()-1, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
             
-            imagen.flush();
+            
             
         } catch (IOException ex) {
             
@@ -339,7 +339,7 @@ public final class Avisos_General_Panel extends javax.swing.JPanel implements Li
             modelo.insertRow(0,celdas);
             avisos_JTable.setRowHeight(0, CourseRoom.Utilerias().Altura_Fila_Tabla(mensaje.length()));
             
-            imagen.flush();
+            
             
         } catch (IOException ex) {
             

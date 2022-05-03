@@ -2917,7 +2917,7 @@ public class Solicitudes {
 
                Vector<Object> resultado  = (Vector<Object>)respuesta;
 
-               if(resultado.size()== 5){
+               if(resultado.size()== 7){
                    
                     datosGeneralesTareaProfesor.Id_Curso((int)resultado.remove(0));
                     datosGeneralesTareaProfesor.Nombre_Curso(CourseRoom.Utilerias().Decodificacion((String)resultado.remove(0)));

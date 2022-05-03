@@ -1114,7 +1114,7 @@ public class Crear_Curso_Profesor_Panel extends javax.swing.JPanel implements Li
                             celdas[3] = celda;
                             modelo.insertRow(0, celdas);
                             CourseRoom.Utilerias().Mensaje_Informativo("Curso", response.Mensaje());
-                            imagen.flush();
+                            
 
                         } else {
                             CourseRoom.Utilerias().Mensaje_Alerta("Alerta!!!", response.Mensaje());
