@@ -1386,7 +1386,7 @@ public class Cuestionario_Curso_Estudiante_Panel extends JLayeredPane implements
 
                                                                                         //Finalizar curso:
                                                                                         
-                                                                                        responseModel = CourseRoom.Solicitudes().Finalizar_Curso(Id_Curso, Tablero_Estudiante_Panel.Id_Usuario());
+                                                                                        responseModel = CourseRoom.Solicitudes().Finalizar_Curso_Usuario(Id_Curso, Tablero_Estudiante_Panel.Id_Usuario());
                                                                                         
                                                                                         if (responseModel.Is_Success()) {
                                                                                             CourseRoom.Utilerias().Mensaje_Informativo("Finalizar Curso", responseModel.Mensaje());

@@ -999,15 +999,15 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
                                 editar_JPanel.setOpaque(false);
 
+                                cambiar_Imagen_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
                                 cambiar_Imagen_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconos/replace.png"))); // NOI18N
                                 cambiar_Imagen_JButton.setText("Cambiar Imagen");
+                                cambiar_Imagen_JButton.setToolTipText("Cambiar Imagen Del Grupo");
                                 cambiar_Imagen_JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-                                cambiar_Imagen_JButton.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
                                 cambiar_Imagen_JButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
                                 cambiar_Imagen_JButton.setMaximumSize(new java.awt.Dimension(400, 40));
                                 cambiar_Imagen_JButton.setMinimumSize(new java.awt.Dimension(400, 40));
                                 cambiar_Imagen_JButton.setPreferredSize(new java.awt.Dimension(400, 50));
-                                cambiar_Imagen_JButton.setToolTipText("Cambiar Imagen Del Grupo");
                                 ((ImageIcon)cambiar_Imagen_JButton.getIcon()).getImage().flush();
                                 cambiar_Imagen_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
                                     public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1075,8 +1075,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
                                 editar_Descripcion_JScrollPane.setPreferredSize(new java.awt.Dimension(485, 300));
 
-                                editar_Descripcion_JTextPane.setContentType("text/html"); // NOI18N
                                 editar_Descripcion_JTextPane.setEditable(false);
+                                editar_Descripcion_JTextPane.setContentType("text/html"); // NOI18N
                                 editar_Descripcion_JTextPane.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
                                 editar_Descripcion_JTextPane.setText("");
                                 editar_Descripcion_JTextPane.setPreferredSize(new java.awt.Dimension(483, 4));
@@ -1194,13 +1194,13 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
                                                         int id_Tematica = Integer.parseInt(celda.ID());
 
-                                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Tematica_Curso(id_Tematica,Tablero_Profesor_Panel.Id_Usuario());
+                                                        ResponseModel response = CourseRoom.Solicitudes().Remover_Tematica_Curso(id_Tematica,Id_Curso);
 
                                                         if(response.Is_Success()){
-                                                            CourseRoom.Utilerias().Mensaje_Informativo("Remover Interes Curso", response.Mensaje());
+                                                            CourseRoom.Utilerias().Mensaje_Informativo("Remover Temática Curso", response.Mensaje());
                                                             modelo.removeRow(fila);
                                                         }else{
-                                                            CourseRoom.Utilerias().Mensaje_Alerta("Remover Interes Curso", response.Mensaje());
+                                                            CourseRoom.Utilerias().Mensaje_Alerta("Remover Temática Curso", response.Mensaje());
                                                         }
                                                     }
                                                 }
@@ -1583,7 +1583,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                             ImageIcon icono_Grupo = new ImageIcon(abrir_Imagen.getScaledInstance(largo_Imagen, largo_Imagen, Image.SCALE_SMOOTH));
 
                             imagen_Curso_JLabel.setIcon(icono_Grupo);
-                            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Grupo(Id_Curso, FileUtils.readFileToByteArray(archivo));
+                            ResponseModel respuesta = CourseRoom.Solicitudes().Actualizar_Imagen_Curso(Id_Curso, FileUtils.readFileToByteArray(archivo));
                             if (respuesta.Is_Success()) {
                                 CourseRoom.Utilerias().Mensaje_Informativo("Mensaje Informativo", respuesta.Mensaje());
                             } else {
@@ -1621,7 +1621,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private void editar_Nombre_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Nombre_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-
+            editar_Nombre_JTextField.setEditable(!editar_Nombre_JTextField.isEditable());
         }
     }//GEN-LAST:event_editar_Nombre_JButtonMouseClicked
 
@@ -1638,7 +1638,15 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private void eliminar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Curso_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-
+            ResponseModel response = CourseRoom.Solicitudes().Remover_Curso(Id_Curso, Tablero_Profesor_Panel.Id_Usuario());
+            
+            if(response.Is_Success()){
+                CourseRoom.Utilerias().Mensaje_Informativo("Curso",response.Mensaje());
+                Tablero_Profesor_Panel.Retirar_Vista(this);
+                this.Limpiar();
+            }else{
+                CourseRoom.Utilerias().Mensaje_Alerta("Curso",response.Mensaje());
+            }
         }
     }//GEN-LAST:event_eliminar_Curso_JButtonMouseClicked
 
@@ -1657,15 +1665,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private void editar_Descripcion_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editar_Descripcion_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            ResponseModel response = CourseRoom.Solicitudes().Remover_Curso(Id_Curso, Tablero_Profesor_Panel.Id_Usuario());
-            
-            if(response.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Informativo("Curso",response.Mensaje());
-                Tablero_Profesor_Panel.Retirar_Vista(this);
-                this.Limpiar();
-            }else{
-                CourseRoom.Utilerias().Mensaje_Alerta("Curso",response.Mensaje());
-            }
+           editar_Descripcion_JTextPane.setEditable(!editar_Descripcion_JTextPane.isEditable());
         }
     }//GEN-LAST:event_editar_Descripcion_JButtonMouseClicked
 
@@ -1806,7 +1806,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private void finalizar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finalizar_Curso_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            ResponseModel response = CourseRoom.Solicitudes().Finalizar_Curso(Id_Curso, Tablero_Profesor_Panel.Id_Usuario());
+            ResponseModel response = CourseRoom.Solicitudes().Finalizar_Curso_Profesor(Id_Curso, Tablero_Profesor_Panel.Id_Usuario());
             
             if(response.Is_Success()){
                 CourseRoom.Utilerias().Mensaje_Informativo("Curso",response.Mensaje());
@@ -2132,30 +2132,32 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
     private void Agregar_Nueva_Tematica(ComboOptionModel interes) {
         try {
-            DefaultTableModel modelo = (DefaultTableModel) editar_Tematicas_JTable.getModel();
-
-            Celda_Renderer[] celdas = new Celda_Renderer[2];
-            Celda_Renderer celda;
-
-            Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
-            ImageIcon remover = new ImageIcon(icono);
-
-            celda = new Celda_Renderer(interes.Valor(), interes.Id().toString());
-            celdas[0] = celda;
-
-            celda = new Celda_Renderer(remover);
-            celdas[1] = celda;
+            
             ResponseModel responseModel = CourseRoom.Solicitudes().Agregar_Tematica(Id_Curso, interes.Id());
             if (responseModel.Is_Success()) {
+                DefaultTableModel modelo = (DefaultTableModel) editar_Tematicas_JTable.getModel();
+
+                Celda_Renderer[] celdas = new Celda_Renderer[2];
+                Celda_Renderer celda;
+
+                Image icono = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+                ImageIcon remover = new ImageIcon(icono);
+
+                celda = new Celda_Renderer(interes.Valor(), interes.Id().toString());
+                celdas[0] = celda;
+
+                celda = new Celda_Renderer(remover,interes.Id().toString());
+                celdas[1] = celda;
+                modelo.addRow(celdas);
+
+                editar_Tematicas_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
+
+                icono.flush();
                 CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
             } else {
                 CourseRoom.Utilerias().Mensaje_Informativo("Interes/Tematica Agregada Correctamente", responseModel.Mensaje());
             }
-            modelo.addRow(celdas);
-
-            editar_Tematicas_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(interes.Valor().length()));
-
-            icono.flush();
+            
         } catch (IOException ex) {
 
         }
@@ -2252,7 +2254,8 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
             editar_Nombre_JTextField.setText(datosGeneralesCursoProfesor.Nombre());
             fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Formato_HTML_Central(CourseRoom.Utilerias().Concatenar("Creado El ", datosGeneralesCursoProfesor.Fecha_Creacion())));
             descripcion_Curso_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesCursoProfesor.Descripcion()));
-
+            editar_Descripcion_JTextPane.setText(CourseRoom.Utilerias().Formato_HTML_Izquierda(datosGeneralesCursoProfesor.Descripcion()));
+            
             byte[] bytes_Imagen = CourseRoom.Solicitudes().Obtener_Imagen_Curso(Id_Curso);
             Image imagen;
             ImageIcon icono;
@@ -2411,7 +2414,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_JButton;
     private javax.swing.JButton agregar_Tematica_JButton;
@@ -2537,7 +2539,7 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
         // Create chart  
         JFreeChart chart = ChartFactory.createScatterPlot(
-                "Boys VS Girls weight comparison chart",
+                "Estadísticas",
                 "X-Axis",
                 "Y-Axis",
                 dataset,
