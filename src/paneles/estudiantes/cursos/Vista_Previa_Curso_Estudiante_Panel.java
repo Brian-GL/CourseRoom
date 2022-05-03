@@ -507,7 +507,10 @@ public class Vista_Previa_Curso_Estudiante_Panel extends javax.swing.JPanel impl
         
         Font gadugi = new Font("Segoe UI", Font.BOLD, 16);
         intereses_Tematicas_JTable.getTableHeader().setFont(gadugi);
-        intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());       
+        intereses_Tematicas_JTable.setDefaultRenderer(Celda_Renderer.class, new Celda_Renderer());   
+        
+        Obtener_Datos_Generales_Curso();
+        Obtener_Tematicas_Curso();
     }
 
     @Override
