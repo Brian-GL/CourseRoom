@@ -350,7 +350,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
                             }
                             break;
                             // Remover
-                            case 3:
+                            case 2:
                             {
                                 int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
                                     "¿Estás Segur@ De Remover Este Archivo Adjunto?", "Remover Archivo Adjunto", 
@@ -453,7 +453,7 @@ public class Crear_Tarea_Profesor_Panel extends javax.swing.JPanel implements Co
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
             Tablero_Profesor_Panel.Retirar_Vista(this);
-            Tablero_Profesor_Panel.Mostrar_Vista("Tarea_Temporal");
+            Tablero_Profesor_Panel.Mostrar_Vista(Id_Vista);
             this.Limpiar();
         }
     }//GEN-LAST:event_regresar_JButtonMouseClicked
