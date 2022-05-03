@@ -419,7 +419,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements Componen
                             case 3:
                             {
                                 int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(), 
-                                    "¿Estás Segur@ De Remover Está Tarea?", "Remover Tarea", 
+                                    "¿Estás Segur@ De Remover Este Archivo Adjunto?", "Remover Archivo", 
                                     JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
                                 if(resultado == JOptionPane.YES_OPTION){
@@ -433,10 +433,10 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements Componen
                                     ResponseModel response = CourseRoom.Solicitudes().Remover_Archivo_Adjunto_Tarea(id_Archivo_Subido, Tablero_Profesor_Panel.Id_Usuario());
 
                                     if(response.Is_Success()){
-                                        CourseRoom.Utilerias().Mensaje_Informativo("Remover Tarea", response.Mensaje());
+                                        CourseRoom.Utilerias().Mensaje_Informativo("Remover Archivo Adjunto", response.Mensaje());
                                         modelo.removeRow(fila);
                                     }else{
-                                        CourseRoom.Utilerias().Mensaje_Alerta("Remover Tarea", response.Mensaje());
+                                        CourseRoom.Utilerias().Mensaje_Alerta("Remover Archivo Adjunto", response.Mensaje());
                                     }
                                 }
 
@@ -1011,7 +1011,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements Componen
     }//GEN-LAST:event_guardar_Cambios_Datos_Generales_Tarea_JButtonMouseExited
 
     private void Agregar_Archivo_Adjunto(ArchivosTareaModel archivosTareaModel) {
-        Celda_Renderer[] celdas = new Celda_Renderer[2];
+        Celda_Renderer[] celdas = new Celda_Renderer[3];
         Celda_Renderer celda;
 
         String id = String.valueOf(archivosTareaModel.Id_Archivo_Tarea());
@@ -1027,13 +1027,20 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements Componen
             celda = new Celda_Renderer(icono, archivo_Adjunto, id);
             celdas[0] = celda;
 
+            celda = new Celda_Renderer(fecha_Adjunto, id);
+            celdas[1] = celda;
+            
+            imagen = ImageIO.read(getClass().getResource("/recursos/iconos/close.png"));
+            icono = new ImageIcon(imagen);
+            celda = new Celda_Renderer(icono, id);
+            celdas[2] = celda;
+            
             imagen.flush();
         } catch (IOException ex) {
-            celda = new Celda_Renderer(archivo_Adjunto, id);
-            celdas[0] = celda;
+            
         }
-        celda = new Celda_Renderer(fecha_Adjunto, id);
-        celdas[1] = celda;
+        
+       
 
         modelo.addRow(celdas);
         archivos_Adjuntos_JTable.setRowHeight(modelo.getRowCount() - 1, CourseRoom.Utilerias().Altura_Fila_Tabla(archivo_Adjunto.length()));
