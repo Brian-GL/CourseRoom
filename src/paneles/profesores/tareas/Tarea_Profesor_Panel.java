@@ -1152,6 +1152,7 @@ public class Tarea_Profesor_Panel extends javax.swing.JPanel implements Componen
         if (!datosGeneralesTareaProfesor.Nombre().isBlank()) {
 
             titulo_JLabel.setText(datosGeneralesTareaProfesor.Nombre());
+            editar_Nombre_JTextField.setText(datosGeneralesTareaProfesor.Nombre());
             curso_JLabel.setText(datosGeneralesTareaProfesor.Nombre_Curso());
             fecha_Creacion_JLabel.setText(CourseRoom.Utilerias().Concatenar("Creada el ", datosGeneralesTareaProfesor.Fecha_Creacion()));
             fecha_Entrega_JLabel.setText(CourseRoom.Utilerias().Concatenar("Se entrega el ", datosGeneralesTareaProfesor.Fecha_Entrega()));
