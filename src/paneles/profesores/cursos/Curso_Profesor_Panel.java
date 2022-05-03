@@ -1108,7 +1108,6 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
                                 editar_Tematicas_JLabel.setText("Temáticas");
                                 editar_Tematicas_JLabel.setPreferredSize(new java.awt.Dimension(320, 25));
 
-                                tematicas_AutoCompletionComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isaiah Leblanc", "Fitzgerald Dean", "Emma Doyle", "Galvin Gillespie", "Hunter Ross", "Kellie Valencia", "Miranda Holder", "Drake Mendoza", "Uma Parks", "Julian Hill" }));
                                 tematicas_AutoCompletionComboBox.setSelectedIndex(-1);
                                 tematicas_AutoCompletionComboBox.setToolTipText("<html>\n<h3>Interes / Temática</h3>\n</html>");
                                 tematicas_AutoCompletionComboBox.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -1638,14 +1637,23 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
     private void eliminar_Curso_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_Curso_JButtonMouseClicked
         // TODO add your handling code here:
         if (SwingUtilities.isLeftMouseButton(evt)) {
-            ResponseModel response = CourseRoom.Solicitudes().Remover_Curso(Id_Curso, Tablero_Profesor_Panel.Id_Usuario());
             
-            if(response.Is_Success()){
-                CourseRoom.Utilerias().Mensaje_Informativo("Curso",response.Mensaje());
-                Tablero_Profesor_Panel.Retirar_Vista(this);
-                this.Limpiar();
-            }else{
-                CourseRoom.Utilerias().Mensaje_Alerta("Curso",response.Mensaje());
+            int resultado = JOptionPane.showConfirmDialog(CourseRoom_Frame.getInstance(),
+                    "¿Estás Segur@ De Eliminar El Curso?", "Pregunta",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+            if (resultado == JOptionPane.YES_OPTION) {
+            
+                ResponseModel response = CourseRoom.Solicitudes().Remover_Curso(Id_Curso, Tablero_Profesor_Panel.Id_Usuario());
+
+                if(response.Is_Success()){
+                    CourseRoom.Utilerias().Mensaje_Informativo("Curso",response.Mensaje());
+                    Tablero_Profesor_Panel.Retirar_Vista(this);
+                    Tablero_Profesor_Panel.Mostrar_Vista("Cursos");
+                    this.Limpiar();
+                }else{
+                    CourseRoom.Utilerias().Mensaje_Alerta("Curso",response.Mensaje());
+                }
             }
         }
     }//GEN-LAST:event_eliminar_Curso_JButtonMouseClicked
@@ -2804,6 +2812,21 @@ public class Curso_Profesor_Panel extends javax.swing.JPanel implements Limpieza
 
         agregar_Tematica_JButton.setBackground(CourseRoom.Utilerias().Tercer_Color());
         agregar_Tematica_JButton.setForeground(CourseRoom.Utilerias().Tercer_Color_Fuente());
+        
+        
+        // Obtener temáticas:
+        Lista<ComboOptionModel> tematicas = CourseRoom.Solicitudes().Obtener_Tematicas();
+
+        if (!tematicas.is_empty()) {
+            while (!tematicas.is_empty()) {
+                tematicas_AutoCompletionComboBox.addItem(tematicas.delist());
+            }
+            tematicas_AutoCompletionComboBox.setSelectedIndex(0);
+        } else {
+            tematicas_AutoCompletionComboBox.setVisible(false);
+            agregar_Tematica_JButton.setVisible(false);
+            editar_Tematicas_JTable.setVisible(false);
+        }
 
     }
 
